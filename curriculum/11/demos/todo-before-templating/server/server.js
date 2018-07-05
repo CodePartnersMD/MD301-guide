@@ -14,23 +14,19 @@ client.on('error', err => console.error(err));
 app.use(cors());
 
 // Note: this is our proof of life for deployment.
-// app.get('/', (request, response) => response.send('Testing 1, 2, 3'));
+// app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
 
-app.get('/tasks', (request, response) => {
-  fetchAllTasks()
-    .then(results => response.send(results.rows))
+app.get('/tasks', (req, res) => {
+  let SQL = 'SELECT * from tasks;';
+  
+  client.query(SQL)
+    .then(results => res.send(results.rows))
     .catch(console.error);
 });
 
-app.get('*', (request, response) => response.status(403).send('This route does not exist'));
+app.get('*', (req, res) => res.status(403).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
-
-function fetchAllTasks() {
-  let SQL = 'SELECT * from tasks;';
-
-  return client.query(SQL);
-}
 
 // PORT=3000
 
