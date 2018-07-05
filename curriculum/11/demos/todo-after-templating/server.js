@@ -13,6 +13,8 @@ client.on('error', err => console.error(err));
 
 app.use(cors());
 
+app.use(express.static('public'));
+
 app.set('view engine', 'ejs');
 
 // Note: this is our proof of life for deployment.
