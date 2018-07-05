@@ -13,26 +13,31 @@ client.on('error', err => console.error(err));
 
 app.use(cors());
 
-app.get('/tasks', (req, res) => {
-  let SQL = 'SELECT * from tasks;';
-  
-  client.query(SQL)
-    .then(results => res.send(results.rows))
+app.get('/tasks', (request, response) => {
+  fetchAllTasks()
+    .then(results => response.send(results.rows))
     .catch(console.error);
 });
 
-app.post('/tasks/add', express.urlencoded(), (req, res) => {
-  let {title, description, category, contact, status} = req.body;
-
-  let SQL = 'INSERT INTO tasks(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
-  let values = [title, description, category, contact, status];
-  
-  client.query(SQL, values)
-    .then(res.sendStatus(201))
+app.get('/tasks/:task_id', (request, response) => {
+  fetchOneTask(request)
+    .then(results => response.send(results.rows))
     .catch(console.error);
 });
-
 
 app.get('*', (req, res) => res.status(403).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+
+function fetchAllTasks() {
+  let SQL = 'SELECT * from tasks;';
+
+  return client.query(SQL);
+}
+
+function fetchOneTask(req) {
+  let SQL = 'SELECT * FROM tasks WHERE id=$1;';
+  let values = [req.params.task_id];
+
+  return client.query(SQL, values);
+}
