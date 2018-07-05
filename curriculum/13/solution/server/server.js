@@ -33,11 +33,10 @@ app.get('/api/v1/books/:id', (request, response) => {
 });
 
 app.post('/api/v1/books', (request, response) => {
-  addNewBook(request.body)
+  addBook(request.body)
     .then(response.sendStatus(201))
     .catch(console.error);
 });
-
 
 app.get('*', (request, response) => response.status(403).send('This route does not exist'));
 
@@ -45,7 +44,7 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 function fetchAllBooks() {
   let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books;';
-  
+
   return client.query(SQL);
 }
 
@@ -56,10 +55,10 @@ function fetchOneBook(bookId) {
   return client.query(SQL, values);
 }
 
-function addNewBook(newBook) {
+function addBook(newBook) {
   let {title, author, isbn, image_url, description} = newBook;
   let SQL = 'INSERT INTO books(title, author, isbn, image_url, description) VALUES($1, $2, $3, $4, $5);';
-
   let values = [title, author, isbn, image_url, description];
+  
   return client.query(SQL, values);
 }
