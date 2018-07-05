@@ -20,7 +20,7 @@ app.get('/tasks', (request, response) => {
 });
 
 app.get('/tasks/:task_id', (request, response) => {
-  fetchOneTask(request)
+  fetchOneTask(request.params.id)
     .then(results => response.send(results.rows))
     .catch(console.error);
 });
@@ -35,9 +35,9 @@ function fetchAllTasks() {
   return client.query(SQL);
 }
 
-function fetchOneTask(req) {
+function fetchOneTask(taskId) {
   let SQL = 'SELECT * FROM tasks WHERE id=$1;';
-  let values = [req.params.task_id];
+  let values = [taskId];
 
   return client.query(SQL, values);
 }

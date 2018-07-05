@@ -27,7 +27,7 @@ app.get('/api/v1/books', (request, response) => {
 });
 
 app.get('/api/v1/books/:id', (request, response) => {
-  fetchOneBook(request)
+  fetchOneBook(request.params.id)
     .then(results => response.send(results.rows))
     .catch(console.error);
 });
@@ -42,9 +42,9 @@ function fetchAllBooks() {
   return client.query(SQL);
 }
 
-function fetchOneBook(req) {
+function fetchOneBook(bookId) {
   let SQL = 'SELECT * FROM books WHERE book_id=$1;';
-  let values = [req.params.id];
-  
+  let values = [bookId];
+
   return client.query(SQL, values);
 }
