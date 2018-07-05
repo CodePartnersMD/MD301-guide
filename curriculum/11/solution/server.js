@@ -17,10 +17,13 @@ client.on('error', err => console.error(err));
 // Application Middleware
 app.use(cors());
 
+// Set the view engine for server-side templating
+app.set('view engine', 'ejs')
+
 // API Endpoints
 app.get('/api/v1/books', (request, response) => {
   fetchAllBooks()
-    .then(results => response.send(results.rows))
+    .then(result => response.render('index',{results: result.rows}))
     .catch(console.error);
 });
 
