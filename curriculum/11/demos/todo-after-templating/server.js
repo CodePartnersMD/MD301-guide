@@ -20,20 +20,18 @@ app.set('view engine', 'ejs');
 // Note: this is our proof of life for deployment.
 // app.get('/', (request, response) => response.send('Testing 1, 2, 3'));
 
-app.get('/tasks', (request, response) => {
-  fetchAllTasks()
-    .then(result => response.render('/index', {results: result.rows}))
-    .catch(console.error);
-});
+app.get('/tasks', getTasks);
 
-app.get('*', (request, response) => response.status(403).send('This route does not exist'));
+app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
-function fetchAllTasks() {
+function getTasks(request, response) {
   let SQL = 'SELECT * from tasks;';
 
-  return client.query(SQL);
+  return client.query(SQL)
+    .then(results => response.render('index', {results: results.rows}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }
 
 // PORT=3000

@@ -24,18 +24,16 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // API Endpoints
-app.get('/api/v1/books', (request, response) => {
-  fetchAllBooks()
-    .then(result => response.render('index', {results: result.rows}))
-    .catch(console.error);
-});
+app.get('/api/v1/books', getBooks);
 
-app.get('*', (request, response) => response.status(403).send('This route does not exist'));
+app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
-function fetchAllBooks() {
+function getBooks(request, response) {
   let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books;';
-  
-  return client.query(SQL);
+
+  return client.query(SQL)
+    .then(results => response.render('index', {books: results.rows}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }
