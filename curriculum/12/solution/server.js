@@ -19,17 +19,23 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+// Serve static files
+app.use(express.static('public'));
+
+// Set the view engine for server-side templating
+app.set('view engine', 'ejs');
+
 // API Endpoints
 app.get('/api/v1/books', (request, response) => {
   fetchAllBooks()
-    .then(results => response.send(results.rows))
-    .catch(console.error);
+    .then(results => response.render('index', {books: results.rows}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 });
 
 app.get('/api/v1/books/:id', (request, response) => {
   fetchOneBook(request.params.id)
-    .then(results => response.send(results.rows))
-    .catch(console.error);
+    .then(result => response.render('pages/detail-view', {book: result.rows[0]}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 });
 
 app.get('*', (request, response) => response.status(403).send('This route does not exist'));

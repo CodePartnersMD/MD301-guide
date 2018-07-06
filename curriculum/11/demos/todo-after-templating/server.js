@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 
 app.get('/tasks', (request, response) => {
   fetchAllTasks()
-    .then(result => response.render('index', {results: result.rows}))
+    .then(result => response.render('/index', {results: result.rows}))
     .catch(console.error);
 });
 
