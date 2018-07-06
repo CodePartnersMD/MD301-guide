@@ -12,6 +12,8 @@ const PORT = process.env.PORT;
 // Database Setup
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
+
+// TODO: error handler elsewhere (with other functions below)
 client.on('error', err => console.error(err));
 
 // Application Middleware
@@ -26,31 +28,29 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // API Endpoints
-app.get('/api/v1/books', (request, response) => {
-  fetchAllBooks()
-    .then(results => response.render('index', {books: results.rows}))
-    .catch(error => response.render('pages/error-view', {error: error}));
-});
+// TODO: refactor all routes
+app.get('/api/v1/books', getBooks);
 
-app.get('/api/v1/books/:id', (request, response) => {
-  fetchOneBook(request.params.id)
-    .then(result => response.render('pages/detail-view', {book: result.rows[0]}))
-    .catch(error => response.render('pages/error-view', {error: error}));
-});
+app.get('/api/v1/books/:id', getOneBook);
 
-app.get('*', (request, response) => response.status(403).send('This route does not exist'));
+// TODO: update from 403 to 404
+app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
-function fetchAllBooks() {
+function getBooks(request, response) {
   let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books;';
-  
-  return client.query(SQL);
+
+  return client.query(SQL)
+    .then(results => response.render('index', {books: results.rows}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }
 
-function fetchOneBook(bookId) {
+function getOneBook(request, response) {
   let SQL = 'SELECT * FROM books WHERE book_id=$1;';
-  let values = [bookId];
+  let values = [request.params.id];
 
-  return client.query(SQL, values);
+  return client.query(SQL, values)
+    .then(result => response.render('pages/detail-view', {book: result.rows[0]}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }

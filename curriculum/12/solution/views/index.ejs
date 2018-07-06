@@ -11,7 +11,9 @@
       <section class="book-list">
         <ul id="book-list">
           <% books.forEach(book => { %>
-            <li class="book-items" data-bookid=<%= book.book_id %>>
+            <!-- TODO: change book_id to id -->
+            <!-- TODO: book-id and add quotes -->
+            <li class="book-items" data-book-id="<%= book.book_id %>">
               <div class="book-container">
                 <img src=<%= book.image_url %>>
                 <div class="book-overlay">

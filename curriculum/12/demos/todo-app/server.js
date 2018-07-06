@@ -17,31 +17,27 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
-app.get('/tasks', (request, response) => {
-  fetchAllTasks()
-    .then(results => response.render('index', {results: results.rows}))
-    .catch(error => response.render('pages/error-view', {error: error}));
-});
+app.get('/tasks', getTasks);
 
-app.get('/tasks/:task_id', (request, response) => {
-  fetchOneTask(request.params.task_id)
-    .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
-    .catch(error => response.render('pages/error-view', {error: error}));
-});
+app.get('/tasks/:task_id', getOneTask);
 
 app.get('*', (req, res) => res.status(403).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
-function fetchAllTasks() {
+function getTasks(request, response) {
   let SQL = 'SELECT * from tasks;';
 
-  return client.query(SQL);
+  return client.query(SQL)
+    .then(results => response.render('index', {results: results.rows}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }
 
-function fetchOneTask(taskId) {
+function getOneTask(request, response) {
   let SQL = 'SELECT * FROM tasks WHERE id=$1;';
-  let values = [taskId];
+  let values = [request.params.task_id];
 
-  return client.query(SQL, values);
+  return client.query(SQL, values)
+    .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }
