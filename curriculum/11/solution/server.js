@@ -17,17 +17,20 @@ client.on('error', err => console.error(err));
 // Application Middleware
 app.use(cors());
 
+// Serve static files
+app.use(express.static('public'));
+
 // Set the view engine for server-side templating
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 
 // API Endpoints
 app.get('/api/v1/books', (request, response) => {
   fetchAllBooks()
-    .then(result => response.render('index',{results: result.rows}))
+    .then(result => response.render('index', {results: result.rows}))
     .catch(console.error);
 });
 
-app.get('*', (req, res) => res.status(403).send('This route does not exist'));
+app.get('*', (request, response) => response.status(403).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 

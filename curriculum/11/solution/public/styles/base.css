@@ -12,7 +12,7 @@ main {
 }
 
 header {
-  position: fixed;
+  /* position: fixed; */
   z-index: 99;
   background-color: #444;
   padding: 1.5vw 0;
