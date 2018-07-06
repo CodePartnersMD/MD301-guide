@@ -13,15 +13,19 @@ client.on('error', err => console.error(err));
 
 app.use(cors());
 
+app.use(express.static('public'));
+
+app.set('view engine', 'ejs');
+
 app.get('/tasks', (request, response) => {
   fetchAllTasks()
-    .then(results => response.send(results.rows))
+    .then(results => response.render('index', {results: results.rows}))
     .catch(console.error);
 });
 
 app.get('/tasks/:task_id', (request, response) => {
-  fetchOneTask(request.params.id)
-    .then(results => response.send(results.rows))
+  fetchOneTask(request.params.task_id)
+    .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
     .catch(console.error);
 });
 
