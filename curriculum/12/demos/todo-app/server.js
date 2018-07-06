@@ -20,13 +20,13 @@ app.set('view engine', 'ejs');
 app.get('/tasks', (request, response) => {
   fetchAllTasks()
     .then(results => response.render('index', {results: results.rows}))
-    .catch(console.error);
+    .catch(error => response.render('pages/error-view', {error: error}));
 });
 
 app.get('/tasks/:task_id', (request, response) => {
   fetchOneTask(request.params.task_id)
     .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
-    .catch(console.error);
+    .catch(error => response.render('pages/error-view', {error: error}));
 });
 
 app.get('*', (req, res) => res.status(403).send('This route does not exist'));

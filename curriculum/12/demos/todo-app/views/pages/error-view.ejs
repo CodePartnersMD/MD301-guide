@@ -1,5 +1,19 @@
-// should this be a partial?
+<!DOCTYPE html>
+<html>
+  <head>
+      <% include ../partials/head %>
+  </head>
+  <body>
+    <main>
+      <% include ../partials/header %>
+      <%# console.log(error) %>
+      <p><%= error %></p>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<script type="text/x-handlebars-template" id="error-template">
-  <p>{{status}}: {{statusText}}</p>
-</script>
+    <script src="/scripts/index.js" type="text/javascript"></script>
+    <script src="/scripts/models/task.js" type="text/javascript"></script>
+    <script src="/scripts/views/task-view.js" type="text/javascript"></script>
+    <script src="/scripts/views/error-view.js" type="text/javascript"></script>
+  </body>
+</html>
