@@ -43,13 +43,13 @@ app.get('*', (request, response) => response.status(403).send('This route does n
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 function fetchAllBooks() {
-  let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books;';
+  let SQL = 'SELECT id, title, author, image_url, isbn FROM books;';
 
   return client.query(SQL);
 }
 
 function fetchOneBook(bookId) {
-  let SQL = 'SELECT * FROM books WHERE book_id=$1;';
+  let SQL = 'SELECT * FROM books WHERE id=$1;';
   let values = [bookId];
 
   return client.query(SQL, values);

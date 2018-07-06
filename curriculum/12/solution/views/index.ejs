@@ -11,15 +11,13 @@
       <section class="book-list">
         <ul id="book-list">
           <% books.forEach(book => { %>
-            <!-- TODO: change book_id to id -->
-            <!-- TODO: book-id and add quotes -->
-            <li class="book-items" data-book-id="<%= book.book_id %>">
+            <li class="book-items" data-book-id="<%= book.id %>">
               <div class="book-container">
                 <img src=<%= book.image_url %>>
                 <div class="book-overlay">
                   <h3><%= book.title %></h3>
                   <p><%= book.author %></p>
-                  <p class="detail-button"><a href="/books/<%= book.book_id %>">view details</a></p>
+                  <p class="detail-button"><a href="/books/<%= book.id %>">view details</a></p>
                 </div>
               </div>
             </li>

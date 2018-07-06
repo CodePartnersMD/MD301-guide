@@ -28,18 +28,16 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // API Endpoints
-// TODO: refactor all routes
 app.get('/api/v1/books', getBooks);
 
 app.get('/api/v1/books/:id', getOneBook);
 
-// TODO: update from 403 to 404
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 function getBooks(request, response) {
-  let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books;';
+  let SQL = 'SELECT id, title, author, image_url, isbn FROM books;';
 
   return client.query(SQL)
     .then(results => response.render('index', {books: results.rows}))
@@ -47,7 +45,7 @@ function getBooks(request, response) {
 }
 
 function getOneBook(request, response) {
-  let SQL = 'SELECT * FROM books WHERE book_id=$1;';
+  let SQL = 'SELECT * FROM books WHERE id=$1;';
   let values = [request.params.id];
 
   return client.query(SQL, values)

@@ -63,13 +63,13 @@ app.get('*', (request, response) => response.status(403).send('This route does n
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 function fetchAllBooks() {
-  let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books;';
+  let SQL = 'SELECT id, title, author, image_url, isbn FROM books;';
 
   return client.query(SQL);
 }
 
 function fetchOneBook(bookId) {
-  let SQL = 'SELECT * FROM books WHERE book_id=$1;';
+  let SQL = 'SELECT * FROM books WHERE id=$1;';
   let values = [bookId];
 
   return client.query(SQL, values);
@@ -86,14 +86,14 @@ function addBook(newBook) {
 // TODO: rename "book" parameter
 function updateBook(book, bookId) {
   let {title, author, isbn, image_url, description} = book;
-  let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 WHERE book_id=$6`;
+  let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 WHERE id=$6`;
   let values = [title, author, isbn, image_url, description, bookId];
 
   return client.query(SQL, values);
 }
 
 function deleteBook(bookId) {
-  let SQL = 'DELETE FROM books WHERE book_id=$1';
+  let SQL = 'DELETE FROM books WHERE id=$1';
   let values = [bookId];
 
   return client.query(SQL, values);
@@ -119,7 +119,7 @@ function searchForBook(searchQuery) {
         isbn: industryIdentifiers ? `ISBN_13 ${industryIdentifiers[0].identifier}` : 'No ISBN available',
         image_url: imageLinks ? imageLinks.smallThumbnail : placeholderImage,
         description: description ? description : 'No description available',
-        book_id: industryIdentifiers ? `${industryIdentifiers[0].identifier}` : '',
+        id: industryIdentifiers ? `${industryIdentifiers[0].identifier}` : '',
       };
 
     }))

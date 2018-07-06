@@ -139,7 +139,7 @@ TODO: add link to instructions for pg:pull
 - Within your PostgreSQL shell, create a new database with the command `CREATE DATABASE books_app` or pull your provisioned database from Heroku.
 - Create a new table in your database called `books`.
   - Create a schema for your `books` table. This schema should contain the following properties:
-    - `book_id` as the primary key
+    - `id` as the primary key
     - `author`
     - `title`
     - `isbn`
@@ -193,7 +193,7 @@ TODO: add link to instructions for pg:pull
 
 *9. As a developer, I want the client to have the ability to request all resources from the database through a RESTful endpoint.*
 
-- Create a new endpoint at `GET /api/v1/books` which will retrieve an array of book objects from the database, limited to only the `book_id`, `title`, `author`, and `image_url`.
+- Create a new endpoint at `GET /api/v1/books` which will retrieve an array of book objects from the database, limited to only the `id`, `title`, `author`, and `image_url`.
 
 *10. As a user, I want a simple, clean looking UI so that my application is easy to navigate.*
 

@@ -31,7 +31,7 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 function getBooks(request, response) {
-  let SQL = 'SELECT book_id, title, author, image_url, isbn FROM books;';
+  let SQL = 'SELECT id, title, author, image_url, isbn FROM books;';
 
   return client.query(SQL)
     .then(results => response.render('index', {books: results.rows}))
