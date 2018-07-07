@@ -19,6 +19,8 @@ app.set('view engine', 'ejs');
 
 app.get('/tasks', getTasks);
 
+app.get('/tasks/add', showForm);
+
 app.get('/tasks/:id', getOneTask);
 
 app.post('/tasks/add', addTask);
@@ -38,19 +40,29 @@ function getTasks(request, response) {
 function getOneTask(request, response) {
   let SQL = 'SELECT * FROM tasks WHERE id=$1;';
   let values = [request.params.id];
-
+  console.log('hi dave')
   return client.query(SQL, values)
     .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
     .catch(error => response.render('pages/error-view', {error: error}));
 }
 
+function showForm(request, response) {
+  console.log('hi gary')
+  return response.render('pages/add-view');
+  
+}
+
+// function addTask(request, response) {
+//   let {title, description, category, contact, status} = request.body;
+
+//   let SQL = 'INSERT INTO tasks(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
+//   let values = [title, description, category, contact, status];
+
+//   return client.query(SQL, values)
+//     .then(results => response.render('index', {results: results.rows}))
+//     .catch(error => response.render('pages/error-view', {error: error}));
+// }
+
 function addTask(request, response) {
-  let {title, description, category, contact, status} = request.body;
-
-  let SQL = 'INSERT INTO tasks(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
-  let values = [title, description, category, contact, status];
-
-  return client.query(SQL, values)
-    .then(results => response.render('index', {results: results.rows}))
-    .catch(error => response.render('pages/error-view', {error: error}));
+  console.log(request.body);
 }
