@@ -1,24 +1,56 @@
+'use strict'
 
+const express = require('express');
+const cors = require('cors');
+const pg = require('pg');
 
+const app = express();
+const PORT = process.env.PORT;
 
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('error', err => console.error(err));
 
+app.use(cors());
 
+app.use(express.static('public'));
 
+app.set('view engine', 'ejs');
 
+app.get('/tasks', getTasks);
 
-app.post('/tasks/add', express.urlencoded(), (request, response) => {
-  addNewTask(request.body)
-    .then(response.sendStatus(201))
-    .catch(console.error);
-});
+app.get('/tasks/:id', getOneTask);
 
+app.post('/tasks/add', addTask);
 
+app.get('*', (req, res) => res.status(404).send('This route does not exist'));
 
-function addNewTask(newTask) {
-  let {title, description, category, contact, status} = newTask;
+app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+
+function getTasks(request, response) {
+  let SQL = 'SELECT * from tasks;';
+
+  return client.query(SQL)
+    .then(results => response.render('index', {results: results.rows}))
+    .catch(error => response.render('pages/error-view', {error: error}));
+}
+
+function getOneTask(request, response) {
+  let SQL = 'SELECT * FROM tasks WHERE id=$1;';
+  let values = [request.params.id];
+
+  return client.query(SQL, values)
+    .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
+    .catch(error => response.render('pages/error-view', {error: error}));
+}
+
+function addTask(request, response) {
+  let {title, description, category, contact, status} = request.body;
 
   let SQL = 'INSERT INTO tasks(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
   let values = [title, description, category, contact, status];
 
-  return client.query(SQL, values);
+  return client.query(SQL, values)
+    .then(results => response.render('index', {results: results.rows}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }
