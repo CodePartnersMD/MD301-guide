@@ -9,9 +9,12 @@ const PORT = process.env.PORT;
 
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
-client.on('error', err => console.error(err));
+client.on('error', onError);
 
 app.use(cors());
+
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 app.use(express.static('public'));
 
@@ -19,11 +22,11 @@ app.set('view engine', 'ejs');
 
 app.get('/tasks', getTasks);
 
-app.get('/tasks/add', showForm);
+app.get('/add', showForm);
 
 app.get('/tasks/:id', getOneTask);
 
-app.post('/tasks/add', addTask);
+app.post('/add', addTask);
 
 app.get('*', (req, res) => res.status(404).send('This route does not exist'));
 
@@ -34,35 +37,33 @@ function getTasks(request, response) {
 
   return client.query(SQL)
     .then(results => response.render('index', {results: results.rows}))
-    .catch(error => response.render('pages/error-view', {error: error}));
+    .catch(onError);
 }
 
 function getOneTask(request, response) {
   let SQL = 'SELECT * FROM tasks WHERE id=$1;';
   let values = [request.params.id];
-  console.log('hi dave')
+
   return client.query(SQL, values)
     .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
-    .catch(error => response.render('pages/error-view', {error: error}));
+    .catch(onError);
 }
 
 function showForm(request, response) {
-  console.log('hi gary')
-  return response.render('pages/add-view');
-  
+  response.render('pages/add-view');
 }
 
-// function addTask(request, response) {
-//   let {title, description, category, contact, status} = request.body;
-
-//   let SQL = 'INSERT INTO tasks(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
-//   let values = [title, description, category, contact, status];
-
-//   return client.query(SQL, values)
-//     .then(results => response.render('index', {results: results.rows}))
-//     .catch(error => response.render('pages/error-view', {error: error}));
-// }
-
 function addTask(request, response) {
-  console.log(request.body);
+  let {title, description, category, contact, status} = request.body;
+
+  let SQL = 'INSERT INTO tasks(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
+  let values = [title, description, category, contact, status];
+
+  return client.query(SQL, values)
+    .then(results => response.render('index', {results: results.rows}))
+    .catch(onError);
+}
+
+function onError(request, response, err) {
+  response.render('pages/error-view', {error: err})
 }

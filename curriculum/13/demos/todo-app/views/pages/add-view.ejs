@@ -8,12 +8,12 @@
     <main>
       <section class="create-view container">
         <h2 class="view-title">Add a New Task</h2>
-        <form id="create-form" action="/tasks/add" method="post">
-          <input type="text" name="title" placeholder="Task Name">
-          <textarea name="description" placeholder="Description of the task" cols="30" rows="10"></textarea>
-          <input type="text" name="category" placeholder="Category">
-          <input type="text" name="contact" placeholder="Contact Person">
-          <input type="text" name="status" placeholder="Completion Status">
+        <form id="create-form" action="/add" method="POST">
+          <input type="text" name="title" placeholder="Task Name" value="test">
+          <textarea name="description" placeholder="Description of the task" cols="30" rows="10" value="test"></textarea>
+          <input type="text" name="category" placeholder="Category" value="test">
+          <input type="text" name="contact" placeholder="Contact Person" value="test">
+          <input type="text" name="status" placeholder="Completion Status" value="test">
           <button type="submit">Add This Task</button>
         </form>
       </section>
