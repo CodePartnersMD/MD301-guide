@@ -32,14 +32,16 @@ app.get('/api/v1/books', getBooks);
 
 app.get('/api/v1/books/:id', getOneBook);
 
-app.post('/api/v1/books', addBook);
+app.get('/api/v1/add', showForm);
+
+app.post('/api/v1/add', addBook);
 
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 function getBooks(request, response) {
-  let SQL = 'SELECT id, title, author, image_url, isbn FROM books;';
+  let SQL = 'SELECT * FROM books;';
 
   return client.query(SQL)
     .then(results => response.render('index', {books: results.rows}))
@@ -55,12 +57,16 @@ function getOneBook(request, response) {
     .catch(error => response.render('pages/error-view', {error: error}));
 }
 
+function showForm(request, response) {
+  response.render('pages/add-view');
+}
+
 function addBook(request, response) {
   let {title, author, isbn, image_url, description} = request.body;
   let SQL = 'INSERT INTO books(title, author, isbn, image_url, description) VALUES($1, $2, $3, $4, $5);';
   let values = [title, author, isbn, image_url, description];
 
   return client.query(SQL, values)
-    .then(results => response.render('index', {books: results.rows}))
+    .then(response.redirect('/api/v1/books'))
     .catch(error => response.render('pages/error-view', {error: error}));
 }

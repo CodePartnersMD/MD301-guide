@@ -22,9 +22,9 @@ app.set('view engine', 'ejs');
 
 app.get('/tasks', getTasks);
 
-app.get('/add', showForm);
-
 app.get('/tasks/:id', getOneTask);
+
+app.get('/add', showForm);
 
 app.post('/add', addTask);
 
@@ -67,6 +67,6 @@ function addTask(request, response) {
     // .catch(err => response.render('pages/error-view', {error: err}));
 }
 
-function onError(request, response) {
-  response.render('pages/error-view', {error: err})
-}
+// function onError(request, response) {
+//   response.render('pages/error-view', {error: err})
+// }
