@@ -9,7 +9,7 @@ const PORT = process.env.PORT;
 
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
-client.on('error', onError);
+// client.on('error', err => console.error(err));
 
 app.use(cors());
 
@@ -37,7 +37,8 @@ function getTasks(request, response) {
 
   return client.query(SQL)
     .then(results => response.render('index', {results: results.rows}))
-    .catch(onError);
+    .catch(console.error)
+    // .catch(err => response.render('pages/error-view', {error: err}));
 }
 
 function getOneTask(request, response) {
@@ -46,7 +47,8 @@ function getOneTask(request, response) {
 
   return client.query(SQL, values)
     .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
-    .catch(onError);
+    .catch(console.error)
+    // .catch(err => response.render('pages/error-view', {error: err}));
 }
 
 function showForm(request, response) {
@@ -60,10 +62,11 @@ function addTask(request, response) {
   let values = [title, description, category, contact, status];
 
   return client.query(SQL, values)
-    .then(results => response.render('index', {results: results.rows}))
-    .catch(onError);
+    .then(response.redirect('/tasks'))
+    .catch(console.error)
+    // .catch(err => response.render('pages/error-view', {error: err}));
 }
 
-function onError(request, response, err) {
+function onError(request, response) {
   response.render('pages/error-view', {error: err})
 }
