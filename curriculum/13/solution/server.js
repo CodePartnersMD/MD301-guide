@@ -2,7 +2,6 @@
 
 // Application dependencies
 const express = require('express');
-const cors = require('cors');
 const pg = require('pg');
 
 // Application Setup
@@ -17,7 +16,6 @@ client.connect();
 client.on('error', err => console.error(err));
 
 // Application Middleware
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
@@ -27,7 +25,7 @@ app.use(express.static('public'));
 // Set the view engine for server-side templating
 app.set('view engine', 'ejs');
 
-// API Endpoints
+// API Routes
 app.get('/api/v1/books', getBooks);
 
 app.get('/api/v1/books/:id', getOneBook);
@@ -39,6 +37,9 @@ app.post('/api/v1/add', addBook);
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+
+
+// HELPER FUNCTIONS
 
 function getBooks(request, response) {
   let SQL = 'SELECT * FROM books;';

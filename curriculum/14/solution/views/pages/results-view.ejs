@@ -11,13 +11,15 @@
       <section class="results-list">
         <ul id="results-list">
           <% results.forEach(book => { %>
-            <li class="results-items" data-book-id="<%= book.id %>">
+            <li class="results-items" data-book-id="<%= book.isbn %>">
               <div class="results-container">
                 <!-- <img src=<%= book.image_url %>> -->
                 <div class="book-overlay">
                   <h3><%= book.title %></h3>
                   <p><%= book.author %></p>
-                  <p class="add-button"><a href="/api/v1/results/<%= book.id %>">Add to my collection</a></p>
+                  <img src="<%= book.image_url %>">
+                  <p><%= book.description %></p>        
+                  <p class="detail-button"><a href="/api/v1/books/<%= book.isbn %>">Add to Database</a></p>
                 </div>
               </div>
             </li>

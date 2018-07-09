@@ -1,8 +1,7 @@
 'use strict'
 
-// Application dependencies
+// Application Dependencies
 const express = require('express');
-const cors = require('cors');
 const pg = require('pg');
 const superagent = require('superagent');
 
@@ -14,12 +13,13 @@ const API_KEY = process.env.GOOGLE_API_KEY;
 // Database Setup
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
+
+// Error handling
 client.on('error', err => console.error(err));
 
 // Application Middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors());
 
 // Serve static files
 app.use(express.static('public'));
@@ -27,6 +27,7 @@ app.use(express.static('public'));
 // Set the view engine for server-side templating
 app.set('view engine', 'ejs');
 
+// API Routes
 app.get('/api/v1/books', getBooks);
 
 app.get('/api/v1/books/find', searchForBook);
@@ -37,21 +38,16 @@ app.get('/api/v1/books/:id', getOneBook);
 
 app.post('/api/v1/books/add', addBook);
 
-app.put('/api/v1/books/:id', (request, response) => {
-  updateBook(request.body, request.params.id)
-    .then(() => response.sendStatus(204))
-    .catch(console.error)
-});
+app.put('/api/v1/books/:id', updateBook);
 
-app.delete('/api/v1/books/:id', (request, response) => {
-  deleteBook(request.params.id)
-    .then(() => response.sendStatus(204))
-    .catch(console.error);
-});
+app.delete('/api/v1/books/:id', deleteBook);
 
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+
+
+// HELPER FUNCTIONS
 
 function getBooks(request, response) {
   let SQL = 'SELECT * FROM books;';
@@ -84,22 +80,6 @@ function addBook(request, response) {
     .catch(error => response.render('pages/error-view', {error: error}));
 }
 
-// TODO: rename "book" parameter
-function updateBook(book, bookId) {
-  let {title, author, isbn, image_url, description} = book;
-  let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 WHERE id=$6`;
-  let values = [title, author, isbn, image_url, description, bookId];
-
-  return client.query(SQL, values);
-}
-
-function deleteBook(bookId) {
-  let SQL = 'DELETE FROM books WHERE id=$1';
-  let values = [bookId];
-
-  return client.query(SQL, values);
-}
-
 function searchForBook(request, response) {
   let url = 'https://www.googleapis.com/books/v1/volumes';
   let query = 'dune';
@@ -124,5 +104,24 @@ function searchForBook(request, response) {
       };
     }))
     .then(results => response.render('pages/results-view', {results: results}))
+    .catch(error => response.render('pages/error-view', {error: error}));
+}
+
+function updateBook(request, response) {
+  let {title, author, isbn, image_url, description} = request.body;
+  let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 WHERE id=$6`;
+  let values = [title, author, isbn, image_url, description, request.params.id];
+
+  return client.query(SQL, values)
+    .then(response.redirect('/api/v1/books'))
+    .catch(error => response.render('pages/error-view', {error: error}));
+}
+
+function deleteBook(request, response) {
+  let SQL = 'DELETE FROM books WHERE id=$1';
+  let values = [request.params.id];
+
+  return client.query(SQL, values)
+    .then(response.redirect('/api/v1/books'))
     .catch(error => response.render('pages/error-view', {error: error}));
 }

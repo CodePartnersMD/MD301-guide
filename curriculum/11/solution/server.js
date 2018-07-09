@@ -23,12 +23,15 @@ app.use(express.static('public'));
 // Set the view engine for server-side templating
 app.set('view engine', 'ejs');
 
-// API Endpoints
+// API Routes
 app.get('/api/v1/books', getBooks);
 
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+
+
+// HELPER FUNCTIONS
 
 function getBooks(request, response) {
   let SQL = 'SELECT id, title, author, image_url, isbn FROM books;';

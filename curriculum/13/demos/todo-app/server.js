@@ -1,25 +1,29 @@
 'use strict'
 
+// Application Dependencies
 const express = require('express');
-const cors = require('cors');
 const pg = require('pg');
 
+// Application Setup
 const app = express();
 const PORT = process.env.PORT;
 
+// Database Setup
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 // client.on('error', err => console.error(err));
 
-app.use(cors());
-
+// Application Middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+// Serve static files
 app.use(express.static('public'));
 
+// Set the view engine for server-side templating
 app.set('view engine', 'ejs');
 
+// API Routes
 app.get('/tasks', getTasks);
 
 app.get('/tasks/:id', getOneTask);
@@ -31,6 +35,9 @@ app.post('/add', addTask);
 app.get('*', (req, res) => res.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+
+
+// HELPER FUNCTIONS
 
 function getTasks(request, response) {
   let SQL = 'SELECT * from tasks;';
