@@ -21,30 +21,21 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
-// API Endpoints
-app.get('/api/v1/books', (request, response) => {
-  fetchAllBooks()
-    .then(results => response.send(results.rows))
-    .catch(console.error);
-});
+// Serve static files
+app.use(express.static('public'));
 
-app.get('/api/v1/books/:id', (request, response) => {
-  fetchOneBook(request.params.id)
-    .then(results => response.send(results.rows))
-    .catch(console.error);
-});
+// Set the view engine for server-side templating
+app.set('view engine', 'ejs');
 
-app.get('/api/v1/books/find', (request, response) => {
-  searchForBook('dune')
-    .then(arr => response.send(arr))
-    .catch(console.error)
-});
+app.get('/api/v1/books', getBooks);
 
-app.post('/api/v1/books', (request, response) => {
-  addBook(request.body)
-    .then(response.sendStatus(201))
-    .catch(console.error);
-});
+app.get('/api/v1/books/find', searchForBook);
+
+app.get('/api/v1/books/add', showForm);
+
+app.get('/api/v1/books/:id', getOneBook);
+
+app.post('/api/v1/books/add', addBook);
 
 app.put('/api/v1/books/:id', (request, response) => {
   updateBook(request.body, request.params.id)
@@ -58,29 +49,39 @@ app.delete('/api/v1/books/:id', (request, response) => {
     .catch(console.error);
 });
 
-app.get('*', (request, response) => response.status(403).send('This route does not exist'));
+app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
-function fetchAllBooks() {
-  let SQL = 'SELECT id, title, author, image_url, isbn FROM books;';
+function getBooks(request, response) {
+  let SQL = 'SELECT * FROM books;';
 
-  return client.query(SQL);
+  return client.query(SQL)
+    .then(results => response.render('index', {books: results.rows}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }
 
-function fetchOneBook(bookId) {
+function getOneBook(request, response) {
   let SQL = 'SELECT * FROM books WHERE id=$1;';
-  let values = [bookId];
+  let values = [request.params.id];
 
-  return client.query(SQL, values);
+  return client.query(SQL, values)
+    .then(result => response.render('pages/detail-view', {book: result.rows[0]}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }
 
-function addBook(newBook) {
-  let {title, author, isbn, image_url, description} = newBook;
+function showForm(request, response) {
+  response.render('pages/add-view');
+}
+
+function addBook(request, response) {
+  let {title, author, isbn, image_url, description} = request.body;
   let SQL = 'INSERT INTO books(title, author, isbn, image_url, description) VALUES($1, $2, $3, $4, $5);';
   let values = [title, author, isbn, image_url, description];
-  
-  return client.query(SQL, values);
+
+  return client.query(SQL, values)
+    .then(response.redirect('/api/v1/books'))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }
 
 // TODO: rename "book" parameter
@@ -99,12 +100,12 @@ function deleteBook(bookId) {
   return client.query(SQL, values);
 }
 
-function searchForBook(searchQuery) {
+function searchForBook(request, response) {
   let url = 'https://www.googleapis.com/books/v1/volumes';
-  let query = '';
-  if(searchQuery.title) query += `+intitle:${searchQuery.title}`;
-  if(searchQuery.author) query += `+inauthor:${searchQuery.author}`;
-  if(searchQuery.isbn) query += `+isbn:${searchQuery.isbn}`;
+  let query = 'dune';
+  // if(searchQuery.title) query += `+intitle:${searchQuery.title}`;
+  // if(searchQuery.author) query += `+inauthor:${searchQuery.author}`;
+  // if(searchQuery.isbn) query += `+isbn:${searchQuery.isbn}`;
 
   superagent.get(url)
     .query({'q': query})
@@ -121,6 +122,7 @@ function searchForBook(searchQuery) {
         description: description ? description : 'No description available',
         id: industryIdentifiers ? `${industryIdentifiers[0].identifier}` : '',
       };
-
     }))
+    .then(results => response.render('pages/results-view', {results: results}))
+    .catch(error => response.render('pages/error-view', {error: error}));
 }

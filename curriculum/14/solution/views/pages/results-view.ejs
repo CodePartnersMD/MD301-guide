@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <% include ../partials/header %>
+  <main>
+    <section class="book-view container">
+      <h2 class="view-title">My Books</h2>
+      <section class="results-list">
+        <ul id="results-list">
+          <% results.forEach(book => { %>
+            <li class="results-items" data-book-id="<%= book.id %>">
+              <div class="results-container">
+                <!-- <img src=<%= book.image_url %>> -->
+                <div class="book-overlay">
+                  <h3><%= book.title %></h3>
+                  <p><%= book.author %></p>
+                  <p class="add-button"><a href="/api/v1/results/<%= book.id %>">Add to my collection</a></p>
+                </div>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      </section>
+    </section>
+  </main>
+  <% include ../partials/footer %>
+
+  <!-- External CDN Resources -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+  <!-- Application Resources -->
+  <script src="/scripts/index.js" type="text/javascript"></script>
+</body>
+</html>
