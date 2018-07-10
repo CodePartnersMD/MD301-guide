@@ -80,10 +80,12 @@ function createBook(request, response) {
 
 function createSearch(request, response) {
   let url = 'https://www.googleapis.com/books/v1/volumes';
-  let query = 'dune';
-  // if(searchQuery.title) query += `+intitle:${searchQuery.title}`;
-  // if(searchQuery.author) query += `+inauthor:${searchQuery.author}`;
-  // if(searchQuery.isbn) query += `+isbn:${searchQuery.isbn}`;
+  let query = '';
+  
+  let modifiedRequest = request.body.search.split(' ').join('+');
+  
+  if (request.body.title === 'on') query += `+intitle:${modifiedRequest}`;
+  if (request.body.author === 'on') query += `+inauthor:${modifiedRequest}`;
 
   superagent.get(url)
     .query({'q': query})
