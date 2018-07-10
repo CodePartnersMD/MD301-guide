@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // Application Dependencies
 const express = require('express');
@@ -45,21 +45,21 @@ function getBooks(request, response) {
     .catch(handleError);
 }
 
-function getBook(request, response) {
-  let SQL = 'SELECT * FROM books WHERE id=$1;';
-  let values = [request.params.id];
-
-  return client.query(SQL, values)
-    .then(result => response.render('pages/books/show', {book: result.rows[0]}))
-    .catch(handleError);
-}
-
 function newBook(request, response) {
   response.render('pages/books/new');
 }
 
 function newSearch(request, response) {
   response.render('pages/searches/new');
+}
+
+function getBook(request, response) {
+  let SQL = 'SELECT * FROM books WHERE id=$1;';
+  let values = [request.params.id];
+
+  return client.query(SQL, values)
+    .then(result => response.render('pages/books/show', {book: result.rows[0], message: ''}))
+    .catch(handleError);
 }
 
 function createBook(request, response) {
@@ -72,7 +72,7 @@ function createBook(request, response) {
       SQL = 'SELECT * FROM books WHERE isbn=$1;';
       values = [request.body.isbn];
       return client.query(SQL, values)
-        .then(result => response.render('pages/books/show', {book: result.rows[0]}))
+        .then(result => response.render('pages/books/show', {book: result.rows[0], message: 'This book has been added to your database!'}))
         .catch(handleError);
     })
     .catch(handleError);
@@ -81,9 +81,9 @@ function createBook(request, response) {
 function createSearch(request, response) {
   let url = 'https://www.googleapis.com/books/v1/volumes';
   let query = '';
-  
+
   let modifiedRequest = request.body.search.split(' ').join('+');
-  
+
   if (request.body.title === 'on') query += `+intitle:${modifiedRequest}`;
   if (request.body.author === 'on') query += `+inauthor:${modifiedRequest}`;
 
@@ -109,20 +109,20 @@ function createSearch(request, response) {
 
 function updateBook(request, response) {
   let {title, author, isbn, image_url, description} = request.body;
-  let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 WHERE id=$6`;
+  let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 WHERE id=$6;`;
   let values = [title, author, isbn, image_url, description, request.params.id];
 
   return client.query(SQL, values)
-    .then(response.render('pages/books/show'))
+    .then(response.render('pages/books/show', {book: {}, message: 'This book has been updated!'}))
     .catch(handleError);
 }
 
 function deleteBook(request, response) {
-  let SQL = 'DELETE FROM books WHERE id=$1';
+  let SQL = 'DELETE FROM books WHERE id=$1;';
   let values = [request.params.id];
 
   return client.query(SQL, values)
-    .then(response.render('pages/books/show'))
+    .then(response.render('pages/books/show', {book: {}, message: 'This book has been removed from your database!'}))
     .catch(handleError);
 }
 

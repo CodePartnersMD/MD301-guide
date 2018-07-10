@@ -6,17 +6,15 @@
   <body>
     <% include ../../partials/header %>
     <main>
-      <section class="create-view container">
-        <h2 class="view-title">add a new book</h2>
-        <form id="create-form" action="/books" method="post">
-          <input type="text" name="title" placeholder="title">
-          <input type="text" name="author" placeholder="author">
-          <input type="text" name="isbn" placeholder="isbn">
-          <input type="text" name="image_url" placeholder="image_url">
-          <textarea name="description" placeholder="description" cols="30" rows="5"></textarea>
-          <button type="submit">Submit</button>
-        </form>
-      </section>
+      <h2 class="view-title">Add a New Book</h2>
+      <form id="create-form" action="/books" method="post">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="author" placeholder="author">
+        <input type="text" name="isbn" placeholder="isbn">
+        <input type="text" name="image_url" placeholder="image_url">
+        <textarea name="description" placeholder="description" cols="30" rows="5"></textarea>
+        <button type="submit">Submit</button>
+      </form>
     </main>
     <% include ../../partials/footer %>
   </body>

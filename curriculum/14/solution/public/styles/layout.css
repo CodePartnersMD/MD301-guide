@@ -1,8 +1,6 @@
-/* .container {
-  display:none;
-  margin-top: 20%;
-} */
-
+header div {
+  height: 10vw;
+}
 
 header img {
   max-width: 10%;
@@ -21,4 +19,12 @@ header h1 {
   width: 50%;
   height: 30%;
   margin: auto;
+}
+
+#hide-me {
+  visibility: hidden;
+}
+
+#show-me {
+ visibility: visible;
 }
