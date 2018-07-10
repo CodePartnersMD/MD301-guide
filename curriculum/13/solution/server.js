@@ -40,7 +40,7 @@ function getBooks(request, response) {
 }
 
 function newBook(request, response) {
-  response.render('pages/books/new');
+  response.render('pages/new');
 }
 
 function getBook(request, response) {
@@ -48,7 +48,7 @@ function getBook(request, response) {
   let values = [request.params.id];
 
   return client.query(SQL, values)
-    .then(result => response.render('pages/books/show', {book: result.rows[0], message: ''}))
+    .then(result => response.render('pages/show', {book: result.rows[0], message: ''}))
     .catch(handleError);
 }
 
@@ -62,12 +62,12 @@ function createBook(request, response) {
       SQL = 'SELECT * FROM books WHERE isbn=$1;';
       values = [request.body.isbn];
       return client.query(SQL, values)
-        .then(result => response.render('pages/books/show', {book: result.rows[0], message: 'This book has been added to your database!'}))
+        .then(result => response.render('pages/show', {book: result.rows[0], message: 'This book has been added to your database!'}))
         .catch(handleError);
     })
     .catch(handleError);
 }
 
 function handleError(error, response) {
-  response.render('pages/error-view', {error: error});
+  response.render('pages/error', {error: error});
 }
