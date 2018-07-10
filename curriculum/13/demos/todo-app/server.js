@@ -11,13 +11,10 @@ const PORT = process.env.PORT;
 // Database Setup
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
-// client.on('error', err => console.error(err));
+client.on('error', err => console.error(err));
 
 // Application Middleware
-app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
-// Serve static files
 app.use(express.static('public'));
 
 // Set the view engine for server-side templating
@@ -36,16 +33,13 @@ app.get('*', (req, res) => res.status(404).send('This route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
-
 // HELPER FUNCTIONS
-
 function getTasks(request, response) {
   let SQL = 'SELECT * from tasks;';
 
   return client.query(SQL)
     .then(results => response.render('index', {results: results.rows}))
     .catch(handleError);
-    // .catch(err => response.render('pages/error-view', {error: err}));
 }
 
 function getOneTask(request, response) {
@@ -55,7 +49,6 @@ function getOneTask(request, response) {
   return client.query(SQL, values)
     .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
     .catch(handleError);
-    // .catch(err => response.render('pages/error-view', {error: err}));
 }
 
 function showForm(request, response) {
