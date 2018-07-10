@@ -72,7 +72,7 @@ function createBook(request, response) {
       let SQL = 'SELECT * FROM books WHERE isbn=$1;';
       let values = [request.body.isbn];
       return client.query(SQL, values)
-        .then(result => response.render('pages/books/show', {book: result}))
+        .then(result => response.render('pages/books/show', {book: result.rows[0]}))
         .catch(handleError);
     })
     .catch(handleError);
