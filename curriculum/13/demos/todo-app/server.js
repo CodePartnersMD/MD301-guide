@@ -44,7 +44,7 @@ function getTasks(request, response) {
 
   return client.query(SQL)
     .then(results => response.render('index', {results: results.rows}))
-    .catch(console.error)
+    .catch(handleError);
     // .catch(err => response.render('pages/error-view', {error: err}));
 }
 
@@ -54,7 +54,7 @@ function getOneTask(request, response) {
 
   return client.query(SQL, values)
     .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
-    .catch(console.error)
+    .catch(handleError);
     // .catch(err => response.render('pages/error-view', {error: err}));
 }
 
@@ -70,10 +70,9 @@ function addTask(request, response) {
 
   return client.query(SQL, values)
     .then(response.redirect('/tasks'))
-    .catch(console.error)
-    // .catch(err => response.render('pages/error-view', {error: err}));
+    .catch(handleError);
 }
 
-// function onError(request, response) {
-//   response.render('pages/error-view', {error: err})
-// }
+function handleError(error, response) {
+  response.render('pages/error-view', {error: error});
+}
