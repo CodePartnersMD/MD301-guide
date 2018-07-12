@@ -33,7 +33,7 @@ function getBooks(request, response) {
 
   return client.query(SQL)
     .then(results => response.render('index', {books: results.rows}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function getBook(request, response) {
@@ -42,7 +42,7 @@ function getBook(request, response) {
 
   return client.query(SQL, values)
     .then(result => response.render('pages/show', {book: result.rows[0]}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function handleError(error, response) {
