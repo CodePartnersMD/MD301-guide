@@ -9,6 +9,7 @@ const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const MEETUP_API_KEY = process.env.MEETUP_API_KEY;
 const YELP_API_KEY = process.env.YELP_API_KEY;
+const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 // const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 
 const dummyData = 'seattle';
@@ -66,6 +67,14 @@ app.get('/yelp', (request, response) => {
     .then(response => console.log(response.body))
     .catch(console.error);
 });
+
+app.get('/trails', (request, response) => {
+  let url = `https://www.hikingproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=200&key=${TRAIL_API_KEY}`;
+  
+  superagent.get(url)
+    .then(response => console.log(response.body.trails))
+    .catch(console.error);
+})
 
 app.listen(PORT, () => {console.log(`Listening on ${PORT}`)});
 
