@@ -59,13 +59,14 @@ function createBook(request, response) {
 
   return client.query(SQL, values)
     .then(() => {
+      console.log('in second')
       SQL = 'SELECT * FROM books WHERE isbn=$1;';
       values = [request.body.isbn];
       return client.query(SQL, values)
         .then(result => response.render('pages/show', {book: result.rows[0], message: 'This book has been added to your database!'}))
-        .catch(handleError);
+        .catch(error => response.render('pages/error', {error: error}))
     })
-    .catch(handleError);
+    .catch(error => response.render('pages/error', {error: error}))
 }
 
 function handleError(error, response) {
