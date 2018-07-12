@@ -91,11 +91,12 @@ function createSearch(request, response) {
     .query({'q': query})
     .query({'key': API_KEY})
     .then(apiResponse => apiResponse.body.items.map(bookResult => {
-      let { title, authors, industryIdentifiers, imageLinks, description } = bookResult.volumeInfo;
+      let { title, subtitle, authors, industryIdentifiers, imageLinks, description } = bookResult.volumeInfo;
       let placeholderImage = 'http://www.newyorkpaddy.com/images/covers/NoCoverAvailable.jpg';
 
       return {
         title: title ? title : 'No title available',
+        subtitle: subtitle ? subtitle : '',
         author: authors ? authors[0] : 'No authors available',
         isbn: industryIdentifiers ? `ISBN_13 ${industryIdentifiers[0].identifier}` : 'No ISBN available',
         image_url: imageLinks ? imageLinks.smallThumbnail : placeholderImage,
