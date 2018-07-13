@@ -26,7 +26,11 @@
                 <div class="book-container">
                   <img src="<%= book.image_url %>">
                   <div class="book-overlay">
-                    <h3><%= book.title %></h3>
+                    <% if (book.subtitle) { %>
+                      <h3><%= book.title %>: <%= book.subtitle %></h3>
+                    <% } else { %>
+                      <h3><%= book.title %></h3>
+                    <% } %>
                     <p><%= book.author %></p>
                   </div>
                 </div>

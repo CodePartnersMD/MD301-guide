@@ -36,7 +36,7 @@ function getBooks(request, response) {
 
   return client.query(SQL)
     .then(results => response.render('index', {books: results.rows}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function newBook(request, response) {
@@ -49,7 +49,7 @@ function getBook(request, response) {
 
   return client.query(SQL, values)
     .then(result => response.render('pages/show', {book: result.rows[0], message: ''}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function createBook(request, response) {
@@ -59,13 +59,14 @@ function createBook(request, response) {
 
   return client.query(SQL, values)
     .then(() => {
+      console.log('in second')
       SQL = 'SELECT * FROM books WHERE isbn=$1;';
       values = [request.body.isbn];
       return client.query(SQL, values)
         .then(result => response.render('pages/show', {book: result.rows[0], message: 'This book has been added to your database!'}))
-        .catch(handleError);
+        .catch(err => handleError(err, response));
     })
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function handleError(error, response) {

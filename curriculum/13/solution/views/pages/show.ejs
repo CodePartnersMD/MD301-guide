@@ -9,7 +9,11 @@
       <% if(message) { %>
         <h2><%= message %></h2>
       <% } %>
-      <h3><%= book.title %></h3>
+      <% if (book.subtitle) { %>
+        <h3><%= book.title %>: <%= book.subtitle %></h3>
+      <% } else { %>
+        <h3><%= book.title %></h3>
+      <% } %>
       <div class="book-details">
         <p><%= book.author %></p>
         <p><%= book.isbn %></p>

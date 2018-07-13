@@ -6,8 +6,12 @@
   <body>
     <% include ../partials/header %>
     <main>
-      <h3><%= book.title %></h3>
-      <div class="book-details">
+      <% if (book.subtitle) { %>
+        <h3><%= book.title %>: <%= book.subtitle %></h3>
+      <% } else { %>
+        <h3><%= book.title %></h3>
+      <% } %>      
+        <div class="book-details">
         <p><%= book.author %></p>
         <p><%= book.isbn %></p>
       </div>

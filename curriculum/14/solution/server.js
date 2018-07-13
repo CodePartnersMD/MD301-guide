@@ -42,7 +42,7 @@ function getBooks(request, response) {
 
   return client.query(SQL)
     .then(results => response.render('index', {books: results.rows}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function newBook(request, response) {
@@ -59,7 +59,7 @@ function getBook(request, response) {
 
   return client.query(SQL, values)
     .then(result => response.render('pages/books/show', {book: result.rows[0], message: ''}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function createBook(request, response) {
@@ -75,7 +75,7 @@ function createBook(request, response) {
         .then(result => response.render('pages/books/show', {book: result.rows[0], message: 'This book has been added to your database!'}))
         .catch(handleError);
     })
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function createSearch(request, response) {
@@ -91,11 +91,12 @@ function createSearch(request, response) {
     .query({'q': query})
     .query({'key': API_KEY})
     .then(apiResponse => apiResponse.body.items.map(bookResult => {
-      let { title, authors, industryIdentifiers, imageLinks, description } = bookResult.volumeInfo;
+      let { title, subtitle, authors, industryIdentifiers, imageLinks, description } = bookResult.volumeInfo;
       let placeholderImage = 'http://www.newyorkpaddy.com/images/covers/NoCoverAvailable.jpg';
 
       return {
         title: title ? title : 'No title available',
+        subtitle: subtitle ? subtitle : '',
         author: authors ? authors[0] : 'No authors available',
         isbn: industryIdentifiers ? `ISBN_13 ${industryIdentifiers[0].identifier}` : 'No ISBN available',
         image_url: imageLinks ? imageLinks.smallThumbnail : placeholderImage,
@@ -104,7 +105,7 @@ function createSearch(request, response) {
       };
     }))
     .then(results => response.render('pages/searches/show', {results: results}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function updateBook(request, response) {
@@ -114,7 +115,7 @@ function updateBook(request, response) {
 
   return client.query(SQL, values)
     .then(response.render('pages/books/show', {book: {}, message: 'This book has been updated!'}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function deleteBook(request, response) {
@@ -123,7 +124,7 @@ function deleteBook(request, response) {
 
   return client.query(SQL, values)
     .then(response.render('pages/books/show', {book: {}, message: 'This book has been removed from your database!'}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function handleError(error, response) {

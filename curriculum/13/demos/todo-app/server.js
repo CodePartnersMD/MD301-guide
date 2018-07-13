@@ -39,7 +39,7 @@ function getTasks(request, response) {
 
   return client.query(SQL)
     .then(results => response.render('index', {results: results.rows}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function getOneTask(request, response) {
@@ -48,7 +48,7 @@ function getOneTask(request, response) {
 
   return client.query(SQL, values)
     .then(result => response.render('pages/detail-view', {task: result.rows[0]}))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function showForm(request, response) {
@@ -63,7 +63,7 @@ function addTask(request, response) {
 
   return client.query(SQL, values)
     .then(response.redirect('/tasks'))
-    .catch(handleError);
+    .catch(err => handleError(err, response));
 }
 
 function handleError(error, response) {
