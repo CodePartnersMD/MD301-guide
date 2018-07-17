@@ -32,5 +32,5 @@ function getBooks(request, response) {
 
   return client.query(SQL)
     .then(results => response.render('index', {results: results.rows}))
-    .catch(error => console.error(error));
+    .catch(error => response.render('pages/error', {error: error}));
 }
