@@ -1,14 +1,14 @@
 'use strict';
 
-function Data(responseObject) {
-  Object.keys(responseObject).forEach(key => {
-    this[key] = responseObject[key];
-  }, this);
+$('#the-form').on('submit', fetchWeather);
+
+
+function fetchWeather(event) {
+  event.preventDefault();
+  let data = $('#input-search').val();
+  $.get('/test', {data: data})
+    .then(console.log);
 }
 
-Data.fetchWeather = () => {
-  $.get('/weather')
-    .then(results => new Data(results));
-};
+// fetchWeather();
 
-Data.fetchWeather();
