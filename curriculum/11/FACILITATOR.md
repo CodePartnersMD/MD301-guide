@@ -9,6 +9,8 @@ At this point, students should feel comfortable working in the front end from mo
 
 Server-side rendering is a new topic for students during this module. It will likely take a bit of time for students to adjust to this paradigm. Today's lecture will focus on creating a singular `index.ejs` file and an error view, but modularization will be addressed in the lectures and lab assignments for the remainder of the book app.
 
+In lab 11, students will manually populate a database and write a route to retrieve all of the book objects and render them all in a single view.
+
 _Note: the `demos` folder contains the to-do application before templating and after templating. The purpose of these two demos is for instructor reference. The revised version of the book app is being introduced in September 2018, so it will serve as a starting point for instructors who have delivered the original book app to acclimate to the revised version of the book app. Students should only be introduced to the pattern that includes EJS, which can be found in the `todo-after-templating` folder._ 
 
 ## How do I prep for today?
