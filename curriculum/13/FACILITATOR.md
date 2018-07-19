@@ -29,6 +29,9 @@ HTML5 forms with method and action attributes are new to students. Also, this is
 
 ## General comments
 
+Do not forget to discuss this line of code: `app.use(express.urlencoded({extended:true}));
+`
+
 ## Resources/Slides
 
 ## Lecture
