@@ -3,6 +3,12 @@
   <head>
       <meta charset="UTF-8">
     <title>City Explorer</title>
+    
+    <script type="text/x-handlebars-template" id="weather-results-template">
+      <li>
+        The forecast for {{time}} is: {{summary}}
+      </li>
+    </script>
   </head>
   <body>
     <header>
@@ -16,20 +22,26 @@
         <button type="submit">Explore!</button>
       </form>
       <img src="" alt="Map of search query">
-      <section clas="yelp-resultscontainer">
-        
+      <h2 class="query-placeholder"></h2>
+      <section class="yelp-container">
+        <h3>Results from the Yelp API</h3>
+        <ul class="yelp-results"></ul>
       </section>
-      <section clas="meetup-results container">
-        
+      <section class="meetup-container">
+        <h3>Results from the Meetup API</h3>
+        <ul class="meetup-results"></ul>
       </section>
-      <section clas="movie-results container">
-        
+      <section class="movie-container">
+        <h3>Results from the Movie API</h3>
+        <ul class="movie-results"></ul>
       </section>
-      <section clas="trails-results container">
-        
+      <section class="trails-container">
+        <h3>Results from the Trails API</h3>
+        <ul class="trails-results"></ul>
       </section>
-      <section clas="weather-results container">
-        
+      <section class="weather-container">
+        <h3>Results from the Weather API</h3>
+        <ul class="weather-results"></ul>
       </section>
     </main>
     <footer>

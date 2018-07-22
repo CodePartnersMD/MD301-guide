@@ -29,7 +29,7 @@ app.get('/test', (request, response) => {
   // console.log(request.query);
   let responseObj = {
     mapKey: GOOGLE_MAP_KEY,
-    searchQuery: request.query.data,
+    searchQuery: request.query.data.charAt(0).toUpperCase() + request.query.data.slice(1),
     daySummary: [],
     movieArray: [],
     meetupArray: [],
@@ -73,7 +73,13 @@ function getWeather(obj) {
 
   return superagent.get(url)
     .then(response => {
-      response.body.daily.data.forEach(day => obj.daySummary.push(day.summary));
+      response.body.daily.data.forEach(day => {
+        let resObj = {
+          summary: day.summary,
+          time: new Date(day.time * 1000).toString().slice(0, 15)
+        };
+        obj.daySummary.push(resObj);
+      })
     })
     .catch(err => console.error(err))
 }
