@@ -10,33 +10,49 @@ const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const MEETUP_API_KEY = process.env.MEETUP_API_KEY;
 const YELP_API_KEY = process.env.YELP_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
-const WALK_SCORE_API_KEY = process.env.WALK_SCORE_API_KEY;
+// const WALK_SCORE_API_KEY = process.env.WALK_SCORE_API_KEY;
 // const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 
-// const dummyData = 'seattle';
+const dummyData = 'seattle';
 let latitude, longitude;
 
 app.use(express.static('./public'));
 
 // app.get('///',  a, b, c, d, (req, res) => {
-  // res.send(data);
+// res.send(data);
 // })
 
-Promise.all([getWeather, getMovies, getMeetups, getYelp, getTrails]);
+// Promise.all([getWeather, getMovies, getMeetups, getYelp, getTrails]);
 
 app.get('/test', (request, response) => {
   // console.log(request.query);
+  let responseObj = {};
   stringToLatLong(request.query.data)
-    .then(obj => getWeather(obj.latitude, obj.longitude))
-    // .then(data => )
-    .then(console.log);
+    .then(obj => {
+      responseObj.lat = obj.latitude;
+      responseObj.lon = obj.longitude;
+    })
+    .then(() => Promise.all([
+      getWeather(responseObj),
+      getMovies(request.query.data),
+      getMeetups(responseObj),
+      getYelp(request.query.data),
+      getTrails(responseObj)
+    ]))
+    // .then(() => console.log('Response object after lat long', responseObj))
+    // .then(obj => getWeather(obj.latitude, obj.longitude))
+    // .then(data => Promise.all([
+    //   getWeather(data.latitude, data.longitude),
+    //   getMovies(request.query.data),
+    //   getMeetups(request, response),
+    //   getYelp(request, response),
+    //   getTrails(request, response)]))
   // getWeather(request, response);
   // response.sendFile('index.html', {root: './public'});
-})
-
-app.get('/both', (request, response) => {
-  // stringToLatLong(dummyData);
-  response.sendFile('index.html', {root: './public'});
+    .then(() => console.log('End of test, in final .then'))
+    // .then(() => response.status(200).send(responseObj.lat, responseObj.lon))
+    .then(() => response.send(responseObj))
+    .catch(console.error)
 })
 
 app.get('/weather', getWeather);
@@ -54,30 +70,35 @@ app.get('/walk-score', getWalkScore);
 app.listen(PORT, () => {console.log(`Listening on ${PORT}`)});
 
 function stringToLatLong(query) {
+  // let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${dummyData}`;
   let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}`;
   console.log(query);
   return superagent.get(url)
-    .then(response => ({
+    .then(res => ({
       // console.log('latitude' + latitude + 'longitude' + longitude)
-      latitude: response.body.results[0].geometry.location.lat,
-      longitude: response.body.results[0].geometry.location.lng
+      latitude: res.body.results[0].geometry.location.lat,
+      longitude: res.body.results[0].geometry.location.lng
       // console.log('latitude' + latitude + 'longitude' + longitude)
     }))
+    // .then(() => console.log('latitude' + latitude + 'longitude' + longitude))
+    // .then(res => console.log(res.body.results))
+    .catch(console.error)
 }
 
 // stringToLatLong(dummyData);
 
-function getWeather (latitude, longitude) {
+function getWeather(obj) {
   // stringToLatLong(request.query);
 
-  let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${latitude},${longitude}`;
-  
+  let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${obj.lat},${obj.lon}`;
+
   return superagent.get(url)
     // .then(response => {
     //   console.log('Summary', response.body.currently.summary);
     //   console.log(response.body.daily.data);
     //   response.body.daily.data.forEach(day => console.log(day.summary));
     // })
+    .then(() => console.log('Weather works'))
     .catch(err => console.error(err))
 }
 
@@ -85,40 +106,51 @@ function getMovies(query) {
   let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${query}`;
 
   superagent.get(url)
-    .then(response => console.log(response.body.results[0]))
+    // .then(response => console.log(response.body.results[0]))
+    .then(() => console.log('Movies works'))
     .catch(err => console.error(err))
 }
 
-function getMeetups(request, response, next) {
-  let url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${longitude}&page=20&lat=${latitude}&key=${MEETUP_API_KEY}`
+function getMeetups(obj) {
+  let url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${obj.lon}&page=20&lat=${obj.lat}&key=${MEETUP_API_KEY}`
 
   superagent.get(url)
-    .then(response => console.log(response.body.events))
-    .then(next)
+    // .then(response => console.log(response.body.events))
+    .then(() => console.log('Meetups works'))
     .catch(console.error);
 }
+// function getMeetups(request, response, next) {
+//   let url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${longitude}&page=20&lat=${latitude}&key=${MEETUP_API_KEY}`
 
-function getYelp(request, response) {
-  let url = `https://api.yelp.com/v3/businesses/search?location=${dummyData}`;
+//   superagent.get(url)
+//     .then(response => console.log(response.body.events))
+//     .then(next)
+//     .catch(console.error);
+// }
+
+function getYelp(query) {
+  let url = `https://api.yelp.com/v3/businesses/search?location=${query}`;
 
   superagent.get(url)
     .set('Authorization', `Bearer ${YELP_API_KEY}`)
-    .then(response => console.log(response.body))
+    .then(() => console.log('Yelp works'))
+    // .then(response => console.log(response.body))
     .catch(console.error);
 }
 
-function getTrails(request, response) {
-  let url = `https://www.hikingproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=200&key=${TRAIL_API_KEY}`;
+function getTrails(obj) {
+  let url = `https://www.hikingproject.com/data/get-trails?lat=${obj.lat}&lon=${obj.lon}&maxDistance=200&key=${TRAIL_API_KEY}`;
 
   superagent.get(url)
-    .then(response => console.log(response.body.trails))
+    // .then(response => console.log(response.body.trails))
+    .then(() => console.log('Trails works'))
     .catch(console.error);
 }
 
 function getWalkScore(request, response) {
   let url = 'http://api.walkscore.com/score?format=json&lat=41.4993&lon=81.6944&transit=1&bike=1&wsapikey=ae0fc1a4fbb0ddf6e884a1b257a3f3bf';
   // let url = `http://api.walkscore.com/score?format=json&lat=${latitude}&${longitude}=-122.3295&transit=1&bike=1&wsapikey=${WALK_SCORE_API_KEY}`;
-  
+
   superagent.get(url)
     .then(response => console.log(response.body))
     .catch(console.error);
