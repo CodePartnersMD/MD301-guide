@@ -14,8 +14,8 @@ const GOOGLE_MAP_KEY = process.env.GOOGLE_MAP_KEY;
 // const WALK_SCORE_API_KEY = process.env.WALK_SCORE_API_KEY;
 // const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 
-const dummyData = 'seattle';
-let latitude, longitude;
+// const dummyData = 'seattle';
+// let latitude, longitude;
 
 app.use(express.static('./public'));
 
@@ -29,6 +29,7 @@ app.get('/test', (request, response) => {
   // console.log(request.query);
   let responseObj = {
     mapKey: GOOGLE_MAP_KEY,
+    searchQuery: request.query.data,
     daySummary: [],
     movieArray: [],
     meetupArray: [],
@@ -49,6 +50,7 @@ app.get('/test', (request, response) => {
     ]))
     .then(console.log)
     // .then(() => console.log(responseObj))
+    .then(() => response.send(responseObj))
     .catch(console.error)
 })
 

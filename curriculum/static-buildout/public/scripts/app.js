@@ -1,10 +1,10 @@
 'use strict';
 
-$('#the-form').on('submit', fetchWeather);
+$('#the-form').on('submit', fetchCityData);
 
 let tempData;
 
-function fetchWeather(event) {
+function fetchCityData(event) {
   event.preventDefault();
   let data = $('#input-search').val();
   $.get('/test', {data: data})
@@ -15,3 +15,4 @@ function fetchWeather(event) {
     &key=${response.mapKey}`)
     })
 }
+
