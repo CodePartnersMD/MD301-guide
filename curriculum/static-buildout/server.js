@@ -4,7 +4,10 @@ const express = require('express');
 const superagent = require('superagent');
 
 const app = express();
+
 const PORT = 3000;
+
+// API keys
 const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const MEETUP_API_KEY = process.env.MEETUP_API_KEY;
@@ -12,7 +15,6 @@ const YELP_API_KEY = process.env.YELP_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 const GOOGLE_MAP_KEY = process.env.GOOGLE_MAP_KEY;
 // const WALK_SCORE_API_KEY = process.env.WALK_SCORE_API_KEY;
-// const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 
 // const dummyData = 'seattle';
 // let latitude, longitude;
@@ -23,10 +25,7 @@ app.use(express.static('./public'));
 // res.send(data);
 // })
 
-// Promise.all([getWeather, getMovies, getMeetups, getYelp, getTrails]);
-
 app.get('/test', (request, response) => {
-  // console.log(request.query);
   let responseObj = {
     mapKey: GOOGLE_MAP_KEY,
     searchQuery: request.query.data.charAt(0).toUpperCase() + request.query.data.slice(1),
@@ -36,6 +35,7 @@ app.get('/test', (request, response) => {
     yelpArray: [],
     trailsArray: []
   };
+  
   stringToLatLong(request.query.data)
     .then(obj => {
       responseObj.lat = obj.latitude;
@@ -49,13 +49,13 @@ app.get('/test', (request, response) => {
       getTrails(responseObj)
     ]))
     .then(console.log)
-    // .then(() => console.log(responseObj))
     .then(() => response.send(responseObj))
     .catch(console.error)
 })
 
 app.listen(PORT, () => {console.log(`Listening on ${PORT}`)});
 
+// Helper Functions
 function stringToLatLong(query) {
   let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}`;
   console.log(query);
@@ -88,7 +88,20 @@ function getMovies(query, obj) {
   let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${query}`;
 
   return superagent.get(url)
-    .then(response => response.body.results.forEach(movie => obj.movieArray.push(movie)))
+    .then(response => {
+      response.body.results.forEach(movie => {
+        let resObj = {
+          title: movie.title,
+          overview: movie.overview,
+          averageVotes: movie.vote_average,
+          totalVotes: movie.vote_count,
+          image: 'https://image.tmdb.org/t/p/w200_and_h300_bestv2' + movie.poster_path,
+          popularity: movie.popularity,
+          releasedOn: movie.release_date
+        };
+        obj.movieArray.push(resObj);
+      })
+    })
     .catch(err => console.error(err))
 }
 
@@ -96,7 +109,18 @@ function getMeetups(obj) {
   let url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${obj.lon}&page=20&lat=${obj.lat}&key=${MEETUP_API_KEY}`
 
   return superagent.get(url)
-    .then(response => response.body.events.forEach(meetup => obj.meetupArray.push(meetup)))
+    .then(response => {
+      response.body.events.forEach(meetup => {
+        let resObj = {
+          description: meetup.description,
+          link: meetup.link,
+          name: meetup.group.name,
+          creationDate: new Date(meetup.group.created * 1000).toString().slice(0, 15),
+          location: meetup.localized_location
+        };
+        obj.meetupArray.push(resObj);
+      })
+    })
     .catch(console.error);
 }
 
@@ -105,7 +129,19 @@ function getYelp(query, obj) {
 
   return superagent.get(url)
     .set('Authorization', `Bearer ${YELP_API_KEY}`)
-    .then(response => response.body.businesses.forEach(business => obj.yelpArray.push(business)))
+    .then(response => {
+      response.body.businesses.forEach(business => {
+        let resObj = {
+          name: business.name,
+          image_url: business.image_url,
+          categories: business.categories,
+          price: business.price,
+          rating: business.rating,
+          url: business.url
+        };
+        obj.yelpArray.push(resObj);
+      })
+    })
     .catch(console.error);
 }
 
@@ -113,7 +149,23 @@ function getTrails(obj) {
   let url = `https://www.hikingproject.com/data/get-trails?lat=${obj.lat}&lon=${obj.lon}&maxDistance=200&key=${TRAIL_API_KEY}`;
 
   return superagent.get(url)
-    .then(response => response.body.trails.forEach(trail => obj.trailsArray.push(trail)))
+    .then(response => {
+      response.body.trails.forEach(trail => {
+        let resObj = {
+          name: trail.name,
+          location: trail.location,
+          length: trail.length,
+          stars: trail.stars,
+          starVotes: trail.starVotes,
+          summary: trail.summary,
+          url: trail.url,
+          conditions: trail.conditionDetails,
+          conditionDate: trail.conditionDate.slice(0, 10),
+          conditionTime: trail.conditionDate.slice(12)
+        };
+        obj.trailsArray.push(resObj);
+      })
+    })
     .catch(console.error);
 }
 
