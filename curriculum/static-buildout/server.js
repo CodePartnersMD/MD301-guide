@@ -10,6 +10,7 @@ const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const MEETUP_API_KEY = process.env.MEETUP_API_KEY;
 const YELP_API_KEY = process.env.YELP_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
+const GOOGLE_MAP_KEY = process.env.GOOGLE_MAP_KEY;
 // const WALK_SCORE_API_KEY = process.env.WALK_SCORE_API_KEY;
 // const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 
@@ -26,7 +27,9 @@ app.use(express.static('./public'));
 
 app.get('/test', (request, response) => {
   // console.log(request.query);
-  let responseObj = {};
+  let responseObj = {
+    mapKey: GOOGLE_MAP_KEY,
+  };
   stringToLatLong(request.query.data)
     .then(obj => {
       responseObj.lat = obj.latitude;
@@ -39,18 +42,7 @@ app.get('/test', (request, response) => {
       getYelp(request.query.data),
       getTrails(responseObj)
     ]))
-    // .then(() => console.log('Response object after lat long', responseObj))
-    // .then(obj => getWeather(obj.latitude, obj.longitude))
-    // .then(data => Promise.all([
-    //   getWeather(data.latitude, data.longitude),
-    //   getMovies(request.query.data),
-    //   getMeetups(request, response),
-    //   getYelp(request, response),
-    //   getTrails(request, response)]))
-  // getWeather(request, response);
-  // response.sendFile('index.html', {root: './public'});
     .then(() => console.log('End of test, in final .then'))
-    // .then(() => response.status(200).send(responseObj.lat, responseObj.lon))
     .then(() => response.send(responseObj))
     .catch(console.error)
 })
