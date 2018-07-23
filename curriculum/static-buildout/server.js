@@ -24,6 +24,17 @@ app.use(express.static('./public'));
 // res.send(data);
 // })
 
+// app.get('/walk-score', getWalkScore);
+
+app.get('/location', (request, response)=>{
+  stringToLatLong(request.query.data)
+    .then(location => location)
+    .catch(err => {
+      console.error(err);
+      response.status(500).send('Sorry, something went wrong');
+    });
+})
+
 app.get('/test', (request, response) => {
   let responseObj = {
     mapKey: GOOGLE_MAP_KEY,
@@ -61,10 +72,13 @@ function stringToLatLong(query) {
   console.log(query);
 
   return superagent.get(url)
-    .then(res => ({
-      latitude: res.body.results[0].geometry.location.lat,
-      longitude: res.body.results[0].geometry.location.lng
-    }))
+    .then(res => {
+      console.log(res);
+      return ({
+        latitude: res.body.results[0].geometry.location.lat,
+        longitude: res.body.results[0].geometry.location.lng
+      })
+    })
     .catch(console.error)
 }
 
@@ -171,7 +185,7 @@ function getTrails(obj) {
 
 // STILL DECIDING IF THIS WILL BE USED
 // function getWalkScore(request, response) {
-//   let url = 'http://api.walkscore.com/score?format=json&lat=41.4993&lon=81.6944&transit=1&bike=1&wsapikey=ae0fc1a4fbb0ddf6e884a1b257a3f3bf';
+//   let url = 'http://api.walkscore.com/score?format=json&lat=41.4993&lon=-81.6944&transit=1&bike=1&wsapikey=ae0fc1a4fbb0ddf6e884a1b257a3f3bf';
 //   // let url = `http://api.walkscore.com/score?format=json&lat=${latitude}&${longitude}=-122.3295&transit=1&bike=1&wsapikey=${WALK_SCORE_API_KEY}`;
 
 //   superagent.get(url)
@@ -190,4 +204,3 @@ function getTrails(obj) {
 
 // app.get('/trails', getTrails);
 
-// app.get('/walk-score', getWalkScore);
