@@ -8,7 +8,6 @@ const superagent = require('superagent');
 // Application Setup
 const app = express();
 const PORT = process.env.PORT;
-const API_KEY = process.env.GOOGLE_API_KEY;
 
 // Database Setup
 const client = new pg.Client(process.env.DATABASE_URL);
@@ -89,7 +88,6 @@ function createSearch(request, response) {
 
   superagent.get(url)
     .query({'q': query})
-    .query({'key': API_KEY})
     .then(apiResponse => apiResponse.body.items.map(bookResult => {
       let { title, subtitle, authors, industryIdentifiers, imageLinks, description } = bookResult.volumeInfo;
       let placeholderImage = 'http://www.newyorkpaddy.com/images/covers/NoCoverAvailable.jpg';
