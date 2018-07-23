@@ -8,14 +8,15 @@ function fetchCityData(event) {
   $.get('/test', {data: data})
     .then(response => {
       fillIn(response);
-      $('img').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${response.lat}%2c%20${response.lon}&zoom=13&size=600x300&maptype=roadmap
-    &key=${response.mapKey}`)
+
     })
 }
 
-// TODO: Determine if this should all be within the .then above, or if everything should stay in this callback, including setting the img src attribute, above
 function fillIn(obj) {
   $('.query-placeholder').text(`Here are the results for ${obj.searchQuery}`);
+  
+  $('img').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${obj.lat}%2c%20${obj.lon}&zoom=13&size=600x300&maptype=roadmap
+  &key=${obj.mapKey}`)
 
   compileTemplate(obj.daySummary, 'weather-results', 'weather-results-template');
   compileTemplate(obj.yelpArray, 'yelp-results', 'yelp-results-template');
@@ -25,6 +26,8 @@ function fillIn(obj) {
 }
 
 function compileTemplate(inputArray, sectionClass, templateId) {
+  $(`.${sectionClass}`).empty();
+  
   let template = Handlebars.compile($(`#${templateId}`).text());
 
   inputArray.forEach(element => {

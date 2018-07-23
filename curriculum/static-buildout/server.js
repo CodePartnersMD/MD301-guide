@@ -17,7 +17,6 @@ const GOOGLE_MAP_KEY = process.env.GOOGLE_MAP_KEY;
 // const WALK_SCORE_API_KEY = process.env.WALK_SCORE_API_KEY;
 
 // const dummyData = 'seattle';
-// let latitude, longitude;
 
 app.use(express.static('./public'));
 
@@ -35,7 +34,7 @@ app.get('/test', (request, response) => {
     yelpArray: [],
     trailsArray: []
   };
-  
+
   stringToLatLong(request.query.data)
     .then(obj => {
       responseObj.lat = obj.latitude;
@@ -48,8 +47,9 @@ app.get('/test', (request, response) => {
       getYelp(request.query.data, responseObj),
       getTrails(responseObj)
     ]))
-    .then(console.log)
-    .then(() => response.send(responseObj))
+    .then(() => {
+      response.send(responseObj);
+    })
     .catch(console.error)
 })
 
