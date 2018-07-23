@@ -107,9 +107,18 @@ TODO: add link to instructions for pg:pull
     - `isbn`
     - `image_url`
     - `description`
-- Use the sample data for reference, if needed.
 - Use Postman to request book data from the Google Books API. For example, you can enter a search query at the end of this route: `https://www.googleapis.com/books/v1/volumes?q=`
 - Manually enter each record into your `books` table.
+- For reference, here is a sample:
+```
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "isbn": "ISBN_13 9780441013593",
+    "image_url": "http://books.google.com/books/content?id=B1hSG45JCX4C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "description": "Follows the adventures of Paul Atreides, the son of a betrayed duke given up for dead on a treacherous desert planet and adopted by its fierce, nomadic people, who help him unravel his most unexpected destiny."
+  }
+```
 
 TODO: add pg:pull instructions
 
