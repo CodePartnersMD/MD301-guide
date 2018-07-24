@@ -3,53 +3,57 @@
   <head>
     <meta charset="UTF-8">
     <title>City Explorer</title>
-    
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Josefin+Sans|Muli" rel="stylesheet">
+        
     <!-- Template for errors -->
     <script type="text/x-handlebars-template" id="error-template">
-      <p>There was an error! {{ status }}</p>
+      <p>There was an error! Status code: {{ status }}</p>
     </script>
     
     <!-- Template for weather data -->
     <script type="text/x-handlebars-template" id="weather-results-template">
       <li>
-        The forecast for {{time}} is: {{summary}}
+        The forecast for {{ time }} is: {{ summary }}
       </li>
     </script>
     
     <!-- Template for Yelp data -->
     <script type="text/x-handlebars-template" id="yelp-results-template">
       <li>
-        <a href="{{url}}">{{name}}</a>
-        <p>The average rating is {{rating}} out of 5 and the average cost is {{price}} out of $$$$.</p>
-        <!-- <img src="{{image_url}}"> -->
+        <a href="{{ url }}">{{ name }}</a>
+        <p>The average rating is {{ rating }} out of 5 and the average cost is {{ price }} out of 4</p>
+        <img src="{{ image_url }}">
       </li>
     </script>
     
     <!-- Teplate for Meetup data -->
     <script type="text/x-handlebars-template" id="meetup-results-template">
       <li>
-        <a href="{{link}}">{{name}}</a>
-        <p>Location: {{location}}, Created on: {{creationDate}}</p>
-        <!-- {{{description}}} -->
+        <a href="{{link}}">{{ name }}</a>
+        <p>Location: {{ location }}, Created on: {{ creationDate }}</p>
+        <!-- <section class="meetup-description">
+          {{{ description }}}
+        </section> -->
       </li>
     </script>
     
     <!-- Template for movie data -->
     <script type="text/x-handlebars-template" id="movie-results-template">
       <li>
-        <p>{{title}} was relased on {{releasedOn}}. Out of {{totalVotes}} total votes, {{title}} has an average vote of {{averageVotes}} and a popularity score of {{popularity}}.</p>
-        <!-- <img href="{{image}}"> -->
-        <p>{{overview}}</p>
+        <p>{{ title }} was relased on {{ releasedOn }}. Out of {{ totalVotes }} total votes, {{title}} has an average vote of {{ averageVotes }} and a popularity score of {{ popularity }}.</p>
+        <img src="{{ image }}">
+        <p>{{ overview }}</p>
       </li>
     </script>
     
     <!-- Template for trail data -->
     <script type="text/x-handlebars-template" id="trails-results-template">
       <li>
-        <p>Hike Name: <a href="{{url}}">{{name}}</a>, Location: {{location}}, Distance: {{length}} miles</p>
-        <p>On {{conditionDate}} at {{conditionTime}}, trail conditions were reported as: {{conditions}}</p>
-        <p>This trail has a rating of {{stars}} stars (out of {{starVotes}} votes)</p>
-        <p>{{summary}}</p>
+        <p>Hike Name: <a href="{{ url }}">{{ name }}</a>, Location: {{ location }}, Distance: {{ length }} miles</p>
+        <p>On {{ conditionDate }} at {{ conditionTime }}, trail conditions were reported as: {{ conditions }}</p>
+        <p>This trail has a rating of {{ stars }} stars (out of {{ starVotes }} votes)</p>
+        <p>{{ summary }}</p>
       </li>
     </script>
     
@@ -60,48 +64,49 @@
       <p>Enter a location below to learn about the weather, events, restaurants, movies filmed there, and more!</p>
     </header>
     <main>
-      <form id="the-form">
+      <form id="search-form">
         <label for="search">Search for a location</label>
         <input type="text" name="search" id="input-search" placeholder="Enter a location here">
         <button type="submit">Explore!</button>
       </form>
-      <img src="" alt="Map of search query">
+      <img id="map" src="" alt="Map of search query">
       <h2 class="query-placeholder"></h2>
       
       <!-- Section for error message -->
       <section class="error-container">
       </section>
       
-      <!-- Section for weather data -->
-      <section class="weather-container">
-          <h3>Results from the Weather API</h3>
+      <div class="column-container">
+        <!-- Section for weather data -->
+        <section class="weather-container">
+          <h3>Results from the Dark Sky API</h3>
           <ul class="weather-results"></ul>
-      </section>
-      
-      <!-- Section for Yelp data -->
-      <section class="yelp-container">
-        <h3>Results from the Yelp API</h3>
-        <ul class="yelp-results"></ul>
-      </section>
-      
-      <!-- Section for Meetup data -->
-      <section class="meetup-container">
-        <h3>Results from the Meetup API</h3>
-        <ul class="meetup-results"></ul>
-      </section>
-      
-      <!-- Section for movie data -->
-      <section class="movie-container">
-        <h3>Results from the Movie API</h3>
-        <ul class="movie-results"></ul>
-      </section>
-      
-      <!-- Section for trails data -->
-      <section class="trails-container">
-        <h3>Results from the Trails API</h3>
-        <ul class="trails-results"></ul>
-      </section>
-
+        </section>
+        
+        <!-- Section for Yelp data -->
+        <section class="yelp-container">
+          <h3>Results from the Yelp API</h3>
+          <ul class="yelp-results"></ul>
+        </section>
+        
+        <!-- Section for Meetup data -->
+        <section class="meetup-container">
+          <h3>Results from the Meetup API</h3>
+          <ul class="meetup-results"></ul>
+        </section>
+        
+        <!-- Section for movie data -->
+        <section class="movie-container">
+          <h3>Results from The Movie DB API</h3>
+          <ul class="movie-results"></ul>
+        </section>
+        
+        <!-- Section for trails data -->
+        <section class="trails-container">
+          <h3>Results from the Hiking Project API</h3>
+          <ul class="trails-results"></ul>
+        </section>
+      </div>
     </main>
     <footer>
     </footer>

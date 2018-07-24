@@ -1,0 +1,51 @@
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+header, form label, h3 {
+  font-family: 'Acme', sans-serif;
+}
+/* 
+h3 {
+  font-family: 'Muli', sans-serif;
+} */
+
+.movie-container img {
+  height: 150px;
+}
+
+.yelp-container img {
+  height: 75px;
+}
+
+.meetup-description {
+  /* height: 100px; */
+  /* overflow: scroll; */
+}
+
+#map {
+  /* height: 300px; */
+  visibility: hidden;
+  margin: auto;
+  display: block;
+  width: 50%;
+}
+
+.column-container {
+  display: flex;
+}
+
+.column-container section {
+  display: inline-block;
+  width: 100%;
+  border-style: groove;
+}
+
+.query-placeholder, form, header {
+  text-align: center;
+}
+
+/* Google Fonts
+font-family: 'Muli', sans-serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Acme', sans-serif; */

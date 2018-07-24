@@ -1,6 +1,6 @@
 'use strict';
 
-$('#the-form').on('submit', fetchCityData);
+$('#search-form').on('submit', fetchCityData);
 
 function fetchCityData(event) {
   event.preventDefault();
@@ -20,8 +20,10 @@ function fetchCityData(event) {
 
 function displayMap(location) {
   $('.query-placeholder').text(`Here are the results for ${location.search_query}`);
-
-  $('img').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude}%2c%20${location.longitude}&zoom=13&size=600x300&maptype=roadmap
+  
+  $('#map').css('visibility', 'visible');
+  
+  $('#map').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude}%2c%20${location.longitude}&zoom=13&size=600x300&maptype=roadmap
   &key=AIzaSyDp0Caae9rkHUHwERAFzs6WN4_MuphTimk`)
 }
 
@@ -30,16 +32,18 @@ function getWeather(location) {
     .then(result => {
       compileTemplate(result, 'weather-results', 'weather-results-template');
     })
-    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
 }
 
 function getMovies(location) {
   $.get('/movies', {data: location})
     .then(result => {
       // TODO: add conditional
+      console.log(result);
+
       compileTemplate(result, 'movie-results', 'movie-results-template');
     })
-    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
 }
 
 function getYelp(location) {
@@ -47,7 +51,7 @@ function getYelp(location) {
     .then(result => {
       compileTemplate(result, 'yelp-results', 'yelp-results-template');
     })
-    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
 }
 
 function getMeetups(location) {
@@ -55,7 +59,7 @@ function getMeetups(location) {
     .then(result => {
       compileTemplate(result, 'meetup-results', 'meetup-results-template');
     })
-    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
 }
 
 function getTrails(location) {
