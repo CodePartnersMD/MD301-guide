@@ -5,13 +5,15 @@ $('#the-form').on('submit', fetchCityData);
 function fetchCityData(event) {
   event.preventDefault();
   let searchQuery = $('#input-search').val();
-    
+
   $.get('/location', {data: searchQuery})
     .then(location => {
       console.log(location);
       getWeather(location);
       getMovies(location);
-        
+      getYelp(location);
+      getMeetups(location);
+      getTrails(location);
     })
     .catch(error => compileTemplate(error, 'error-container', 'error-template'));
 }
@@ -28,10 +30,33 @@ function getMovies(location) {
   $.get('/movies', {data: location})
     .then(result => {
       // TODO: add conditional
-      console.log(result);
       compileTemplate(result, 'movie-results', 'movie-results-template');
     })
     .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+}
+
+function getYelp(location) {
+  $.get('/yelp', {data: location})
+    .then(result => {
+      compileTemplate(result, 'yelp-results', 'yelp-results-template');
+    })
+    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+}
+
+function getMeetups(location) {
+  $.get('/meetups', {data: location})
+    .then(result => {
+      compileTemplate(result, 'meetup-results', 'meetup-results-template');
+    })
+    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+}
+
+function getTrails(location) {
+  $.get('/trails', {data: location})
+    .then(result => {
+      compileTemplate(result, 'trails-results', 'trails-results-template');
+    })
+    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
 }
 
 function fillIn(obj) {
@@ -41,8 +66,6 @@ function fillIn(obj) {
   &key=${obj.mapKey}`)
 
   
-  compileTemplate(obj.yelpArray, 'yelp-results', 'yelp-results-template');
-  compileTemplate(obj.meetupArray, 'meetup-results', 'meetup-results-template');
   compileTemplate(obj.trailsArray, 'trails-results', 'trails-results-template');
 }
 

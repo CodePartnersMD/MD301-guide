@@ -55,7 +55,9 @@ app.get('/test', (request, response) => {
 
 app.get('/weather', getWeather);
 app.get('/movies', getMovies);
-
+app.get('/yelp', getYelp);
+app.get('/meetups', getMeetups);
+app.get('/trails', getTrails);
 
 app.listen(PORT, () => {console.log(`Listening on ${PORT}`)});
 
@@ -66,7 +68,7 @@ function stringToLatLong(query) {
   return superagent.get(url)
     .then(res => {
       return {
-        search_query: query,
+        search_query: query.charAt(0).toUpperCase() + query.slice(1),
         latitude: res.body.results[0].geometry.location.lat,
         longitude: res.body.results[0].geometry.location.lng
       }
@@ -92,8 +94,6 @@ function getWeather(request, response) {
 }
 
 function getMovies(request, response) {
-  parseLatLong(request);
-
   let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
 
   return superagent.get(url)
@@ -114,33 +114,35 @@ function getMovies(request, response) {
     .catch(err => console.error(err))
 }
 
-function getMeetups(obj) {
-  let url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${obj.lon}&page=20&lat=${obj.lat}&key=${MEETUP_API_KEY}`
+function getMeetups(request, response) {
+  parseLatLong(request);
+  
+  let url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${request.query.data.longitude}&page=20&lat=${request.query.data.latitude}&key=${MEETUP_API_KEY}`
 
   return superagent.get(url)
     .then(response => {
-      response.body.events.forEach(meetup => {
-        let resObj = {
+      return response.body.events.map(meetup => {
+        return {
           description: meetup.description,
           link: meetup.link,
           name: meetup.group.name,
           creationDate: new Date(meetup.group.created * 1000).toString().slice(0, 15),
           location: meetup.localized_location
         };
-        obj.meetupArray.push(resObj);
       })
     })
+    .then(arr => response.send(arr))
     .catch(console.error);
 }
 
-function getYelp(query, obj) {
-  let url = `https://api.yelp.com/v3/businesses/search?location=${query}`;
+function getYelp(request, response) {
+  let url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
 
   return superagent.get(url)
     .set('Authorization', `Bearer ${YELP_API_KEY}`)
     .then(response => {
-      response.body.businesses.forEach(business => {
-        let resObj = {
+      return response.body.businesses.map(business => {
+        return {
           name: business.name,
           image_url: business.image_url,
           categories: business.categories,
@@ -148,19 +150,21 @@ function getYelp(query, obj) {
           rating: business.rating,
           url: business.url
         };
-        obj.yelpArray.push(resObj);
       })
     })
+    .then(arr => response.send(arr))
     .catch(console.error);
 }
 
-function getTrails(obj) {
-  let url = `https://www.hikingproject.com/data/get-trails?lat=${obj.lat}&lon=${obj.lon}&maxDistance=200&key=${TRAIL_API_KEY}`;
+function getTrails(request, response) {
+  parseLatLong(request);
+  
+  let url = `https://www.hikingproject.com/data/get-trails?lat=${request.query.data.latitude}&lon=${request.query.data.longitude}&maxDistance=200&key=${TRAIL_API_KEY}`;
 
   return superagent.get(url)
     .then(response => {
-      response.body.trails.forEach(trail => {
-        let resObj = {
+      return response.body.trails.map(trail => {
+        return {
           name: trail.name,
           location: trail.location,
           length: trail.length,
@@ -172,9 +176,9 @@ function getTrails(obj) {
           conditionDate: trail.conditionDate.slice(0, 10),
           conditionTime: trail.conditionDate.slice(12)
         };
-        obj.trailsArray.push(resObj);
       })
     })
+    .then(arr => response.send(arr))
     .catch(console.error);
 }
 
@@ -186,12 +190,4 @@ function handleError(err, res) {
 function parseLatLong(location) {
   location.query.data.latitude = parseFloat(location.query.data.latitude);
   location.query.data.longitude = parseFloat(location.query.data.longitude);
-
 }
-
-// app.get('/meetups', getMeetups);
-
-// app.get('/yelp', getYelp);
-
-// app.get('/trails', getTrails);
-
