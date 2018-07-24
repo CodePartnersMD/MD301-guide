@@ -14,25 +14,14 @@ const MEETUP_API_KEY = process.env.MEETUP_API_KEY;
 const YELP_API_KEY = process.env.YELP_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 const GOOGLE_MAP_KEY = process.env.GOOGLE_MAP_KEY;
-// const WALK_SCORE_API_KEY = process.env.WALK_SCORE_API_KEY;
-
-// const dummyData = 'seattle';
+const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 
 app.use(express.static('./public'));
 
-// app.get('///',  a, b, c, d, (req, res) => {
-// res.send(data);
-// })
-
-// app.get('/walk-score', getWalkScore);
-
 app.get('/location', (request, response)=>{
   stringToLatLong(request.query.data)
-    .then(location => location)
-    .catch(err => {
-      console.error(err);
-      response.status(500).send('Sorry, something went wrong');
-    });
+    .then(location => response.send(location))
+    .catch(error => handleError(error, response));
 })
 
 app.get('/test', (request, response) => {
@@ -64,47 +53,53 @@ app.get('/test', (request, response) => {
     .catch(console.error)
 })
 
+app.get('/weather', getWeather);
+app.get('/movies', getMovies);
+
+
 app.listen(PORT, () => {console.log(`Listening on ${PORT}`)});
 
 // Helper Functions
 function stringToLatLong(query) {
-  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}`;
-  console.log(query);
+  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${GEOCODE_API_KEY}`;
 
   return superagent.get(url)
     .then(res => {
-      console.log(res);
-      return ({
+      return {
+        search_query: query,
         latitude: res.body.results[0].geometry.location.lat,
         longitude: res.body.results[0].geometry.location.lng
-      })
+      }
     })
     .catch(console.error)
 }
 
-function getWeather(obj) {
-  let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${obj.lat},${obj.lon}`;
-
+function getWeather(request, response) {
+  parseLatLong(request);
+  
+  let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
   return superagent.get(url)
     .then(response => {
-      response.body.daily.data.forEach(day => {
-        let resObj = {
+      return response.body.daily.data.map(day => {
+        return {
           summary: day.summary,
           time: new Date(day.time * 1000).toString().slice(0, 15)
-        };
-        obj.daySummary.push(resObj);
+        }
       })
     })
-    .catch(err => console.error(err))
+    .then(arr => response.send(arr))
+    .catch(err => console.error(err.status))
 }
 
-function getMovies(query, obj) {
-  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${query}`;
+function getMovies(request, response) {
+  parseLatLong(request);
+
+  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
 
   return superagent.get(url)
     .then(response => {
-      response.body.results.forEach(movie => {
-        let resObj = {
+      return response.body.results.map(movie => {
+        return {
           title: movie.title,
           overview: movie.overview,
           averageVotes: movie.vote_average,
@@ -113,9 +108,9 @@ function getMovies(query, obj) {
           popularity: movie.popularity,
           releasedOn: movie.release_date
         };
-        obj.movieArray.push(resObj);
       })
     })
+    .then(arr => response.send(arr))
     .catch(err => console.error(err))
 }
 
@@ -183,20 +178,16 @@ function getTrails(obj) {
     .catch(console.error);
 }
 
-// STILL DECIDING IF THIS WILL BE USED
-// function getWalkScore(request, response) {
-//   let url = 'http://api.walkscore.com/score?format=json&lat=41.4993&lon=-81.6944&transit=1&bike=1&wsapikey=ae0fc1a4fbb0ddf6e884a1b257a3f3bf';
-//   // let url = `http://api.walkscore.com/score?format=json&lat=${latitude}&${longitude}=-122.3295&transit=1&bike=1&wsapikey=${WALK_SCORE_API_KEY}`;
+function handleError(err, res) {
+  console.error(err);
+  res.status(500).send('Sorry, something went wrong');
+}
 
-//   superagent.get(url)
-//     .then(response => console.log(response.body))
-//     .catch(console.error);
-// }
+function parseLatLong(location) {
+  location.query.data.latitude = parseFloat(location.query.data.latitude);
+  location.query.data.longitude = parseFloat(location.query.data.longitude);
 
-// USED FOR TESTING INDIVIDUAL ROUTES AND CALLBACKS
-// app.get('/weather', getWeather);
-
-// app.get('/movies', getMovies);
+}
 
 // app.get('/meetups', getMeetups);
 

@@ -4,33 +4,35 @@ $('#the-form').on('submit', fetchCityData);
 
 function fetchCityData(event) {
   event.preventDefault();
-  let data = $('#input-search').val();
-  $.get('/test', {data: data})
-    .then(response => {
-      fillIn(response);
-    })
+  let searchQuery = $('#input-search').val();
     
-  $.get('/location', {data: data})
+  $.get('/location', {data: searchQuery})
     .then(location => {
+      console.log(location);
       getWeather(location);
       getMovies(location);
         
-      $.get('/movies', {location: location})
-        .then(result => {
-          compileTemplate(result.daySummary, 'weather-results', 'weather-results-template');
-        })
     })
-    .catch()
+    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
 }
 
 function getWeather(location) {
-  $.get('/weather', {location: location})
+  $.get('/weather', {data: location})
     .then(result => {
-      if(!result.daySummary) throw new Error();
-      compileTemplate(result.daySummary, 'weather-results', 'weather-results-template');
+      compileTemplate(result, 'weather-results', 'weather-results-template');
     })
-    .catch(handle error on the page, error template)
-}    
+    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+}
+
+function getMovies(location) {
+  $.get('/movies', {data: location})
+    .then(result => {
+      // TODO: add conditional
+      console.log(result);
+      compileTemplate(result, 'movie-results', 'movie-results-template');
+    })
+    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+}
 
 function fillIn(obj) {
   $('.query-placeholder').text(`Here are the results for ${obj.searchQuery}`);
@@ -41,7 +43,6 @@ function fillIn(obj) {
   
   compileTemplate(obj.yelpArray, 'yelp-results', 'yelp-results-template');
   compileTemplate(obj.meetupArray, 'meetup-results', 'meetup-results-template');
-  compileTemplate(obj.movieArray, 'movie-results', 'movie-results-template');
   compileTemplate(obj.trailsArray, 'trails-results', 'trails-results-template');
 }
 

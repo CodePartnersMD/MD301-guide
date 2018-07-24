@@ -47,6 +47,12 @@
         <p>{{summary}}</p>
       </li>
     </script>
+    
+    <!-- Template for errors -->
+    <script type="text/x-handlebars-template" id="error-template">
+      <p>There was an error! {{ error }}</p>
+    </script>
+    
   </head>
   <body>
     <header>
@@ -90,6 +96,10 @@
       <section class="trails-container">
         <h3>Results from the Trails API</h3>
         <ul class="trails-results"></ul>
+      </section>
+      
+      <!-- Section for error message -->
+      <section class="error-container">
       </section>
 
     </main>
