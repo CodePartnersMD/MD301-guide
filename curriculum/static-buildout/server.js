@@ -63,6 +63,27 @@ function getWeather(request, response) {
     .catch(err => console.error(err.status))
 }
 
+function getYelp(request, response) {
+  let url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
+
+  return superagent.get(url)
+    .set('Authorization', `Bearer ${YELP_API_KEY}`)
+    .then(response => {
+      return response.body.businesses.map(business => {
+        return {
+          name: business.name,
+          image_url: business.image_url,
+          categories: business.categories,
+          price: business.price,
+          rating: business.rating,
+          url: business.url
+        };
+      })
+    })
+    .then(arr => response.send(arr))
+    .catch(console.error);
+}
+
 function getMovies(request, response) {
   let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
 
@@ -98,27 +119,6 @@ function getMeetups(request, response) {
           name: meetup.group.name,
           creationDate: new Date(meetup.group.created * 1000).toString().slice(0, 15),
           location: meetup.localized_location
-        };
-      })
-    })
-    .then(arr => response.send(arr))
-    .catch(console.error);
-}
-
-function getYelp(request, response) {
-  let url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
-
-  return superagent.get(url)
-    .set('Authorization', `Bearer ${YELP_API_KEY}`)
-    .then(response => {
-      return response.body.businesses.map(business => {
-        return {
-          name: business.name,
-          image_url: business.image_url,
-          categories: business.categories,
-          price: business.price,
-          rating: business.rating,
-          url: business.url
         };
       })
     })
