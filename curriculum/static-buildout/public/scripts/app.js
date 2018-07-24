@@ -8,7 +8,7 @@ function fetchCityData(event) {
 
   $.get('/location', {data: searchQuery})
     .then(location => {
-      console.log(location);
+      displayMap(location);
       getWeather(location);
       getMovies(location);
       getYelp(location);
@@ -16,6 +16,13 @@ function fetchCityData(event) {
       getTrails(location);
     })
     .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+}
+
+function displayMap(location) {
+  $('.query-placeholder').text(`Here are the results for ${location.search_query}`);
+
+  $('img').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude}%2c%20${location.longitude}&zoom=13&size=600x300&maptype=roadmap
+  &key=AIzaSyDp0Caae9rkHUHwERAFzs6WN4_MuphTimk`)
 }
 
 function getWeather(location) {
@@ -59,19 +66,9 @@ function getTrails(location) {
     .catch(error => compileTemplate([error], 'error-container', 'error-template'));
 }
 
-function fillIn(obj) {
-  $('.query-placeholder').text(`Here are the results for ${obj.searchQuery}`);
-  
-  $('img').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${obj.lat}%2c%20${obj.lon}&zoom=13&size=600x300&maptype=roadmap
-  &key=${obj.mapKey}`)
-
-  
-  compileTemplate(obj.trailsArray, 'trails-results', 'trails-results-template');
-}
-
 function compileTemplate(inputArray, sectionClass, templateId) {
   $(`.${sectionClass}`).empty();
-  
+
   let template = Handlebars.compile($(`#${templateId}`).text());
 
   inputArray.forEach(element => {

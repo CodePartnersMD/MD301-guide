@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>City Explorer</title>
+    
+    <!-- Template for errors -->
+    <script type="text/x-handlebars-template" id="error-template">
+      <p>There was an error! {{ status }}</p>
+    </script>
     
     <!-- Template for weather data -->
     <script type="text/x-handlebars-template" id="weather-results-template">
@@ -48,11 +53,6 @@
       </li>
     </script>
     
-    <!-- Template for errors -->
-    <script type="text/x-handlebars-template" id="error-template">
-      <p>There was an error! {{ status }}</p>
-    </script>
-    
   </head>
   <body>
     <header>
@@ -68,11 +68,15 @@
       <img src="" alt="Map of search query">
       <h2 class="query-placeholder"></h2>
       
+      <!-- Section for error message -->
+      <section class="error-container">
+      </section>
+      
       <!-- Section for weather data -->
       <section class="weather-container">
           <h3>Results from the Weather API</h3>
           <ul class="weather-results"></ul>
-        </section>
+      </section>
       
       <!-- Section for Yelp data -->
       <section class="yelp-container">
@@ -96,10 +100,6 @@
       <section class="trails-container">
         <h3>Results from the Trails API</h3>
         <ul class="trails-results"></ul>
-      </section>
-      
-      <!-- Section for error message -->
-      <section class="error-container">
       </section>
 
     </main>

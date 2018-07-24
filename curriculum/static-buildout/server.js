@@ -13,7 +13,6 @@ const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const MEETUP_API_KEY = process.env.MEETUP_API_KEY;
 const YELP_API_KEY = process.env.YELP_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
-const GOOGLE_MAP_KEY = process.env.GOOGLE_MAP_KEY;
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 
 app.use(express.static('./public'));
@@ -22,35 +21,6 @@ app.get('/location', (request, response)=>{
   stringToLatLong(request.query.data)
     .then(location => response.send(location))
     .catch(error => handleError(error, response));
-})
-
-app.get('/test', (request, response) => {
-  let responseObj = {
-    mapKey: GOOGLE_MAP_KEY,
-    searchQuery: request.query.data.charAt(0).toUpperCase() + request.query.data.slice(1),
-    daySummary: [],
-    movieArray: [],
-    meetupArray: [],
-    yelpArray: [],
-    trailsArray: []
-  };
-
-  stringToLatLong(request.query.data)
-    .then(obj => {
-      responseObj.lat = obj.latitude;
-      responseObj.lon = obj.longitude;
-    })
-    .then(() => Promise.all([
-      getWeather(responseObj),
-      getMovies(request.query.data, responseObj),
-      getMeetups(responseObj),
-      getYelp(request.query.data, responseObj),
-      getTrails(responseObj)
-    ]))
-    .then(() => {
-      response.send(responseObj);
-    })
-    .catch(console.error)
 })
 
 app.get('/weather', getWeather);
@@ -78,7 +48,7 @@ function stringToLatLong(query) {
 
 function getWeather(request, response) {
   parseLatLong(request);
-  
+
   let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
   return superagent.get(url)
     .then(response => {
@@ -116,7 +86,7 @@ function getMovies(request, response) {
 
 function getMeetups(request, response) {
   parseLatLong(request);
-  
+
   let url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${request.query.data.longitude}&page=20&lat=${request.query.data.latitude}&key=${MEETUP_API_KEY}`
 
   return superagent.get(url)
@@ -158,7 +128,7 @@ function getYelp(request, response) {
 
 function getTrails(request, response) {
   parseLatLong(request);
-  
+
   let url = `https://www.hikingproject.com/data/get-trails?lat=${request.query.data.latitude}&lon=${request.query.data.longitude}&maxDistance=200&key=${TRAIL_API_KEY}`;
 
   return superagent.get(url)
