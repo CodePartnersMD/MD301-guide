@@ -1,14 +1,47 @@
 body {
   font-family: 'Josefin Sans', sans-serif;
+  background-color: #D9D9D9;
 }
 
 header, form label, h3 {
   font-family: 'Acme', sans-serif;
 }
-/* 
-h3 {
-  font-family: 'Muli', sans-serif;
-} */
+
+h1 {
+  font-size: 5vw;
+  color: #4484CE;
+}
+
+h2 {
+  font-size: 2vw;
+}
+
+header p, main label {
+  font-size: 1.4vw;
+}
+
+button {
+  padding: 5px 15px;
+  background-color:#F19F4D;
+  border: 1px solid #4484CE;
+}
+
+img {
+  margin: auto;
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+  text-indent: 5px;
+}
+
+section {
+  visibility: hidden;
+}
 
 .movie-container img {
   height: 150px;
@@ -16,19 +49,6 @@ h3 {
 
 .yelp-container img {
   height: 75px;
-}
-
-.meetup-description {
-  /* height: 100px; */
-  /* overflow: scroll; */
-}
-
-#map {
-  /* height: 300px; */
-  visibility: hidden;
-  margin: auto;
-  display: block;
-  width: 50%;
 }
 
 .column-container {
@@ -39,13 +59,21 @@ h3 {
   display: inline-block;
   width: 100%;
   border-style: groove;
+  margin: 5px;
+  background-color: #FFF;
 }
 
-.query-placeholder, form, header {
+.query-placeholder, form, header, h3 {
   text-align: center;
 }
 
-/* Google Fonts
-font-family: 'Muli', sans-serif;
-font-family: 'Josefin Sans', sans-serif;
-font-family: 'Acme', sans-serif; */
+#input-search {
+  padding: 5px;
+  border: 1px solid #4484CE;
+}
+
+#map {
+  visibility: hidden;
+  margin-top: 10px;
+  border: 2px solid #4484CE;
+}
