@@ -19,7 +19,7 @@ function fetchCityData(event) {
 }
 
 function displayMap(location) {
-  $('.query-placeholder').text(`Here are the results for ${location.search_query}`);
+  $('.query-placeholder').text(`Here are the results for ${location.formatted_query}`);
 
   $('#map').css('visibility', 'visible');
   $('section').css('visibility', 'visible');

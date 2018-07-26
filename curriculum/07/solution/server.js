@@ -34,8 +34,12 @@ function stringToLatLong(query) {
 
   return superagent.get(url)
     .then(res => {
+      let formattedQuery = formatQuery(res.body.results[0].address_components);
+      console.log(formattedQuery);
+      
       return {
-        search_query: query.charAt(0).toUpperCase() + query.slice(1),
+        search_query: query,
+        formatted_query: formattedQuery,
         latitude: res.body.results[0].geometry.location.lat,
         longitude: res.body.results[0].geometry.location.lng
       }
@@ -106,4 +110,24 @@ function getMovies(request, response) {
 function handleError(err, res) {
   console.error(err);
   if (res) res.status(500).send('Sorry, something went wrong');
+}
+
+function formatQuery(searchDetails) {
+  let formattedQuery = '';
+
+  for(let i in searchDetails) {
+    if (searchDetails[i].types.includes('street_number')) formattedQuery += searchDetails[i].long_name += ' ';
+
+    if (searchDetails[i].types.includes('route')) formattedQuery += searchDetails[i].long_name += ', ';
+
+    if (searchDetails[i].types.includes('locality')) formattedQuery += searchDetails[i].long_name += ', ';
+
+    if (searchDetails[i].types.includes('administrative_area_level_1')) formattedQuery += searchDetails[i].long_name += ', ';
+
+    if (searchDetails[i].types.includes('country')) formattedQuery += searchDetails[i].long_name += ', ';
+
+    if (searchDetails[i].types.includes('postal_code')) formattedQuery += searchDetails[i].long_name+= ', ';
+  }
+
+  return formattedQuery.slice(0, -2);
 }
