@@ -63,6 +63,8 @@ function getMeetups(location) {
 function getTrails(location) {
   $.get('/trails', {data: location})
     .then(result => {
+      console.log(result);
+
       compileTemplate(result, 'trails-results', 'trails-results-template');
     })
     .catch(error => compileTemplate([error], 'error-container', 'error-template'));
