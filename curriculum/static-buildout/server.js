@@ -24,25 +24,31 @@ const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 
 app.use(express.static('./public'));
 
-// WITHOUT DATABASE
-app.get('/location', (request, response) => {
-  stringToLatLong(request.query.data)
-    .then(location => response.send(location))
-    .catch(error => handleError(error, response));
-})
+// WITHOUT DATABASE - Classes 6 and 7
+// app.get('/location', (request, response) => {
+//   stringToLatLong(request.query.data)
+//     .then(location => response.send(location))
+//     .catch(error => handleError(error, response));
+// })
 
-// WITH DATABASE
+// WITH DATABASE - Classes 8 and 9
 app.get('/location', (request, response) => {
-  checkHistory(request.query.data)
-    .then(location => {
-      if(location) {
-        retrieveHistory(location)
-          .then(results => response.send(results))
-          .catch(error => handleError(error, response));
+  let SQL = `SELECT * FROM locations WHERE search_query=$1;`;
+  let values = [request.query.data];
+
+  console.log('in locations')
+  return client.query(SQL, values)
+    .then(result => {
+      if(result.rowCount === 1) {
+        response.send(result);
       } else {
         stringToLatLong(request.query.data)
           .then(location => {
-            // save into locations table
+            let SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
+            let values = [location.search_query, location.formatted_query, location.latitude, location.longitude];
+
+            client.query(SQL, values);
+
             response.send(location);
           })
           .catch(error => handleError(error, response));
@@ -57,8 +63,7 @@ app.get('/yelp', getYelp);
 app.get('/meetups', getMeetups);
 app.get('/trails', getTrails);
 
-// FOR DATABASE
-app.get('/check', checkHistory);
+createLocations();
 
 // Make sure the server is listening for requests
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
@@ -70,7 +75,6 @@ function stringToLatLong(query) {
   return superagent.get(url)
     .then(res => {
       let formattedQuery = formatQuery(res.body.results[0].address_components);
-      console.log(formattedQuery);
       return {
         search_query: query,
         formatted_query: formattedQuery,
@@ -95,7 +99,7 @@ function getWeather(request, response) {
           time: new Date(day.time * 1000).toString().slice(0, 15)
         }
       });
-      
+
       response.send(weatherSummaries);
     })
     // .then(arr => response.send(arr))
@@ -317,6 +321,7 @@ function retrieveHistory(location) {
 }
 
 function createLocations() {
+  console.log('in create locations');
   let SQL = `CREATE TABLE IF NOT EXISTS locations ( 
     location_id SERIAL PRIMARY KEY, 
     search_query VARCHAR(255), 
@@ -389,13 +394,13 @@ function createTrails() {
     trail_id SERIAL PRIMARY KEY, 
     name VARCHAR(255), 
     location VARCHAR(255), 
-    length NUMERIC (4, 1), 
-    stars NUMERIC (2, 1), 
+    length NUMERIC(4, 1), 
+    stars NUMERIC(2, 1), 
     star_votes INTEGER, 
     summary VARCHAR(255), 
     trail_url VARCHAR(255), 
     conditions VARCHAR(100), 
-    condition_date CHAR (10), 
+    condition_date CHAR(10), 
     condition_time CHAR(8), 
     location_id INTEGER NOT NULL REFERENCES locations(id) 
   );`;
