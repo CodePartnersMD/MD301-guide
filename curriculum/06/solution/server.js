@@ -22,7 +22,7 @@ app.get('/location', (request, response) => {
 app.get('/weather', getWeather);
 
 // Make sure the server is listening for requests
-app.listen(PORT, () => {console.log(`Listening on ${PORT}`)});
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 // Helper Functions
 function stringToLatLong(query) {
