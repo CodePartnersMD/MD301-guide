@@ -166,38 +166,47 @@ function getYelp(request, response) {
 }
 
 // // WITH DATABASE - Labs 8 and 9
-// function getYelp(request, response) {
-//   let url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
+function getYelp(request, response) {
+  let SQL = `SELECT * FROM yelps WHERE location_id=$1;`;
+  let values = [request.query.data.id];
 
-//   return superagent.get(url)
-//     .set('Authorization', `Bearer ${YELP_API_KEY}`)
-//     .then(response => {
-//       return response.body.businesses.map(business => {
-//         return {
-//           name: business.name,
-//           image_url: business.image_url,
-//           price: business.price,
-//           rating: business.rating,
-//           url: business.url
-//         };
-//       })
-//     })
-//     .then(arr => {
-//       persistYelp(arr);
-//       response.send(arr);
-//     })
-//     .catch(error => handleError(error, response));
-// }
+  let url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
 
-// // WITH DATABASE - Labs 8 and 9
-// function persistYelp(arr) {
-//   arr.forEach(business => {
-//     let SQL = `INSERT INTO search_history (name, image_url, price, rating, url) VALUES ($1, $2, $3, $4, $5);`;
-//     let values = [business.name, business.image_url, business.price, business.rating, business.url];
-//     client.query(SQL, values)
-//       .catch(error => handleError(error));
-//   })
-// }
+  return client.query(SQL, values)
+    .then(result => {
+      if(result.rowCount > 0) {
+        response.send(result.rows);
+      } else {
+        return superagent.get(url)
+          .set('Authorization', `Bearer ${YELP_API_KEY}`)
+          .then(result => {
+
+            let yelpSummaries = result.body.businesses.map(business => {
+              return {
+                name: business.name,
+                image_url: business.image_url,
+                price: business.price,
+                rating: business.rating,
+                url: business.url
+              };
+            })
+
+            yelpSummaries.forEach(business => {
+              let SQL = `INSERT INTO yelps (name, image_url, price, rating, url, location_id) VALUES ($1, $2, $3, $4, $5, $6);`;
+              let values = [business.name, business.image_url, business.price, business.rating, business.url, request.query.data.id];
+
+              client.query(SQL, values);
+            })
+
+            response.send(yelpSummaries);
+          })
+          .catch(error => handleError(error, response));
+
+      }
+    })
+    .catch(error => handleError(error, response));
+}
+
 
 function getMovies(request, response) {
   let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
@@ -338,7 +347,7 @@ function createYelps() {
     name VARCHAR(255), 
     image_url VARCHAR(255), 
     price CHAR(5), 
-    rating NUMERIC(1,1), 
+    rating NUMERIC(2,1), 
     url VARCHAR(255), 
     location_id INTEGER NOT NULL REFERENCES locations(id) 
   );`;
