@@ -315,15 +315,16 @@ function getMeetups(request, response) {
                 host: meetup.group.who
               };
             })
-      
-            response.send(meetups);
-      
+            
             meetups.forEach(meetup => {
               let SQL = `INSERT INTO meetups (link, name, creation_date, host, location_id) VALUES ($1, $2, $3, $4, $5);`;
               let values = [meetup.link, meetup.name, meetup.creation_date, meetup.host, request.query.data.id];
 
               client.query(SQL, values);
             })
+
+            response.send(meetups);
+
           })
           .catch(error => handleError(error, response));
       }
