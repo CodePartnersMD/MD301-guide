@@ -293,7 +293,43 @@ function getMeetups(request, response) {
 }
 
 // WITH DATABASE - Labs 8 and 9
+function getMeetups(request, response) {
+  let SQL = `SELECT * FROM meetups WHERE location_id=$1;`;
+  let values = [request.query.data.id];
 
+  let url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${request.query.data.longitude}&page=20&lat=${request.query.data.latitude}&key=${MEETUP_API_KEY}`
+
+  return client.query(SQL, values)
+    .then(result => {
+      if(result.rowCount > 0) {
+        response.send(result.rows);
+      } else {
+        return superagent.get(url)
+          .then(result => {
+
+            let meetups = result.body.events.map(meetup => {
+              return {
+                link: meetup.link,
+                name: meetup.group.name,
+                creation_date: new Date(meetup.group.created).toString().slice(0, 15),
+                host: meetup.group.who
+              };
+            })
+      
+            response.send(meetups);
+      
+            meetups.forEach(meetup => {
+              let SQL = `INSERT INTO meetups (link, name, creation_date, host, location_id) VALUES ($1, $2, $3, $4, $5);`;
+              let values = [meetup.link, meetup.name, meetup.creation_date, meetup.host, request.query.data.id];
+
+              client.query(SQL, values);
+            })
+          })
+          .catch(error => handleError(error, response));
+      }
+    })
+    .catch(error => handleError(error, response));
+}
 
 // WITHOUT DATABASE - Labs 6 and 7
 function getTrails(request, response) {
@@ -323,7 +359,46 @@ function getTrails(request, response) {
 }
 
 // WITH DATABASE - Labs 8 and 9
+function getMovies(request, response) {
+  let SQL = `SELECT * FROM movies WHERE location_id=$1;`;
+  let values = [request.query.data.id];
 
+  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
+
+  return client.query(SQL, values)
+    .then(result => {
+      if(result.rowCount > 0) {
+        response.send(result.rows);
+      } else {
+        return superagent.get(url)
+          .then(result => {
+
+            let movieSummaries = result.body.results.map(movie => {
+              return {
+                title: movie.title,
+                overview: movie.overview,
+                average_votes: movie.vote_average,
+                total_votes: movie.vote_count,
+                image_url: 'https://image.tmdb.org/t/p/w200_and_h300_bestv2' + movie.poster_path,
+                popularity: movie.popularity,
+                released_on: movie.release_date
+              };
+            })
+      
+            movieSummaries.forEach(movie => {
+              let SQL = `INSERT INTO movies (title, overview, average_votes, total_votes, image_url, popularity, released_on, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
+              let values = [movie.title, movie.overview, movie.average_votes, movie.total_votes, movie.image_url, movie.popularity, movie.released_on, request.query.data.id];
+
+              client.query(SQL, values);
+            })
+
+            response.send(movieSummaries);
+          })
+          .catch(error => handleError(error, response));
+      }
+    })
+    .catch(error => handleError(error, response));
+}
 
 function handleError(err, res) {
   console.error(err);
