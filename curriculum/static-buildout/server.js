@@ -338,8 +338,8 @@ function getTrails(request, response) {
   let url = `https://www.hikingproject.com/data/get-trails?lat=${request.query.data.latitude}&lon=${request.query.data.longitude}&maxDistance=200&key=${TRAIL_API_KEY}`;
 
   return superagent.get(url)
-    .then(response => {
-      return response.body.trails.map(trail => {
+    .then(result => {
+      let trails = result.body.trails.map(trail => {
         return {
           name: trail.name,
           location: trail.location,
@@ -353,17 +353,18 @@ function getTrails(request, response) {
           condition_time: trail.conditionDate.slice(12)
         };
       })
+
+      response.send(trails);
     })
-    .then(arr => response.send(arr))
     .catch(error => handleError(error, response));
 }
 
 // WITH DATABASE - Labs 8 and 9
-function getMovies(request, response) {
-  let SQL = `SELECT * FROM movies WHERE location_id=$1;`;
+function getTrails(request, response) {
+  let SQL = `SELECT * FROM trails WHERE location_id=$1;`;
   let values = [request.query.data.id];
 
-  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
+  let url = `https://www.hikingproject.com/data/get-trails?lat=${request.query.data.latitude}&lon=${request.query.data.longitude}&maxDistance=200&key=${TRAIL_API_KEY}`;
 
   return client.query(SQL, values)
     .then(result => {
@@ -373,26 +374,29 @@ function getMovies(request, response) {
         return superagent.get(url)
           .then(result => {
 
-            let movieSummaries = result.body.results.map(movie => {
+            let trails = result.body.trails.map(trail => {
               return {
-                title: movie.title,
-                overview: movie.overview,
-                average_votes: movie.vote_average,
-                total_votes: movie.vote_count,
-                image_url: 'https://image.tmdb.org/t/p/w200_and_h300_bestv2' + movie.poster_path,
-                popularity: movie.popularity,
-                released_on: movie.release_date
+                name: trail.name,
+                location: trail.location,
+                length: trail.length,
+                stars: trail.stars,
+                star_votes: trail.starVotes,
+                summary: trail.summary,
+                trail_url: trail.url,
+                conditions: trail.conditionDetails,
+                condition_date: trail.conditionDate.slice(0, 10),
+                condition_time: trail.conditionDate.slice(12)
               };
             })
       
-            movieSummaries.forEach(movie => {
-              let SQL = `INSERT INTO movies (title, overview, average_votes, total_votes, image_url, popularity, released_on, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
-              let values = [movie.title, movie.overview, movie.average_votes, movie.total_votes, movie.image_url, movie.popularity, movie.released_on, request.query.data.id];
+            trails.forEach(trail => {
+              let SQL = `INSERT INTO trails (name, location, length, stars, star_votes, summary, trail_url, conditions, condition_date, condition_time, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
+              let values = [trail.name, trail.location, trail.length, trail.stars, trails.star_votes, trails.summary, trails.trail_url, trails.conditions, trails.condition_date, trails.conditin_time, request.query.data.id];
 
               client.query(SQL, values);
             })
 
-            response.send(movieSummaries);
+            response.send(trails);
           })
           .catch(error => handleError(error, response));
       }
