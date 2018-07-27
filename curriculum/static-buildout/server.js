@@ -24,23 +24,22 @@ const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 
 app.use(express.static('./public'));
 
-// WITHOUT DATABASE - Classes 6 and 7
+// WITHOUT DATABASE - Labs 6 and 7
 // app.get('/location', (request, response) => {
 //   stringToLatLong(request.query.data)
 //     .then(location => response.send(location))
 //     .catch(error => handleError(error, response));
 // })
 
-// WITH DATABASE - Classes 8 and 9
+// WITH DATABASE - Labs 8 and 9
 app.get('/location', (request, response) => {
   let SQL = `SELECT * FROM locations WHERE search_query=$1;`;
   let values = [request.query.data];
 
-  console.log('in locations')
   return client.query(SQL, values)
     .then(result => {
       if(result.rowCount === 1) {
-        response.send(result);
+        response.send(result.rows[0]);
       } else {
         stringToLatLong(request.query.data)
           .then(location => {
@@ -63,7 +62,7 @@ app.get('/yelp', getYelp);
 app.get('/meetups', getMeetups);
 app.get('/trails', getTrails);
 
-createLocations();
+createTables();
 
 // Make sure the server is listening for requests
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
@@ -86,56 +85,63 @@ function stringToLatLong(query) {
 }
 
 // WITHOUT DATABASE - Labs 6 and 7
-function getWeather(request, response) {
-  parseLatLong(request);
-
-  let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
-
-  return superagent.get(url)
-    .then(result => {
-      let weatherSummaries = result.body.daily.data.map(day => {
-        return {
-          forecast: day.summary,
-          time: new Date(day.time * 1000).toString().slice(0, 15)
-        }
-      });
-
-      response.send(weatherSummaries);
-    })
-    // .then(arr => response.send(arr))
-    .catch(error => handleError(error, response));
-}
-
-// // WITH DATABASE - Labs 8 and 9
+// forEach in lab 6, then refactor to .map in lab 7
 // function getWeather(request, response) {
 //   parseLatLong(request);
 
 //   let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+
 //   return superagent.get(url)
-//     .then(response => {
-//       return response.body.daily.data.map(day => {
+//     .then(result => {
+//       let weatherSummaries = result.body.daily.data.map(day => {
 //         return {
-//           summary: day.summary,
+//           forecast: day.summary,
 //           time: new Date(day.time * 1000).toString().slice(0, 15)
 //         }
-//       })
-//     })
-//     .then(arr => {
-//       persistWeather(arr);
-//       response.send(arr);
+//       });
+
+//       response.send(weatherSummaries);
 //     })
 //     .catch(error => handleError(error, response));
 // }
 
-// // WITH DATABASE - Labs 8 and 9
-// function persistWeather(arr) {
-//   arr.forEach(day => {
-//     let SQL = `INSERT INTO search_history (summary, time) VALUES ($1, $2);`;
-//     let values = [day.time, day.summary];
-//     client.query(SQL, values)
-//       .catch(error => handleError(error));
-//   })
-// }
+// WITH DATABASE - Labs 8 and 9
+function getWeather(request, response) {
+  let SQL = `SELECT * FROM weathers WHERE location_id=$1;`;
+  let values = [request.query.data.id];
+
+  let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+
+  return client.query(SQL, values)
+    .then(result => {
+      if(result.rowCount > 0) {
+        response.send(result.rows);
+      } else {
+        return superagent.get(url)
+          .then(result => {
+
+            let weatherSummaries = result.body.daily.data.map(day => {
+              return {
+                forecast: day.summary,
+                time: new Date(day.time * 1000).toString().slice(0, 15)
+              }
+            });
+
+            weatherSummaries.forEach(day => {
+              let SQL = `INSERT INTO weathers (forecast, time, location_id) VALUES ($1, $2, $3);`;
+              let values = [day.forecast, day.time, request.query.data.id];
+  
+              client.query(SQL, values);
+            });
+      
+            response.send(weatherSummaries);
+          })
+          .catch(error => handleError(error, response));
+
+      }
+    })
+    .catch(error => handleError(error, response));
+}
 
 // WITHOUT DATABASE - Labs 6 and 7
 function getYelp(request, response) {
@@ -292,38 +298,18 @@ function formatQuery(searchDetails) {
   return formattedQuery.slice(0, -2);
 }
 
-function addToHistory(location) {
-  let SQL = `INSERT INTO search_history (query, latitude, longitude) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING;`;
-  let values = [location.search_query, location.latitude, location.longitude];
-
-  return client.query(SQL, values)
-    .then() // BROOK: is this needed?
-    .catch(error => handleError(error, response));
-}
-
-function checkHistory(location) {
-  let SQL = `SELECT query, latitude, longitude FROM search_history;`;
-
-  return client.query(SQL)
-    .then(result => {
-      if(result.rows.includes(location)) return result.rows[0];
-      else return false;
-    })
-    .catch(error => handleError(error, response));
-}
-
-function retrieveHistory(location) {
-  let SQL = `SELECT * FROM search_history where city=$1;`;
-  let values = [location.search_query];
-
-  return client.query(SQL, values)
-    .then(result => result.rows[0])
+function createTables() {
+  createLocations();
+  createWeathers();
+  createYelps();
+  createMovies();
+  createMeetups();
+  createTrails();
 }
 
 function createLocations() {
-  console.log('in create locations');
   let SQL = `CREATE TABLE IF NOT EXISTS locations ( 
-    location_id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY, 
     search_query VARCHAR(255), 
     formatted_query VARCHAR(255), 
     latitude NUMERIC(8, 6), 
