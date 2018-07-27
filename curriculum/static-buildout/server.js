@@ -137,7 +137,6 @@ function getWeather(request, response) {
             response.send(weatherSummaries);
           })
           .catch(error => handleError(error, response));
-
       }
     })
     .catch(error => handleError(error, response));
@@ -165,7 +164,7 @@ function getYelp(request, response) {
     .catch(error => handleError(error, response));
 }
 
-// // WITH DATABASE - Labs 8 and 9
+// WITH DATABASE - Labs 8 and 9
 function getYelp(request, response) {
   let SQL = `SELECT * FROM yelps WHERE location_id=$1;`;
   let values = [request.query.data.id];
@@ -201,13 +200,12 @@ function getYelp(request, response) {
             response.send(yelpSummaries);
           })
           .catch(error => handleError(error, response));
-
       }
     })
     .catch(error => handleError(error, response));
 }
 
-
+// WITHOUT DATABASE - Labs 6 and 7
 function getMovies(request, response) {
   let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
 
@@ -230,6 +228,49 @@ function getMovies(request, response) {
     .catch(error => handleError(error, response));
 }
 
+// WITH DATABASE - Labs 8 and 9
+function getMovies(request, response) {
+  let SQL = `SELECT * FROM movies WHERE location_id=$1;`;
+  let values = [request.query.data.id];
+
+  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
+
+  return client.query(SQL, values)
+    .then(result => {
+      if(result.rowCount > 0) {
+        response.send(result.rows);
+      } else {
+        return superagent.get(url)
+          .then(result => {
+
+            let movieSummaries = result.body.results.map(movie => {
+              return {
+                title: movie.title,
+                overview: movie.overview,
+                average_votes: movie.vote_average,
+                total_votes: movie.vote_count,
+                image_url: 'https://image.tmdb.org/t/p/w200_and_h300_bestv2' + movie.poster_path,
+                popularity: movie.popularity,
+                released_on: movie.release_date
+              };
+            })
+      
+            movieSummaries.forEach(movie => {
+              let SQL = `INSERT INTO movies (title, overview, average_votes, total_votes, image_url, popularity, released_on, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
+              let values = [movie.title, movie.overview, movie.average_votes, movie.total_votes, movie.image_url, movie.popularity, movie.released_on, request.query.data.id];
+
+              client.query(SQL, values);
+            })
+
+            response.send(movieSummaries);
+          })
+          .catch(error => handleError(error, response));
+      }
+    })
+    .catch(error => handleError(error, response));
+}
+
+// WITHOUT DATABASE - Labs 6 and 7
 function getMeetups(request, response) {
   parseLatLong(request);
 
@@ -251,6 +292,10 @@ function getMeetups(request, response) {
     .catch(error => handleError(error, response));
 }
 
+// WITH DATABASE - Labs 8 and 9
+
+
+// WITHOUT DATABASE - Labs 6 and 7
 function getTrails(request, response) {
   parseLatLong(request);
 
@@ -276,6 +321,9 @@ function getTrails(request, response) {
     .then(arr => response.send(arr))
     .catch(error => handleError(error, response));
 }
+
+// WITH DATABASE - Labs 8 and 9
+
 
 function handleError(err, res) {
   console.error(err);
@@ -360,10 +408,10 @@ function createMovies() {
     movie_id SERIAL PRIMARY KEY, 
     title VARCHAR(255), 
     overview VARCHAR(1000), 
-    average_votes NUMERIC(2,1), 
+    average_votes NUMERIC(4,2), 
     total_votes INTEGER, 
     image_url VARCHAR(255), 
-    popularity NUMERIC(4,3), 
+    popularity NUMERIC(6,4), 
     released_on CHAR(10), 
     location_id INTEGER NOT NULL REFERENCES locations(id) 
   );`;
