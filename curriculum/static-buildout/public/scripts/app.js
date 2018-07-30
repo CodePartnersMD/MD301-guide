@@ -9,11 +9,11 @@ function fetchCityData(event) {
   $.get('/location', {data: searchQuery})
     .then(location => {
       displayMap(location);
-      getWeather(location);
-      getMovies(location);
-      getYelp(location);
-      getMeetups(location);
-      getTrails(location);
+      getResource('weather', location);
+      getResource('movies', location);
+      getResource('yelp', location);
+      getResource('meetups', location);
+      getResource('trails', location);
     })
     .catch(error => compileTemplate(error, 'error-container', 'error-template'));
 }
@@ -21,51 +21,19 @@ function fetchCityData(event) {
 function displayMap(location) {
   $('.query-placeholder').text(`Here are the results for ${location.formatted_query}`);
 
-  $('#map').css('visibility', 'visible');
-  $('section').css('visibility', 'visible');
+  // toggle visibility with addClass/removeClass
+  $('#map').removeClass('hide');
+  $('section, div').removeClass('hide');
 
   $('#map').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude}%2c%20${location.longitude}&zoom=13&size=600x300&maptype=roadmap
   &key=AIzaSyDp0Caae9rkHUHwERAFzs6WN4_MuphTimk`)
 }
 
-function getWeather(location) {
-  $.get('/weather', {data: location})
+function getResource(resource, location) {
+  $.get(`/${resource }`, {data: location})
     .then(result => {
-      compileTemplate(result, 'weather-results', 'weather-results-template');
+      compileTemplate(result, `${resource}-results`, `${resource}-results-template`);
     })
-    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
-}
-
-function getMovies(location) {
-  $.get('/movies', {data: location})
-    .then(result => {
-      compileTemplate(result, 'movie-results', 'movie-results-template');
-    })
-    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
-}
-
-function getYelp(location) {
-  $.get('/yelp', {data: location})
-    .then(result => {
-      compileTemplate(result, 'yelp-results', 'yelp-results-template');
-    })
-    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
-}
-
-function getMeetups(location) {
-  $.get('/meetups', {data: location})
-    .then(result => {
-      compileTemplate(result, 'meetup-results', 'meetup-results-template');
-    })
-    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
-}
-
-function getTrails(location) {
-  $.get('/trails', {data: location})
-    .then(result => {
-      compileTemplate(result, 'trails-results', 'trails-results-template');
-    })
-    .catch(error => compileTemplate([error], 'error-container', 'error-template'));
 }
 
 function compileTemplate(inputArray, sectionClass, templateId) {

@@ -25,11 +25,11 @@ const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 app.use(express.static('./public'));
 
 // WITHOUT DATABASE - Labs 6 and 7
-// app.get('/location', (request, response) => {
-//   stringToLatLong(request.query.data)
-//     .then(location => response.send(location))
-//     .catch(error => handleError(error, response));
-// })
+app.get('/location', (request, response) => {
+  stringToLatLong(request.query.data)
+    .then(location => response.send(location))
+    .catch(error => handleError(error, response));
+})
 
 // WITH DATABASE - Labs 8 and 9
 app.get('/location', (request, response) => {
@@ -38,20 +38,25 @@ app.get('/location', (request, response) => {
 
   return client.query(SQL, values)
     .then(result => {
+      let location = {};
+
       if(result.rowCount === 1) {
-        response.send(result.rows[0]);
+        location = result.rows[0];
       } else {
         stringToLatLong(request.query.data)
-          .then(location => {
+          .then(loc => {
             let SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
-            let values = [location.search_query, location.formatted_query, location.latitude, location.longitude];
+            let values = [loc.search_query, loc.formatted_query, loc.latitude, loc.longitude];
 
-            client.query(SQL, values);
+            client.query(SQL, values)
+              .catch(console.error);
 
-            response.send(location);
+            location = loc;
           })
           .catch(error => handleError(error, response));
       }
+
+      response.send(location);
     })
     .catch(error => handleError(error, response));
 })
@@ -73,10 +78,9 @@ function stringToLatLong(query) {
 
   return superagent.get(url)
     .then(res => {
-      let formattedQuery = formatQuery(res.body.results[0].address_components);
       return {
         search_query: query,
-        formatted_query: formattedQuery,
+        formatted_query: res.body.results[0].formatted_address,
         latitude: res.body.results[0].geometry.location.lat,
         longitude: res.body.results[0].geometry.location.lng
       }
@@ -86,24 +90,24 @@ function stringToLatLong(query) {
 
 // WITHOUT DATABASE - Labs 6 and 7
 // forEach in lab 6, then refactor to .map in lab 7
-// function getWeather(request, response) {
-//   parseLatLong(request);
+function getWeather(request, response) {
+  parseLatLong(request);
 
-//   let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+  let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
 
-//   return superagent.get(url)
-//     .then(result => {
-//       let weatherSummaries = result.body.daily.data.map(day => {
-//         return {
-//           forecast: day.summary,
-//           time: new Date(day.time * 1000).toString().slice(0, 15)
-//         }
-//       });
+  return superagent.get(url)
+    .then(result => {
+      let weatherSummaries = result.body.daily.data.map(day => {
+        return {
+          forecast: day.summary,
+          time: new Date(day.time * 1000).toString().slice(0, 15)
+        }
+      });
 
-//       response.send(weatherSummaries);
-//     })
-//     .catch(error => handleError(error, response));
-// }
+      response.send(weatherSummaries);
+    })
+    .catch(error => handleError(error, response));
+}
 
 // WITH DATABASE - Labs 8 and 9
 function getWeather(request, response) {
@@ -315,7 +319,7 @@ function getMeetups(request, response) {
                 host: meetup.group.who
               };
             })
-            
+
             meetups.forEach(meetup => {
               let SQL = `INSERT INTO meetups (link, name, creation_date, host, location_id) VALUES ($1, $2, $3, $4, $5);`;
               let values = [meetup.link, meetup.name, meetup.creation_date, meetup.host, request.query.data.id];
@@ -413,26 +417,6 @@ function handleError(err, res) {
 function parseLatLong(location) {
   location.query.data.latitude = parseFloat(location.query.data.latitude);
   location.query.data.longitude = parseFloat(location.query.data.longitude);
-}
-
-function formatQuery(searchDetails) {
-  let formattedQuery = '';
-
-  for(let i in searchDetails) {
-    if (searchDetails[i].types.includes('street_number')) formattedQuery += searchDetails[i].long_name += ' ';
-
-    if (searchDetails[i].types.includes('route')) formattedQuery += searchDetails[i].long_name += ', ';
-
-    if (searchDetails[i].types.includes('locality')) formattedQuery += searchDetails[i].long_name += ', ';
-
-    if (searchDetails[i].types.includes('administrative_area_level_1')) formattedQuery += searchDetails[i].long_name += ', ';
-
-    if (searchDetails[i].types.includes('country')) formattedQuery += searchDetails[i].long_name += ', ';
-
-    if (searchDetails[i].types.includes('postal_code')) formattedQuery += searchDetails[i].long_name+= ', ';
-  }
-
-  return formattedQuery.slice(0, -2);
 }
 
 function createTables() {

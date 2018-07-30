@@ -39,16 +39,27 @@ ul {
   text-indent: 5px;
 }
 
-section {
-  visibility: hidden;
+li {
+  border-bottom: 2px solid #555;
 }
 
-.movie-container img {
-  height: 150px;
+section * {
+  padding: 0 2px;
 }
 
-.yelp-container img {
+span {
+  font-weight: bold;
+}
+
+/* Style the yelp images */
+div section:nth-child(2) img {
   height: 75px;
+  padding-bottom: 3px;
+}
+
+/* Style the movie images */
+div section:nth-child(4) img {
+  height: 150px;
 }
 
 .column-container {
@@ -67,13 +78,16 @@ section {
   text-align: center;
 }
 
+.hide {
+  display: none;
+}
+
 #input-search {
   padding: 5px;
   border: 1px solid #4484CE;
 }
 
 #map {
-  visibility: hidden;
   margin-top: 10px;
   border: 2px solid #4484CE;
 }
