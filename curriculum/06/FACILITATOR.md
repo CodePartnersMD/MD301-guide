@@ -17,6 +17,8 @@
 
 ## Lecture
 
+Note: provide function signature for getWeather, but not the route
+
 ## Code skeleton
 
 ## Whiteboard diagrams

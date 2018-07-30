@@ -34,6 +34,9 @@ function getResource(resource, location) {
     .then(result => {
       compileTemplate(result, `${resource}-results`, `${resource}-results-template`);
     })
+    .catch(error => {
+      compileTemplate([error], 'error-container', 'error-template');
+    })
 }
 
 function compileTemplate(inputArray, sectionClass, templateId) {
