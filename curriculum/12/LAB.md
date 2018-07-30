@@ -1,6 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
-
-TODO: add title of lab 12, above
+![CF](https://i.imgur.com/7v5ASc8.png) 12: Componentization
 
 ## Submission Instructions
 
@@ -65,7 +63,7 @@ book_app (repository)
 
 #### Overview
 
-This lab assignment will add the ability for a user to see the details of a single book in a new view. Your code base will also become more modularized, making your code DRY.
+This lab assignment will add the ability for a user to see the details of a single book in a new view. Your code base will also be modularized into components, making your code DRY.
 
 *1. As a user, I want to request information about a single book so that I can view additional details.*
 
@@ -77,10 +75,12 @@ This lab assignment will add the ability for a user to see the details of a sing
 - Redeploy your application.
 
 *2. As a user, I want to use callbacks in my `server.js` file so that my code is easier to read.*
+
 - Move your SQL queries and view rendering into callbacks. Reference the appropriate callback in each route.
 - Move your error handling into a callback.
 
-*3. As a user, I want to modularize my code so that it becomes DRY and easier to maintain.*
+*3. As a user, I want to modularize my code into components so that it becomes DRY and easier to maintain.*
+
 - Add a new folder called `partials` and create files that are the same across each view. Include the partial files into each view.
 - Redeploy your application.
 
@@ -94,11 +94,10 @@ This lab assignment will add the ability for a user to see the details of a sing
 
 ## Stretch Goal
 
-*As a developer, I want to automatically populate the database so my application is functioning efficiently.*
+*As a developer, I want to explore further functionality so that I can continue to improve the user's experience.*
 
-- Implement a NodeJS script that will read a JSON file and populate your PostgreSQL database with that content.
-  - You will need to utilize the `fs` (file system) module from Node.
-
+- Implement the ability for your hamburger menu to operate without the use of JavaScript. You will need to research how to enable a 'pop-up/out' style menu with vanilla HTML and CSS.
+- Consider any further UI/UX features which will allow a more friendly interface for your users.
 
 ## Documentation
 
