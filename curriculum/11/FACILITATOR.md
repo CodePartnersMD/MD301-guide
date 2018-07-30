@@ -1,13 +1,12 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
-
+![CF](https://i.imgur.com/7v5ASc8.png) Class 11: Server-side templating with EJS
 
 ## Overview
 
-Today is the first day of the book application, a project that spans over labs 11 through 14. Students will work with the same partner for all four labs, so be mindful of who is partnered together. During final projects, each team typically contains a balance of strong students and weaker students, so the book app is an opportunity to pair two strong students together and see how much they are able to accomplish.
+Today is the first day of the book application, a project that spans over labs 11 through 14. Students will work with the same partner for all four labs, so be mindful of which students are partnered together. During final projects, each team typically contains a balance of strong students and weaker students, so the book app is an opportunity to pair two strong students together and see how much they are able to accomplish.
 
 At this point, students should feel comfortable working in the front end from module 1. They should also feel comfortable working in the back end with a static front end from module 2. However, lab 10 was the first time they wrote all of the code and made the front end and back end communicate with each other. The book app will be their second time writing a full-stack application, so look for patterns from module 1 and module 2 which students can be reminded of when they struggle during this module.
 
-Server-side rendering is a new topic for students during this module. It will likely take a bit of time for students to adjust to this paradigm. Today's lecture will focus on creating a singular `index.ejs` file and an error view, but modularization will be addressed in the lectures and lab assignments for the remainder of the book app.
+Server-side rendering is a new topic for students during this module. It will likely take a bit of time for students to adjust to this paradigm. Today's lecture will focus on creating a singular `index.ejs` file and an error view, with modularization into components addressed in the lectures and lab assignments for the remainder of the book app.
 
 In lab 11, students will manually populate a database and write a route to retrieve all of the book objects and render them all in a single view.
 
@@ -15,7 +14,9 @@ _Note: the `demos` folder contains the to-do application before templating and a
 
 ## How do I prep for today?
 
-Review the demo code and solution code for lab 11, as well as the technical requirements in the `LAB.md`. Give students just enough of the pattern. By this point, they should feel comfortable with the process of deploying an application on Heroku, setting up a PostgreSQL database, and working with third-part APIs.
+There are several demos in the `demos` folder for today. The `templating` demo includes a basic grocery list. This demo is intended to introduce students to EJS usage and syntax. The demo includes rendering an array of strings as well as rendering and array of objects. These are displayed in two separate views, so use this as an opportunity to discuss conditional rendering with EJS syntax. Then, refactor `list.ejs` using conditional logic. Begin with this demo before moving on to the to-do app, which demonstrates how to render data that was retrieved from a database. This demo will provide students with a frame of reference when beginning the book app in lab 11. 
+
+Review the demo code and solution code for lab 11, as well as the technical requirements in the `LAB.md`. Give students just enough of the pattern. By this point, they should feel comfortable with the process of deploying an application on Heroku, setting up a PostgreSQL database, and working with third-party APIs.
 
 ## What changed from the previous class?
 N/A

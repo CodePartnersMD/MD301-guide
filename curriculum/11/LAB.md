@@ -1,6 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) 11:
-
-TODO: add title of this lab, above
+![CF](https://i.imgur.com/7v5ASc8.png) Class 11: Server-side templating with EJS
 
 ## Submission Instructions
 
@@ -148,6 +146,14 @@ TODO: add pg:pull instructions
 - Style your site using a **mobile-only** approach. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
 - Ensure the proper use of SMACCS principles. You and your partner(s) may choose to use float-based layout, grid-based layout, Flexbox, or a combination of these.
 - You will need to include icon fonts from a source such as Icomoon or FontAwesome for the social media icons you choose to include in the application.
+
+## Stretch Goal
+
+*As a developer, I want to automatically populate the database so my application is functioning efficiently.*
+
+- Implement a NodeJS script that will read a JSON file and populate your PostgreSQL database with that content.
+  - You will need to utilize the `fs` (file system) module from Node.
+TODO: Add link to fs docs
 
 ## Documentation
 
