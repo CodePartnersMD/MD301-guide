@@ -7,11 +7,13 @@ const app = express();
 // Use this as a talking point about environment variables
 const PORT = process.env.PORT || 3000;
 
-// Serve public files, which is styles.css
-app.use(express.static('public'));
+// Set the view engine for templating
+app.set('view engine', 'ejs');
 
+// Array of groceries for /list route
 let groceries = ['apples', 'celery', 'butter', 'milk', 'eggs'];
 
+// Array of quantities for /details route
 let quantities = [
   {name: 'apples', quantity: 4},
   {name: 'celery', quantity: 1},
@@ -33,7 +35,9 @@ app.get('/details', (request, response) => {
   response.render('details', {items: quantities});
 })
 
-// Set the view engine for templating
-app.set('view engine', 'ejs');
+// after demonstrating /list and /details separately, refactor list.ejs to use conditional logic
+app.get('/list-all', (request, response) => {
+  response.render('list', {items: quantities});
+})
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
