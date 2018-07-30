@@ -118,13 +118,15 @@ function getWeather(request, response) {
 
   return client.query(SQL, values)
     .then(result => {
+      let weatherSummaries;
+
       if(result.rowCount > 0) {
-        response.send(result.rows);
+        weatherSummaries = result.rows;
       } else {
         return superagent.get(url)
           .then(result => {
 
-            let weatherSummaries = result.body.daily.data.map(day => {
+            weatherSummaries = result.body.daily.data.map(day => {
               return {
                 forecast: day.summary,
                 time: new Date(day.time * 1000).toString().slice(0, 15)
@@ -134,14 +136,14 @@ function getWeather(request, response) {
             weatherSummaries.forEach(day => {
               let SQL = `INSERT INTO weathers (forecast, time, location_id) VALUES ($1, $2, $3);`;
               let values = [day.forecast, day.time, request.query.data.id];
-  
+
               client.query(SQL, values);
             });
-      
-            response.send(weatherSummaries);
           })
           .catch(error => handleError(error, response));
       }
+
+      response.send(weatherSummaries);
     })
     .catch(error => handleError(error, response));
 }
@@ -177,14 +179,16 @@ function getYelp(request, response) {
 
   return client.query(SQL, values)
     .then(result => {
+      let yelpSummaries;
+
       if(result.rowCount > 0) {
-        response.send(result.rows);
+        yelpSummaries = result.rows;
       } else {
         return superagent.get(url)
           .set('Authorization', `Bearer ${YELP_API_KEY}`)
           .then(result => {
 
-            let yelpSummaries = result.body.businesses.map(business => {
+            yelpSummaries = result.body.businesses.map(business => {
               return {
                 name: business.name,
                 image_url: business.image_url,
@@ -200,11 +204,11 @@ function getYelp(request, response) {
 
               client.query(SQL, values);
             })
-
-            response.send(yelpSummaries);
           })
           .catch(error => handleError(error, response));
       }
+
+      response.send(yelpSummaries);
     })
     .catch(error => handleError(error, response));
 }
@@ -241,13 +245,15 @@ function getMovies(request, response) {
 
   return client.query(SQL, values)
     .then(result => {
+      let movieSummaries;
+
       if(result.rowCount > 0) {
-        response.send(result.rows);
+        movieSummaries = result.rows;
       } else {
         return superagent.get(url)
           .then(result => {
 
-            let movieSummaries = result.body.results.map(movie => {
+            movieSummaries = result.body.results.map(movie => {
               return {
                 title: movie.title,
                 overview: movie.overview,
@@ -258,18 +264,18 @@ function getMovies(request, response) {
                 released_on: movie.release_date
               };
             })
-      
+
             movieSummaries.forEach(movie => {
               let SQL = `INSERT INTO movies (title, overview, average_votes, total_votes, image_url, popularity, released_on, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
               let values = [movie.title, movie.overview, movie.average_votes, movie.total_votes, movie.image_url, movie.popularity, movie.released_on, request.query.data.id];
 
               client.query(SQL, values);
             })
-
-            response.send(movieSummaries);
           })
           .catch(error => handleError(error, response));
       }
+
+      response.send(movieSummaries);
     })
     .catch(error => handleError(error, response));
 }
@@ -305,13 +311,15 @@ function getMeetups(request, response) {
 
   return client.query(SQL, values)
     .then(result => {
+      let meetups;
+
       if(result.rowCount > 0) {
-        response.send(result.rows);
+        meetups = result.rows;
       } else {
         return superagent.get(url)
           .then(result => {
 
-            let meetups = result.body.events.map(meetup => {
+            meetups = result.body.events.map(meetup => {
               return {
                 link: meetup.link,
                 name: meetup.group.name,
@@ -326,12 +334,11 @@ function getMeetups(request, response) {
 
               client.query(SQL, values);
             })
-
-            response.send(meetups);
-
           })
           .catch(error => handleError(error, response));
       }
+
+      response.send(meetups);
     })
     .catch(error => handleError(error, response));
 }
@@ -373,13 +380,15 @@ function getTrails(request, response) {
 
   return client.query(SQL, values)
     .then(result => {
+      let trails;
+
       if(result.rowCount > 0) {
-        response.send(result.rows);
+        trails = result.rows;
       } else {
         return superagent.get(url)
           .then(result => {
 
-            let trails = result.body.trails.map(trail => {
+            trails = result.body.trails.map(trail => {
               return {
                 name: trail.name,
                 location: trail.location,
@@ -393,18 +402,18 @@ function getTrails(request, response) {
                 condition_time: trail.conditionDate.slice(12)
               };
             })
-      
+
             trails.forEach(trail => {
               let SQL = `INSERT INTO trails (name, location, length, stars, star_votes, summary, trail_url, conditions, condition_date, condition_time, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
               let values = [trail.name, trail.location, trail.length, trail.stars, trails.star_votes, trails.summary, trails.trail_url, trails.conditions, trails.condition_date, trails.conditin_time, request.query.data.id];
 
               client.query(SQL, values);
             })
-
-            response.send(trails);
           })
           .catch(error => handleError(error, response));
       }
+
+      response.send(trails);
     })
     .catch(error => handleError(error, response));
 }
@@ -515,3 +524,12 @@ function createTrails() {
   client.query(SQL)
     .catch(console.error);
 }
+
+// function insert(array, id) {
+//   array.forEach(element => {
+//     let SQL = ``;
+//     let values = [];
+
+//     client.query(SQL, values);
+//   })
+// }
