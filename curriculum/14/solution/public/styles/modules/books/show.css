@@ -1,0 +1,32 @@
+p {
+  padding: 3vw;
+}
+
+img {
+  display: block;
+  margin: 0px auto;
+  width: 50%;
+}
+
+h3 {
+  font-size: 4vw;
+}
+
+p {
+  font-size: 3vw;
+  line-height: 1.5;
+  padding: 1vw;
+}
+
+h3, p {
+  text-align: center;
+  padding: 2vw;
+}
+
+main > p {
+  text-align: inherit;
+}
+
+span {
+  color: #fff;
+}
