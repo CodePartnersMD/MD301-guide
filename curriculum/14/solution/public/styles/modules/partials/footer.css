@@ -1,9 +1,10 @@
 footer ul {
   display: table;
-  width: 100%;  
+  width: 100%;
 }
 
 footer li {
+  flex: 1;
   display: table-cell;
   line-height: 10vw;
 }
