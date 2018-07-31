@@ -1,0 +1,9 @@
+footer ul {
+  display: table;
+  width: 100%;  
+}
+
+footer li {
+  display: table-cell;
+  line-height: 10vw;
+}
