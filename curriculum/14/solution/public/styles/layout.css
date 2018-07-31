@@ -13,6 +13,10 @@ header img {
   padding-left: 5%;
 }
 
+img {
+  width: 50%;
+}
+
 li {
   margin: 5vw;
   text-align: center;
@@ -29,10 +33,28 @@ footer {
   width: 100%;
 }
 
-#hide-me {
-  display: none;
+form {
+  width: 80%;
+  margin: 2vw auto;
 }
 
-#show-me {
- display: inline-block;
+input, textarea {
+  display: block;
+  margin: 2vw auto;
+  padding: 1vw;
+  width: 80%;
+}
+
+button {
+  display: block;
+  font-size: 4vw;
+  margin: 0 auto;
+  padding: 2vw;
+  width: 40%;
+}
+
+h2 {
+  font-size: 5vw;
+  padding: 2vw;
+  text-align: center;
 }
