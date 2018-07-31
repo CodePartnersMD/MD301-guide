@@ -2,17 +2,18 @@
 <html lang="en">
   <head>
     <% include ../../partials/head %>
+    <link rel="stylesheet" href="/styles/modules/searches/show.css">
   </head>
   <body>
     <% include ../../partials/header %>
     <main>
-      <h2 class="view-title">My Books</h2>
-      <ul id="results-list">
+      <h2>My Books</h2>
+      <ul>
         <% results.forEach(book => { %>
-          <li class="results-items" data-book-id="<%= book.isbn %>">
-            <section class="results-container">
+          <li data-book-id="<%= book.isbn %>">
+            <section>
               <img src=<%= book.image_url %>>
-              <section class="book-overlay">
+              <section>
               <% if (book.subtitle) { %>
                 <h3><%= book.title %>: <%= book.subtitle %></h3>
               <% } else { %>
