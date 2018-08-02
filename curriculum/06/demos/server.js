@@ -4,35 +4,36 @@
 const express = require('express');
 const superagent = require('superagent');
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 // Application Setup
 const app = express();
 const PORT = 3000;
 
-// API keys
-const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
-
 // API routes
+// Note: with the continued build-out, this function is going to change and will ultimately be extracted to a helper function, below.
 app.get('/location', (request, response) => {
-  stringToLatLong(request.query.data)
+  searchToLatLong(request.query.data)
     .then(location => response.send(location))
     .catch(error => handleError(error, response));
 })
+
+// Use your discretion -- write this route if you think your studens will struggle with it. Or, write the function signature here, then move the function signature down to the helper function, below. Either way, only provide the function signature for this route.
+app.get('/weather', getWeather);
 
 // Make sure the server is listening for requests
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 // Helper Functions
-function stringToLatLong(query) {
-  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${GEOCODE_API_KEY}`;
+function searchToLatLong(query) {
+  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
 
   return superagent.get(url)
     .then(res => {
-      let formattedQuery = formatQuery(res.body.results[0].address_components);
-      console.log(formattedQuery);
-      
       return {
         search_query: query,
-        formatted_query: formattedQuery,
+        formatted_query: res.body.result[0].formatted_address,
         latitude: res.body.results[0].geometry.location.lat,
         longitude: res.body.results[0].geometry.location.lng
       }
@@ -40,21 +41,13 @@ function stringToLatLong(query) {
     .catch(error => handleError(error));
 }
 
+// provide the function signature for students so they know that it has access to request and response
 function getWeather(request, response) {
 
 }
 
+// one error handler to make the code DRY
 function handleError(err, res) {
   console.error(err);
   if (res) res.status(500).send('Sorry, something went wrong');
-}
-
-function formatQuery(searchDetails) {
-  let formattedQuery = '';
-
-  for(let i in searchDetails) {
-
-  }
-
-  return formattedQuery;
 }
