@@ -168,18 +168,6 @@ Trail.prototype = {
 }
 
 function getLocation(request, response) {
-  // Location.lookup({
-  //   location: request.query.data,
-
-  //   cacheHit: function(result) {
-  //     response.send(result.rows[0]);
-  //   },
-
-  //   cacheMiss: function () {
-
-  //   }
-  // })
-
   let SQL = `SELECT * FROM locations WHERE search_query=$1;`;
   let values = [request.query.data];
 
