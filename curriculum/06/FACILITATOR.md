@@ -1,7 +1,8 @@
 ![CF](https://i.imgur.com/7v5ASc8.png)
 
-
 ## Overview
+
+Class 6 is the first day where students will be working with a static client. Students will be able to view the solution code, but will not be able to modify it in any way.
 
 ## How do I prep for today?
 

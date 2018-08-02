@@ -10,6 +10,8 @@
 
 ## User Stories and Feature Tasks
 
+stretch goal - create a single "lookup" function for all models
+
 ## Documentation
 
 ## Overview

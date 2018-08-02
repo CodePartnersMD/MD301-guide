@@ -4,6 +4,7 @@
 ## Overview
 
 ## How do I prep for today?
+- Begin with solution code for class 6 as the starter code for class 7 demo code, to save lines of typing the same code they have just seen during code review.
 
 ## What changed from the previous class?
 
