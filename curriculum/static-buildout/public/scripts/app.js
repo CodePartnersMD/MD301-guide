@@ -1,5 +1,14 @@
 'use strict';
 
+let __API_URL__;
+
+$('#url-form').on('submit', function(event) {
+  event.preventDefault();
+  __API_URL__ = $('#back-end-url').val();
+  $('#url-form').addClass('hide');
+  $('#search-form').removeClass('hide');
+});
+
 $('#search-form').on('submit', fetchCityData);
 
 function fetchCityData(event) {
