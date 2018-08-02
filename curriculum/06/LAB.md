@@ -56,6 +56,8 @@ Every day, you and your partner(s) will deploy your back end to Heroku.
 
 You will have access to view the code base for the client, but will not be able to modify it in any way.
 
+For this lab assignment, you will convert a string to a latitude and longitude, then use those values to request weather information for that location.
+
 Repository set-up: 
 - One person from your group should create a new repository on GitHub called `lab-06-back-end`. Add your partner(s) as collaborator(s).
 - From this point on, work on semantically-named non-master branches. Once your app is functioning correctly on your branch, make a PR to master and confirm functionality on your deployed site. Your deployed site **should not** contain any broken functionality.
