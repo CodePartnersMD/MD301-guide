@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
+![CF](https://i.imgur.com/7v5ASc8.png) Class 06: Node, npm, Express, and APIs
 
 ## Code Challenge
 
@@ -23,9 +23,13 @@
 
 [Dotenv Docs](https://www.npmjs.com/package/dotenv)
 
+[Google Geocoding API Docs](https://developers.google.com/maps/documentation/geocoding/start)
+
+[Dark Sky API Docs](https://darksky.net/dev/docs)
+
 ## Configuration
 
-- `.env` - with your PORT and API keys. Make sure this file is included in your `.gitignore`!
+- `.env` - with your PORT and API keys. Make sure this file is included in your `.gitignore`
 - `README.md` - with documentation regarding your lab and it's current state of development. Check the "documentation" section below for more details on how that should look **AT MINIMUM**
 - `.gitignore` - with standard NodeJS configurations
 - `.eslintrc.json` - with Code 301 course standards for the linter
