@@ -11,11 +11,6 @@
       <p>There was an error! Status code: {{ status }}</p>
     </script>
     
-    <!-- Template for search history -->
-    <script type="text/x-handlebars-template" id="history-template">
-      <li>{{ past_search }}</li>
-    </script>
-    
     <!-- Template for weather data -->
     <script type="text/x-handlebars-template" id="weather-results-template">
       <li>
@@ -67,7 +62,12 @@
       <p>Enter a location below to learn about the weather, events, restaurants, movies filmed there, and more!</p>
     </header>
     <main>
-      <form id="search-form">
+      <form id="url-form">
+        <label>Enter the URL to your deployed back end</label>
+        <input type="text" id="back-end-url">
+      </form>
+
+      <form id="search-form" class="hide">
         <label for="search">Search for a location</label>
         <input type="text" name="search" id="input-search" placeholder="Enter a location here">
         <button type="submit">Explore!</button>
@@ -77,12 +77,6 @@
       
       <!-- Section for error message -->
       <section></section>
-      
-      <!-- Section for search history -->
-      <section class="hide">
-        <h3>Recent Searches:</h3>
-        <ul class="history-results"></ul>
-      </section>
       
       <div class="column-container hide">
         <!-- Section for weather data -->
