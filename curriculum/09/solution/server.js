@@ -42,10 +42,8 @@ function lookup(options) {
   client.query(SQL, [options.location])
     .then(result => {
       if(result.rowCount > 0) {
-        console.log('hit')
         options.cacheHit(result);
       } else {
-        console.log('miss')
         options.cacheMiss();
       }
     })
@@ -194,7 +192,6 @@ function getLocation(request, response) {
       } else {
         searchToLatLong(request.query.data)
           .then(loc => {
-            console.log('loc', loc);
             let SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
             let values = [loc.search_query, loc.formatted_query, loc.latitude, loc.longitude];
 
