@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS weathers (
     star_votes INTEGER, 
     summary VARCHAR(255), 
     trail_url VARCHAR(255), 
-    conditions VARCHAR(100), 
+    conditions TEXT, 
     condition_date CHAR(10), 
     condition_time CHAR(8), 
     location_id INTEGER NOT NULL REFERENCES locations(id) 
