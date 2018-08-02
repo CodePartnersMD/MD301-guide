@@ -4,17 +4,16 @@
 const express = require('express');
 const superagent = require('superagent');
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 // Application Setup
 const app = express();
 const PORT = 3000;
 
-// API keys
-const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
-const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
-
 // API routes
 app.get('/location', (request, response) => {
-  stringToLatLong(request.query.data)
+  searchToLatLong(request.query.data)
     .then(location => response.send(location))
     .catch(error => handleError(error, response));
 })
@@ -25,17 +24,14 @@ app.get('/weather', getWeather);
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 // Helper Functions
-function stringToLatLong(query) {
-  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${GEOCODE_API_KEY}`;
+function searchToLatLong(query) {
+  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
 
   return superagent.get(url)
     .then(res => {
-      let formattedQuery = formatQuery(res.body.results[0].address_components);
-      console.log(formattedQuery);
-      
       return {
         search_query: query,
-        formatted_query: formattedQuery,
+        formatted_query: res.body.result[0].formatted_address,
         latitude: res.body.results[0].geometry.location.lat,
         longitude: res.body.results[0].geometry.location.lng
       }
@@ -44,7 +40,7 @@ function stringToLatLong(query) {
 }
 
 function getWeather(request, response) {
-  let url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+  let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
   console.log('url', url);
 
   return superagent.get(url)
@@ -68,24 +64,4 @@ function getWeather(request, response) {
 function handleError(err, res) {
   console.error(err);
   if (res) res.status(500).send('Sorry, something went wrong');
-}
-
-function formatQuery(searchDetails) {
-  let formattedQuery = '';
-
-  for(let i in searchDetails) {
-    if (searchDetails[i].types.includes('street_number')) formattedQuery += searchDetails[i].long_name += ' ';
-
-    if (searchDetails[i].types.includes('route')) formattedQuery += searchDetails[i].long_name += ', ';
-
-    if (searchDetails[i].types.includes('locality')) formattedQuery += searchDetails[i].long_name += ', ';
-
-    if (searchDetails[i].types.includes('administrative_area_level_1')) formattedQuery += searchDetails[i].long_name += ', ';
-
-    if (searchDetails[i].types.includes('country')) formattedQuery += searchDetails[i].long_name += ', ';
-
-    if (searchDetails[i].types.includes('postal_code')) formattedQuery += searchDetails[i].long_name+= ', ';
-  }
-
-  return formattedQuery.slice(0, -2);
 }
