@@ -12,7 +12,7 @@ const app = express();
 const PORT = 3000;
 
 // API routes
-// Note: with the continued build-out, this function is going to change and will ultimately be extracted to a helper function, below.
+// Note: with the continued build-out, this function is going to change and will ultimately be extracted to a helper function.
 app.get('/location', (request, response) => {
   searchToLatLong(request.query.data)
     .then(location => response.send(location))
