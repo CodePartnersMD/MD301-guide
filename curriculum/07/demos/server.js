@@ -90,6 +90,7 @@ function getWeather(request, response) {
 
 // Refactor into this, part 1 of 2
 // Note the refactor from .forEach to .map
+// It may be beneficial not to demo the refactor from .forEach to .map
 function getWeather(request, response) {
   let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
 
