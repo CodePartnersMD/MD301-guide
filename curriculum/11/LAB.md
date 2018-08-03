@@ -18,17 +18,9 @@ TODO: Add updated wireframes
 
 ## Configuration
 
-- `ENV VARS` - Paste the following commands into your terminal window for testing locally.
-  * _Note: these will be temporary while the current shell session (window) is open._
-
-```
-export PORT=3000
-Mac:     export DATABASE_URL=postgres://localhost:5432/books_app
-Windows: export DATABASE_URL=postgres://USER:PASSWORD@localhost:5432/books_app
-```
-
 _Your repository must include the following config files:_
 
+- `.env` - with your PORT and API keys. Make sure this file is included in your `.gitignore`
 - `README.md` - with documentation regarding your lab and it's current state of development. Check the "documentation" section below for more details on how that should look **AT MINIMUM**
 - `.gitignore` - with standard NodeJS configurations
 - `.eslintrc.json` - with Code 301 course standards for the linter
@@ -53,6 +45,7 @@ book_app (repository)
 │  ├── pages
 │  │   └── error.ejs
 │  └── index.ejs
+├── .env
 ├── .eslintrc.json
 ├── .gitignore
 ├── package-lock.json

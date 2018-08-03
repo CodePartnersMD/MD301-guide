@@ -21,16 +21,6 @@ TODO: add updated wireframes
 
 ## Configuration
 
-- `ENV VARS` - Paste the following commands into your terminal window for testing locally.
-  * _Note: these will be temporary while the current shell session (window) is open._
-
-
-```
-export PORT=3000
-Mac:     export DATABASE_URL=postgres://localhost:5432/books_app
-Windows: export DATABASE_URL=postgres://USER:PASSWORD@localhost:5432/books_app
-```
-
 Use the following as a guide for your directory structure.
 
 ```sh
@@ -61,6 +51,7 @@ book_app (repository)
 │  │   ├── head.ejs
 │  │   └── header.ejs
 │  └── index.ejs
+├── .env
 ├── .eslintrc.json
 ├── .gitignore
 ├── package-lock.json
