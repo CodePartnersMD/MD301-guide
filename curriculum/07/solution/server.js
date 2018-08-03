@@ -63,7 +63,7 @@ function Movie(movie) {
 }
 
 function searchToLatLong(query) {
-  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
 
   return superagent.get(url)
     .then(res => {
@@ -73,11 +73,11 @@ function searchToLatLong(query) {
 }
 
 function getWeather(request, response) {
-  let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+  const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
 
   superagent.get(url)
     .then(result => {
-      let weatherSummaries = result.body.daily.data.map(day => {
+      const weatherSummaries = result.body.daily.data.map(day => {
         return new Weather(day);
       });
 
@@ -87,12 +87,12 @@ function getWeather(request, response) {
 }
 
 function getYelp(request, response) {
-  let url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
+  const url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
 
   superagent.get(url)
     .set('Authorization', `Bearer ${process.env.YELP_API_KEY}`)
     .then(result => {
-      let yelpSummaries = result.body.businesses.map(business => {
+      const yelpSummaries = result.body.businesses.map(business => {
         return new Yelp(business);
       })
 
@@ -102,11 +102,11 @@ function getYelp(request, response) {
 }
 
 function getMovies(request, response) {
-  let url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
+  const url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
 
   superagent.get(url)
     .then(result => {
-      let movieSummaries = result.body.results.map( movie => {
+      const movieSummaries = result.body.results.map( movie => {
         return new Movie(movie);
       })
 

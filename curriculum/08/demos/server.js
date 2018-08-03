@@ -59,8 +59,8 @@ function Weather(day) {
 // Refactored getLocation function, now that it is so long, pull it out into a function
 // Begin with this in the route, then discuss how difficult it is to read such a long function in the route and refactor to a function, as below.
 function getLocation(request, response) {
-  let SQL = `SELECT * FROM locations WHERE search_query=$1;`;
-  let values = [request.query.data];
+  const SQL = `SELECT * FROM locations WHERE search_query=$1;`;
+  const values = [request.query.data];
 
   return client.query(SQL, values)
     .then(result => {
@@ -71,8 +71,8 @@ function getLocation(request, response) {
       } else {
         searchToLatLong(request.query.data)
           .then(loc => {
-            let SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
-            let values = [loc.search_query, loc.formatted_query, loc.latitude, loc.longitude];
+            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
+            const values = [loc.search_query, loc.formatted_query, loc.latitude, loc.longitude];
 
             client.query(SQL, values)
               .catch(console.error);
@@ -88,7 +88,7 @@ function getLocation(request, response) {
 }
 
 function searchToLatLong(query) {
-  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.emitWarning.GEOCODE_API_KEY}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.emitWarning.GEOCODE_API_KEY}`;
 
   return superagent.get(url)
     .then(res => {
@@ -101,11 +101,11 @@ function searchToLatLong(query) {
 // Refactor in lecture to the version below, in two parts
 // Only refactor getWeather and allow students to follow the pattern to refactor the remaining routes
 function getWeather(request, response) {
-  let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+  const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
 
   superagent.get(url)
     .then(result => {
-      let weatherSummaries = result.body.daily.data.map(day => {
+      const weatherSummaries = result.body.daily.data.map(day => {
         return new Weather(day);
       });
 
@@ -124,12 +124,12 @@ function getWeather(request, response) {
     },
 
     cacheMiss: function() {
-      let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+      const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
 
       superagent.get(url)
         .then(result => {
-          let weatherSummaries = result.body.daily.data.map(day => {
-            let summary = new Weather(day);
+          const weatherSummaries = result.body.daily.data.map(day => {
+            const summary = new Weather(day);
             summary.save(request.query.data.id);
             return summary;
           });
@@ -144,8 +144,8 @@ function getWeather(request, response) {
 // Refactor, part 2 of 3
 Weather.prototype = {
   save: function(location_id) {
-    let SQL = `INSERT INTO ${this.tableName} (forecast, time, location_id) VALUES ($1, $2, $3);`;
-    let values = [this.forecast, this.time, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (forecast, time, location_id) VALUES ($1, $2, $3);`;
+    const values = [this.forecast, this.time, location_id];
 
     client.query(SQL, values);
   },
@@ -154,7 +154,7 @@ Weather.prototype = {
 // Refactor, part 3 of 3
 // Note: is it a stretch goal for class 8 to make a single "lookup" function; see solution code for class 9 which includes this format
 Weather.lookup = function(options) {
-  let SQL = `SELECT * FROM weathers WHERE location_id=$1;`;
+  const SQL = `SELECT * FROM weathers WHERE location_id=$1;`;
   client.query(SQL, [options.location])
     .then(result => {
       if(result.rowCount > 0) {

@@ -38,7 +38,7 @@ function handleError(err, res) {
 
 // Look for the results in the database
 function lookup(options) {
-  let SQL = `SELECT * FROM ${options.tableName} WHERE location_id=$1;`;
+  const SQL = `SELECT * FROM ${options.tableName} WHERE location_id=$1;`;
   client.query(SQL, [options.location])
     .then(result => {
       if(result.rowCount > 0) {
@@ -70,8 +70,8 @@ Weather.lookup = lookup;
 
 Weather.prototype = {
   save: function(location_id) {
-    let SQL = `INSERT INTO ${this.tableName} (forecast, time, location_id) VALUES ($1, $2, $3);`;
-    let values = [this.forecast, this.time, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (forecast, time, location_id) VALUES ($1, $2, $3);`;
+    const values = [this.forecast, this.time, location_id];
 
     client.query(SQL, values);
   }
@@ -91,8 +91,8 @@ Yelp.lookup = lookup;
 
 Yelp.prototype = {
   save: function(location_id) {
-    let SQL = `INSERT INTO ${this.tableName} (name, image_url, price, rating, url, location_id) VALUES ($1, $2, $3, $4, $5, $6);`;
-    let values = [this.name, this.image_url, this.price, this.rating, this.url, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (name, image_url, price, rating, url, location_id) VALUES ($1, $2, $3, $4, $5, $6);`;
+    const values = [this.name, this.image_url, this.price, this.rating, this.url, location_id];
 
     client.query(SQL, values);
   }
@@ -114,8 +114,8 @@ Movie.lookup = lookup;
 
 Movie.prototype = {
   save: function(location_id) {
-    let SQL = `INSERT INTO ${this.tableName} (title, overview, average_votes, total_votes, image_url, popularity, released_on, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
-    let values = [this.title, this.overview, this.average_votes, this.total_votes, this.image_url, this.popularity, this.released_on, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (title, overview, average_votes, total_votes, image_url, popularity, released_on, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
+    const values = [this.title, this.overview, this.average_votes, this.total_votes, this.image_url, this.popularity, this.released_on, location_id];
 
     client.query(SQL, values);
   }
@@ -134,8 +134,8 @@ Meetup.lookup = lookup;
 
 Meetup.prototype = {
   save: function(location_id) {
-    let SQL = `INSERT INTO ${this.tableName} (link, name, creation_date, host, location_id) VALUES ($1, $2, $3, $4, $5);`;
-    let values = [this.link, this.name, this.creation_date, this.host, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (link, name, creation_date, host, location_id) VALUES ($1, $2, $3, $4, $5);`;
+    const values = [this.link, this.name, this.creation_date, this.host, location_id];
 
     client.query(SQL, values);
   }
@@ -160,16 +160,16 @@ Trail.lookup = lookup;
 
 Trail.prototype = {
   save: function(location_id) {
-    let SQL = `INSERT INTO ${this.tableName} (name, location, length, stars, star_votes, summary, trail_url, conditions, condition_date, condition_time, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
-    let values = [this.name, this.location, this.length, this.stars, this.star_votes, this.summary, this.trail_url, this.conditions, this.condition_date, this.conditin_time, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (name, location, length, stars, star_votes, summary, trail_url, conditions, condition_date, condition_time, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
+    const values = [this.name, this.location, this.length, this.stars, this.star_votes, this.summary, this.trail_url, this.conditions, this.condition_date, this.conditin_time, location_id];
 
     client.query(SQL, values);
   }
 }
 
 function getLocation(request, response) {
-  let SQL = `SELECT * FROM locations WHERE search_query=$1;`;
-  let values = [request.query.data];
+  const SQL = `SELECT * FROM locations WHERE search_query=$1;`;
+  const values = [request.query.data];
 
   return client.query(SQL, values)
     .then(result => {
@@ -180,8 +180,8 @@ function getLocation(request, response) {
       } else {
         searchToLatLong(request.query.data)
           .then(loc => {
-            let SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
-            let values = [loc.search_query, loc.formatted_query, loc.latitude, loc.longitude];
+            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
+            const values = [loc.search_query, loc.formatted_query, loc.latitude, loc.longitude];
 
             client.query(SQL, values)
               .catch(console.error);
@@ -197,7 +197,7 @@ function getLocation(request, response) {
 }
 
 function searchToLatLong(query) {
-  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
 
   return superagent.get(url)
     .then(res => {
@@ -217,12 +217,12 @@ function getWeather(request, response) {
     },
 
     cacheMiss: function() {
-      let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+      const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
 
       superagent.get(url)
         .then(result => {
-          let weatherSummaries = result.body.daily.data.map(day => {
-            let summary = new Weather(day);
+          const weatherSummaries = result.body.daily.data.map(day => {
+            const summary = new Weather(day);
             summary.save(request.query.data.id);
             return summary;
           });
@@ -244,13 +244,13 @@ function getYelp(request, response) {
     },
 
     cacheMiss: function() {
-      let url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
+      const url = `https://api.yelp.com/v3/businesses/search?location=${request.query.data.search_query}`;
 
       superagent.get(url)
         .set('Authorization', `Bearer ${process.env.YELP_API_KEY}`)
         .then(result => {
-          let yelpSummaries = result.body.businesses.map(business => {
-            let review = new Yelp(business);
+          const yelpSummaries = result.body.businesses.map(business => {
+            const review = new Yelp(business);
             review.save(request.query.data.id);
             return review;
           });
@@ -273,12 +273,12 @@ function getMovies(request, response) {
     },
 
     cacheMiss: function() {
-      let url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
+      const url = `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.MOVIE_API_KEY}&language=en-US&page=1&query=${request.query.data.search_query}`;
 
       superagent.get(url)
         .then(result => {
-          let movieSummaries = result.body.results.map(movie => {
-            let details = new Movie(movie);
+          const movieSummaries = result.body.results.map(movie => {
+            const details = new Movie(movie);
             details.save(request.query.data.id);
             return details;
           });
@@ -301,12 +301,12 @@ function getMeetups(request, response) {
     },
 
     cacheMiss: function() {
-      let url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${request.query.data.longitude}&page=20&lat=${request.query.data.latitude}&key=${process.env.MEETUP_API_KEY}`
+      const url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${request.query.data.longitude}&page=20&lat=${request.query.data.latitude}&key=${process.env.MEETUP_API_KEY}`
 
       superagent.get(url)
         .then(result => {
-          let meetups = result.body.events.map(meetup => {
-            let event = new Meetup(meetup);
+          const meetups = result.body.events.map(meetup => {
+            const event = new Meetup(meetup);
             event.save(request.query.data.id);
             return event;
           });
@@ -329,12 +329,12 @@ function getTrails(request, response) {
     },
 
     cacheMiss: function() {
-      let url = `https://www.hikingproject.com/data/get-trails?lat=${request.query.data.latitude}&lon=${request.query.data.longitude}&maxDistance=200&key=${process.env.TRAIL_API_KEY}`;
+      const url = `https://www.hikingproject.com/data/get-trails?lat=${request.query.data.latitude}&lon=${request.query.data.longitude}&maxDistance=200&key=${process.env.TRAIL_API_KEY}`;
 
       superagent.get(url)
         .then(result => {
-          let trails = result.body.trails.map(trail => {
-            let condition = new Trail(trail);
+          const trails = result.body.trails.map(trail => {
+            const condition = new Trail(trail);
             condition.save(request.query.data.id);
             return condition;
           });

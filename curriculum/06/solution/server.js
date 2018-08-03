@@ -25,7 +25,7 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 // Helper Functions
 function searchToLatLong(query) {
-  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
 
   return superagent.get(url)
     .then(res => {
@@ -40,15 +40,15 @@ function searchToLatLong(query) {
 }
 
 function getWeather(request, response) {
-  let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+  const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
   console.log('url', url);
 
   return superagent.get(url)
     .then(result => {
-      let weatherSummaries = [];
+      const weatherSummaries = [];
 
       result.body.daily.data.forEach(day => {
-        let summary =  {
+        const summary =  {
           forecast: day.summary,
           time: new Date(day.time * 1000).toString().slice(0, 15)
         }

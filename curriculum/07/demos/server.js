@@ -31,7 +31,7 @@ function handleError(err, res) {
 
 // Previous code from class 6, refactor this as shown below in two steps
 function searchToLatLong(query) {
-  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
 
   return superagent.get(url)
     .then(res => {
@@ -47,7 +47,7 @@ function searchToLatLong(query) {
 
 // Refactor into this function, part 1 of 2
 function searchToLatLong(query) {
-  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
 
   return superagent.get(url)
     .then(res => {
@@ -67,15 +67,15 @@ function Location(query, res) {
 
 // Previous code from class 6, refactor this as shown below in two steps
 function getWeather(request, response) {
-  let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+  const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
   console.log('url', url);
 
   return superagent.get(url)
     .then(result => {
-      let weatherSummaries = [];
+      const weatherSummaries = [];
 
       result.body.daily.data.forEach(day => {
-        let summary =  {
+        const summary =  {
           forecast: day.summary,
           time: new Date(day.time * 1000).toString().slice(0, 15)
         }
@@ -92,12 +92,12 @@ function getWeather(request, response) {
 // Note the refactor from .forEach to .map
 // It may be beneficial not to demo the refactor from .forEach to .map
 function getWeather(request, response) {
-  let url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
+  const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
 
   return superagent.get(url)
     .then(result => {
-      let weatherSummaries = result.body.daily.data.map(day => {
-        let summary = new Weather(day);
+      const weatherSummaries = result.body.daily.data.map(day => {
+        const summary = new Weather(day);
         weatherSummaries.push(summary);
       });
 
