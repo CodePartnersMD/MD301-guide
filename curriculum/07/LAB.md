@@ -56,7 +56,7 @@ Code Review:
 - Refactor your code base to use constructor functions, one per API response. 
 - Refer to the client code base to determine the properties each model requires.
 
-*2. As a user, I want to use `.map` instead of `.forEach` so that I can return an array of my object isntances in one step.*
+*2. As a user, I want to use `.map` instead of `.forEach` so that I can return an array of my object instances in one step.*
 - Refactor your `getWeather` callback to use `.map` and send the resulting array as your response to the client.
 - Redeploy your application.
 
