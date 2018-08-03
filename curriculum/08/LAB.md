@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Class 08: Persistence with a SQL database
+![CF](https://i.imgur.com/7v5ASc8.png) Lab 08: Persistence with a SQL database
 
 ## Code Challenge
 
@@ -68,11 +68,13 @@ Repository set-up:
 - Within your route callback, invoke your lookup function, passing the appropriate options. For example, you will need to include the search query, a function to execute if the records exist in the table, and a function to execute if the records do not exist in the table.
   - If the records exist, send them as the response to the client.
   - If the records do not exist, request the data from the appropriate APIs, as you have in labs 6 and 7. Store the results in the appropriate table in your database and send the API results as the response to the client.
+- Redeploy your application.
 
 *4. As a user, I want to request information about meetups in the area so that users can learn about the events taking place in the location.*
 - Create a route with a method of `get` and a path of `/meetups`. The callback should make a Superagent-proxied request to the Meetup API using the necessary location information.
 - Create a corresponding constructor function for the result.
-- For each movie of the result, return an object which contains the necessary information for correct client rendering. Store these objects together and send them as the response to the client.
+- For each meetup of the result, return an object which contains the necessary information for correct client rendering. Store these objects together and send them as the response to the client.
+- Add the appropriate logic to store this response in a table and the ability to check the database upon subsequent requests. Update your schemas.
 - Redeploy your application.
 
 ## Stretch Goal
