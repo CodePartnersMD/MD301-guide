@@ -115,6 +115,32 @@ function getWeather(request, response) {
 }
 
 // Refactor, part 1 of 3
+Weather.prototype = {
+  save: function(location_id) {
+    const SQL = `INSERT INTO ${this.tableName} (forecast, time, location_id) VALUES ($1, $2, $3);`;
+    const values = [this.forecast, this.time, location_id];
+
+    client.query(SQL, values);
+  },
+}
+
+// Refactor, part 2 of 3
+// Note: is it a stretch goal for class 8 to make a single "lookup" function; see solution code for class 9 which includes this format
+Weather.lookup = function(options) {
+  const SQL = `SELECT * FROM weathers WHERE location_id=$1;`;
+  client.query(SQL, [options.location])
+    .then(result => {
+      if(result.rowCount > 0) {
+        options.cacheHit(result);
+      } else {
+        options.cacheMiss();
+      }
+    })
+    .catch(error => handleError(error));
+}
+
+// Refactor, part 3 of 3
+// Now the callback will invoke the .lookup method with three options: the location, the function if the database contains the results, and the API request if the database does not contain the results
 function getWeather(request, response) {
   Weather.lookup({
     location: request.query.data.id,
@@ -139,29 +165,4 @@ function getWeather(request, response) {
         .catch(error => handleError(error, response));
     }
   })
-}
-
-// Refactor, part 2 of 3
-Weather.prototype = {
-  save: function(location_id) {
-    const SQL = `INSERT INTO ${this.tableName} (forecast, time, location_id) VALUES ($1, $2, $3);`;
-    const values = [this.forecast, this.time, location_id];
-
-    client.query(SQL, values);
-  },
-}
-
-// Refactor, part 3 of 3
-// Note: is it a stretch goal for class 8 to make a single "lookup" function; see solution code for class 9 which includes this format
-Weather.lookup = function(options) {
-  const SQL = `SELECT * FROM weathers WHERE location_id=$1;`;
-  client.query(SQL, [options.location])
-    .then(result => {
-      if(result.rowCount > 0) {
-        options.cacheHit(result);
-      } else {
-        options.cacheMiss();
-      }
-    })
-    .catch(error => handleError(error));
 }
