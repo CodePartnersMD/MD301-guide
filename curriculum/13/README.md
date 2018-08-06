@@ -2,8 +2,26 @@
 
 ## Overview
 
-## Readings
+Today we will be discussing how to create a new resource from an HTML5 form. This approach is likely different from how you have used forms before. You will be able to enter information about a book into the form and ultimately add it to your database.
 
 ## Daily Plan
 
+- Warm-up exercise
+- HTML5 forms
+- Creating a new resource
+- Code Demo
+- Lab Preview
+
 ## Learning Objectives
+
+<!--
+	ABCD:
+	  Audience: Program participants
+	  Behavior: Expected learning/behavior changes/results
+	  Condition:
+	    Circumstances that lead to change/result
+	    When change/result are expected to occur
+	  Degree: How much change occurs (%) for how many participants (#)
+	-->
+
+As a result of completing lecture 13 of Code 301, students will:
