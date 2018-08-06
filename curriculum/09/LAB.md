@@ -31,7 +31,7 @@
 - Note that the `package-lock.json` file is automatically created when dependencies are installed and ensures that future installations of the project use the same versions of the dependencies.
 
 ```sh
-lab-08-repository
+lab-09-repository
    ├── .env
    ├── .eslintrc.json
    ├── .gitignore
@@ -45,11 +45,11 @@ lab-08-repository
 
 #### Overview
 
-For this lab assignment, you will use the latitude and longitude to request information about movies filmed in the location and Yelp review for local restaurants.
+For this lab assignment, you will use the latitude and longitude to request information about hiking trals and campgrounds near the location.
 
 Repository set-up: 
 - One person from your group should create a new repository on GitHub called `lab-09-back-end`. Add your partner(s) as collaborator(s). Clone your repository.
-- Follow the same code review process as lab 7.
+- Follow the same code review process as lab 8.
 - Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as labs 6, 7, and 8. Your deployed site **should not** contain any broken functionality. You may now begin your feature tasks for lab 9.
 
 *1. As a user, I want to request information about trails and campgrounds in the area so that users can explore the location.*
