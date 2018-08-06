@@ -58,7 +58,6 @@ function searchToLatLong(query) {
 
 // Refactor into this model, part 2 of 2
 function Location(query, res) {
-  this.tableName = 'locations';
   this.search_query = query;
   this.formatted_query = res.body.result[0].formatted_address;
   this.latitude = res.body.results[0].geometry.location.lat;
