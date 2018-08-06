@@ -1,6 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
-
-TODO: add title of lab 13, above
+![CF](https://i.imgur.com/7v5ASc8.png) 13: Adding a new resource
 
 ## Submission Instructions
 
@@ -20,15 +18,6 @@ TODO: add updated wireframes
 - [HTML5 Forms](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
 
 ## Configuration
-
-- `ENV VARS` - Paste the following commands into your terminal window for testing locally.
-  * _Note: these will be temporary while the current shell session (window) is open._
-
-```
-export PORT=3000
-Mac:     export DATABASE_URL=postgres://localhost:5432/books_app
-Windows: export DATABASE_URL=postgres://USER:PASSWORD@localhost:5432/books_app
-```
 
 Use the following as a guide for your directory structure.
 
@@ -56,6 +45,7 @@ book_app (repository)
 │  │   ├── head.ejs
 │  │   └── header.ejs
 │  └── index.ejs
+├── .env
 ├── .eslintrc.json
 ├── .gitignore
 ├── package-lock.json
@@ -86,12 +76,13 @@ This lab assignment will add the ability for a user to add a new book to the dat
 
 - Include a hamburger menu that will allow the ability to navigate between views. Update your partials as needed.
 
-#### STRETCH GOAL
+## Stretch Goal
 
-*As a developer, I want to explore further functionality so that I can continue to improve the user's experience.*
+*As a user, I want to organize my books by author so that I can view all of the books that a single author has written and view the details about their work.*
 
-- Implement the ability for your hamburger menu to operate without the use of JavaScript. You will need to research how to enable a 'pop-up/out' style menu with vanilla HTML and CSS.
-- Consider any further UI/UX features which will allow a more friendly interface for your users.
+- Create a new form to add details about an individual author.
+- Create a new table in your `books_app` database for authors. The table should include the author's name and a book id as the foreign key.
+- Add the functionality to select an author and view all of the books in your collection written by that author.
 
 ## Documentation
 

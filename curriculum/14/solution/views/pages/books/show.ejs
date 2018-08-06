@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <% include ../../partials/head %>
+    <link rel="stylesheet" href="/styles/modules/books/show.css">
   </head>
   <body>
     <% include ../../partials/header %>
@@ -10,16 +11,16 @@
         <h2><%= message %></h2>
       <% } %>
       <% if (book.subtitle) { %>
-        <h3><%= book.title %>: <%= book.subtitle %></h3>
+        <h3>Title: <%= book.title %>: <%= book.subtitle %></h3>
       <% } else { %>
-        <h3><%= book.title %></h3>
+        <h3>Title: <%= book.title %></h3>
       <% } %>      
-      <div class="book-details">
-        <p><%= book.author %></p>
-        <p><%= book.isbn %></p>
+      <div>
+        <p>By <%= book.author %></p>
+        <p>ISBN: <%= book.isbn %></p>
       </div>
       <img src="<%= book.image_url %>">
-      <p><%= book.description %></p>
+      <p><span>Description: </span><%= book.description %></p>
     </main>
     <% include ../../partials/footer %>
   </body>
