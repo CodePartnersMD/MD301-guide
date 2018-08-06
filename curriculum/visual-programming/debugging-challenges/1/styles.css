@@ -9,3 +9,9 @@ li {
   height: 25px;
   width: 100px;
 }
+
+/* Demonstrate in Code Pen with the output collapsed */
+
+/* Float:left will take the list items out of normal flow, so the div will compress and the border will appear as a yellow line across the screen */
+
+/* Solution: add overflow:hidden to the div */
