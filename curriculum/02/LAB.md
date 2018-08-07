@@ -1,6 +1,6 @@
 ![CF](https://i.imgur.com/7v5ASc8.png)
 
-## Code Wars Challenge
+## Code Challenge
 
 ## Submission Instructions
 
