@@ -19,3 +19,9 @@ def get_names():
         print(doc['actor'])
         
 get_names()
+
+
+def get_number_of_docs(doctors):
+       return len(doctors)
+    
+get_number_of_docs(DOCTORS)
