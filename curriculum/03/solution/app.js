@@ -7,24 +7,17 @@ function Image(item) {
   this.keywords = item.keywords;
 }
 
-Image.all = [];
-
 Image.prototype.render = function() {
-  $('main').append('<div class="clone"></div>');
-  let templateClone = $('div[class="clone"]')
-  templateClone.html($('#photo-template').html())
-  templateClone.find('h2').text(this.title);
-  templateClone.find('img').attr('src', this.image_url);
-  templateClone.find('p').text(this.description);
-  templateClone.removeClass('clone');
-
-  this.keywords.forEach(function(keyword) {
-    templateClone.attr('class', keyword);
-  })
+  let template = Handlebars.compile($('#photo-template').html());
+  return template(this);
 }
 
-Image.readJson = () => {
-  $.get('page-1.json').then(data => {
+Image.readJson = (page) => {
+  Image.all = [];
+
+  $('main div').empty();
+
+  $.get(`page-${page}.json`).then(data => {
 
     data.forEach(item => {
       Image.all.push(new Image(item));
@@ -33,7 +26,7 @@ Image.readJson = () => {
     Image.sortBy(Image.all, 'title');
 
     Image.all.forEach(image => {
-      $('main').append(image.render());
+      $('#image-container').append(image.render());
     })
 
   }, 'json')
@@ -88,5 +81,8 @@ $('select').on('change', function() {
   $(`option[value=${$(this).val()}]`).fadeIn();
 })
 
+$('footer ul').on('click', 'li', function() {
+  Image.readJson($(this).attr('id'));
+})
 
-Image.readJson();
+Image.readJson(1);

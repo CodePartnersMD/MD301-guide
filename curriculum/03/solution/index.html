@@ -3,6 +3,14 @@
   <head>
     <title>Photo Gallery</title>
     <link rel="stylesheet" href="styles.css">
+
+    <script id="photo-template" type="text/x-handlebars-template">
+      <div>
+        <h2>{{ title }}</h2>
+        <img src="{{ image_url }}" alt="" />
+        <p>{{ description }}</p>
+      </div>
+    </script>
   </head>
   <body>
     <header>
@@ -17,21 +25,16 @@
         <option>Filter by Keyword</option>
       </select>
     </header>
-    <main>
-      <section id="photo-template">
-        <h2></h2>
-        <img src="" alt="">
-        <p></p>
-      </section>
-      <ul>
-        <li>Next Page</li>
-        <li>Previous Page</li>
-      </ul>
-    </main>
+    <main id="image-container"></main>
     <footer>
-      &copy; 2018 Code Fellows
+      <ul>
+        <li id="2">Next Page</li>
+        <li id="1">Previous Page</li>
+      </ul>
+      <p>&copy; 2018 Code Fellows</p>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
