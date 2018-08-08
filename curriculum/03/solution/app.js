@@ -56,7 +56,7 @@ Image.populateFilters = function() {
   let filterKeywords = [];
 
   Image.all.forEach(image => {
-    image.keywords.forEach(keyword => {
+    image.keywords.split(' ').forEach(keyword => {
       if (!filterKeywords.includes(keyword)) filterKeywords.push(keyword);
     });
   })
@@ -71,7 +71,7 @@ $('select').on('change', function() {
   $('div').hide();
 
   Image.all.forEach(image => {
-    image.keywords.forEach(keyword => {
+    image.keywords.split(' ').forEach(keyword => {
       if ($(this).val() === keyword) {
         $(`div[class="${$(this).val()}"`).fadeIn();
       }
