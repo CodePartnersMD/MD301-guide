@@ -14,7 +14,7 @@ Refer students to the demonstration of the Heroku deployment process from the wo
 
 ## How do I prep for today?
 
-Review the code base for the static client. Be prepared to review this code with students for approximately 15 during lecture. Certain topics, like Handlebars, will not be new. However, `$.get` is brand new, so be prepared to discuss the web request-response cycle and the difference between the front end and the back end.
+Review the code base for the static client. Be prepared to review this code with students for approximately 15 minutes during lecture. Certain topics, like Handlebars, will not be new. However, `$.get` is brand new, so be prepared to discuss the web request-response cycle and the difference between the front end and the back end.
 
 Review the demo code for today. There are several comments throughout the file, so feel free to use those as guidance as you like. Note: provide function signature for `getWeather`, but not the route.
 
@@ -49,7 +49,7 @@ Today is the first time students will be writing code in a `server.js` file, as 
 
 Use Postman to demonstrate the request to a third-party API specifically the Google Geocoding API. Collapse the response object and systematically drill down into the individual properties. Remind students that these are strings, numbers, Booleans, arrays, and objects, all of which they have been working with since 201.
 
-Demonstrate how to request information from the API and only respond with the data the client is expecting. They can view the client code base to determine what the response should include. Emphasize the fact that they are sending an array of objects to the client, which will then be rendered with Handlebars.
+Demonstrate how to request information from the API and only respond with the data the client is expecting. They can view the client code base to determine what the response should include. Emphasize the fact that they are sending JSON to the client, which will then be rendered with Handlebars.
 
 ## Code skeleton
 
