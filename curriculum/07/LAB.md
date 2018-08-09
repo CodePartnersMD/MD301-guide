@@ -44,13 +44,14 @@ For this lab assignment, you will use the latitude and longitude to request info
 
 Repository set-up: 
 - One person from your group should create a new repository on GitHub called `lab-07-back-end`. Add your partner(s) as collaborator(s). Clone your repository.
-- Select one person's lab 6 code to use for today's lab. The person whose code is selected should copy their lab 6 solution into the lab 7 repository. From the command line, use the `mv` command to copy _only_ the `server.js` file. Initialize your project with Node and install the necessary packages; confirm in your `package.json` file. Add, commit, and push to your master branch.
+- Select one person's lab 6 code to use for today's lab. The person whose code is selected should copy their lab 6 solution into the lab 7 repository. From the command line, use the `cp` command to copy _only_ the `server.js` file. Initialize your project with Node and install the necessary packages; confirm in your `package.json` file. Add, commit, and push to your master branch.
 
 Code Review:
 - From this point on, work on semantically-named non-master branches. 
 - The student(s) whose lab 6 solution code was not selected should now be the driver. With your partner(s), identify three improvements. This should either be pieces of code that can be refactored or three sections of the code base to add verbose comments to. Note: you do not need to select one or the other. For example, you may select one section to comment on and two pieces of code that can be refactored, for a total of three improvements.
-- Work on a new branch for each improvement. Add, commit, and push the changes one at a time and create a pull request to your master branch on GitHub. These will serve as the first three commits and pull requests which your TA will review during grading, so pay attention to your Git/GitHub workflow. Make sure to check out your master branch and pull the changes after each pull request is merged, then create a new branch for the next refactor/comment.
+- Work on one improvement at a time, making sure to add, commit, and push the changes as each improvement is complete. These will serve as the first three commits which your TA will review during grading, so pay attention to your Git/GitHub workflow. Once all three improvements are complete, create and merge a pull request to your master branch. 
 - Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as lab 6. Your deployed site **should not** contain any broken functionality. You may now begin your feature tasks for lab 7.
+- As you continue to work on features, make sure to check out your master branch and pull the changes after each pull request is merged. Then, create a new branch from your master branch and continue working.
 
 *1. As a user, I want my application to use constructors for each model so that I can ensure my objects are created the same way each time and will have the ability to inherit methods.*
 - Refactor your code base to use constructor functions, one per API response. 
