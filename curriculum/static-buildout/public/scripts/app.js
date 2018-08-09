@@ -15,7 +15,7 @@ function fetchCityData(event) {
   event.preventDefault();
   let searchQuery = $('#input-search').val();
 
-  $.get('/location', {data: searchQuery})
+  $.get(`${__API_URL__}/location`, {data: searchQuery})
     .then(location => {
       displayMap(location);
       getResource('weather', location);
@@ -39,7 +39,7 @@ function displayMap(location) {
 }
 
 function getResource(resource, location) {
-  $.get(`/${resource }`, {data: location})
+  $.get(`${__API_URL__}/${resource }`, {data: location})
     .then(result => {
       compileTemplate(result, `${resource}-results`, `${resource}-results-template`);
     })
