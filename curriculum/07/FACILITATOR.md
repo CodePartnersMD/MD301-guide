@@ -8,7 +8,7 @@ Students will also refactor `.forEach` to `.map`, so discuss this process but do
 
 ## How do I prep for today?
 
-Begin with solution code for class 6 as the starter code for class 7 demo code, to save lines of typing the same code they have just seen during code review.
+Begin with solution code for class 6 as the starter code for class 7 demo code, to save lines of typing the same code they have just seen during code review. Or, use code from a team that would like their code base to be reviewed and refactored.
 
 ## What changed from the previous class?
 
