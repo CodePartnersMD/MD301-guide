@@ -49,8 +49,10 @@ Repository set-up:
 Code Review:
 - From this point on, work on semantically-named non-master branches. 
 - The student(s) whose lab 6 solution code was not selected should now be the driver. With your partner(s), identify three improvements. This should either be pieces of code that can be refactored or three sections of the code base to add verbose comments to. Note: you do not need to select one or the other. For example, you may select one section to comment on and two pieces of code that can be refactored, for a total of three improvements.
-- Work on one improvement at a time, making sure to add, commit, and push the changes as each improvement is complete. These will serve as the first three commits which your TA will review during grading, so pay attention to your Git/GitHub workflow. Once all three improvements are complete, create and merge a pull request to your master branch. 
-- Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as lab 6. Your deployed site **should not** contain any broken functionality. You may now begin your feature tasks for lab 7.
+- Work on one improvement at a time, making sure to add, commit, and push the changes as each improvement is complete. These will serve as the first three commits which your TA will review during grading, so pay attention to your Git/GitHub workflow. Once all three improvements are complete, create and merge a pull request to your master branch.
+
+Heroku Deployment:
+- Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as lab 6. Create a new Heroku instance with your new partner(s) today. Your deployed site **should not** contain any broken functionality. You may now begin your feature tasks for lab 7.
 - As you continue to work on features, make sure to check out your master branch and pull the changes after each pull request is merged. Then, create a new branch from your master branch and continue working.
 
 *1. As a user, I want my application to use constructors for each model so that I can ensure my objects are created the same way each time and will have the ability to inherit methods.*

@@ -50,9 +50,11 @@ For this lab assignment, you will use the latitude and longitude to request info
 Repository set-up: 
 - One person from your group should create a new repository on GitHub called `lab-08-back-end`. Add your partner(s) as collaborator(s). Clone your repository.
 - Follow the same code review process as lab 7.
-- Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as labs 6 and 7. Your deployed site **should not** contain any broken functionality.
+
+Heroku Deployment:
+- Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as labs 6 and 7. Create a new Heroku instance with your new partner(s) today. Your deployed site **should not** contain any broken functionality. 
 - You will also need to provision a SQL database on Heroku. To do so, nagivate to the Resources tab and in the Add-Ons, search for "Postgres" and provision the free version.
-- You may now begin your feature tasks for lab 8.
+- As you continue to work on features, make sure to check out your master branch and pull the changes after each pull request is merged. Then, create a new branch from your master branch and continue working. You may now begin your feature tasks for lab 8.
 
 *1. As a user, I want my application to persist search queries and API responses in a database so that I do not need to request the same information from the API every time.*
 - Install and require the NPM PostgreSQL package `pg` in your server.js file.
