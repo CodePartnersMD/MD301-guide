@@ -56,34 +56,39 @@ Heroku Deployment:
 - You will also need to provision a SQL database on Heroku. To do so, nagivate to the Resources tab and in the Add-Ons, search for "Postgres" and provision the free version.
 - As you continue to work on features, make sure to check out your master branch and pull the changes after each pull request is merged. Then, create a new branch from your master branch and continue working. You may now begin your feature tasks for lab 8.
 
-*1. As a user, I want my application to persist search queries and API responses in a database so that I do not need to request the same information from the API every time.*
+### Feature #1: Caching data
+
+#### Why are we implementing this feature?
+
+- As a user, I want the application to perform quickly so that I can search for locations frequently and reliably.
+
+#### How are we implementing this feature?
+
+- Store API results in a PostgreSQL database
+- If the data already exists in the database, retrieve it instead of making a duplicate request to the API
+
+#### What specific steps do we need to follow?
+
+Database set-up:
 - Install and require the NPM PostgreSQL package `pg` in your server.js file.
 - Add you connection string to your `.env` file as your `DATABASE_URL`.
   - Windows and Linux users: You should have retained the user/password from the pre-work for this course. Your OS may require that your connection string is composed of additional information including user and password. For example: `postgres://USER:PASSWORD@HOST:PORT/DBNAME`;
   - Mac users: `postgres://localhost:5432/DBNAME`;
 - Pass the appropriate argument when instantiating a new Client.
 
-*2. As a user, I want to write a series of SQL commands so that I can drop and create my tables in a single command.*
+Table creation:
 - Create a file called `schema.sql` which contains correct SQL queries to drop all of your tables and create them, if they do not already exist. All tables should be created in the same database.
 - Execute this file from the command line with the following syntax: `psql -d <database-name> -f <filename>`.
   - For example, `psql -d city_explorer -f schema.sql`
 
-*3. As a user, I want to check the database every time a user enters a search so that I can retrieve the information, if it exists.*
+Server logic:
 - Within your route callback, invoke your lookup function, passing the appropriate options. For example, you will need to include the search query, a function to execute if the records exist in the table, and a function to execute if the records do not exist in the table.
   - If the records exist, send them as the response to the client.
   - If the records do not exist, request the data from the appropriate APIs, as you have in labs 6 and 7. Store the results in the appropriate table in your database and send the API results as the response to the client.
 - Redeploy your application.
 
-*4. As a user, I want to request information about meetups in the area so that users can learn about the events taking place in the location.*
-- Create a route with a method of `get` and a path of `/meetups`. The callback should make a Superagent-proxied request to the Meetup API using the necessary location information.
-- Create a corresponding constructor function for the result.
-- For each meetup of the result, return an object which contains the necessary information for correct client rendering. Store these objects together and send them as the response to the client.
-- Add the appropriate logic to store this response in a table and the ability to check the database upon subsequent requests. Update your schemas.
-- Redeploy your application.
-
 ## Stretch Goal
 
-*As a developer, I want to make my code more DRY so that it is more efficient.*
 - Create a single "lookup" function for all models to share.
 
 ## Documentation
