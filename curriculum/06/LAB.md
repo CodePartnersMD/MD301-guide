@@ -52,7 +52,7 @@ lab-06-repository
 
 This week, you will be building a stand-alone back end which will interact with a static front end. Working with a new partner each day, you will request data from a total of six third-party APIs, modify the data as needed, and send the data to the client to be displayed in the browser. You will also be persisting data in a SQL database.
 
-Every day, you and your partner(s) will deploy your back end to Heroku.
+Every day, you and your partner(s) will deploy your back end as a new instance on Heroku.
 
 You will have access to view the code base for the client, but will not be able to modify it in any way.
 
