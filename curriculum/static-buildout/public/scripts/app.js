@@ -30,7 +30,6 @@ function fetchCityData(event) {
 function displayMap(location) {
   $('.query-placeholder').text(`Here are the results for ${location.formatted_query}`);
 
-  // toggle visibility with addClass/removeClass
   $('#map').removeClass('hide');
   $('section, div').removeClass('hide');
 
