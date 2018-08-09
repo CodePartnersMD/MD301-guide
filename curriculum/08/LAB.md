@@ -60,13 +60,13 @@ Heroku Deployment:
 - Install and require the NPM PostgreSQL package `pg` in your server.js file.
 - Add you connection string to your `.env` file as your `DATABASE_URL`.
   - Windows and Linux users: You should have retained the user/password from the pre-work for this course. Your OS may require that your connection string is composed of additional information including user and password. For example: `postgres://USER:PASSWORD@HOST:PORT/DBNAME`;
-  - Mac users: `postgres://localhost:5432`;
+  - Mac users: `postgres://localhost:5432/DBNAME`;
 - Pass the appropriate argument when instantiating a new Client.
 
 *2. As a user, I want to write a series of SQL commands so that I can drop and create my tables in a single command.*
 - Create a file called `schema.sql` which contains correct SQL queries to drop all of your tables and create them, if they do not already exist. All tables should be created in the same database.
 - Execute this file from the command line with the following syntax: `psql -d <database-name> -f <filename>`.
-  - For example, `psql -d search_history -f schema.sql`
+  - For example, `psql -d city_explorer -f schema.sql`
 
 *3. As a user, I want to check the database every time a user enters a search so that I can retrieve the information, if it exists.*
 - Within your route callback, invoke your lookup function, passing the appropriate options. For example, you will need to include the search query, a function to execute if the records exist in the table, and a function to execute if the records do not exist in the table.

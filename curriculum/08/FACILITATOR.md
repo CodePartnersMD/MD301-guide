@@ -5,7 +5,7 @@
 Lab 8 adds persistence with a SQL database. This will be the first exposure that students have to any type of database. Discuss database modeling and schemas, as well as data types when creating tables. 
 
 Students will be writing a file called `schema.sql` so demonstrate how to write this type of file and execute it from the command line with the following syntax: `psql -d <database-name> -f <filename>`.
-  - For example, `psql -d search_history -f schema.sql`
+  - For example, `psql -d city_explorer -f schema.sql`
 
 ## How do I prep for today?
 
