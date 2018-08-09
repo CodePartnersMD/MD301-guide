@@ -55,25 +55,86 @@ Heroku Deployment:
 - Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as lab 6. Create a new Heroku instance with your new partner(s) today. Your deployed site **should not** contain any broken functionality. You may now begin your feature tasks for lab 7.
 - As you continue to work on features, make sure to check out your master branch and pull the changes after each pull request is merged. Then, create a new branch from your master branch and continue working.
 
-*1. As a user, I want my application to use constructors for each model so that I can ensure my objects are created the same way each time and will have the ability to inherit methods.*
-- Refactor your code base to use constructor functions, one per API response. 
-- Refer to the client code base to determine the properties each model requires.
+### Feature #1: Consistently format data
 
-*2. As a user, I want to use `.map` instead of `.forEach` so that I can return an array of my object instances in one step.*
-- Refactor your `getWeather` callback to use `.map` and send the resulting array as your response to the client.
+#### Why are we implementing this feature?
+
+- As a user, I want the application to provide properly formatted data so that I can view similar data for any location I choose.
+
+#### How are we implementing this feature?
+
+- A constructor function will ensure that each object is created according to the same format every time the server receives data from an API.
+- The `.map` method will return an array of objects, which can then be sent as the JSON response to the client.
+
+#### What specific steps do we need to follow?
+
+- Refactor your code base to use constructor functions, one per API response. 
+- Refactor your `getWeather` callback to use `.map` and send the resulting array as your response to the client. Continue to use `.map` for the remainder of labs 7, 8, and 9.
 - Redeploy your application.
 
-*3. As a user, I want to request information about restaurants in the area so that users can view recommendations based on the search query.*
+### Feature #2: Retrieve restaurant information
+
+#### Why are we implementing this feature?
+
+- As a user, I want to request information about restaurants in the area so that users can view recommendations based on the search query.
+
+#### How are we implementing this feature?
+
+- Make a request to the Yelp API for information about local businesses.
+
+#### What specific steps do we need to follow?
+
 - Create a route with a method of `get` and a path of `/yelp`. The callback should make a Superagent-proxied request to the Yelp API using the necessary location information. Note: review the Superagent docs regarding setting authorization headers.
 - Create a corresponding constructor function for the result.
-- For each business of the result, return an object which contains the necessary information for correct client rendering. Store these objects together and send them as the response to the client.
+- For each business of the result, return an object which contains the necessary information for correct client rendering. See the sample response, below.
 - Redeploy your application.
 
-*4. As a user, I want to request information about movies that were set in the area so that users can learn more about the location.*
+Endpoint:
+`/yelp`
+
+Example Response:
+```sh
+{
+  "name": a string containing the name of the business,
+  "image_url": a URL for the business,
+  "price": average price,
+  "rating": average rating,
+  "url": URL to the business's website
+}
+```
+
+### Feature #3: Retrieve movie information
+
+#### Why are we implementing this feature?
+
+- As a user, I want to request information about movies that were set in the area so that users can learn more about the location.
+
+#### How are we implementing this feature?
+
+- Make a request to The Movie Database API for information about movies filmed in the location.
+
+#### What specific steps do we need to follow?
+
 - Create a route with a method of `get` and a path of `/movies`. The callback should make a Superagent-proxied request to The Movie Database API using the necessary location information.
 - Create a corresponding constructor function for the result.
-- For each movie of the result, return an object which contains the necessary information for correct client rendering. Store these objects together and send them as the response to the client.
+- For each movie of the result, return an object which contains the necessary information for correct client rendering. See the sample response, below.
 - Redeploy your application.
+
+Endpoint:
+`/movies`
+
+Example Response:
+```sh
+{
+  "title": a string containing the title of the film,
+  "overview": a string containing a description of the film,
+  "average_votes": average votes for the film,
+  "total_votes": total votes for the film,
+  "image_url": URL for the poster image,
+  "popularity": numeric popularity score,
+  "released_on": date in the format of YYYY-MM-DD
+}
+```
 
 ## Documentation
 
