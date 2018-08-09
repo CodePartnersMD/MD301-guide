@@ -19,7 +19,7 @@
 
 ## Configuration
 
-- `.env` - with your PORT and API keys. Make sure this file is included in your `.gitignore`
+- `.env` - with your PORT and API keys. Make sure this file is in your `.gitignore` so your keys are not pushed to GitHub.
 - `README.md` - with documentation regarding your lab and it's current state of development. Check the "documentation" section below for more details on how that should look **AT MINIMUM**
 - `.gitignore` - with standard NodeJS configurations
 - `.eslintrc.json` - with Code 301 course standards for the linter

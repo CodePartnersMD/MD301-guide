@@ -29,7 +29,7 @@
 
 ## Configuration
 
-- `.env` - with your PORT and API keys. Make sure this file is included in your `.gitignore`
+- `.env` - with your PORT and API keys. Make sure this file is in your `.gitignore` so your keys are not pushed to GitHub.
 - `README.md` - with documentation regarding your lab and it's current state of development. Check the "documentation" section below for more details on how that should look **AT MINIMUM**
 - `.gitignore` - with standard NodeJS configurations
 - `.eslintrc.json` - with Code 301 course standards for the linter
@@ -67,8 +67,7 @@ Heroku deployoment:
 - From the Heroku dashboard, select your instance. In the Settings tab, click on the "Reveal Config Vars" button. Enter your API keys.
 - In the Deploy tab, connect your instance to your repository and enable automatic deploys from your master branch. Deploy your application and make sure there are no errors. 
 
-*1. As a user, I want to store my API keys in a secure way so that they are protected from others.*
-- Create a `.env` file and enter your API keys. Make sure this file is in your `.gitignore` so your keys are not pushed to GitHub.
+
 
 *2. As a user, I want to translate the search query into latitude and longitude so that I can use the same query to request data from other APIs.*
 - Create a route with a method of `get` and a path of `/location`. The route callback should invoke a function to convert the search query to a latitude and longitude. The function should make a Superagnet-proxied request to the Google Maps Geocoding API. The callback should then send the response to the client.
