@@ -19,8 +19,6 @@
 
 [PostgreSQL Docs](https://www.postgresql.org/docs/)
 
-[Meetup API Docs](https://www.meetup.com/meetup_api/)
-
 ## Configuration
 
 - `.env` - with your PORT and API keys. Make sure this file is in your `.gitignore` so your keys are not pushed to GitHub.
