@@ -161,7 +161,7 @@ Trail.lookup = lookup;
 Trail.prototype = {
   save: function(location_id) {
     const SQL = `INSERT INTO ${this.tableName} (name, location, length, stars, star_votes, summary, trail_url, conditions, condition_date, condition_time, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
-    const values = [this.name, this.location, this.length, this.stars, this.star_votes, this.summary, this.trail_url, this.conditions, this.condition_date, this.conditin_time, location_id];
+    const values = [this.name, this.location, this.length, this.stars, this.star_votes, this.summary, this.trail_url, this.conditions, this.condition_date, this.condition_time, location_id];
 
     client.query(SQL, values);
   }
@@ -173,25 +173,26 @@ function getLocation(request, response) {
 
   return client.query(SQL, values)
     .then(result => {
-      let location = {};
-
       if(result.rowCount === 1) {
-        location = result.rows[0];
+        response.send(result.rows[0]);
       } else {
         searchToLatLong(request.query.data)
-          .then(loc => {
-            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
-            const values = [loc.search_query, loc.formatted_query, loc.latitude, loc.longitude];
+          .then(location => {
+            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id;`;
+            const values = [location.search_query, location.formatted_query, location.latitude, location.longitude];
 
             client.query(SQL, values)
+              .then(result => {
+                location.id = result.rows[0].id;
+                response.send(location);
+              })
               .catch(console.error);
 
-            location = loc;
+            
           })
           .catch(error => handleError(error, response));
       }
 
-      response.send(location);
     })
     .catch(error => handleError(error, response));
 }
@@ -219,7 +220,7 @@ function getWeather(request, response) {
     cacheMiss: function() {
       const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.query.data.longitude}`;
 
-      superagent.get(url)
+      return superagent.get(url)
         .then(result => {
           const weatherSummaries = result.body.daily.data.map(day => {
             const summary = new Weather(day);
