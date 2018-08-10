@@ -187,12 +187,9 @@ function getLocation(request, response) {
                 response.send(location);
               })
               .catch(console.error);
-
-            
           })
           .catch(error => handleError(error, response));
       }
-
     })
     .catch(error => handleError(error, response));
 }
