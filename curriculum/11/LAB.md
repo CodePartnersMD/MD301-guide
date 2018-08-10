@@ -1,6 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) 11:
-
-TODO: add title of this lab, above
+![CF](https://i.imgur.com/7v5ASc8.png) Class 11: Server-side templating with EJS
 
 ## Submission Instructions
 
@@ -20,17 +18,9 @@ TODO: Add updated wireframes
 
 ## Configuration
 
-- `ENV VARS` - Paste the following commands into your terminal window for testing locally.
-  * _Note: these will be temporary while the current shell session (window) is open._
-
-```
-export PORT=3000
-Mac:     export DATABASE_URL=postgres://localhost:5432/books_app
-Windows: export DATABASE_URL=postgres://USER:PASSWORD@localhost:5432/books_app
-```
-
 _Your repository must include the following config files:_
 
+- `.env` - with your PORT and API keys. Make sure this file is included in your `.gitignore`
 - `README.md` - with documentation regarding your lab and it's current state of development. Check the "documentation" section below for more details on how that should look **AT MINIMUM**
 - `.gitignore` - with standard NodeJS configurations
 - `.eslintrc.json` - with Code 301 course standards for the linter
@@ -55,6 +45,7 @@ book_app (repository)
 │  ├── pages
 │  │   └── error.ejs
 │  └── index.ejs
+├── .env
 ├── .eslintrc.json
 ├── .gitignore
 ├── package-lock.json
@@ -148,6 +139,14 @@ TODO: add pg:pull instructions
 - Style your site using a **mobile-only** approach. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
 - Ensure the proper use of SMACCS principles. You and your partner(s) may choose to use float-based layout, grid-based layout, Flexbox, or a combination of these.
 - You will need to include icon fonts from a source such as Icomoon or FontAwesome for the social media icons you choose to include in the application.
+
+## Stretch Goal
+
+*As a developer, I want to automatically populate the database so my application is functioning efficiently.*
+
+- Implement a NodeJS script that will read a JSON file and populate your PostgreSQL database with that content.
+  - You will need to utilize the `fs` (file system) module from Node.
+TODO: Add link to fs docs
 
 ## Documentation
 

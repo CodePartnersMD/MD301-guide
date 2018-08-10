@@ -1,6 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
-
-TODO: add title of lab 14, above
+![CF](https://i.imgur.com/7v5ASc8.png) 14: Google Books API
 
 ## Submission Instructions
 
@@ -22,16 +20,6 @@ TODO: add updated wireframes
 
 
 ## Configuration
-
-- `ENV VARS` - Paste the following commands into your terminal window for testing locally.
-  * _Note: these will be temporary while the current shell session (window) is open._
-
-
-```
-export PORT=3000
-Mac:     export DATABASE_URL=postgres://localhost:5432/books_app
-Windows: export DATABASE_URL=postgres://USER:PASSWORD@localhost:5432/books_app
-```
 
 Use the following as a guide for your directory structure.
 
@@ -63,6 +51,7 @@ book_app (repository)
 │  │   ├── head.ejs
 │  │   └── header.ejs
 │  └── index.ejs
+├── .env
 ├── .eslintrc.json
 ├── .gitignore
 ├── package-lock.json
@@ -89,6 +78,17 @@ Today's refactor will implement the use of a third-party API, Google Books, whic
 - In the results view, include a hidden form that will be populated with the details of each book from the API response. Provide the ability for a user to click a button and add a single book to the database, using the details from the hidden form. Consider user experience when building out this functionality.
 - Where possible, reuse callbacks you created in earlier book app labs to add a single book to the database. If successful, provide feedback to the user that the book was added to the database.
 - Redeploy your application.
+
+## Stretch Goal
+
+*As a user, I want to update the books in my collection so it is always current.*
+- Add the ability for a user to update an existing book. From the detail view, the user should be able to choose to update the book. This will pre-populate a form with the existing details. When the user submits the updated details, the corresponding API route should update the entry in the database and provide feedback to the user that the book details were successfully updated.
+  - If you completed the stretch goals for lab 13, add the ability to update an author as well.
+
+*As a user, I want to remove books from my collection so that it accurately reflects my personal preferences.*
+- From the detail view, add the ability for a user to delete an existing book. The corresponding API route should remove the entry from the database and provide feedback to the user that the book was removed.
+  - If you completed the stretch goals for lab 13, add the ability to delete an author as well.
+
 
 ## Documentation
 
