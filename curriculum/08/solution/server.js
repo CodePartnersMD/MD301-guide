@@ -34,20 +34,6 @@ function handleError(err, res) {
   if (res) res.status(500).send('Sorry, something went wrong');
 }
 
-// Look for the results in the database
-function lookup(options) {
-  const SQL = `SELECT * FROM ${options.tableName} WHERE location_id=$1;`;
-  client.query(SQL, [options.location])
-    .then(result => {
-      if(result.rowCount > 0) {
-        options.cacheHit(result);
-      } else {
-        options.cacheMiss();
-      }
-    })
-    .catch(error => handleError(error));
-}
-
 // Models
 function Location(query, res) {
   this.tableName = 'locations';
@@ -63,8 +49,18 @@ function Weather(day) {
   this.time = new Date(day.time * 1000).toString().slice(0, 15);
 }
 
-Weather.tableName = 'weathers';
-Weather.lookup = lookup;
+Weather.lookup = function(options) {
+  const SQL = `SELECT * FROM weathers WHERE location_id=$1;`;
+  client.query(SQL, [options.location])
+    .then(result => {
+      if(result.rowCount > 0) {
+        options.cacheHit(result);
+      } else {
+        options.cacheMiss();
+      }
+    })
+    .catch(error => handleError(error));
+}
 
 Weather.prototype = {
   save: function(location_id) {
@@ -84,8 +80,18 @@ function Yelp(business) {
   this.url = business.url;
 }
 
-Yelp.tableName = 'yelps';
-Yelp.lookup = lookup;
+Yelp.lookup = function(options) {
+  const SQL = `SELECT * FROM yelps WHERE location_id=$1;`;
+  client.query(SQL, [options.location])
+    .then(result => {
+      if(result.rowCount > 0) {
+        options.cacheHit(result);
+      } else {
+        options.cacheMiss();
+      }
+    })
+    .catch(error => handleError(error));
+}
 
 Yelp.prototype = {
   save: function(location_id) {
@@ -107,8 +113,18 @@ function Movie(movie) {
   this.released_on = movie.release_date;
 }
 
-Movie.tableName = 'movies';
-Movie.lookup = lookup;
+Movie.lookup = function(options) {
+  const SQL = `SELECT * FROM movies WHERE location_id=$1;`;
+  client.query(SQL, [options.location])
+    .then(result => {
+      if(result.rowCount > 0) {
+        options.cacheHit(result);
+      } else {
+        options.cacheMiss();
+      }
+    })
+    .catch(error => handleError(error));
+}
 
 Movie.prototype = {
   save: function(location_id) {
@@ -127,8 +143,18 @@ function Meetup(meetup) {
   this.host = meetup.group.who;
 }
 
-Meetup.tableName = 'meetups';
-Meetup.lookup = lookup;
+Meetup.lookup = function(options) {
+  const SQL = `SELECT * FROM meetups WHERE location_id=$1;`;
+  client.query(SQL, [options.location])
+    .then(result => {
+      if(result.rowCount > 0) {
+        options.cacheHit(result);
+      } else {
+        options.cacheMiss();
+      }
+    })
+    .catch(error => handleError(error));
+}
 
 Meetup.prototype = {
   save: function(location_id) {
@@ -145,25 +171,23 @@ function getLocation(request, response) {
 
   return client.query(SQL, values)
     .then(result => {
-      let location = {};
-
       if(result.rowCount === 1) {
-        location = result.rows[0];
+        response.send(result.rows[0]);
       } else {
         searchToLatLong(request.query.data)
-          .then(loc => {
-            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
-            const values = [loc.search_query, loc.formatted_query, loc.latitude, loc.longitude];
+          .then(location => {
+            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id;`;
+            const values = [location.search_query, location.formatted_query, location.latitude, location.longitude];
 
             client.query(SQL, values)
+              .then(result => {
+                location.id = result.rows[0].id;
+                response.send(location);
+              })
               .catch(console.error);
-
-            location = loc;
           })
           .catch(error => handleError(error, response));
       }
-
-      response.send(location);
     })
     .catch(error => handleError(error, response));
 }
