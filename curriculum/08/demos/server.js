@@ -64,25 +64,23 @@ function getLocation(request, response) {
 
   return client.query(SQL, values)
     .then(result => {
-      let location = {};
-
       if(result.rowCount === 1) {
-        location = result.rows[0];
+        response.send(result.rows[0]);
       } else {
         searchToLatLong(request.query.data)
-          .then(loc => {
-            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`;
-            const values = [loc.search_query, loc.formatted_query, loc.latitude, loc.longitude];
+          .then(location => {
+            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id;`;
+            const values = [location.search_query, location.formatted_query, location.latitude, location.longitude];
 
             client.query(SQL, values)
+              .then(result => {
+                location.id = result.rows[0].id;
+                response.send(location);
+              })
               .catch(console.error);
-
-            location = loc;
           })
           .catch(error => handleError(error, response));
       }
-
-      response.send(location);
     })
     .catch(error => handleError(error, response));
 }
