@@ -9,14 +9,14 @@ CREATE TABLE IF NOT EXISTS locations (
   );
 
 CREATE TABLE IF NOT EXISTS weathers ( 
-    weather_id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY, 
     forecast VARCHAR(255), 
     time VARCHAR(255), 
     location_id INTEGER NOT NULL REFERENCES locations(id) 
   );
   
   CREATE TABLE IF NOT EXISTS yelps (
-    yelp_id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY, 
     name VARCHAR(255), 
     image_url VARCHAR(255), 
     price CHAR(5), 
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS weathers (
   );
   
   CREATE TABLE IF NOT EXISTS movies ( 
-    movie_id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY, 
     title VARCHAR(255), 
     overview VARCHAR(1000), 
     average_votes NUMERIC(4,2), 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS weathers (
   );
   
   CREATE TABLE IF NOT EXISTS meetups (
-    meetup_id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY, 
     link VARCHAR(255), 
     name VARCHAR(255), 
     creation_date CHAR(15), 
