@@ -12,6 +12,8 @@
 ## Resources
 
 - [EJS for server-side templating](http://ejs.co/)
+- [ExpressJS docs - app.set](https://expressjs.com/en/4x/api.html#app.set)
+- [Heroku Postgres Docs](https://devcenter.heroku.com/articles/heroku-postgresql)
 
 TODO: Add updated wireframes
 
