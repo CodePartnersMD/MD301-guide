@@ -4,7 +4,7 @@ function Image(item) {
   this.image_url = item.image_url;
   this.title = item.title;
   this.description = item.description;
-  this.keywords = item.keywords;
+  this.keyword = item.keyword;
 }
 
 Image.prototype.render = function() {
@@ -30,7 +30,10 @@ Image.readJson = (page) => {
     })
 
   }, 'json')
-    .then(Image.populateFilters);
+    .then(Image.populateFilter)
+    .then(Image.handleFilter)
+    .then(Image.handleSort)
+    .then(Image.detailView);
 }
 
 Image.sortBy = function(array, property) {
@@ -43,22 +46,34 @@ Image.sortBy = function(array, property) {
   });
 }
 
-$('input').on('change', function(event) {
-  event.preventDefault();
-  $('div').remove()
-  Image.sortBy(Image.all, $(this).attr('id'))
-  Image.all.forEach(image => {
-    image.render();
-  })
-})
+// $('input').on('change', Image.handleSort)
 
-Image.populateFilters = function() {
+// Image.handleSort = function() {
+//   $('div').remove()
+//   Image.sortBy(Image.all, $(this).attr('id'))
+//   Image.all.forEach(image => {
+//     $('#image-container').append(image.render());
+//   })
+// }
+
+Image.handleSort = function() {
+  $('input').on('change', function() {
+    $('div').remove()
+    Image.sortBy(Image.all, $(this).attr('id'))
+    Image.all.forEach(image => {
+      $('#image-container').append(image.render());
+    })
+  })
+}
+
+
+Image.populateFilter = function() {
   let filterKeywords = [];
 
+  $('option').not(':first').remove();
+
   Image.all.forEach(image => {
-    image.keywords.split(' ').forEach(keyword => {
-      if (!filterKeywords.includes(keyword)) filterKeywords.push(keyword);
-    });
+    if (!filterKeywords.includes(image.keyword)) filterKeywords.push(image.keyword);
   })
 
   filterKeywords.forEach(keyword => {
@@ -67,22 +82,41 @@ Image.populateFilters = function() {
   })
 }
 
-$('select').on('change', function() {
-  $('div').hide();
+// $('select').on('change', Image.handleFilter);
 
-  Image.all.forEach(image => {
-    image.keywords.split(' ').forEach(keyword => {
-      if ($(this).val() === keyword) {
-        $(`div[class="${$(this).val()}"`).fadeIn();
-      }
-    })
+Image.handleFilter = function () {
+  $('select').on('change', function() {
+    console.log($(this).val())
+    if($(this).val() !== 'Filter By Keyword') {
+      $('div').hide();
+
+
+      Image.all.forEach(image => {
+  
+        if ($(this).val() === image.keyword) {
+          $(`div[class="${$(this).val()}"`).fadeIn();
+        }
+  
+      })
+      $(`option[value=${$(this).val()}]`).fadeIn();
+    }
+
+
+
   })
-
-  $(`option[value=${$(this).val()}]`).fadeIn();
-})
+}
 
 $('footer ul').on('click', 'li', function() {
   Image.readJson($(this).attr('id'));
 })
 
+Image.detailView = function() {
+  $('div').on('click', function() {
+    $(this).toggleClass('active');
+    $(window).scrollTop(0);
+  });
+}
+
+
 Image.readJson(1);
+// Image.handleFilter();

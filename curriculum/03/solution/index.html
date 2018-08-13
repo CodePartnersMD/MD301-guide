@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="styles.css">
 
     <script id="photo-template" type="text/x-handlebars-template">
-      <div class="{{ keywords }}">
+      <div class="{{ keyword }}">
         <h2>{{ title }}</h2>
         <img src="{{ image_url }}" alt="" />
         <p>{{ description }}</p>
@@ -16,10 +16,10 @@
     <header>
       <h1>Photo Gallery</h1>
       <form>
-        <input type="radio" name="sort" id="title">
+        <input type="radio" name="sort" id="title" checked="checked">
         <label for="title">Sort by Title</label>
-        <input type="radio" name="sort" id="description">
-        <label for="description">Sort by Description</label>
+        <input type="radio" name="sort" id="keyword">
+        <label for="keyword">Sort by Keyword</label>
       </form>
       <select>
         <option>Filter by Keyword</option>
