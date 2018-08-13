@@ -25,3 +25,5 @@ Today we will be discussing how to create a new resource from an HTML5 form. Thi
 	-->
 
 As a result of completing lecture 13 of Code 301, students will:
+- Be able to create a HTML form to submit user-generated data to their back end
+- Persist user-generated data in their existing SQL database
