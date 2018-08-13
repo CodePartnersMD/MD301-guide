@@ -12,7 +12,6 @@
 ## Resources
 
 - [EJS for server-side templating](http://ejs.co/)
-- [Google Books API Documentation](https://developers.google.com/books/docs/v1/getting_started)
 
 TODO: Add updated wireframes
 
