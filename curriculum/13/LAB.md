@@ -72,11 +72,19 @@ This lab assignment will add the ability for a user to add a new book to the dat
 - In the callback to add a new book, add a second query to retrieve the newly-added book from the database and display the details to the user.
 - Use the same detail view from lab 12. Display a message to the user to indicate that the book was successfully added to the database.
 
-*3. As a user, I want my application to be clean and free of visual distractions so that I can view my books without other content cluttering the viewport.*
+*3. As a user, I want my form to be visually pleasing so that I can receive visual feedback as I complete the form.*
+
+- Style your form so that the user receives some sort of visual feedback as they focus on the form elements. Refer to the daily discussion for a video series about styling HTML5 forms.
+
+*4. As a user, I want my application to be clean and free of visual distractions so that I can view my books without other content cluttering the viewport.*
 
 - Include a hamburger menu that will allow the ability to navigate between views. Update your partials as needed.
 
-## Stretch Goal
+## Stretch Goals
+
+*As a user, I want to use sprite sheets for my form elements so that my form is unique.*
+
+- Use a sprite sheet as the background image of your form elements. Refer to the daily discussion for a video series about styling HTML5 forms.
 
 *As a user, I want to organize my books by author so that I can view all of the books that a single author has written and view the details about their work.*
 
