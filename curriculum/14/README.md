@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
+![CF](https://i.imgur.com/7v5ASc8.png) Class 14: Google Books API
 
 ## Overview
 
@@ -25,3 +25,6 @@ Today is the final buildout of the book collection app. Our final step is to inc
 	-->
 
 As a result of completing lecture 14 of Code 301, students will:
+- Interact with the Google Books API to search for books based on user queries
+- Display API results to the user, hiding certain details for a smooth user experience
+- Persist search results in their existing SQL database
