@@ -19,6 +19,8 @@
 
 [PostgreSQL Docs](https://www.postgresql.org/docs/)
 
+[Meetup API Docs](https://www.meetup.com/meetup_api/)
+
 [Hiking Project API Docs](https://www.hikingproject.com/data)
 
 ## Configuration
@@ -45,7 +47,7 @@ lab-09-repository
 
 #### Overview
 
-For this lab assignment, you will use the latitude and longitude to request information about hiking trals and campgrounds near the location.
+For this lab assignment, you will use the latitude and longitude to request information about meetups hosted in the area and hiking trails and campgrounds near the location.
 
 Repository set-up: 
 - One person from your group should create a new repository on GitHub called `lab-09-back-end`. Add your partner(s) as collaborator(s). Clone your repository.
