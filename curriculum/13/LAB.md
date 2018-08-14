@@ -56,28 +56,61 @@ book_app (repository)
 
 ## User Stories and Feature Tasks
 
-#### Overview
+### Overview
 
 This lab assignment will add the ability for a user to add a new book to the database by filling in a form.
 
-*1. As a user, I want the ability to add new books to my app so that my collection continues to grow.*
+### Feature 1: Add a new book to the collection
+
+#### Why are we implementing this feature?
+
+- As a user, I want the ability to add new books to my app so that my collection continues to grow.
+
+#### What are we going to implement?
+
+Given that a user would like to expand their collection  
+When the user fills out and submits the form  
+Then the book should be added to the collection  s
+
+#### How are we implementing it?
 
 - Create a view called `new.ejs` which contains a form. The user will be able to enter the details of a new book.
 - Add an endpoint to display the form to the user.
 - Add an endpoint for a `POST` request to `/books`.
   - The callback should add the new book to the database.
 
-*2. As a user, I want to provide feedback so that the user receives confirmation that the new book was successfully added to the database.*
+### Feature 2: Provide user feedback upon successful addition
+
+#### Why are we implementing this feature?
+
+- As a user, I want to receive feedback so that I can confirm the new book was successfully added to my collection.
+
+#### What are we going to implement?
+
+Given that a user fills out the form  
+When the user submits the form  
+Then the user should be directed to the detail view with a success message displayed  
+
+#### How are we implementing it?
 
 - In the callback to add a new book, add a second query to retrieve the newly-added book from the database and display the details to the user.
 - Use the same detail view from lab 12. Display a message to the user to indicate that the book was successfully added to the database.
 
-*3. As a user, I want my form to be visually pleasing so that I can receive visual feedback as I complete the form.*
+### Feature 3: Continue to style the application
 
-- Style your form so that the user receives some sort of visual feedback as they focus on the form elements. Refer to the daily discussion for a video series about styling HTML5 forms.
+#### Why are we implementing this feature?
 
-*4. As a user, I want my application to be clean and free of visual distractions so that I can view my books without other content cluttering the viewport.*
+-  As a user, I want a simple, clean looking UI so that my application is easy to navigate.
 
+#### What are we going to implement?
+
+Given that a user views the application  
+When the user interacts with the application  
+Then the interface should be intuitive and visually pleasing  
+
+#### How are we implementing it?
+
+- Style your form so that the user receives some sort of visual feedback as they focus on the form elements. Refer to the daily discussion assignment for a video series about styling HTML5 forms.
 - Include a hamburger menu that will allow the ability to navigate between views. Update your partials as needed.
 
 ## Stretch Goals
