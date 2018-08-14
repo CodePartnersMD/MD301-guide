@@ -61,7 +61,7 @@ book_app (repository)
 
 This week, you and your partner(s) will implement a basic full stack application for a book list which will render books from a PostgreSQL database. Today's portion of the application involves storing book objects in a database. The client can make a request to the server for retrieval of all books, which will then be rendered as a list in the browser.
 
-Your entire application will be deployed on Heroku with a PostgreSQL database provisioned. You and your partner(s) can either clone the database to work with locally or you can create a separate, local database to use during development.
+Your entire application will be deployed on Heroku with a PostgreSQL database provisioned.
 
 ### Repository Set-up
 
@@ -71,8 +71,9 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
 
 - One person from your group should create an instance on Heroku. Refer to lecture 5 for a reminder on the steps, if needed. You will be working in this same instance for labs 11 thorugh 14.
   - Follow the naming convention of `<partner 1 initials>-<partner 2 initials>-booklist`. For example, Allie and Sam's instance would be named `https://ag-sh-booklist.herokuapp.com` 
-- In the Deploy tab, connect your instance to your repository and enable automatic deploys from your master branch. Deploy your application and make sure there are no errors.
 - Provision a PostgreSQL database.
+- In the Deploy tab, connect your instance to your repository and enable automatic deploys from your master branch. Deploy your application and make sure there are no errors.
+- From this point on, work on semantically-named non-master branches. Once your app is functioning correctly on your branch, make a PR to master and confirm functionality on your deployed site. Your deployed site **should not** contain any broken functionality.
 - From this point on, work on semantically-named non-master branches. Once your app is functioning correctly on your branch, make a PR to master and confirm functionality on your deployed site. Your deployed site **should not** contain any broken functionality.
 
 ### Database configuration
@@ -87,7 +88,7 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
     - `image_url`
     - `description`
 - Use Postman to request book data from the Google Books API. For example, you can enter a search query at the end of this route: `https://www.googleapis.com/books/v1/volumes?q=`
-- Manually enter each record into your `books` table.
+- Manually enter each record into your `books` table. Your collection should have at least ten unique books.
 - For reference, here is a sample:
 ```
   {
@@ -100,14 +101,14 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
 ```
 - Migrate your local database to Heroku, using the following format for your command: `heroku pg:push books_app DATABASE_URL --app <partner 1 initials>-<partner 2 initials>-booklist`
   - **If you are testing locally,** connect your client using your local database.
-  - **If you are testing the deployed backend,** connect your client to the DB using the defined `DATABASE_URL` environment variable.
+  - **If you are testing the deployed backend,** connect your client to the database using the defined `DATABASE_URL` environment variable.
   - _Note: Unless the local database is pushed to Heroku again, these databases will not be in sync from this point on._
 
 ### Feature 1: Server-side rendering
 
 #### Why are we implementing this feature?
 
-- As a user, I want to my application to load quickly so that I have a more enjoyable experience.
+- As a user, I want to my application to load quickly so that I have an enjoyable experience.
 
 #### What are we going to implement?
 
@@ -128,7 +129,7 @@ Then the book collection should load quickly
 
 #### Why are we implementing this feature?
 
-- As a user, I want all of my books to be rendered on page load so that I can view all of the books in my list in a single view.
+- As a user, I want all of my books to be displayed on the home page so that I can view all of the books from my collection in a single view.
 
 #### What are we going to implement?
 
@@ -142,14 +143,14 @@ Then all of the books in the collection should be rendered on the page
 - Build out your `index.ejs` file to display all of the books on the page. Follow correct EJS syntax to iterate over an array of book objects and render each one in a similar manner.
   - Display the title and author of each book.
   - Display a picture of the book cover.
-  - Include a count of the total number of books that are in the database.
+- Include a count of the total number of books that are in the database.
 - Test locally to verify that the books are displayed as expected. Redeploy your application and verify that the books are displayed as expected.
 
 ### Feature 3: Error handling
 
 #### Why are we implementing this feature?
 
-- As a user, I want a view which displays any error messages that occur during the usage of my book list application.
+- As a user, I want to view any error messages that occur during the usage of my book list application so that I know if something has gone wrong.
 
 #### What are we going to implement?
 
@@ -178,14 +179,14 @@ Then the interface should be intuitive and visually pleasing
 - Style your site using a mobile-only approach. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
 - Ensure the proper use of SMACCS principles. You and your partner(s) may choose to use float-based layout, grid-based layout, Flexbox, or a combination of these.
 - You will need to include icon fonts from a source such as Icomoon or FontAwesome for the social media icons you choose to include in the application.
+- Redeploy your application.
 
 ## Stretch Goal
 
 *As a developer, I want to automatically populate the database so my application is functioning efficiently.*
 
 - Implement a NodeJS script that will read a JSON file and populate your PostgreSQL database with that content.
-  - You will need to utilize the `fs` (file system) module from Node.
-TODO: Add link to fs docs
+  - You will need to utilize the `fs` (file system) [module from Node](https://nodejs.org/api/fs.html).
 
 ## Documentation
 

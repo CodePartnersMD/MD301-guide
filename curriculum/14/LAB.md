@@ -69,7 +69,7 @@ Today's refactor will implement the use of a third-party API, Google Books, whic
 
 #### Why are we implementing this feature?
 
-- As a user, I want to search the Google Books API so that I can view the results and add a new books to my list.
+- As a user, I want to search the Google Books API so that I can view the results and add new books to my list.
 
 #### What are we going to implement?
 
@@ -91,8 +91,8 @@ Then the search query should be included in a request to the Google Books API
 
 #### What are we going to implement?
 
-Given that a user submits the search form  
-When the results return from the Google Books API  
+Given that the user enters a seach query  
+When the user submits the search form  
 Then the first ten books should be displayed to the user   
 
 #### How are we implementing it?
@@ -117,7 +117,7 @@ Then the individual book details should be concealed in a hidden form
 #### How are we implementing it?
 
 - In the results view, include a hidden form that will be populated with the details of each book from the API response. Provide the ability for a user to click a button and add a single book to the database, using the details from the hidden form. Consider user experience when building out this functionality.
-- Where possible, reuse callbacks you created in earlier book app labs to add a single book to the database.
+- Where possible, reuse callbacks you created in earlier book app lab assignments to add a single book to the database.
 
 ### Feature 4: Provide user feedback upon successful addition
 

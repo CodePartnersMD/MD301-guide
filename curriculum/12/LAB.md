@@ -91,21 +91,21 @@ Then the user will be returned to the main page where all of the books from the 
 #### What are we going to implement?
 
 Given that a user views the application  
-When the user interacts with the application  
+When the user interacts with the application    
 Then the application should load quickly and perform efficiently
 
 #### How are we implementing it?
 
 - Move your SQL queries and view rendering into callbacks. Reference the appropriate callback in each route.
 - Move your error handling into a callback.
-- Add a new folder called `partials` and create files that are the same across each view. Include the partial files into each view.
+- Add a new folder called `partials` and create files that are the same across each view. Include the partial files in each view.
 - Redeploy your application.
 
 ### Feature 3: Continue to style the application
 
 #### Why are we implementing this feature?
 
--  As a user, I want a simple, clean looking UI so that my application is easy to navigate.
+- As a user, I want a simple, clean-looking UI so that my application is easy to navigate.
 
 #### What are we going to implement?
 

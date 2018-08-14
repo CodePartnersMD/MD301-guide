@@ -64,20 +64,19 @@ This lab assignment will add the ability for a user to add a new book to the dat
 
 #### Why are we implementing this feature?
 
-- As a user, I want the ability to add new books to my app so that my collection continues to grow.
+- As a user, I want the ability to add new books to my application so that my collection continues to grow.
 
 #### What are we going to implement?
 
 Given that a user would like to expand their collection  
 When the user fills out and submits the form  
-Then the book should be added to the collection  s
+Then the book should be added to the collection  
 
 #### How are we implementing it?
 
 - Create a view called `new.ejs` which contains a form. The user will be able to enter the details of a new book.
 - Add an endpoint to display the form to the user.
-- Add an endpoint for a `POST` request to `/books`.
-  - The callback should add the new book to the database.
+- Add an endpoint for a `POST` request to `/books`. The callback should add the new book to the database.
 
 ### Feature 2: Provide user feedback upon successful addition
 
@@ -95,6 +94,7 @@ Then the user should be directed to the detail view with a success message displ
 
 - In the callback to add a new book, add a second query to retrieve the newly-added book from the database and display the details to the user.
 - Use the same detail view from lab 12. Display a message to the user to indicate that the book was successfully added to the database.
+- Redeploy your application.
 
 ### Feature 3: Continue to style the application
 
@@ -110,8 +110,9 @@ Then the interface should be intuitive and visually pleasing
 
 #### How are we implementing it?
 
-- Style your form so that the user receives some sort of visual feedback as they focus on the form elements. Refer to the daily discussion assignment for a video series about styling HTML5 forms.
+- Style your form so that the user receives some sort of visual feedback as they focus on the form elements. Refer to the daily discussion assignment for a video series about styling HTML5 forms. Consider any further UI/UX features which will create a better experience for your users.
 - Include a hamburger menu that will allow the ability to navigate between views. Update your partials as needed.
+- Redeploy your application.
 
 ## Stretch Goals
 
