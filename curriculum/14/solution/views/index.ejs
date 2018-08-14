@@ -6,7 +6,6 @@
   <body>
     <% include ./partials/header %>
     <main>
-      <h2 class="view-title">My Books</h2>
       <ul id="book-list">
         <% books.forEach(book => { %>
           <li class="book-items" data-book-id="<%= book.id %>">

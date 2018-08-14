@@ -126,5 +126,5 @@ function deleteBook(request, response) {
 }
 
 function handleError(error, response) {
-  response.render('pages/error-view', {error: error});
+  response.render('pages/error', {error: error});
 }

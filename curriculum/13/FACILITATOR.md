@@ -1,7 +1,8 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
-
+![CF](https://i.imgur.com/7v5ASc8.png) 13: Adding a new resource
 
 ## Overview
+
+Today will likely serve as a catch-up day if students have fallen behind. If it helps, use a group's broken code for code review in a mob-debugging session. Facilitate this session to prevent students from talking over each other, but allow students to suggest the next steps and lead the debugging process. This may also be an option in lecture 14, depending on the progress of the cohort.
 
 Lecture 13 focuses on the ability to display a form which will allow the user to manually enter a new book, then add that book to their existing database. They will need two routes: one to display the form to the user (see `app.get('/books/new', newBook);` in the solution code) and another to take the user's input and add it to their SQL database (see `app.post('/books', createBook);` in the solution code).
 
