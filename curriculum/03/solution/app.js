@@ -106,7 +106,7 @@ Image.handleFilter = function () {
   })
 }
 
-$('footer ul').on('click', 'li', function() {
+$('footer ul, header ul').on('click', 'li', function() {
   Image.readJson($(this).attr('id'));
 })
 
