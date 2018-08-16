@@ -10,4 +10,5 @@ html, body {
 
 main {
   flex: 1;
+  margin-top: 14vw;
 }

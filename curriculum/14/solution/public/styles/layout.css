@@ -1,6 +1,9 @@
 header {
-  background-color: #444;
+  background-color: #000;
   width: 100%;
+  position: fixed;
+  top: 0;
+  box-shadow: 0px 0px 4px 0px #444;
 }
 
 header div {
@@ -28,9 +31,10 @@ a {
 }
 
 footer {
-  background-color: #444;
+  background-color: #000;
   height: 10vw;
   width: 100%;
+  color: #fff;
 }
 
 form {
@@ -45,6 +49,32 @@ input, textarea {
   width: 80%;
 }
 
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  width: 80%;
+  padding: 3vw;
+  margin-bottom: 5vw;
+  font-size: 3vw;
+  border: none;
+  border-radius: 3px;
+  transition: 350ms all;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  background: #000;
+  color: #fff;
+}
+
+#create-form {
+  margin-top: 8vw;
+  margin-bottom: 15vw;
+}
+
 button {
   display: block;
   font-size: 4vw;
@@ -53,8 +83,54 @@ button {
   width: 40%;
 }
 
+button[type="submit"] {
+  padding: 3vw;
+  background: #000;
+  color: #fff;
+  font-size: 4vw;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"].lng-btn {
+  width: 88%;
+  padding: 4vw;
+  font-size: 3vw;
+}
+
+fieldset {
+  float: left;
+  text-align: left;
+  margin-bottom: 5vw;
+  margin-left: 5vw;
+  padding: 2vw 5vw 2vw 2vw;
+  background: #444;
+  color: #fff;
+  border-radius: 3px;
+}
+
+fieldset label {
+  font-size: 4vw;
+}
+
 h2 {
   font-size: 5vw;
   padding: 2vw;
   text-align: center;
+}
+
+h3 {
+  font-size: 4vw;
+  color: #444;
+  text-decoration: underline;
+}
+
+h4 {
+  font-size: 4vw;
+  padding: 5vw 2vw;
+  color: #ccc;
+  background: #444;
+  text-align: center;
+  text-decoration: none; 
 }
