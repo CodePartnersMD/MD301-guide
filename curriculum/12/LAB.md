@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Lab 12: Componentization
+Lab 12: Componentization
 
 ## Submission Instructions
 

@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) 14: Google Books API
+Lab 14: Google Books API
 
 ## Submission Instructions
 

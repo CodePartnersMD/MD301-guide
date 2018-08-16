@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) 13: Adding a new resource
+Lab 13: Adding a new resource
 
 ## Submission Instructions
 

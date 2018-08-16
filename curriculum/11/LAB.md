@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Lab 11: Server-side templating with EJS
+Lab 11: Server-side templating with EJS
 
 ## Submission Instructions
 

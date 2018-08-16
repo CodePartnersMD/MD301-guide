@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Class 12: Componentization
+Class 12: Componentization
 
 ## Overview
 
