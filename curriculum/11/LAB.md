@@ -99,7 +99,7 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
   }
 ```
 - Migrate your local database to Heroku, using the following format for your command: `heroku pg:push books_app DATABASE_URL --app <partner 1 initials>-<partner 2 initials>-booklist`
-  - _Note: Unless the local database is pushed to Heroku again, these databases will not be in sync from this point on._
+  - _Note: Unless the local database is pushed to Heroku again, any changes to the local database will not be reflected in the production database._
 
 ### Feature 1: Server-side rendering
 
