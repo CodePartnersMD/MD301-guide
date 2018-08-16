@@ -112,10 +112,10 @@ $('footer ul, header ul').on('click', 'li', function() {
 
 Image.detailView = function() {
   $('div').on('click', function() {
+    $('div:first-child').empty();
     let $clone = $(this).clone();
-    console.log($clone)
-    $clone.css('border', '3px solid red')
     $clone.toggleClass('active');
+    $('div:first-child').html($clone);
     $(window).scrollTop(0);
   });
 }
