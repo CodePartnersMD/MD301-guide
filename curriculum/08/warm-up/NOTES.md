@@ -3,7 +3,7 @@
 Problems with this code:
 - 'use strict'; is missing
 - app is not declared, express is not instantiated
-- userInfo is a const
+- userInfo is a const, so students might think they cannot modify the properties of the object
 - properties are added to userInfo as an object literal
 - callback is missing parens around (req, res)
 - code refers to request and response, but parameters are req and res
