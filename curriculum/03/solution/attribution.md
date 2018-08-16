@@ -18,3 +18,6 @@ Unicorn Die Cut: https://www.hobbycraft.co.uk/intricut-unicorn-die-116-x-112-cm/
 Unicorn Notebook: https://www.amazon.com/Unicorn-Notebook-Kawaii-Unicorns-Rainbows/dp/154429882X
 Norman the plush narwhal: https://ellyluorganics.com/products/norman-the-narwhal
 Cupcake the unicorn: https://ellyluorganics.com/products/cupcake-the-unicorn
+Unicorn mask: https://www.amazon.com/Accoutrements-12283-Magical-Unicorn-Mask/dp/B0070QMUFA
+I believe in Unicorns: https://www.tinselbox.com/unicorn-party-free-printables/
+Baby rhino rolling: http://www.itv.com/news/granada/update/2018-08-10/because-who-doesnt-want-to-see-a-baby-rhino-rolling-about/
