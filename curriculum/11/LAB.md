@@ -110,9 +110,9 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
 
 #### What are we going to implement?
 
-Given that a user views the application  
-When the main page loads  
-Then the book collection should load quickly  
+Given that a user open the application in the browser  
+When the user navigates to the home page 
+Then the book collection should load without a flash of unstyled content (FOUC)  
 
 #### How are we implementing it?
 
@@ -174,7 +174,7 @@ Then the interface should be intuitive and visually pleasing
 
 #### How are we implementing it?
 
-- Style your site using a mobile-only approach. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
+- Style your site using a mobile-first approach. Make sure your site is responsive. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
 - Ensure the proper use of SMACCS principles. You and your partner(s) may choose to use float-based layout, grid-based layout, Flexbox, or a combination of these.
 - You will need to include icon fonts from a source such as Icomoon or FontAwesome for the social media icons you choose to include in the application.
 - Redeploy your application.

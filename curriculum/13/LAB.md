@@ -16,6 +16,7 @@ Lab 13: Adding a new resource
 TODO: add updated wireframes
 
 - [HTML5 Forms](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
+- [HTML5 Form Validation](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation#Using_built-in_form_validation)
 
 ## Configuration
 
@@ -74,7 +75,7 @@ Then the book should be added to the collection
 
 #### How are we implementing it?
 
-- Create a view called `new.ejs` which contains a form. The user will be able to enter the details of a new book.
+- Create a view called `new.ejs` which contains a form. The user will be able to enter the details of a new book. Include HTML5 form validation.
 - Add an endpoint to display the form to the user.
 - Add an endpoint for a `POST` request to `/books`. The callback should add the new book to the database.
 
@@ -96,7 +97,23 @@ Then the user should be directed to the detail view with a success message displ
 - Use the same detail view from lab 12. Display a message to the user to indicate that the book was successfully added to the database.
 - Redeploy your application.
 
-### Feature 3: Continue to style the application
+### Feature 3: Dismiss the success message
+
+#### Why are we implementing this feature?
+
+*As a user, I want to be able to dismiss the message dialog, so that my view stays as clean as possible.*
+
+#### What are we going to implement?
+
+Given that a feedback message is displayed to the user  
+When the user clicks on the success message  
+Then it should fade out or animate off of the screen 
+
+#### How are we implementing it?
+
+- Use jQuery and an event handler to remove the success message.
+
+### Feature 4: Continue to style the application
 
 #### Why are we implementing this feature?
 
@@ -118,9 +135,15 @@ Then the interface should be intuitive and visually pleasing
 
 *As a user, I want to use sprite sheets for my form elements so that my form is unique.*
 
-- Use a sprite sheet as the background image of your form elements. Refer to the daily discussion for a video series about styling HTML5 forms.
+Given that the user wants to add a book to their collection  
+When the user interacts with the form  
+Then the form elements should show a background image sourced from a sprite sheet  
 
 *As a user, I want to organize my books by author so that I can view all of the books that a single author has written and view the details about their work.*
+
+Given that the user wants to enhance their book collection  
+When the books are displayed  
+Then the books should be displayed by author or by title  
 
 - Create a new form to add details about an individual author.
 - Create a new table in your `books_app` database for authors. The table should include the author's name and a book id as the foreign key.

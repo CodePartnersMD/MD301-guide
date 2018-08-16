@@ -33,6 +33,7 @@ Students will need to be mindful about the data types for each column of their t
 
 ## General comments
 
+- Make sure to discuss the benefits of server-side rendering, such as avoiding a flash of unstyled content [(FOUC)](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
 - Save the solution code for code review in Class 12, rather than showing the solution during Class 11 lecture. Note: do not distribute the book app solution code to students.
 
 ## Resources/Slides
