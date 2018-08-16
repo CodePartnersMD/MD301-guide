@@ -16,16 +16,6 @@ Today is the final buildout of the book collection app. Our final step is to inc
 
 ## Learning Objectives
 
-<!--
-	ABCD:
-	  Audience: Program participants
-	  Behavior: Expected learning/behavior changes/results
-	  Condition:
-	    Circumstances that lead to change/result
-	    When change/result are expected to occur
-	  Degree: How much change occurs (%) for how many participants (#)
-	-->
-
 As a result of completing lecture 14 of Code 301, students will:
 - Interact with the Google Books API to search for books based on user queries
 - Display API results to the user, hiding certain details for a smooth user experience

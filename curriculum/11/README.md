@@ -15,16 +15,6 @@ Today is the first day of our new project, a mobile-only book collection. You wi
 
 ## Learning Objectives
 
-<!--
-	ABCD:
-	  Audience: Program participants
-	  Behavior: Expected learning/behavior changes/results
-	  Condition:
-	    Circumstances that lead to change/result
-	    When change/result are expected to occur
-	  Degree: How much change occurs (%) for how many participants (#)
-	-->
-
 As a result of completing lecture 11 of Code 301, students will:
 - Understand how to architect a full-stack web application 
 - Create a schema to model data and persist the data in a SQL database
