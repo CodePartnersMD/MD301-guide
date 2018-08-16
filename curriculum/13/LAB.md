@@ -70,14 +70,13 @@ This lab assignment will add the ability for a user to add a new book to the dat
 #### What are we going to implement?
 
 Given that a user would like to expand their collection  
-When the user fills out and submits the form  
-Then the book should be added to the collection  
+When the user clicks on a button to add a new book    
+Then the user should view the form to add a new book    
 
 #### How are we implementing it?
 
 - Create a view called `new.ejs` which contains a form. The user will be able to enter the details of a new book. Include HTML5 form validation.
 - Add an endpoint to display the form to the user.
-- Add an endpoint for a `POST` request to `/books`. The callback should add the new book to the database.
 
 ### Feature 2: Provide user feedback upon successful addition
 
@@ -93,7 +92,7 @@ Then the user should be directed to the detail view with a success message displ
 
 #### How are we implementing it?
 
-- In the callback to add a new book, add a second query to retrieve the newly-added book from the database and display the details to the user.
+- Add an endpoint for a `POST` request to `/books`. The callback should add the new book to the database. The callback should include a second query to retrieve the newly-added book from the database and display the details to the user.
 - Use the same detail view from lab 12. Display a message to the user to indicate that the book was successfully added to the database.
 - Redeploy your application.
 

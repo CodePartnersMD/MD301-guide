@@ -82,11 +82,11 @@ Then the user will be returned to the main page where all of the books from the 
 - Include the ability for the user to return to the main list of all books.
 - Redeploy your application.
 
-### Feature 2: Increase application performance
+### Feature 2: Consistent rendering
 
 #### Why are we implementing this feature?
 
-- As a user, I want the application to be designed in an efficient way so that I do not experience any down time or slow load times.
+- As a user, I want the application to be designed in a consistent way so that I do not experience any down time or slow load times.
 
 #### What are we going to implement?
 
@@ -115,7 +115,7 @@ Then the interface should be intuitive and visually pleasing
 
 #### How are we implementing it?
 
-- Continue to style your site using a mobile-only approach. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
+- Continue to style your site using a mobile-responsive approach. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
 - Ensure the proper use of SMACCS principles.
   - Your `modules.css` will probably become larger today, which means that you should exercise SMACSS further by modularizing that stylesheet into a `modules/` directory with a file for each partial component of your site.
 - Continue to iterate on your styles. For example, begin to include standardized styles such as a color palette and defined font families.
