@@ -1,3 +1,4 @@
+```
 <html>
   <head>
     <title>Click tracker
@@ -13,3 +14,4 @@ $(.click).on('change', 'div', function() => {
   var counter = '0';
   $(p).on('click', counter++);
 })
+```

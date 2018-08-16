@@ -1,3 +1,4 @@
+```
 public string Value(string value, int position)
 {
     string[] myArray = new string[5];
@@ -19,3 +20,4 @@ public string Value(string value, int position)
 
 Value('sample string', 5);
 Value('another string', 2);
+```

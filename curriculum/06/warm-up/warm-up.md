@@ -1,3 +1,4 @@
+```
 <div>
   <img src="http://via.placeholder.com/100"><img src="http://via.placeholder.com/115"><img src="http://via.placeholder.com/120"><img src="http://via.placeholder.com/130">
 </div>
@@ -16,3 +17,4 @@ img:nth-child(2) {
   order: 1;
   align-self: baseline;
 }
+```

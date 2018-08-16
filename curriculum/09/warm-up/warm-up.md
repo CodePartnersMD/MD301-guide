@@ -1,3 +1,4 @@
+```
 def search(arr: list, key: any) -> int:
     start = 0
     end = len(arr) - 1
@@ -15,3 +16,4 @@ def search(arr: list, key: any) -> int:
             end = mid - 1
 
     return -1
+```

@@ -1,3 +1,4 @@
+```
 public class Locate {
     public static void main(String[] args) {
         int x = 5;
@@ -70,3 +71,4 @@ public class Locate {
         return dx + dy;
     }
 }
+```

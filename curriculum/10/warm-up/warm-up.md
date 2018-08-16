@@ -1,3 +1,4 @@
+```
 'use strict';
 
 const express = require('express');
@@ -28,3 +29,4 @@ CREATE TABLE users() {
   password VARCHAR;
   age NUM;
 }
+```

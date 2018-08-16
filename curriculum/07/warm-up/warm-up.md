@@ -1,3 +1,4 @@
+```
 public class Count {
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
@@ -28,3 +29,4 @@ public class Count {
         System.out.println("Total odd: " + tally.get("odd"));
     }
 }
+```
