@@ -7,6 +7,8 @@ Today we will be discussing how to create a new resource from an HTML5 form. Thi
 ## Daily Plan
 
 - Warm-up exercise
+- Review code challenges
+- Code review of lab assignment
 - HTML5 forms
 - Creating a new resource
 - Code Demo

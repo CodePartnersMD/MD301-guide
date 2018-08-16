@@ -7,6 +7,8 @@ Today we will discuss componentization of our code. Although we will have more f
 ## Daily Plan
 
 - Warm-up exercise
+- Review code challenges
+- Code review of lab assignment
 - Componentization of code into modules
 - Code Demo
 - Lab Preview
