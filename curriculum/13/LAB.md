@@ -121,8 +121,8 @@ Then it should fade out or animate off of the screen
 
 #### What are we going to implement?
 
-Given that a user views the application  
-When the user interacts with the application  
+Given that users access the application on multiple platforms  
+When the user views the application  
 Then the interface should be intuitive and visually pleasing  
 
 #### How are we implementing it?

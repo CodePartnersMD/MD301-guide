@@ -110,17 +110,17 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
 #### What are we going to implement?
 
 Given that a user open the application in the browser  
-When the user navigates to the home page 
-Then the book collection should load without a flash of unstyled content (FOUC)  
+When the user navigates to the home page  
+Then the index should load without a flash of unstyled content (FOUC)  
 
 #### How are we implementing it?
 
-- For server-side rendering, EJS looks for a folder called `views`. Create a `views` folder. Within this folder, create a file called `index.ejs`. 
-  - Note: with server-side rendering, `index.ejs` is analogous to the typical `index.html` file that you are used to, but will also allow EJS syntax for templating.
-- Create a basic HTML scaffold in your `index.ejs` file which contains several elements that you can view in the browser, such as a heading element that says "Hello World". Also create a basic CSS file with several rules, such as an obvious background color. These will serve as our "proof of life" that the files are connected as expected, both locally and when deployed. You will later remove these.
 - Create a basic `server.js` file. Make sure your server is listening for connections on a `PORT`. Remember to set the view engine and serve your static CSS files.
 - Install any necessary NPM packages and ensure that they are documented as dependencies in your `package.json`.
-- For testing purposes, include a temporary route such as `app.get('/test')` and render your `index.ejs` file. Turn on your server and validate that the HTML elements and basic CSS styles are being rendered as expected. You may then remove this route from your server file, as well as the "proof of life" HTML elements and CSS styles.
+- For server-side rendering, EJS looks for a folder called `views`. Create a `views` folder. Within this folder, create a file called `index.ejs`. 
+  - Note: with server-side rendering, `index.ejs` is analogous to the typical `index.html` file that you are used to, but will also allow EJS syntax for templating.
+- Create a basic HTML scaffold in your `index.ejs` file which contains several elements that you can view in the browser, such as a heading element that says "Hello World". Also create a basic CSS file with several rules, such as an obvious background color. These will serve as our "proof of life" that the files are connected as expected, both locally and when deployed.
+- For testing purposes, include a temporary route such as `app.get('/hello')` and render your `index.ejs` file. Turn on your server and validate that the HTML elements and basic CSS styles are being rendered as expected. This route will be useful in the future if you ever need to test your application without relying on data from a database.
 
 ### Feature 2: Show all books when the application loads
 
@@ -130,8 +130,8 @@ Then the book collection should load without a flash of unstyled content (FOUC)
 
 #### What are we going to implement?
 
-Given that a user navigates to the application  
-When the application initially loads  
+Given that a user open the application in the browser  
+When the user navigates to the home page  
 Then all of the books in the collection should be rendered on the page  
 
 #### How are we implementing it?
@@ -151,8 +151,8 @@ Then all of the books in the collection should be rendered on the page
 
 #### What are we going to implement?
 
-Given that an error occurs  
-When the application is not functioning properly  
+Given that the application is not functioning properly  
+When an error occurs  
 Then the user should receive feedback that something has gone wrong  
 
 #### How are we implementing it?
@@ -167,8 +167,8 @@ Then the user should receive feedback that something has gone wrong
 
 #### What are we going to implement?
 
-Given that a user views the application  
-When the user interacts with the application  
+Given that users access the application on multiple platforms  
+When the user views the application  
 Then the interface should be intuitive and visually pleasing  
 
 #### How are we implementing it?
