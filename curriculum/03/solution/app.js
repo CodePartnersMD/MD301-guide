@@ -90,19 +90,14 @@ Image.handleFilter = function () {
     if($(this).val() !== 'Filter By Keyword') {
       $('div').hide();
 
-
       Image.all.forEach(image => {
-  
         if ($(this).val() === image.keyword) {
           $(`div[class="${$(this).val()}"`).fadeIn();
         }
-  
       })
+
       $(`option[value=${$(this).val()}]`).fadeIn();
     }
-
-
-
   })
 }
 
@@ -113,9 +108,12 @@ $('footer ul, header ul').on('click', 'li', function() {
 Image.detailView = function() {
   $('div').on('click', function() {
     $('div:first-child').empty();
+    
     let $clone = $(this).clone();
-    $clone.toggleClass('active');
-    $('div:first-child').html($clone);
+    let elements = $clone[0].children;
+
+    $('div:first-child').toggleClass('active').html(elements);
+
     $(window).scrollTop(0);
   });
 }
