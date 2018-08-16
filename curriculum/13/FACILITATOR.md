@@ -30,6 +30,8 @@ HTML5 forms with method and action attributes are new to students. Also, this is
 
 ## General comments
 
+During code review, conduct another exercise where the class traces the path of code execution. This exercise will differ from the exercise in class 7 because of server-side rendering and EJS loading partials.
+
 Do not forget to discuss this line of code: `app.use(express.urlencoded({extended:true}));
 `
 
