@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Lab 08: Persistence with a SQL database
+ Lab 08: Persistence with a SQL database
 
 ## Code Challenge
 

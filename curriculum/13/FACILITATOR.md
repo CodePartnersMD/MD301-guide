@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) 13: Adding a new resource
+Class 13: Adding a new resource
 
 ## Overview
 
@@ -29,6 +29,8 @@ HTML5 forms with method and action attributes are new to students. Also, this is
 ## What bugs, issues, or surprises have come up in the past for this class?
 
 ## General comments
+
+During code review, conduct another exercise where the class traces the path of code execution. This exercise will differ from the exercise in class 7 because of server-side rendering and EJS loading partials.
 
 Do not forget to discuss this line of code: `app.use(express.urlencoded({extended:true}));
 `

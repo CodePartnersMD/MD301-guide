@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Lab 06: Node, npm, Express, and APIs
+ Lab 06: Node, npm, Express, and APIs
 
 ## Code Challenge
 
