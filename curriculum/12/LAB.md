@@ -125,6 +125,10 @@ Then the interface should be intuitive and visually pleasing
 
 *As a developer, I want to explore further functionality so that I can continue to improve the user's experience.*
 
+Given that the user views the application on a mobile device  
+When the user clicks on the hamburger menu  
+Then the navigation items will be visible  
+
 - Implement the ability for your hamburger menu to operate without the use of JavaScript. You will need to research how to enable a 'pop-up/out' style menu with vanilla HTML and CSS.
 - Consider any further UI/UX features which will allow a more friendly interface for your users.
 

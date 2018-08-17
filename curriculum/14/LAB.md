@@ -140,10 +140,18 @@ Then the user should be directed to the detail view with a success message displ
 
 *As a user, I want to update the books in my collection so it is always current.*
 
+Given that a user wants to update a book in the collection  
+When the user fills out a form to update the book details  
+Then the record will be updated in the database and the user will receive a success message  
+
 - Add the ability for a user to update an existing book. From the detail view, the user should be able to choose to update the book. This will pre-populate a form with the existing details. When the user submits the updated details, the corresponding API route should update the entry in the database and provide feedback to the user that the book details were successfully updated.
   - If you completed the stretch goals for lab 13, add the ability to update an author as well.
 
 *As a user, I want to remove books from my collection so that it accurately reflects my personal preferences.*
+
+Given that a user wants to remove a book from the collection  
+When the user clicks on a "Delete" button  
+Then the book should be removed from the database and the user will receive a success message  
 
 - From the detail view, add the ability for a user to delete an existing book. The corresponding API route should remove the entry from the database and provide feedback to the user that the book was removed.
   - If you completed the stretch goals for lab 13, add the ability to delete an author as well.
