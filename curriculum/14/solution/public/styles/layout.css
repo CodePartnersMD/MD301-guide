@@ -101,12 +101,14 @@ button[type="submit"].lng-btn {
 
 fieldset {
   float: left;
-  text-align: left;
+  width: 87.5%;
+  box-sizing: border-box;
   margin-bottom: 5vw;
   margin-left: 5vw;
-  padding: 2vw 5vw 2vw 2vw;
-  background: #444;
-  color: #fff;
+  padding: 2vw 5vw 2vw 0vw;
+  text-align: left;
+  background: #ccc;
+  color: #444;
   border-radius: 3px;
 }
 
