@@ -24,7 +24,11 @@ function fetchCityData(event) {
       getResource('meetups', location);
       getResource('trails', location);
     })
-    .catch(error => compileTemplate(error, 'error-container', 'error-template'));
+    .catch(error => {
+      compileTemplate([error], 'error-container', 'error-template');
+      $('#map').addClass('hide');
+      $('section, div').addClass('hide');
+    });
 }
 
 function displayMap(location) {
@@ -47,12 +51,12 @@ function getResource(resource, location) {
     })
 }
 
-function compileTemplate(inputArray, sectionClass, templateId) {
+function compileTemplate(input, sectionClass, templateId) {
   $(`.${sectionClass}`).empty();
 
   let template = Handlebars.compile($(`#${templateId}`).text());
 
-  inputArray.forEach(element => {
+  input.forEach(element => {
     $(`.${sectionClass}`).append(template(element));
   })
 }

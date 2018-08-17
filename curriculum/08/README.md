@@ -1,9 +1,23 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
+Class 08: Persistence with a SQL database
 
 ## Overview
 
-## Readings
+Today we are going to be adding a persistence layer in the form of a SQL database. 
 
 ## Daily Plan
 
+- Warm-up exercise
+- Review code challenges
+- Code review of lab assignment
+- Relational vs. non-relational databases
+- Data modeling and schemas
+- Primary keys, foreign keys, and joins
+- Code Demo
+- Lab Preview
+
 ## Learning Objectives
+
+As a result of completing Lecture 8 of Code 301, students will:
+- Identify when to persist and cache data in a database and whether the database should be relational or non-relational
+- Understand how to create a schema to model their data, including modeling the relationships between several tables
+- Write SQL queries to create, read, update, and delete records from a local database using PostgreSQL, a database management system

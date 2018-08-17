@@ -8,7 +8,7 @@
         
     <!-- Template for errors -->
     <script type="text/x-handlebars-template" id="error-template">
-      <p>There was an error! Status code: {{ status }}</p>
+      <p> {{ responseText }}</p>
     </script>
     
     <!-- Template for weather data -->
@@ -76,7 +76,7 @@
       <h2 class="query-placeholder"></h2>
       
       <!-- Section for error message -->
-      <section></section>
+      <section class="error-container"></section>
       
       <div class="column-container hide">
         <!-- Section for weather data -->

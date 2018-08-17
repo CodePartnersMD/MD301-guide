@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
+Class 07: APIs (continued)
 
 ## Overview
 
@@ -7,6 +7,8 @@ Today's lab involves quite a bit of refactoring from lab 6. The `searchToLatLong
 Students will also refactor `.forEach` to `.map`, so discuss this process but do not code the solution for them. `.map` is also the code challenge for today.
 
 ## How do I prep for today?
+
+During code review of lab 6, plan to conduct a "follow the code execution" exercise where students will trace the order of function calls. This exercise works well with a visualization of the call stack, one function at a time. Use a drawing tool like an iPad or the whiteboard for this illustration.
 
 Begin with solution code for class 6 as the starter code for class 7 demo code, to save lines of typing the same code they have just seen during code review. Or, use code from a team that would like their code base to be reviewed and refactored.
 
@@ -21,8 +23,6 @@ Students may be behind from lab 6, so this will be a good time to discuss the so
 ## What bugs, issues, or surprises have come up in the past for this class?
 
 ## General comments
-
-## Resources/Slides
 
 ## Lecture
 

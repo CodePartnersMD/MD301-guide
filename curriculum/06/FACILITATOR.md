@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
+Class 06: Node, npm, Express, and APIs
 
 ## Overview
 
@@ -6,7 +6,7 @@ Class 6 is the first day where students will be working with a static client. Th
 
 Students will be able to view the code base for the static client, but will not be able to modify it in any way.
 
-The overacrhing takeaway for labs 6 through 9 is the concept of front ends and back ends existing as two separate entities. The only relationships that exist between them are the relationships we create. In the context of these labs, the client is built to render specific data. The job of the server is the obtain that data, initially from individual APIs and eventually from a SQL database.
+The overarching takeaway for labs 6 through 9 is the concept of front ends and back ends existing as two separate entities. The only relationships that exist between them are the relationships we create. In the context of these labs, the client is built to render specific data. The job of the server is the obtain that data, initially from individual APIs and eventually from a SQL database.
 
 Students will work with a new partner for each of these four labs, deploying each back end to Heroku. The `LAB.md` for lab 7 has detailed instructions about the process or working with a new partner for each of the four labs.
 
@@ -42,8 +42,6 @@ It will likely take time for students to adjust to the syntax of working with Ex
 ## General comments
 
 Today is the first time students will be writing code in a `server.js` file, as well as the first time working with npm, Superagent, third-party APIs, environment variables, and ExpressJS. There is a lot of content to cover, so try to give as much context and "Why" to each topic as possible. 
-
-## Resources/Slides
 
 ## Lecture
 
