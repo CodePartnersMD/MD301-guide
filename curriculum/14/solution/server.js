@@ -81,10 +81,10 @@ function createSearch(request, response) {
   let url = 'https://www.googleapis.com/books/v1/volumes';
   let query = '';
 
-  let modifiedRequest = request.body.search.split(' ').join('+');
+  let modifiedRequest = request.body.search[0].split(' ').join('+');
 
-  if (request.body.title === 'on') query += `+intitle:${modifiedRequest}`;
-  if (request.body.author === 'on') query += `+inauthor:${modifiedRequest}`;
+  if (request.body.search[1] === 'title') query += `+intitle:${modifiedRequest}`;
+  if (request.body.search[1] === 'author') query += `+inauthor:${modifiedRequest}`;
 
   superagent.get(url)
     .query({'q': query})
