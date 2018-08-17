@@ -1,4 +1,6 @@
 ```
+<!-- index.html -->
+
 <html>
   <head>
     <title>Click tracker
@@ -9,6 +11,9 @@
     </div>
   </body>
 </html>
+
+
+<!-- app.js -->
 
 $(.click).on('change', 'div', function() => {
   var counter = '0';

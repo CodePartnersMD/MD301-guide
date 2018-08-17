@@ -1,4 +1,6 @@
 ```
+<!-- server.js -->
+
 'use strict';
 
 const express = require('express');
@@ -20,6 +22,8 @@ app.listen(PORT, () {
   console.log('Listening on ${PORT}')}
 );
 
+
+<!-- schema.sql -->
 
 DROP TABLE IF NOT EXISTS users
 

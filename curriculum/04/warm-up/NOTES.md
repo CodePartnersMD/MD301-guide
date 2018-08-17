@@ -11,3 +11,4 @@ Problems with this code:
 - counter should use 'let'
 - counter should be set to number, not string
 - incorrect syntax for incrementing counter
+- missing script tag and jQuery CDN

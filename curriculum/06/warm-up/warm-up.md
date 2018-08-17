@@ -1,7 +1,12 @@
 ```
+<!-- index.html -->
+
 <div>
   <img src="http://via.placeholder.com/100"><img src="http://via.placeholder.com/115"><img src="http://via.placeholder.com/120"><img src="http://via.placeholder.com/130">
 </div>
+
+
+<!-- styles.css -->
 
 div {
   display: flex;

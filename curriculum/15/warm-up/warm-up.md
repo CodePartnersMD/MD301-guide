@@ -1,4 +1,6 @@
 ```
+<!-- index.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

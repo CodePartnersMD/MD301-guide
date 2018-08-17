@@ -1,4 +1,6 @@
 ```
+<!-- Python Sample -->
+
 def search(arr: list, key: any) -> int:
     start = 0
     end = len(arr) - 1
