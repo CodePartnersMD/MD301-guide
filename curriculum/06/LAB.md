@@ -1,6 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Lab 06: Node, npm, Express, and APIs
-
-## Code Challenge
+Lab 06: Node, npm, Express, and APIs
 
 ## Submission Instructions
 
@@ -50,19 +48,21 @@ lab-06-repository
 
 ### Overview
 
-This week, you will be building a stand-alone back end which will interact with a static front end. Working with a new partner each day, you will request data from a total of six third-party APIs, modify the data as needed, and send the data to the client to be displayed in the browser. You will also be persisting data in a SQL database.
+In labs 6 through 9, you will be building a stand-alone back end which will interact with a static front end. Working with a new partner each day, you will request data from a total of six third-party APIs, modify the data as needed, and send the data to the client to be displayed in the browser. You will also be persisting data in a SQL database.
 
 Every day, you and your partner(s) will deploy your back end as a new instance on Heroku.
 
 You will have access to view the code base for the client, but will not be able to modify it in any way.
 
-For this lab assignment, you will convert a string to a latitude and longitude, then use those values to request weather information for that location.
+For this lab assignment, you will convert a string to a latitude and longitude, then use those values to request weather information for that location. As your City Explorer back end progresses in labs 6 through 9, you will use the latitude and longitude to request information from other APIs for the same search query.
 
-Repository set-up: 
+### Repository set-up
+
 - One person from your group should create a new repository on GitHub called `lab-06-back-end`. Add your partner(s) as collaborator(s).
 - From this point on, work on semantically-named non-master branches. Once your app is functioning correctly on your branch, make a PR to master and confirm functionality on your deployed site. Your deployed site **should not** contain any broken functionality.
 
-Heroku deployoment:
+### Heroku deployoment
+
 - One person from your group should create an instance on Heroku. Refer to lecture 5 for a reminder on the steps, if needed.
 - From the Heroku dashboard, select your instance. In the Settings tab, click on the "Reveal Config Vars" button. Enter your API keys.
 - In the Deploy tab, connect your instance to your repository and enable automatic deploys from your master branch. Deploy your application and make sure there are no errors. 
@@ -73,13 +73,15 @@ Heroku deployoment:
 
 - As a user, I want to enter the name of a location so that I do not need to look up the latitude and longitude every time I learn about a new location.
 
-#### How are we implementing this feature?
+#### What are we going to implement?
 
-- Make a request to the Google Maps Geocoding API to translate the user's search query into a latitude and longitude. As your City Explorer back end progresses in labs 6 through 9, you will use the latitude and longitude to request information from other APIs for the same search query.
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the map will be populated with the location centered on the latitude and longitude of the search query  
 
-#### What specific steps do we need to follow?
+#### How are we implementing it?
 
-- Create a route with a method of `get` and a path of `/location`. The route callback should invoke a function to convert the search query to a latitude and longitude. The function should make a Superagnet-proxied request to the Google Maps Geocoding API. 
+- Create a route with a method of `get` and a path of `/location`. The route callback should invoke a function to convert the search query to a latitude and longitude. The function should make a Superagent-proxied request to the Google Maps Geocoding API. 
 - Return an object which contains the necessary information for correct client rendering. See the sample response, below.
 - Confirm that your route is responding as expected by entering your deployed backend URL in the static client, then searching for a location.
 - Redeploy your application.
@@ -90,10 +92,10 @@ Endpoint:
 Example Response:
 ```sh
 {
-  "search_query": the original search query,
-  "formatted_query": a string which includes details about the location address,
-  "latitude": numeric latitude,
-  "longitude": numeric longitude
+  "search_query": "seattle",
+  "formatted_query": "Seattle, WA, USA",
+  "latitude": "47.606210",
+  "longitude": "-122.332071"
 }
 ```
 
@@ -103,24 +105,33 @@ Example Response:
 
 - As a user, I want to request current weather information so that I can learn more about the typical weather patterns in the location.
 
-#### How are we implementing this feature?
+#### What are we going to implement?
 
-- Make a request to the Dark Sky API for weather information. You will need to use the latitude and longitude from Feature #1 for this request.
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the weather forecast for the upcoming eight days will be displayed in the browser    
 
-#### What specific steps do we need to follow?
+#### How are we implementing it?
 
-- Create a route with a method of `get` and a path of `/weather`. The callback should make a Superagent-proxied request to the Dark Sky API using the latitude and longitude. 
-- For each business of the result, return an object which contains the necessary information for correct client rendering. See the sample response, below.
+- Create a route with a method of `get` and a path of `/weather`. The callback should make a Superagent-proxied request  request to the Dark Sky API for weather information. You will need to use the latitude and longitude from Feature #1 for this request.
+- For each weather of the result, return a list of object for each day of the response which contains the necessary information for correct client rendering. See the sample response, below.
 
 Endpoint:
 `/weather`
 
 Example Response:
 ```sh
-{
-  "forecast": a string containing the daily forecast,
-  "time": a date in the format of Mon Jan 01 2001
-}
+[
+  {
+    "forecast": "Partly cloudy until afternoon.",
+    "time": "Mon Jan 01 2001"
+  },
+  {
+    "forecast": "Mostly cloudy in the morning.",
+    "time": "Tue Jan 02 2001"
+  },
+  ...
+]
 ```
 
 ### Feature #3: Handle errors when they occur
@@ -129,13 +140,28 @@ Example Response:
 
 - As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
-#### How are we implementing this feature?
+#### What are we going to implement?
 
-- A single function can handle an error generated by any request.
+Given that a user does not enter a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the user will receive an error message on the page and the data will not be rendered properly  
 
-#### What specific steps do we need to follow?
+#### How are we implementing it?
 
-- Create a function to handle errors and send a status of 500 to the client.
+- Create a function to handle errors from any API call.
+- Send a status of 500 and an error message to the client.
+
+Endpoint:
+`/location`, `/weather`
+
+Example Response: 
+```sh
+{
+  status: 500,
+  responseText: "Sorry, something went wrong",
+  ...
+}
+```
 
 ## Documentation
 

@@ -1,6 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Lab 09: Persistence with a SQL database, continued
-
-## Code Challenge
+Lab 09: Persistence with a SQL database, continued
 
 ## Submission Instructions
 
@@ -45,15 +43,17 @@ lab-09-repository
 
 ## User Stories and Feature Tasks
 
-#### Overview
+### Overview
 
 For this lab assignment, you will use the latitude and longitude to request information about meetups hosted in the area and hiking trails and campgrounds near the location.
 
-Repository set-up: 
+### Repository set-up
+
 - One person from your group should create a new repository on GitHub called `lab-09-back-end`. Add your partner(s) as collaborator(s). Clone your repository.
 - Follow the same code review process as lab 8.
 
-Heroku Deployment:
+### Heroku Deployment
+
 - Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as labs 6, 7, and 8. Create a new Heroku instance with your new partner(s) today. Your deployed site **should not** contain any broken functionality. 
 - You will also need to provision a SQL database on Heroku, as you did in lab 8
 - As you continue to work on features, make sure to check out your master branch and pull the changes after each pull request is merged. Then, create a new branch from your master branch and continue working. You may now begin your feature tasks for lab 9.
@@ -64,16 +64,19 @@ Heroku Deployment:
 
 - As a user, I want to request information about meetups in the area so that users can learn about the events taking place in the location.
 
-#### How are we implementing this feature?
+#### What are we going to implement?
 
-- Make a request to the Meetups API for information about Meetups that are hosted in the location.
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button   
+Then the first twenty Meetups hosted in the area will be displayed in the browser  
 
-#### What specific steps do we need to follow?
+#### How are we implementing it?
 
 - Create a route with a method of `get` and a path of `/meetups`. The callback should make a Superagent-proxied request to the Meetup API using the necessary location information.
 - Create a corresponding constructor function for the result.
 - For each meetup of the result, return an object which contains the necessary information for correct client rendering. See the sample response, below.
 - Add the appropriate logic to store this response in a table and the ability to check the database upon subsequent requests. Update your schemas.
+- Use your existing error handler function.
 - Redeploy your application.
 
 Endpoint:
@@ -81,12 +84,21 @@ Endpoint:
 
 Example Response:
 ```sh
-{
-  "link": URL to the event page on Meetup.com,
-  "name": the name of the group hosting the event,
-  "creation_date": a date in the format of Mon Jan 01 2001,
-  "host": the name of the hosts of the event
-}
+[
+  {
+    "link": "https://www.meetup.com/seattlejshackers/events/253823797/",
+    "name": "SeattleJS Hackers",
+    "creation_date": "Wed Apr 23 2014",
+    "host": "Hackers"
+  },
+  {
+    "link": "https://www.meetup.com/Angular-Seattle/events/253595182/",
+    "name": "Angular Seattle",
+    "creation_date": "Tue May 09 2017",
+    "host": "Angulars"
+  },
+  ...
+]
 ```
 
 ### Feature #2: Retrieve trail information
@@ -95,16 +107,19 @@ Example Response:
 
 - As a user, I want to request information about trails and campgrounds in the area so that users can explore the location.
 
-#### How are we implementing this feature?
+#### What are we going to implement?
 
-- Make a request to the Hiking Project API for information about nearby trails.
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the first ten hikes and campgrounds in the area will be displayed in the browser   
 
-#### What specific steps do we need to follow?
+#### How are we implementing it?
 
 - Create a route with a method of `get` and a path of `/trails`. The callback should make a Superagent-proxied request to the Hiking Project API using the necessary location information.
 - Create a corresponding constructor function for the result.
 - For each trail of the result, return an object which contains the necessary information for correct client rendering. See the sample response, below.
 - Add the appropriate logic to store this response in a table and the ability to check the database upon subsequent requests. Update your schemas.
+- Use your existing error handler function.
 - Redeploy your application.
 
 Endpoint:
@@ -112,18 +127,33 @@ Endpoint:
 
 Example Response:
 ```sh
-{
-  "name": a string containing the name of the trail,
-  "location": a string containing the city and state of the trail,
-  "length": numeric distance of the trail,
-  "stars": average rating of the trail,
-  "star_votes": total votes for the trail,
-  "summary": an overview of the trail,
-  "trail_url": URL to the details on the Hiking Project website,
-  "conditions": a string containing the most recent trail conditions,
-  "condition_date": date in the format of YYYY-MM-DD,
-  "condition_time": 
-}
+[
+  {
+    "name": "Rattlesnake Ledge",
+    "location": "Riverbend, Washington",
+    "length": "4.3",
+    "stars": "4.4",
+    "star_votes": "84",
+    "summary": "An extremely popular out-and-back hike to the viewpoint on Rattlesnake Ledge.",
+    "trail_url": "https://www.hikingproject.com/trail/7021679/rattlesnake-ledge",
+    "conditions": "Dry: The trail is clearly marked and well maintained.",
+    "condition_date": "2018-07-21",
+    "condition_time": "0:00:00 "
+  },
+  {
+    "name": "Mt. Si",
+    "location": "Tanner, Washington",
+    "length": "6.6",
+    "stars": "4.4",
+    "star_votes": "72",
+    "summary": "A steep, well-maintained trail takes you atop Mt. Si with outrageous views of Puget Sound.",
+    "trail_url": "https://www.hikingproject.com/trail/7001016/mt-si",
+    "conditions": "Dry",
+    "condition_date": "2018-07-22",
+    "condition_time": "0:17:22 "
+  },
+  ...
+]
 ```
 
 ## Documentation

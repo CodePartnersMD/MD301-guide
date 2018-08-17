@@ -1,6 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Lab 07: Node, npm, Express, and APIs
-
-## Code Challenge
+Lab 07: APIs (continued)
 
 ## Submission Instructions
 
@@ -38,20 +36,23 @@ lab-07-repository
 
 ## User Stories and Feature Tasks
 
-#### Overview
+### Overview
 
 For this lab assignment, you will use the latitude and longitude to request information about movies filmed in the location and Yelp review for local restaurants.
 
-Repository set-up: 
+### Repository set-up
+
 - One person from your group should create a new repository on GitHub called `lab-07-back-end`. Add your partner(s) as collaborator(s). Clone your repository.
 - Select one person's lab 6 code to use for today's lab. The person whose code is selected should copy their lab 6 solution into the lab 7 repository. From the command line, use the `cp` command to copy _only_ the `server.js` file. Initialize your project with Node and install the necessary packages; confirm in your `package.json` file. Add, commit, and push to your master branch.
 
-Code Review:
+### Code Review
+
 - From this point on, work on semantically-named non-master branches. 
 - The student(s) whose lab 6 solution code was not selected should now be the driver. With your partner(s), identify three improvements. This should either be pieces of code that can be refactored or three sections of the code base to add verbose comments to. Note: you do not need to select one or the other. For example, you may select one section to comment on and two pieces of code that can be refactored, for a total of three improvements.
 - Work on one improvement at a time, making sure to add, commit, and push the changes as each improvement is complete. These will serve as the first three commits which your TA will review during grading, so pay attention to your Git/GitHub workflow. Once all three improvements are complete, create and merge a pull request to your master branch.
 
-Heroku Deployment:
+### Heroku Deployment
+
 - Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as lab 6. Create a new Heroku instance with your new partner(s) today. Your deployed site **should not** contain any broken functionality. You may now begin your feature tasks for lab 7.
 - As you continue to work on features, make sure to check out your master branch and pull the changes after each pull request is merged. Then, create a new branch from your master branch and continue working.
 
@@ -61,14 +62,15 @@ Heroku Deployment:
 
 - As a user, I want the application to provide properly formatted data so that I can view similar data for any location I choose.
 
-#### How are we implementing this feature?
+#### What are we going to implement?
 
-- A constructor function will ensure that each object is created according to the same format every time the server receives data from an API.
-- The `.map` method will return an array of objects, which can then be sent as the JSON response to the client.
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the data will be rendered in the same format every time  
 
-#### What specific steps do we need to follow?
+#### How are we implementing it?
 
-- Refactor your code base to use constructor functions, one per API response. 
+- A constructor function will ensure that each object is created according to the same format every time the server receives data from an API. Refactor your code base to use constructor functions, one per API response. 
 - Refactor your `getWeather` callback to use `.map` and send the resulting array as your response to the client. Continue to use `.map` for the remainder of labs 7, 8, and 9.
 - Redeploy your application.
 
@@ -78,15 +80,18 @@ Heroku Deployment:
 
 - As a user, I want to request information about restaurants in the area so that users can view recommendations based on the search query.
 
-#### How are we implementing this feature?
+#### What are we going to implement?
 
-- Make a request to the Yelp API for information about local businesses.
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the first twenty restaurants in the area will be displayed in the browser  
 
-#### What specific steps do we need to follow?
+#### How are we implementing it?
 
 - Create a route with a method of `get` and a path of `/yelp`. The callback should make a Superagent-proxied request to the Yelp API using the necessary location information. Note: review the Superagent docs regarding setting authorization headers.
 - Create a corresponding constructor function for the result.
 - For each business of the result, return an object which contains the necessary information for correct client rendering. See the sample response, below.
+- Use your existing error handler function.
 - Redeploy your application.
 
 Endpoint:
@@ -94,13 +99,24 @@ Endpoint:
 
 Example Response:
 ```sh
-{
-  "name": a string containing the name of the business,
-  "image_url": a URL for the business,
-  "price": average price,
-  "rating": average rating,
-  "url": URL to the business's website
-}
+[
+  {
+    "name": "Pike Place Chowder",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/ijju-wYoRAxWjHPTCxyQGQ/o.jpg",
+    "price": "$$   ",
+    "rating": "4.5",
+    "url": "https://www.yelp.com/biz/pike-place-chowder-seattle?adjust_creative=uK0rfzqjBmWNj6-d3ujNVA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=uK0rfzqjBmWNj6-d3ujNVA"
+  },
+  {
+    "name": "Umi Sake House",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/c-XwgpadB530bjPUAL7oFw/o.jpg",
+    "price": "$$   ",
+    "rating": "4.0",
+    "url": "https://www.yelp.com/biz/umi-sake-house-seattle?adjust_creative=uK0rfzqjBmWNj6-d3ujNVA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=uK0rfzqjBmWNj6-d3ujNVA"
+  },
+  ...
+]
+
 ```
 
 ### Feature #3: Retrieve movie information
@@ -109,15 +125,18 @@ Example Response:
 
 - As a user, I want to request information about movies that were set in the area so that users can learn more about the location.
 
-#### How are we implementing this feature?
+#### What are we going to implement?
 
-- Make a request to The Movie Database API for information about movies filmed in the location.
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the top twenty movies set in the area will be displayed in the browser  
 
-#### What specific steps do we need to follow?
+#### How are we implementing it?
 
 - Create a route with a method of `get` and a path of `/movies`. The callback should make a Superagent-proxied request to The Movie Database API using the necessary location information.
 - Create a corresponding constructor function for the result.
 - For each movie of the result, return an object which contains the necessary information for correct client rendering. See the sample response, below.
+- Use your existing error handler function.
 - Redeploy your application.
 
 Endpoint:
@@ -125,15 +144,27 @@ Endpoint:
 
 Example Response:
 ```sh
-{
-  "title": a string containing the title of the film,
-  "overview": a string containing a description of the film,
-  "average_votes": average votes for the film,
-  "total_votes": total votes for the film,
-  "image_url": URL for the poster image,
-  "popularity": numeric popularity score,
-  "released_on": date in the format of YYYY-MM-DD
-}
+[
+  {
+    "title": "Sleepless in Seattle",
+    "overview": "A young boy who tries to set his dad up on a date after the death of his mother. He calls into a radio station to talk about his dad’s loneliness which soon leads the dad into meeting a Journalist Annie who flies to Seattle to write a story about the boy and his dad. Yet Annie ends up with more than just a story in this popular romantic comedy.",
+    "average_votes": "6.60",
+    "total_votes": "881",
+    "image_url": "https://image.tmdb.org/t/p/w200_and_h300_bestv2/afkYP15OeUOD0tFEmj6VvejuOcz.jpg",
+    "popularity": "8.2340",
+    "released_on": "1993-06-24"
+  },
+  {
+    "title": "Love Happens",
+    "overview": "Dr. Burke Ryan is a successful self-help author and motivational speaker with a secret. While he helps thousands of people cope with tragedy and personal loss, he secretly is unable to overcome the death of his late wife. It's not until Burke meets a fiercely independent florist named Eloise that he is forced to face his past and overcome his demons.",
+    "average_votes": "5.80",
+    "total_votes": "282",
+    "image_url": "https://image.tmdb.org/t/p/w200_and_h300_bestv2/pN51u0l8oSEsxAYiHUzzbMrMXH7.jpg",
+    "popularity": "15.7500",
+    "released_on": "2009-09-18"
+  },
+  ...
+]
 ```
 
 ## Documentation

@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) 12: Componentization
+Lab 12: Componentization
 
 ## Submission Instructions
 
@@ -53,32 +53,69 @@ book_app (repository)
 
 ## User Stories and Feature Tasks
 
-#### Overview
+### Overview
 
 This lab assignment will add the ability for a user to see the details of a single book in a new view. Your code base will also be modularized into components, making your code DRY.
 
-*1. As a user, I want to request information about a single book so that I can view additional details.*
+### Feature 1: Detail view
+
+#### Why are we implementing this feature?
+
+As a user, I want to request information about a single book so that I can view its additional details.
+
+#### What are we going to implement?
+
+Given that a user views the book collection  
+When the user clicks on the detail button for an individual book  
+Then the application should take the user to a detail view where the description and ISBN will be displayed  
+
+Given that a user is viewing the details of a single book  
+When the user clicks on a button  
+Then the user will be returned to the main page where all of the books from the collection are rendered  
+
+#### How are we implementing it?
 
 - Add an endpoint for a `GET` request to `/books/:id`.
-  - This should allow the client to make a request for a singular book, which returns the details of that record from the DB. 
+  - This should allow the client to make a request for a singular book, which returns the details of that record from the database. 
 - You will likely need to modify the template in your `index.ejs` file to allow the user to select a single book and use its unique id to display the details.
 - Create a new view called `show.ejs` to display the detail view of a single book.
 - Include the ability for the user to return to the main list of all books.
 - Redeploy your application.
 
-*2. As a user, I want to use callbacks in my `server.js` file so that my code is easier to read.*
+### Feature 2: Consistent rendering
+
+#### Why are we implementing this feature?
+
+- As a user, I want the application to be designed in a consistent way so that I do not experience any down time or slow load times.
+
+#### What are we going to implement?
+
+Given that a user views the application  
+When the user interacts with the application    
+Then the application should load quickly and perform efficiently
+
+#### How are we implementing it?
 
 - Move your SQL queries and view rendering into callbacks. Reference the appropriate callback in each route.
 - Move your error handling into a callback.
-
-*3. As a user, I want to modularize my code into components so that it becomes DRY and easier to maintain.*
-
-- Add a new folder called `partials` and create files that are the same across each view. Include the partial files into each view.
+- Add a new folder called `partials` and create files that are the same across each view. Include the partial files in each view.
 - Redeploy your application.
 
-*4. As a user, I want a simple, clean looking UI so that my application is easy to navigate.*
+### Feature 3: Continue to style the application
 
-- Continue to style your site using a *mobile-only* approach. Use the provided wireframes as a general guideline for the _minimum styling requirements_, while adding your own personal taste and color palette.
+#### Why are we implementing this feature?
+
+- As a user, I want a simple, clean-looking UI so that my application is easy to navigate.
+
+#### What are we going to implement?
+
+Given that users access the application on multiple platforms  
+When the user views the application  
+Then the interface should be intuitive and visually pleasing  
+
+#### How are we implementing it?
+
+- Continue to style your site using a mobile-responsive approach. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
 - Ensure the proper use of SMACCS principles.
   - Your `modules.css` will probably become larger today, which means that you should exercise SMACSS further by modularizing that stylesheet into a `modules/` directory with a file for each partial component of your site.
 - Continue to iterate on your styles. For example, begin to include standardized styles such as a color palette and defined font families.
@@ -87,6 +124,10 @@ This lab assignment will add the ability for a user to see the details of a sing
 ## Stretch Goal
 
 *As a developer, I want to explore further functionality so that I can continue to improve the user's experience.*
+
+Given that the user views the application on a mobile device  
+When the user clicks on the hamburger menu  
+Then the navigation items will be visible  
 
 - Implement the ability for your hamburger menu to operate without the use of JavaScript. You will need to research how to enable a 'pop-up/out' style menu with vanilla HTML and CSS.
 - Consider any further UI/UX features which will allow a more friendly interface for your users.

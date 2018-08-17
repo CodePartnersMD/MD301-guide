@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png)
+  Class 09: Persistence with a SQL database, continued
 
 ## Overview
 
@@ -19,8 +19,6 @@ The only new feature task is to follow the same pattern from lab 8 to retrieve d
 ## What bugs, issues, or surprises have come up in the past for this class?
 
 ## General comments
-
-## Resources/Slides
 
 ## Lecture
 

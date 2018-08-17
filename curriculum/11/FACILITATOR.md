@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Class 11: Server-side templating with EJS
+Class 11: Server-side templating with EJS
 
 ## Overview
 
@@ -8,7 +8,7 @@ At this point, students should feel comfortable working in the front end from mo
 
 Server-side rendering is a new topic for students during this module. It will likely take a bit of time for students to adjust to this paradigm. Today's lecture will focus on creating a singular `index.ejs` file and an error view, with modularization into components addressed in the lectures and lab assignments for the remainder of the book app.
 
-In lab 11, students will manually populate a database and write a route to retrieve all of the book objects and render them all in a single view.
+In lab 11, students will manually populate a database and write a route to retrieve all of the book objects and render them all in a single view. For your convenience, there is a file called `schema.sql` to easily load a table with ten books. To run this from the command line, type `psql -d <database-name> -f schema.sql`. This is for internal use only; do not share this file with students. 
 
 _Note: the `demos` folder contains the to-do application before templating and after templating. The purpose of these two demos is for instructor reference. The revised version of the book app is being introduced in September 2018, so it will serve as a starting point for instructors who have delivered the original book app to acclimate to the revised version of the book app. Students should only be introduced to the pattern that includes EJS, which can be found in the `todo-after-templating` folder._ 
 
@@ -29,10 +29,13 @@ Students may feel frustrated that they have to request data from the Google Book
 
 Students will need to be mindful about the data types for each column of their table. A common error can occur when students try to add a book description that exceeds the size of their column if they choose a data type like `VARCHAR(255)`. This might become a problem in lab 11; however, it might not arise as an issue until lab 14 when the API search functionality is added.
 
+A common source of SQL errors is the formatting of the description. For example, the Google Books API uses smart quotes but SQL only accepts straight quotes. Also, if they use single quotes to wrap the values of their INSERT statements, they will need to escape any apostrophes within the description using two single quotes (not a double quote!) like this: `''`. 
+
 ## What bugs, issues, or surprises have come up in the past for this class?
 
 ## General comments
 
+- Make sure to discuss the benefits of server-side rendering, such as avoiding a flash of unstyled content [(FOUC)](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
 - Save the solution code for code review in Class 12, rather than showing the solution during Class 11 lecture. Note: do not distribute the book app solution code to students.
 
 ## Resources/Slides

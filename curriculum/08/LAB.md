@@ -1,6 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Lab 08: Persistence with a SQL database
-
-## Code Challenge
+Lab 08: Persistence with a SQL database
 
 ## Submission Instructions
 
@@ -41,15 +39,17 @@ lab-08-repository
 
 ## User Stories and Feature Tasks
 
-#### Overview
+### Overview
 
 For this lab assignment, you will use the latitude and longitude to request information about movies filmed in the location and Yelp review for local restaurants.
 
-Repository set-up: 
+### Repository set-up
+
 - One person from your group should create a new repository on GitHub called `lab-08-back-end`. Add your partner(s) as collaborator(s). Clone your repository.
 - Follow the same code review process as lab 7.
 
-Heroku Deployment:
+### Heroku Deployment
+
 - Once your app is functioning correctly on your master branch, deploy your back end to Heroku in the same manner as labs 6 and 7. Create a new Heroku instance with your new partner(s) today. Your deployed site **should not** contain any broken functionality. 
 - You will also need to provision a SQL database on Heroku. To do so, nagivate to the Resources tab and in the Add-Ons, search for "Postgres" and provision the free version.
 - As you continue to work on features, make sure to check out your master branch and pull the changes after each pull request is merged. Then, create a new branch from your master branch and continue working. You may now begin your feature tasks for lab 8.
@@ -60,12 +60,25 @@ Heroku Deployment:
 
 - As a user, I want the application to perform quickly so that I can search for locations frequently and reliably.
 
-#### How are we implementing this feature?
+#### What are we going to implement?
 
-- Store API results in a PostgreSQL database
-- If the data already exists in the database, retrieve it instead of making a duplicate request to the API
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the results will be loaded from a SQL database, if previously cached  
 
-#### What specific steps do we need to follow?
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the results will be requested from each individual API, if not previously cached  
+
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the results will be cached in a SQL database for future retrieval  
+
+Given that a user does not enter a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the location information will not be displayed  
+
+#### How are we implementing it?
 
 Database set-up:
 - Install and require the NPM PostgreSQL package `pg` in your server.js file.
