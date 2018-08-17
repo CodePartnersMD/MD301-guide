@@ -1,6 +1,6 @@
-```
-<!-- index.html -->
+## index.html
 
+```
 <div>
   <ul>
     <li>One</li>
@@ -8,10 +8,11 @@
     <li>Three</li>
   </ul>
 </div>
+```
 
+## styles.css
 
-<!-- styles.css -->
-
+```
 div {
   border: 10px solid yellow;
   overflow: hidden;
