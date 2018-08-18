@@ -1,25 +1,26 @@
-![CF](https://i.imgur.com/7v5ASc8.png)  Array.forEach
-=======
+# Array.forEach
+
 ## Overview
 `Array.forEach` allows you to iterate through an array. Where a normal `for` loop is "iterative", forEach is more declarative or functional in nature.
 
-It is implemented as a method on your array instance ...
+It is implemented as a method on your array instance.
 ```
-  let myArray = ['a','b','c'];
+  let myArray = ['a', 'b', 'c'];
   myArray.forEach( ... )
 ```
 
-It takes a callback as a param, which in turn receives the value and the iterator, and runs it on every element ...
+It takes a callback as a parameter, which in turn receives the value and the iterator, and runs it on every element.
 
 ```
   let myArray = ['a','b','c'];
-  myArray.forEach( function(value,i) {
-    console.log(i); // 0, 1, 2
-    console.log(value); // a, b, c
+
+  myArray.forEach( function(value, i) {
+    console.log(i);       // 0, 1, 2
+    console.log(value);   // a, b, c
   })
 ```
 
-### Caveats and Notes
+## Caveats and Notes
 - Applies the callback to each element
 - You cannot "Return" a value
 - You cannot "break" or "continue" as you can with a for loop
