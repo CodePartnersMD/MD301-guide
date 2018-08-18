@@ -1,6 +1,9 @@
-```
-<!-- index.ejs -->
+# Warm-Up Exercise
+Read through this code as if you are the interpreter. Find all of the mistakes in this code and write down the correct syntax for each mistake.
 
+## index.ejs
+
+```
 <html>
   <header>
     <title>Code Challenge!</title>
