@@ -192,7 +192,7 @@ describe('Testing challenge 3', () => {
 
 describe('Testing challenge 4', () => {
   test('The number 8 should be added five times', () => {
-    expect(eights).toEqual([ 8, 8, 8, 8, 8 ]);
+    expect(eights).toStrictEqual([ 8, 8, 8, 8, 8 ]);
     expect(eights.length).toStrictEqual(5);
   });
 });
