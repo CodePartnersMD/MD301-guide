@@ -1,6 +1,7 @@
-```
-<!-- C# Sample -->
+# Warm-Up Exercise
+This code sample is written in C#. Read through the code and determine the output for the function.
 
+```
 public string Value(string value, int position)
 {
     string[] myArray = new string[5];

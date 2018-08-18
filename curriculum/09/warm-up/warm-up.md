@@ -1,6 +1,7 @@
-```
-<!-- Python Sample -->
+# Warm-Up Exercise
+This code sample is written in Python. Read through the code and determine the output for this function.
 
+```
 def search(arr: list, key: any) -> int:
     start = 0
     end = len(arr) - 1

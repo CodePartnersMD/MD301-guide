@@ -1,6 +1,7 @@
-```
-<!-- C# Sample -->
+# Warm-Up Exercise
+This code sample is written in C#. Read through the code and determine the output for this function.
 
+```
 static void Main(String[] args)
   {
     int[] arr = {10, 7, 3, 1, 9, 7, 4, 3};

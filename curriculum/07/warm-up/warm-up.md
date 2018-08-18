@@ -1,6 +1,7 @@
-```
-<!-- Java Sample -->
+# Warm-Up Exercise
+This code sample is written in Java. Read through the code and determine the output for this function.
 
+```
 public class Count {
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
