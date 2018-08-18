@@ -76,7 +76,7 @@ speaker('hello 301 students!', greeting);
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
 //
-// Write a function named removeElement that takes in a number and an array. If (number % 3 === 2), pop one element off of the array. Then, write a for loop to invoke the removeElement function once for every element in the array of numbers.
+// Write a function named removeElement that takes in a number and an array. If (number % 3 === 2), pop one element off of the array. Then, write a for loop to invoke the removeElement function once for every element in the array of numbers. You may also use for...in or for...of syntax.
 // ------------------------------------------------------------------------------------------------
 
 let firstNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
