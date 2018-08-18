@@ -1,6 +1,9 @@
-```
-<!-- index.html -->
+# Warm-Up Exercise
+Predict how this code will be rendered on the page. Draw the outcome in the blank space below. What would you change?
 
+## index.html
+
+```
 <div>
   <ul>
     <li>One</li>
@@ -8,13 +11,13 @@
     <li>Three</li>
   </ul>
 </div>
+```
 
+## styles.css
 
-<!-- styles.css -->
-
+```
 div {
   border: 10px solid yellow;
-  overflow: hidden;
 }
 
 li { 
