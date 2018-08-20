@@ -9,7 +9,9 @@
 let first = [1, 2, 3, 4, 5];
 let second = [];
 
-
+for(let i = 0; i < first.length; i++) {
+  second.push(first[i]);
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
@@ -21,7 +23,9 @@ let rawScores = [55, 79, 100, 85, 92];
 
 let bonusPoints = [];
 
-
+for(let score of rawScores) {
+  bonusPoints.push(score + 5);
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
@@ -31,7 +35,9 @@ let bonusPoints = [];
 
 let curvedScores = [];
 
-
+for(let score in rawScores) {
+  curvedScores.push(rawScores[score] * 1.05);
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
@@ -41,7 +47,13 @@ let curvedScores = [];
 
 let eights = [];
 
+function pushIt(num) {
+  eights.push(num)
+}
 
+for(let i = 0; i < 5; i++) {
+  pushIt(8);
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
@@ -52,13 +64,14 @@ let eights = [];
 // ------------------------------------------------------------------------------------------------
 
 let greeting = function(word) {
-
+  return word.toUpperCase();
 }
 
 function speaker(message, callback) {
-
+  return callback(message);
 }
 
+speaker('hello 301 students!', greeting);
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
@@ -69,10 +82,14 @@ function speaker(message, callback) {
 let firstNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function removeElement(num, input) {
-
-
+  if(num % 3 === 2) {
+    input.pop();
+  }
 }
 
+for(let i = 0; i < firstNumbers.length; i++) {
+  removeElement(firstNumbers[i], firstNumbers);
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
@@ -82,6 +99,7 @@ function removeElement(num, input) {
 
 let secondNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+secondNumbers.forEach(number => removeElement(number, secondNumbers));
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 8
@@ -91,7 +109,11 @@ let secondNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 let thirdNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-
+thirdNumbers.forEach(function(number, idx, arr) {
+  if(number % 3 === 2) {
+    arr.pop();
+  }
+});
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 9
@@ -109,7 +131,11 @@ let inventory = [
 
 let list = [];
 
-
+inventory.forEach(item => {
+  if(item.available) {
+    list.push(item.name)
+  }
+})
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 10
@@ -122,10 +148,18 @@ let inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 let output = [];
 
 let fizzbuzz = function(num) {
-
-
+  if(num % 5 === 0 && num % 3 === 0) {
+    output.push('Fizz Buzz');
+  } else if (num % 3 === 0) {
+    output.push('Fizz');
+  } else if (num % 5 === 0) {
+    output.push('Buzz');
+  } else {
+    output.push(num);
+  }
 }
 
+inputs.forEach(input => fizzbuzz(input));
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
@@ -134,7 +168,7 @@ let fizzbuzz = function(num) {
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest forEach.test.js
+// Run your tests from the console: jest forEach.solution.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
