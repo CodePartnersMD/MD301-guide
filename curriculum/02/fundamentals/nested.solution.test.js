@@ -19,7 +19,13 @@ let alkiBeach = [ 33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17 ];
 
 let stores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
-
+for(let i = 0; i < hoursOpen.length; i++) {
+  let hourlyTotal = 0;
+  for(let j = 0; j < stores.length; j++) {
+    hourlyTotal += stores[j][i];
+  }
+  hourlySales.push(hourlyTotal);
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
@@ -31,7 +37,12 @@ let stores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 let salesOverview = [];
 
-
+hourlySales.forEach((total, idx) => {
+  salesOverview.push( {
+    sales: `${total} cookies`,
+    time: hoursOpen[idx]
+  } )
+})
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
@@ -46,10 +57,15 @@ let people = ['John', 'Vinicio', 'Sam', 'Allie', 'Demi'];
 let greetings = [];
 
 let shakeHands = list => {
-
-  
+  for( let i = 0; i <= list.length - 1; i++ ) {
+    for( let j = 0; j <= list.length - 1; j++ ) {
+      if(list[i] === list[j]) { continue; }
+      greetings.push(`${list[i]} shakes ${list[j]}'s hand.`);
+    }
+  }
 };
 
+shakeHands(people);
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
