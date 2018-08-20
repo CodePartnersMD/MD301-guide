@@ -6,8 +6,7 @@
 // Write a function named regexTest that takes in a string and a regular expression. This function should use the .test() method.
 // ------------------------------------------------------------------------------------------------
 
-
-
+let regexTest = (input, comparison) => comparison.test(input);
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
@@ -15,8 +14,7 @@
 // Write a function named regexMatch that takes in a string and regular expression. This function should use the .match() method.
 // ------------------------------------------------------------------------------------------------
 
-
-
+let regexMatch = (input, comparison) => input.match(comparison);
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
@@ -26,7 +24,7 @@
 
 let matchNums = 1234567890;
 
-let numPattern = /        /g;
+let numPattern = /[0-9]/g;
 
 let numResult = regexTest(matchNums, numPattern);
 
@@ -38,11 +36,11 @@ let numResult = regexTest(matchNums, numPattern);
 
 let matchString = 'The four classrooms on campus are Lovelace, Hopper, Turing, and Babbage.';
 
-let classroomPattern = /     /g;
+let classroomPattern = /[A-Z][a-zA-Z]*/g;
 
 let classroomMatch = regexMatch(matchString, classroomPattern);
 
-
+classroomMatch.shift();
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
@@ -51,9 +49,9 @@ let classroomMatch = regexMatch(matchString, classroomPattern);
 // 'Morning classes meet in Lovelace and Babbage. Afternoon classes meet in Hopper and Turing'
 // ------------------------------------------------------------------------------------------------
 
+let roomSchedule = arr => `Morning classes meet in ${arr[0]} and ${arr[3]}. Afternoon classes meet in ${arr[1]} and ${arr[2]}.`;
 
-
-
+roomSchedule(classroomMatch);
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
@@ -63,7 +61,7 @@ let classroomMatch = regexMatch(matchString, classroomPattern);
 
 let instructors = 'Allie, Amanda, Brian, JB, John, Michelle, Sam, Scott, Steve, Vinicio';
 
-let instructorPattern = /         /g;
+let instructorPattern = /\b[A-J][A-Za-z]+/g;
 
 regexMatch(instructors, instructorPattern);
 
@@ -75,7 +73,7 @@ regexMatch(instructors, instructorPattern);
 
 let inputs = 'Jan jan January january';
 
-let inputPattern = /       /gi;
+let inputPattern = /Jan(uary)?/gi;
 
 regexMatch(inputs, inputPattern);
 
@@ -87,7 +85,8 @@ regexMatch(inputs, inputPattern);
 
 const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia vel massa sed egestas. Nunc faucibus iaculis elit, a scelerisque enim condimentum sed. Aenean ac scelerisque sem, et pharetra diam.';
 
-let spacePattern = /      /g
+let spacePattern = /\w+\s/g
+// or /[a-zA-Z]+\s/g;
 
 regexMatch(lorem, spacePattern);
 
@@ -99,7 +98,7 @@ regexMatch(lorem, spacePattern);
 
 let hangman = 'This is a regex challenge. We are trying to create a hangman phrase where all of the vowels are missing!';
 
-
+let puzzle = hangman.replace(/[a|e|i|o|u]/g, '_');
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 10
@@ -111,7 +110,7 @@ let hangman = 'This is a regex challenge. We are trying to create a hangman phra
 
 let seashells = 'She sells seashells by the seashore. The shells she sells are surely seashells. So if she sells shells on the seashore, I\'m sure she sells seashore shells.';
 
-let shellPattern = /       /g;
+let shellPattern = /([a-z]ells)\b/g;
 
 regexMatch(seashells, shellPattern);
 
@@ -122,7 +121,7 @@ regexMatch(seashells, shellPattern);
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest regex-1.test.js
+// Run your tests from the console: jest regex-1.solution.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
