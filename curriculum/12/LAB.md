@@ -11,10 +11,6 @@ Lab 12: Componentization
   - An observation about the lab assignment, or related 'Ah-hah!' moment
   - How long you spent working on this assignment
 
-## Resources
-
-TODO: Add updated wireframes
-
 ## Configuration
 
 Use the following as a guide for your directory structure.
