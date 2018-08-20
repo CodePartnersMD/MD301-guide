@@ -22,6 +22,8 @@ Within your repository, you will create a separate folder for each challenge. Go
 
 At the end of lecture each day, your instructor will publish the challenges. Copy the contents of the file into your repository and work on the challenges for each day. Remember to add, commit, and push regularly. 
 
+Submit a link to your repository in the corresponding Canvas assignment.
+
 ## Jest Configuration
 
 Your code challenge files are divided into two sections: challenges and tests. You will need to add your own solutions to each challenge but should not modify the tests in any way. These tests will ensure that your solution is meeting the requirements of each challenge. Even though you may not modify the tests, you are encouraged to read them to see what is being evaluated.
