@@ -6,7 +6,7 @@ The purpose of today's lecture is to discuss the call stack so students think ab
 
 Another portion of today's lecture is reading error messages and tracing the call stack. Error messages can be intimidating to students, so walking through the errors together and providing tips will be helpful.
 
-Towards the end of lecture, remind students that there is a corresponding lab assignment. For courses in the daytime schedule, the lab will take place on Monday morning prior to lecture 11. Students should continue to work on their `server.js` code from lab 9. For the lab, they will work with a new partner and review each others' lab code. The assignment involves drawing the call stack, drawing a diagram of the web request-response cycle (WRRC), and annotating their printed-out code.
+Towards the end of lecture, remind students that there is a corresponding lab assignment. For courses in the daytime schedule, the lab will take place on Monday morning prior to lecture 11. Students should continue to work on their `server.js` code from lab 9. To do so, they should make a fork of the repository they used for lab 9. The purpose of making a fork is so that each partner can work independently over the weekend. For the lab, they will work with a new partner and review each others' lab code. The assignment involves drawing the call stack, drawing a diagram of the web request-response cycle (WRRC), and annotating their printed-out code.
 
 ## How do I prep for today?
 
