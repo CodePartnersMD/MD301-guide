@@ -10,7 +10,9 @@ The exam is open-book, open-Google, open-Stack_Overflow, whatever resources you 
 
 ## Daily Plan
 
+- Diversity and inclusion discussion
 - Warm-up exercise
+- Review code challenges
 - Wrap up book app
 - Review of topics by request
-- Discuss [final project requirements](./final-project-guidelines.md)
+- Discuss [final project requirements](./project-guidelines.md)

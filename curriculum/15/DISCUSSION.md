@@ -6,4 +6,4 @@
 
 ## Discuss
 
-Reply to this discussion with a quiz question to test your classmates’ knowledge of the readings. Alternatively, if you found yourself curious or found a topic unclear, ask a question to further your own knowledge. Then review your classmates' responses and answer one of their questions. If you are the first student to post a question, you do not need to go back and answer a question.
+Reply to this discussion with a takeaway from the readings. Consider how your perception of diversity and inclusion in tech may or may not be accurate based on the data and opinions presented in the readings. Then review your classmates' comments and reply to at least one comment. If you are the first student to respond, you do not need to go back and respond to a classmate's comment.

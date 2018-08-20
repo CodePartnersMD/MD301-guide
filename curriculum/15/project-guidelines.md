@@ -152,7 +152,10 @@ At a minimum, your `README.md` should include the following:
 - A description of the project
 - The overall problem domain and how the project solves those problems
 - Semantic versioning, beginning with version 1.0.0 and incremented as changes are made
-- A list of any libraries, frameworks, or packages that your application requires in order to properly function. If needed, provide instructions that the user may need to follow in order to get your application up and running on their own computer.
+- A list of any libraries, frameworks, or packages that your application requires in order to properly function
+- Instructions that the user may need to follow in order to get your application up and running on their own computer
+- Clearly defined API endpoints with sample responses
+- Clearly defined database schemas
 
 Within your code, document with meaningful comments. For example, a comment might provide an overview of what the function beneath it is doing, or describe the relationship between two variables.
 
@@ -316,14 +319,10 @@ _Why:_
 <a id="deployment"></a>
 ## Deployment
 
-Deploy your project on GitHub Pages and be prepared to present from the deployed version of your site.
+Deploy your project on Heroku and be prepared to present from the deployed version of your site. Associate your Heroku instance with your GitHub repository. Enable automatic deploys from your master branch.
 
 _Why:_
 > Deployed sites provide a unique URL that can be shared with anyone. You will also want to include this URL in your portfolio.
-
-To deploy to GitHub pages, go to the "Settings" tab in the repository. Scroll down to the "GitHub Pages" section. In the "Source" dropdown, select your master branch and click "Save". You will then see a deployed URL and can click it to see your deployed site.
-
-Note that it may take a few minutes for the deployed link to update and display your updated code as it appears on the master branch. If you do not see the deployed site updating after approximately 30 minutes, check the code base to ensure that there are no errors in your functionality when running your code locally.
 
 Deploy your site on the first day.
 
@@ -373,27 +372,41 @@ Individual effort is graded based on links to commits and Pull Requests that dem
 
 Technical merit is graded based on the following criteria:
 
-- Good and proper use of HTML
+- Good and proper use of HTML and EJS
   - Clear, readable, and efficient structure
   - Uses semantic markup whenever possible
+  - Organized into pages and partials for DRY code
 
 - Good and proper use of CSS
   - Clear, readable, and efficient styles
+  - Designed with a mobile-first approach, including at least one breakpoint
   - Appropriate page layout for desktop
-  - Well-organized file structure
+  - Uses relative units wherever possible for a responsive design
+  - Well-organized file structure following SMACSS principles
 
-- Good and proper use of JavaScript
+- Good and proper use of JavaScript and jQuery
   - Clear, readable, and efficient code
   - Uses domain models to encapsulate data and behavior, such as objects and constructors
-  - Responds to user events to receive/process user input and display new content to the user
+  - Uses jQuery to respond to user events, receive and process user input, and display new content to the user with AJAX
   - Contains no unnecessary or commented-out code
+
+- Data is persisted in a SQL database
+  - PostgreSQL database provisioned on the Heroku instance
+  - Logical schemas with appropriate data types
+  - Data model that maps to the problem domain and uses relational connections, such as joins, as necessary
+  - Ability to read records from the database
+  - Ability to create new resources and persist them in the database
+  - Ability to either update or delete records from the database
+
+- Clear documentation in the README.md
+  - See the [documentation guidelines](#documentation) provided above
 
 - Generally useful and functional
   - Works as expected with no bugs
   - Has at least three distinct pages with clear navigation, one of which must be an "About Us" page
   - Has at least two pages that accept and process user input
   - State is persisted between page reloads
-  - Deployed live on the Internet via GitHub Pages
+  - [Deployed](#deployment) live on the Internet via Heroku
 
 [Back to top](#top)
 
