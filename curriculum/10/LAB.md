@@ -11,7 +11,7 @@ Lab 10: The Call Stack
 
 ## Feature Tasks
 
-- Print your `server.js` file from lab 9. Make sure the lines of code are large enough to read and are only printed on one side of the paper. 
+- Print your `server.js` file from your fork of your lab 9 repository. Make sure the lines of code are large enough to read and are only printed on one side of the paper. 
 - You and your partner(s) will be taking notes, building the call stack, and drawing a WRRC diagram as you complete this exercise. You may use scratch paper, the whiteboard, or online tools such as a word processor or a drawing application. You will be submitting your printed-out code, notes, and diagram(s) as your lab submission, so be prepared to take a picture of the whiteboard, print out your notes, etc. so that your TA can grade your work. Make sure your handwriting and drawings are legible.
 - Plan to spend approximately two hours on one partner's `server.js` code, then switch roles.
 - When you are reviewing your own code:
