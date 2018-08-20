@@ -19,9 +19,7 @@ let courseInfo = {
 }
 
 function getKeys(obj) {
-
-
-
+  return Object.keys(obj);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -33,9 +31,7 @@ function getKeys(obj) {
 // ------------------------------------------------------------------------------------------------
 
 function getValues(obj) {
-
-
-
+  return Object.values(obj);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -47,9 +43,7 @@ function getValues(obj) {
 // ------------------------------------------------------------------------------------------------
 
 function getEntries(obj) {
-
-
-
+  return Object.entries(obj);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -61,9 +55,7 @@ function getEntries(obj) {
 // ------------------------------------------------------------------------------------------------
 
 function getFrom(obj, property){
-
-
-
+  return Object[property](obj);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -120,9 +112,7 @@ let characters = [
 ]
 
 function totalCharacters(arr) {
-
-
-
+  return getFrom(arr, 'keys').length;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -134,8 +124,11 @@ function totalCharacters(arr) {
 function getHouses(arr) {
   let houses = [];
 
+  getFrom(characters, 'values').forEach(person => {
+    houses.push(person.house);
+  })
 
-
+  return houses;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -145,9 +138,15 @@ function getHouses(arr) {
 // ------------------------------------------------------------------------------------------------
 
 function hasChildrenValues(arr, character){
+  let children = 0;
 
+  getFrom(characters, 'values').forEach(person => {
+    if(person.name === character) {
+      children = person.children.length > 0 ? true : false;
+    }
+  })
 
-
+  return children;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -157,9 +156,17 @@ function hasChildrenValues(arr, character){
 // ------------------------------------------------------------------------------------------------
 
 function hasChildrenEntries(arr, character){
+  let children = 0;
 
+  getFrom(characters, 'entries').forEach(item => {
+    item.forEach(person => {
+      if(person.name === character) {
+        children = person.children.length > 0 ? true : false;
+      }
+    })
+  })
 
-
+  return children;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -169,9 +176,17 @@ function hasChildrenEntries(arr, character){
 // ------------------------------------------------------------------------------------------------
 
 function houseSize(arr) {
-
-
-  
+  let sizes = [];
+  getFrom(arr, 'values').forEach(person => {
+    let sum = 1;
+    if(person.spouse) sum++;
+    person.children.forEach(() => sum++);
+    sizes.push({
+      house: person.house,
+      members: sum,
+    })
+  })
+  return sizes;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -187,9 +202,17 @@ function houseSize(arr) {
 let deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 function houseSurvivors(arr) {
-  
-
-  
+  let sizes = [];
+  getFrom(characters, 'values').forEach(person => {
+    let sum = 1;
+    if(person.spouse && !deceasedSpouses.includes(person.spouse)) sum++;
+    person.children.forEach(() => sum++);
+    sizes.push({
+      house: person.house,
+      members: sum,
+    })
+  })
+  return sizes;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -199,7 +222,7 @@ function houseSurvivors(arr) {
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest keys-values-entries.test.js
+// Run your tests from the console: jest keys-values-entries.solution.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
