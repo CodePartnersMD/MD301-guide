@@ -74,7 +74,7 @@ shakeHands(people);
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest nested.test.js
+// Run your tests from the console: jest nested.solution.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
