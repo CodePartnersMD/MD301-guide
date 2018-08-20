@@ -13,7 +13,7 @@ Lab 12: Componentization
 
 ## Resources
 
-TODO: Add updated wireframes
+- [Book app wireframes](./wireframes)
 
 ## Configuration
 

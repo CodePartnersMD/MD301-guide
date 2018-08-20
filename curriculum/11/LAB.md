@@ -15,7 +15,7 @@ Lab 11: Server-side templating with EJS
 - [ExpressJS docs - app.set](https://expressjs.com/en/4x/api.html#app.set)
 - [Heroku Postgres Docs](https://devcenter.heroku.com/articles/heroku-postgresql)
 
-TODO: Add updated wireframes
+- [Book app wireframes](./wireframes)
 
 ## Configuration
 

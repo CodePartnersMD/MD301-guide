@@ -13,10 +13,10 @@ Lab 13: Adding a new resource
 
 ## Resources
 
-TODO: add updated wireframes
-
 - [HTML5 Forms](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
 - [HTML5 Form Validation](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation#Using_built-in_form_validation)
+
+- [Book app wireframes](./wireframes)
 
 ## Configuration
 

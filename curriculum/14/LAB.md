@@ -13,10 +13,10 @@ Lab 14: Google Books API
 
 ## Resources
 
-TODO: add updated wireframes
-
 - [Google Books API Documentation](https://developers.google.com/books/docs/v1/getting_started)
 - [Superagent](https://visionmedia.github.io/superagent/)
+
+- [Book app wireframes](./wireframes)
 
 ## Configuration
 
