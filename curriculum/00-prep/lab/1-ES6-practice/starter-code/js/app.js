@@ -37,7 +37,7 @@ function displayPics(){
   console.log(rando);
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
   // PUT YOUR RESPONSE IN THIS COMMENT
-  console.log(viewed)
+  console.log(viewed);
 
   // To the DOM and beyond!
   for (var i = 0; i < 3; i++){
@@ -125,7 +125,7 @@ document.getElementById('bus').addEventListener('click', function(){
 
 if(localStorage.busmall){
   console.log('Local storage data exists');
-  allProducts = JSON.parse(localStorage.busmall)
+  allProducts = JSON.parse(localStorage.busmall);
 } else {
   console.log('There is no local storage data; initialize app by creating instances');
   for(var i = 0; i < names.length; i++) {

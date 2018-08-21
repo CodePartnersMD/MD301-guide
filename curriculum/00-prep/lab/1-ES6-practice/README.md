@@ -4,8 +4,9 @@ This hour-long assignment is designed to give you an introduction to some featur
 
 In this exercise you'll be working with the following features of ES6:
 
-- Template literals
 - Variable declarations with `let` and `const`
+- Ternary operators
+- Arrow functions
 
 
 ## Instructions
@@ -13,11 +14,8 @@ In this exercise you'll be working with the following features of ES6:
 Plan to spend about 10-15 minutes reading through this document and the linked references and about 10-15 minutes going over the materials in the adjoining `examples` directory.
 
 After that, follow the instructions below to fork and clone this repository, and then spend about 30 minutes working in the starter code.
-
-1. If you have not yet already, set up a `~/codefellows/301/` directory that you will use for your assignments and projects for this course.
-2. Fork and then clone the repository from the link provided by the instructor in Slack into that directory, and navigate into that repo.
-3. Create a new branch using your name: `git checkout -b firstname-lastname`
-4. Create a copy of the `starter-code` directory with the copy's name being the your first name and last name (`cp -r starter-code firstname-lastname`) and navigate into that directory (ex: `cd sam-hamm`).
+1. Fork and then clone the class repository from the link provided by the instructor in Slack into your `~/codefellows/301` directory, and navigate into that repo.
+1. Work on your fork on a non-master branch. As you work, remember to add, commit, and push regularly.
 5. Read through the following reference materials for each of these topics.
 6. See the adjacent `examples.js` file to compare examples of these features with the notation you have been using previously.
 7. In the adjacent `starter-code/js/app.js` file, find the **TODO** items and complete them using ES6 notation. Also, complete the **COMMENT** items that are in that file.
