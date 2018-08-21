@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 1
 //
-// Write a function named twoToTheForLoop that, given an array of integers as input, uses a for loop to create an array where each element is 2 to the power of the original input element.
+// Write a function named forLoopTwoToThe that, given an array of integers as input, uses a for loop to create an array where each element is 2 to the power of the original input element.
 //
 // You may choose to complete this challenge using a for loop, for...in, or for...of.
 //
@@ -11,7 +11,7 @@
 // twoToThe([1,2,3]) returns [2,4,8]
 // ------------------------------------------------------------------------------------------------
 
-const twoToTheForLoop = (input) => {
+const forLoopTwoToThe = (input) => {
   const output = [];
   for (const i in input) {
     output.push(2 ** input[i]);
@@ -22,10 +22,10 @@ const twoToTheForLoop = (input) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function named twoToTheForEach that produces the same output as your twoToTheForLoop function from challenge 1, but uses forEach instead of a for loop.
+// Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1, but uses forEach instead of a for loop.
 // ------------------------------------------------------------------------------------------------
 
-const twoToTheForEach = (input) => {
+const forEachTwoToThe = (input) => {
   const output = [];
   input.forEach((x) => {
     output.push(2 ** x);
@@ -36,10 +36,10 @@ const twoToTheForEach = (input) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
 //
-// Write a function named twoToTheMap that produces the same output as your twoToTheForLoop function from challenge 1 and your twoToTheForEach function from challenge 2, but uses map instead of a for loop or forEach.
+// Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1 and your forEachTwoToThe function from challenge 2, but uses map instead of a for loop or forEach.
 // ------------------------------------------------------------------------------------------------
 
-const twoToTheMap = input => input.map(x => 2 ** x);
+const mapTwoToThe = input => input.map(x => 2 ** x);
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
@@ -170,34 +170,34 @@ const extractStats = abilities => abilities.map(x => ({
 
 describe('Testing challenge 1', () => {
   test('Positive integers should return in powers of 2', () => {
-    expect(twoToTheForLoop([0, 4, 5])).toStrictEqual([1, 16, 32]);
-    expect(twoToTheForLoop([0, 4, 5]).length).toStrictEqual(3);
+    expect(forLoopTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
+    expect(forLoopTwoToThe([0, 4, 5]).length).toStrictEqual(3);
   });
 
   test('Negative values should produce decimals.', () => {
-    expect(twoToTheForLoop([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
+    expect(forLoopTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
   });
 });
 
 describe('Testing challenge 2', () => {
   test('Positive integers should return in powers of 2', () => {
-    expect(twoToTheForEach([0, 4, 5])).toStrictEqual([1, 16, 32]);
-    expect(twoToTheForEach([0, 4, 5]).length).toStrictEqual(3);
+    expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
+    expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
   });
 
   test('Negative values should produce decimals.', () => {
-    expect(twoToTheForEach([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
+    expect(forEachTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
   });
 });
 
 describe('Testing challenge 3', () => {
   test('Positive integers should return in powers of 2', () => {
-    expect(twoToTheMap([0, 4, 5])).toStrictEqual([1, 16, 32]);
-    expect(twoToTheMap([0, 4, 5]).length).toStrictEqual(3);
+    expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
+    expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
   });
 
   test('Negative values should produce decimals.', () => {
-    expect(twoToTheMap([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
+    expect(mapTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
   });
 });
 
