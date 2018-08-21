@@ -20,7 +20,7 @@ const sortBackwards = (nums) => {
 
 const strs = ['alphabet', 'Zebra', 'Alphabet', 'carrot'];
 const alphabetize = (strs) => {
-  return strs.sort( (a,b) => a > b );
+  return strs.sort( (a,b) => a > b ? 1 : (a < b ? -1 : 0) );
 };
 
 // -----------------------------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ const sortByLength = (strs) => {
 // strings.
 const alphabetizedStrs = ['Alice', 'apple', 'alert', 'Average'];
 const alphabetizeBetter = (strs) => {
-  return strs.sort( (a,b) => a.toLowerCase() > b.toLowerCase() );
+  return strs.sort( (a,b) => a.toLowerCase() > b.toLowerCase() ? 1 : (a.toLowerCase() < b.toLowerCase() ? -1 : 0) );
 };
 
 // -----------------------------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ const people = [
   new Person('Sam', 'Seattle', 67),
 ];
 const sortPeople = (people) => {
-  return people.sort ( (a,b) => a.lastName > b.lastName );
+  return people.sort ( (a,b) => a.lastName > b.lastName ? 1 : (a.lastName < b.lastName ? -1 : 0) );
 };
 
 // -----------------------------------------------------------------------------------------------------
@@ -100,9 +100,9 @@ const sortPeople = (people) => {
 const sortPeopleBetter = (people) => {
   return people.sort( (a, b) => {
     if (a.lastName !== b.lastName) {
-      return a.lastName > b.lastName;
+      return a.lastName > b.lastName ? 1 : -1;
     } else if (a.firstName !== b.firstName) {
-      return a.firstName > b.firstName;
+      return a.firstName > b.firstName ? 1 : -1;
     } else {
       return a.age - b.age;
     }
