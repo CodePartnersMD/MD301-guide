@@ -4,7 +4,8 @@ function Image(item) {
   this.image_url = item.image_url;
   this.title = item.title;
   this.description = item.description;
-  this.keyword = item.keyword;
+  this.keywords = item.keywords;
+  this.horns = item.horns;
 }
 
 Image.prototype.render = function() {
@@ -73,9 +74,11 @@ Image.populateFilter = function() {
   $('option').not(':first').remove();
 
   Image.all.forEach(image => {
-    if (!filterKeywords.includes(image.keyword)) filterKeywords.push(image.keyword);
-  })
+    image.keywords.forEach(function(keyword) {
+      if (!filterKeywords.includes(keyword)) filterKeywords.push(keyword);
+    })
 
+  })
   filterKeywords.forEach(keyword => {
     let optionTag = `<option value="${keyword}">${keyword}</option>`;
     $('select').append(optionTag);
