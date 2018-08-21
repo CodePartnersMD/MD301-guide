@@ -4,7 +4,8 @@ function Image(item) {
   this.image_url = item.image_url;
   this.title = item.title;
   this.description = item.description;
-  this.keywords = item.keywords;
+  this.keyword1 = item.keyword1;
+  this.keyword2 = item.keyword2;
   this.horns = item.horns;
 }
 
@@ -74,9 +75,8 @@ Image.populateFilter = function() {
   $('option').not(':first').remove();
 
   Image.all.forEach(image => {
-    image.keywords.forEach(function(keyword) {
-      if (!filterKeywords.includes(keyword)) filterKeywords.push(keyword);
-    })
+    if (!filterKeywords.includes(image.keyword1)) filterKeywords.push(image.keyword1);
+    if (!filterKeywords.includes(image.keyword2)) filterKeywords.push(image.keyword2);
 
   })
   filterKeywords.forEach(keyword => {
@@ -89,13 +89,14 @@ Image.populateFilter = function() {
 
 Image.handleFilter = function () {
   $('select').on('change', function() {
-    console.log($(this).val())
     if($(this).val() !== 'Filter By Keyword') {
       $('div').hide();
 
       Image.all.forEach(image => {
-        if ($(this).val() === image.keyword) {
-          $(`div[class="${$(this).val()}"`).fadeIn();
+        if ($(this).val() === image.keyword1 || $(this).val() === image.keyword2) {
+          console.log('in')
+          console.log(`div[class="${$(this).val()} "]`);
+          $(`div[class="${$(this).val()} "`).fadeIn();
         }
       })
 
