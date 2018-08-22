@@ -105,9 +105,9 @@ const sortPeopleBetter = (people) => {
 // -----------------------------------------------------------------------------------------------------
 // CHALLENGE 9
 //
-// Write a function named sortMeetingsByLength that takes in an array of objects, each of which represents
+// Write a function named sortMeetingsByDay that takes in an array of objects, each of which represents
 // a meeting happening a particular day of the week, with a particular start time and end time. Sort
-// those meetings by their length.
+// those meetings by the day on which they happen, Monday-Friday.
 
 function Meeting(dayOfWeek, start, end) {
   this.dayOfWeek = dayOfWeek;
@@ -123,7 +123,7 @@ const meetings = [
   new Meeting('Friday', '1200', '1345'),
 ];
 
-const sortMeetingsByLength = (meetings) => {
+const sortMeetingsByDay = (meetings) => {
 
 };
 
@@ -169,7 +169,7 @@ describe('Testing challenge 2', () => {
 describe('Testing challenge 3', () => {
   test('It should sort strings by length', () => {
     const ans = sortByLength(strs);
-    expect(ans.slice(0,2)).toEqual(['Zebra', 'carrot']);
+    expect(ans.slice(0,2)).toStrictEqual(['Zebra', 'carrot']);
     expect(ans.slice(2,4)).toEqual(expect.arrayContaining(['Alphabet', 'alphabet']));
   });
 });
@@ -227,15 +227,12 @@ describe('Testing challenge 8', () => {
 });
 
 describe('Testing challenge 9', () => {
-  test('It should sort meetings by their length', () => {
-    expect(sortMeetingsByLength(meetings)).toStrictEqual([
-      new Meeting('Wednesday', '0930', '1000'),
-      new Meeting('Monday', '0900', '0945'),
-      new Meeting('Monday', '0900', '1000'),
-      new Meeting('Tuesday', '1145', '1315'),
-      new Meeting('Friday', '1200', '1345'),
-      new Meeting('Wednesday', '1300', '1500'),
-    ]);
+  test('It should sort meetings by the day on which they happen', () => {
+    const sortedMeetings = sortMeetingsByDay(meetings);
+    expect(sortedMeetings.slice(0,2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
+    expect(sortedMeetings[2]).toStrictEqual(new Meeting('Tuesday', '1145', '1315'));
+    expect(sortedMeetings.slice(3,5)).toEqual(expect.arrayContaining([new Meeting('Wednesday', '0930', '1000'), new Meeting('Wednesday', '1300', '1500')]));
+    expect(sortedMeetings[5]).toStrictEqual(new Meeting('Friday', '1200', '1345'));
   });
 });
 
