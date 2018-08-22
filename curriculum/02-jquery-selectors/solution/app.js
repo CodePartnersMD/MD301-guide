@@ -5,6 +5,7 @@ function Image(item) {
   this.title = item.title;
   this.description = item.description;
   this.keywords = item.keywords;
+  this.horns = item.horns;
 }
 
 Image.all = [];
@@ -16,37 +17,32 @@ Image.prototype.render = function() {
   templateClone.find('h2').text(this.title);
   templateClone.find('img').attr('src', this.image_url);
   templateClone.find('p').text(this.description);
+  templateClone.attr('class', this.keyword);
   templateClone.removeClass('clone');
-
-  this.keywords.forEach(function(keyword) {
-    templateClone.attr('class', keyword);
-  })
 }
 
 Image.readJson = () => {
-  $.get('page-1.json').then(data => {
+  $.get('page-1.json').then( data => {
 
     data.forEach(item => {
-      Image.all.push(new Image(item));
+      Image.all.push( new Image( item ));
     })
 
-    Image.sortBy(Image.all, 'title');
+    Image.sortBy( Image.all, 'title' );
 
-    Image.all.forEach(image => {
-      $('main').append(image.render());
+    Image.all.forEach( image => {
+      $( 'main' ).append( image.render() );
     })
 
   }, 'json')
-    .then(Image.populateFilters);
+    .then( Image.populateFilters );
 }
 
-Image.sortBy = function(array, property) {
-  array.sort((a,b) => {
+Image.sortBy = ( array, property ) => {
+  array.sort( ( a, b ) => {
     let firstComparison = a[property];
     let secondComparison = b[property];
-    if(firstComparison > secondComparison) return 1;
-    if(firstComparison < secondComparison) return -1;
-    return 0;
+    return ( firstComparison > secondComparison ) ? 1 : ( firstComparison < secondComparison ) ? -1 : 0;
   });
 }
 

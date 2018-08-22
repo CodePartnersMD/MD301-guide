@@ -62,8 +62,6 @@ Image.populateFilter = () => {
   })
 }
 
-// $('select').on('change', Image.handleFilter);
-
 Image.handleFilter = () => {
   $( 'select' ).on('change', function() {
     let selected = $(this).val();
@@ -94,7 +92,6 @@ Image.handleSort = () => {
 Image.detailView = () => {
   $( 'div' ).on( 'click', function() {
 
-    // $( 'div:first-child' ).toggleClass('popout');
     $( 'div:first-child' ).empty();
 
     let $clone = $(this).clone();

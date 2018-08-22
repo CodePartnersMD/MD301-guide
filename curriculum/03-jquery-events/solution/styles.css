@@ -14,18 +14,6 @@ main {
   justify-content: space-around;
 }
 
-.popout {
-  display: none;
-}
-
-/* div * {
-  justify-content: center;
-} */
-
-/* div.active .popout {
-  display: block;
-} */
-
 div.active {
   bottom: 0;
   left: 0;
@@ -77,5 +65,4 @@ div.active:after {
   right: 0;
   top: 0;
   z-index: 100;
-  display: none;
 }
