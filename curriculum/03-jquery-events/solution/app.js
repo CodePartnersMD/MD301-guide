@@ -16,7 +16,7 @@ Image.prototype.render = function() {
 Image.readJson = ( page ) => {
   Image.all = [];
 
-  $( 'main div' ).empty();
+  $( 'main' ).empty();
 
   $.get( `page-${page}.json` ).then( data => {
 
@@ -27,14 +27,13 @@ Image.readJson = ( page ) => {
     Image.sortBy( Image.all, 'title' );
 
     Image.all.forEach( image => {
-      $( '#image-container' ).append (image.render() );
+      $( '#image-container' ).append( image.render() );
     })
 
   }, 'json' )
     .then( Image.populateFilter )
     .then( Image.handleFilter )
-    .then( Image.handleSort )
-    .then( Image.detailView );
+    .then( Image.handleSort );
 }
 
 Image.sortBy = ( array, property ) => {
@@ -70,7 +69,7 @@ Image.handleFilter = () => {
 
       Image.all.forEach(image => {
         if ( selected === image.keyword ) {
-          $( `div[class="${selected} "` ).fadeIn();
+          $( `div[class="${selected}"` ).fadeIn();
         }
       })
 
@@ -81,6 +80,7 @@ Image.handleFilter = () => {
 
 Image.handleSort = () => {
   $( 'input' ).on('change', function() {
+    $('select').val('default');
     $('div').remove()
     Image.sortBy( Image.all, $(this).attr('id') )
     Image.all.forEach( image => {
@@ -89,23 +89,32 @@ Image.handleSort = () => {
   })
 }
 
-Image.detailView = () => {
-  $( 'div' ).on( 'click', function() {
-
-    $( 'div:first-child' ).empty();
-
+Image.handleImageEvents = () => {
+  $( 'main' ).on( 'click', 'div', function(event) {
+    event.stopPropagation();
     let $clone = $(this).clone();
     let elements = $clone[0].children;
 
-    $( 'div:first-child' ).toggleClass( 'active' ).html( elements );
+    $( 'section' ).addClass( 'active' ).html( elements );
 
     $( window ).scrollTop( 0 );
   });
+
+  $('body').on('click', function() {
+    $( 'section' ).empty();
+    $( 'section' ).removeClass( 'active' );
+  })
 }
 
-$( 'footer ul, header ul' ).on( 'click', 'li', function() {
-  $( '#image-container' ).empty();
-  Image.readJson( $(this).attr('id') );
-})
+Image.handleNavEvents = () => {
+  $( 'footer ul, header ul' ).on( 'click', 'li', function() {
+    $( '#image-container' ).empty();
+    Image.readJson( $(this).attr('id') );
+  })
+}
 
-Image.readJson( 1 );
+$(() => {
+  Image.readJson( 1 );
+  Image.handleImageEvents();
+  Image.handleNavEvents();
+})

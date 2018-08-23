@@ -14,7 +14,7 @@ main {
   justify-content: space-around;
 }
 
-div.active {
+section.active {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -23,7 +23,7 @@ div.active {
   z-index: 1000;
 }
 
-div.active img {
+section.active img {
   height: 400px;
   left: 0;
   margin: auto;
@@ -35,7 +35,7 @@ div.active img {
   z-index: 200;
 }
 
-div.active p {
+section.active p {
   background: #f5f5f5;
   color: #111;
   display: block !important;
@@ -51,18 +51,18 @@ div.active p {
   z-index: 200;
 }
 
-div.active h2 {
+section.active h2 {
   display: none;
 }
 
-div.active:after {
+section.active:after {
   background: #000;
   bottom: 0;
-  content: 'a';
+  top: 0;
   left: 0;
+  right: 0;
+  content: '&nbsp;';
   opacity: .6;
   position: absolute;
-  right: 0;
-  top: 0;
   z-index: 100;
 }

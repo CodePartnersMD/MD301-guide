@@ -1,10 +1,10 @@
 'use strict';
 
-function Image(item) {
+function Image( item ) {
   this.image_url = item.image_url;
   this.title = item.title;
   this.description = item.description;
-  this.keywords = item.keywords;
+  this.keyword = item.keyword;
   this.horns = item.horns;
 }
 
@@ -35,7 +35,9 @@ Image.readJson = () => {
     })
 
   }, 'json')
-    .then( Image.populateFilters );
+    .then( Image.populateFilter )
+    .then( Image.handleFilter )
+    .then( Image.handleSort );
 }
 
 Image.sortBy = ( array, property ) => {
@@ -46,43 +48,49 @@ Image.sortBy = ( array, property ) => {
   });
 }
 
-$('input').on('change', function(event) {
-  event.preventDefault();
-  $('div').remove()
-  Image.sortBy(Image.all, $(this).attr('id'))
-  Image.all.forEach(image => {
-    image.render();
-  })
-})
-
-Image.populateFilters = function() {
-  let filterKeywords = [];
-
-  Image.all.forEach(image => {
-    image.keywords.forEach(keyword => {
-      if (!filterKeywords.includes(keyword)) filterKeywords.push(keyword);
-    });
-  })
-
-  filterKeywords.forEach(keyword => {
-    let optionTag = `<option value="${keyword}">${keyword}</option>`;
-    $('select').append(optionTag);
+Image.handleSort = () => {
+  $('input').on('change', function() {
+    $('select').val('default');
+    $('div').remove()
+    Image.sortBy(Image.all, $(this).attr('id'))
+    Image.all.forEach(image => {
+      $( 'main' ).append( image.render() );
+    })
   })
 }
 
-$('select').on('change', function() {
-  $('div').hide();
+Image.populateFilter = () => {
+  let filterKeywords = [];
+
+  $('option').not(':first').remove();
 
   Image.all.forEach(image => {
-    image.keywords.forEach(keyword => {
-      if ($(this).val() === keyword) {
-        $(`div[class="${$(this).val()}"`).fadeIn();
-      }
-    })
+    if ( !filterKeywords.includes( image.keyword ) ) filterKeywords.push( image.keyword );
   })
 
-  $(`option[value=${$(this).val()}]`).fadeIn();
-})
+  filterKeywords.sort();
 
+  filterKeywords.forEach( keyword => {
+    let optionTag = `<option value="${keyword}">${keyword}</option>`;
+    $( 'select' ).append( optionTag );
+  })
+}
 
-Image.readJson();
+Image.handleFilter = () => {
+  $( 'select' ).on('change', function() {
+    let selected = $(this).val();
+    if( selected !== 'Filter By Keyword' ) {
+      $( 'div' ).hide();
+
+      Image.all.forEach(image => {
+        if ( selected === image.keyword ) {
+          $( `div[class="${selected}"` ).fadeIn();
+        }
+      })
+
+      $( `option[value=${selected}]` ).fadeIn();
+    }
+  })
+}
+
+$(() => Image.readJson());

@@ -5,3 +5,13 @@ img {
 p {
   display: none;
 }
+
+div {
+  float: left;
+  margin: 10px;
+}
+
+footer {
+  clear: both;
+  float: left;
+}
