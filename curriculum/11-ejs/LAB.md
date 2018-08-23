@@ -87,7 +87,7 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
     - `image_url`
     - `description`
 - Use Postman to request book data from the Google Books API. For example, you can enter a search query at the end of this route: `https://www.googleapis.com/books/v1/volumes?q=`
-- Manually enter each record into your `books` table. Your collection should have at least ten unique books.
+- Manually enter each record into your `books` table. Your collection should have at least five unique books.
 - For reference, here is a sample:
 ```
   {
