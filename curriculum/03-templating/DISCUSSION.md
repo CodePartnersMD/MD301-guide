@@ -1,6 +1,7 @@
 # Readings
 
-- Essential: Javascript and jQuery book by Jon Duckett, pages 326-331 and 336-342
+- Reference: [Handlebars.js Official Documentation](http://handlebarsjs.com/){:target="_blank"}
+- Essential: [Learn Handlebars.js in 10 Minutes tutorial](http://tutorialzine.com/2015/01/learn-handlebars-in-10-minutes/){:target="_blank"}
 
 ## Discuss
 
