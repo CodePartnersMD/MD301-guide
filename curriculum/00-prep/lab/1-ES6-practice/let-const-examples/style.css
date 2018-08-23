@@ -11,7 +11,7 @@ h1 {
   color: #ddd;
 }
 
-h1, h2, h3 {
+h1, h2 {
   width: 50%;
   text-align: center;
   margin: 10px auto;
@@ -28,15 +28,6 @@ section {
 .mono {
   font-family: Courier, monospace;
   color: darkred;
-}
-
-#cone {
-  width: 500px;
-}
-
-img {
-  height: 200px;
-  border-radius: 50px;
 }
 
 code {

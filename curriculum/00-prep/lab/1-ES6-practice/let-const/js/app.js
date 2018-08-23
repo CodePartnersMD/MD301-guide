@@ -7,8 +7,8 @@ var container = document.getElementById('image_container');
 var viewed = [];
 var labels = [];
 var pics = [document.getElementById('left'),
-                document.getElementById('center'), //eslint-disable-line
-                document.getElementById('right')]; //eslint-disable-line
+            document.getElementById('center'), //eslint-disable-line
+            document.getElementById('right')]; //eslint-disable-line
 var list = document.getElementById('productlist');
 var totalClicks = 0;
 var views = [];
@@ -27,7 +27,6 @@ function makeRandom() {
 }
 
 function displayPics(){
-  // roll for three random indexes
   while(viewed.length < 6){
     var rando = makeRandom();
     while(!viewed.includes(rando)){
@@ -37,9 +36,8 @@ function displayPics(){
   console.log(rando);
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
   // PUT YOUR RESPONSE IN THIS COMMENT
-  console.log(viewed)
+  console.log(viewed);
 
-  // To the DOM and beyond!
   for (var i = 0; i < 3; i++){
     var temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
@@ -89,7 +87,7 @@ function makeChartData(){
 function makeChart(){
   makeChartData();
   var ctx = document.getElementById('chartypants').getContext('2d');
-  new Chart(ctx, {
+  new Chart(ctx, { //eslint-disable-line
     type: 'bar',
     data: {
       labels: labels,
@@ -113,7 +111,7 @@ function makeChart(){
       }
     }
   });
-  Chart.defaults.global.defaultFontColor = '#eee';
+  Chart.defaults.global.defaultFontColor = '#eee'; //eslint-disable-line
 }
 
 container.addEventListener('click', handleClick);
@@ -125,13 +123,12 @@ document.getElementById('bus').addEventListener('click', function(){
 
 if(localStorage.busmall){
   console.log('Local storage data exists');
-  allProducts = JSON.parse(localStorage.busmall)
+  allProducts = JSON.parse(localStorage.busmall);
 } else {
   console.log('There is no local storage data; initialize app by creating instances');
   for(var i = 0; i < names.length; i++) {
     new Product(names[i]);
   }
-  console.log(allProducts);
 }
 
 displayPics();
