@@ -15,7 +15,8 @@ function findFourteen(array) {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function named howManyTreats that will return the quantity of treats you need to pick up from the pet store today.
+// Write a function named howManyTreats that will return the quantity of treats
+// you need to pick up from the pet store today.
 // ------------------------------------------------------------------------------------------------
 
 let errands = [
@@ -35,9 +36,12 @@ function howManyTreats(array) {
 }
 
 // ------------------------------------------------------------------------------------------------
-// CHALLENGE 3
+// CHALLENGE 4
 //
-// Write a function named calculateProduct that takes in a two-dimensional array of numbers, multiplies all of the numbers in each array, and returns the final product. This function should use a nested for loop and work for any number of inner arrays.
+// Write a function named calculateProduct that takes in a two-dimensional array
+// of numbers, multiplies all of the numbers in each array, and returns the
+// final product. This function should use a nested for loop and work for any
+// number of inner arrays.
 // 
 // For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 // ------------------------------------------------------------------------------------------------
@@ -54,28 +58,60 @@ function calculateProduct(numbers) {
 }
 
 // ------------------------------------------------------------------------------------------------
-// CHALLENGE 4
-//
-// Write a function named something that, ....
-// ------------------------------------------------------------------------------------------------
-
-// ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
 //
-// Write a function named something that, ....
+// Write a function named averageDailyTemperature that accepts a two-dimensional
+// array representing average daily temperatures grouped week-by-week. Calculate
+// the average daily temperature. Write your function so it could accept an array
+// with any number of weeks given to it.
 // ------------------------------------------------------------------------------------------------
+
+// Real daily average temperatures for Seattle, October 1-28 2017
+let weeklyTemperatures = [
+  [66, 64, 58, 65, 71, 57, 60]
+  [57, 65, 65, 70, 72, 65, 51]
+  [55, 54, 60, 53, 59, 57, 61]
+  [65, 56, 55, 52, 55, 62, 57]
+];
+
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
 //
-// Write a function named something that, ....
+// Write a function named lowestWeeklyAverage that accepts a two-dimensional
+// array of daily temperatures grouped week-by-week. Calculate the average
+// temperature for each week and return the value of the lowest weekly average
+// temperature.
+// 
+// Given the temperatures below the lowest weekly average temperature should be
+// return as 40.
 // ------------------------------------------------------------------------------------------------
+let lowestWeeklyTemperature = [
+  [66, 64, 58, 65, 71, 57, 60]
+  [40, 40, 40, 40, 40, 40, 40]
+  [55, 54, 60, 53, 59, 57, 61]
+  [65, 56, 55, 52, 55, 62, 57]
+];
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
 //
-// Write a function named something that, ....
+// Write a function named detectTicTacToeWin that accepts a 2D array of strings. Each string is
+// guaranteed to be either "X", "O" or an empty string. Your function should check to see if
+// any row, column, or either diagonal has three matching "X" or "O" symbols (non-empty strings)
+// three-in-a-line. Your function should return either true or false to indicate
+// someone won the game.
+//
+// Instead of trying to write crazy for loops to automate checking the rows, columns and diagonals
+// consider writing one helper function that accepts three coordinate pairs and checks the values
+// of the array at those locations. For instance helpCheck(row1, col1, row2, col2, row3, col3).
+// Writing that helpCheck function to check evey possible win line is way easier than writing for loops!
 // ------------------------------------------------------------------------------------------------
+let ticTacToe = [
+  ['X', '', 'O'],
+  ['X', 'O', ''],
+  ['X', 'O', 'X'],
+];
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 8
@@ -91,10 +127,26 @@ function calculateProduct(numbers) {
 
 
 // ------------------------------------------------------------------------------------------------
-// CHALLENGE 10
+// CHALLENGE 10 Minesweeper
 //
-// Write a function named something that, ....
+// Write a function called minesweeper that accepts a 2D array representing a game of minesweeper.
+// Each cell contains only either `null` or the string "*" to represent a bomb. Your function should
+// return a 2D array where each cell is a number that says how many bombs that cells is touching.
+// Cells that do not touch any bomb should contain a zero. Cells that contain a bomb themselves
+// should contain a 9.
+//
+// Consider writing a helper function getCellValue(arr, row, col) that returns either the value at the
+// cell or `null` if the value is out of the bounds of the array (going off the top, bottom, left or right).
+// This helper function allows you easier iterate through the 2D array checking surrounding cells from
+// one cell location without worrying about accessing things outside of the array.
 // ------------------------------------------------------------------------------------------------
+let minefield = [
+  [ null, null, null, null, '*' ],
+  [ null, null, null, null, '*' ],
+  [ '*', null, null, null, null ],
+  [ null, null, null, '*', null ],
+  [ null, '*', null, null, null ]
+];
 
 
 // ------------------------------------------------------------------------------------------------
