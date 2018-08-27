@@ -1,23 +1,69 @@
- 
-
-## Code Challenge
+Lab 5: Extend your portfolio, Responsive web design 
 
 ## Submission Instructions
 
-## Resources
+Note that there are two portions to today's lab: extending the features on your personal portfolio and completing the resposive web design assignment. Follow the submission instructions for each assignment and submit links to your pull requests in the corresponding Canvas assignments.
 
-## Configuration
+- Complete your Feature Tasks for the day (below)
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR. **Make sure to include the following:**
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment
 
-## User Stories and Feature Tasks
+## Assignment 1: Extend your portfolio
 
-## Documentation
+### Overview
 
-## Overview
+You will be adding new features to the portfolio project from lab 4. Work in the same repository on a new branch, remembering to add, commit, and push regularly.
 
-## Getting Started
+When you have completed all of your features, make sure that your deployed application reflects the changes. On Canvas, submit a link to the last pull request from your branch to your master branch.
 
-## Architecture
+### User Stories and Feature Tasks
 
-## Change Log
+### Feature #1: Add functionality
 
-## Credits and Collaborations
+#### Why are we implementing this feature?
+
+- As a user, I want to view a unique portfolio so that the developer's projects and skills stand out.
+
+#### What are we going to implement?
+
+Given that a user opens the application in the browser  
+When the user navigates to the home page  
+Then the portfolio contents should be displayed  
+
+#### How are we implementing it?
+
+- Use CDNs for content from libraries and remove the files, as applicable
+- Select new icons from IcoMoon or Font Awesome
+- In tablet view, show a fixed navigation menu instead of a hamburger menu
+- Add a video background
+- Add an image carousel
+- Add any other UI features that you feel will make your portfolio unique and personalized
+
+## Assignment 2: Responsive web design
+
+### Overview
+
+In lab 1, you built a web page where each box of content was rendered with a unique color in desktop view and in mobile view. You will be completing this assignment again, using either Flexbox or CSS grids for styling.
+
+Refer back to the lab 1 assignment details for a reminder of the problem domain.
+
+### Feature #1: Responsive design
+
+#### Why are we implementing this feature?
+
+- As a user, I want the dimensions and colors of the application to change so that I can have a unique view in desktop, mobile, and tablet viewports.
+
+#### What are we going to implement?
+
+Given that a user opens the application in the browser, on a tablet, or on a mobile device  
+When the user changes the size of the viewport  
+Then the boxes should scale proportionally and change colors  
+
+#### How are we implementing it?
+
+- Use Flexbox or CSS grids for styling this application.
+- Use relative units so the elements scale proportionally when the viewport dimensions change.
+- Use at least two breakpoints and change the background colors of each box. There should be three possible views: desktop, tablet, and mobile device.
