@@ -9,6 +9,7 @@
 let nestedArray = [ [ [1, 2, 3], [4, 5, 6] ], [ [7, 8, 9], [10, 11, 12] ], [ [13, 14, 15], [16, 17, 18] ] ];
 
 function findFourteen(array) {
+  return array[2][0][1];
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -31,6 +32,7 @@ let errands = [
 ]
 
 function howManyTreats(array) {
+  return array[2].items[1].quantity;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -52,6 +54,10 @@ let battleshipData = [
 ]
 
 function battleship(battleshipData, row, col) {
+  if (battleshipData[row][col] === "#") {
+    return "hit";
+  }
+  return "miss";
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -67,6 +73,14 @@ function battleship(battleshipData, row, col) {
 let calculateProductData = [[1,2], [3,4], [5,6]];
 
 function calculateProduct(numbers) {
+  let product = 1;
+
+  for(let i=0; i < numbers.length; i++) {
+    for(let j=0; j < numbers[i].length; j++) {
+      product *= numbers[i][j];
+    }
+  }
+  return product;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -87,6 +101,15 @@ let weeklyTemperatures = [
 ];
 
 function averageDailyTemperature(weather) {
+  let days = 0;
+  let totalTemperature = 0;
+  for (let i = 0; i < weather.length; i++) {
+    for (let j = 0; j < weather[i].length; j++) {
+      days++;
+      totalTemperature += weather[i][j];
+    }
+  }
+  return totalTemperature / days;
 }
 
 
@@ -109,6 +132,23 @@ let lowestWeeklyTemperatureData = [
 ];
 
 function lowestWeeklyAverage(weather) {
+  // use 200 as a very-high initial lowest
+  let lowest = 200;
+
+  for (let i = 0; i < weather.length; i++) {
+    let days = 0;
+    let totalTemperature = 0;
+    for (let j = 0; j < weather[i].length; j++) {
+      days++;
+      totalTemperature += weather[i][j];
+    }
+
+    let weekAverage = totalTemperature / days;
+    if (weekAverage < lowest) {
+      lowest = weekAverage;
+    }
+  }
+  return lowest;
 }
 
 
@@ -133,6 +173,22 @@ let ticTacToeBoard = [
 ];
 
 function detectTicTacToeWin(board) {
+  function helpCheck(row1, col1, row2, col2, row3, col3) {
+    return board[row1][col1] == board[row2][col2] && 
+           board[row2][col2] == board[row3][col3];
+  }
+  let isWin = false;
+  isWin = isWin || helpCheck(0, 0, 0, 1, 0, 2); // top row
+  isWin = isWin || helpCheck(1, 0, 1, 1, 1, 2); // middle row
+  isWin = isWin || helpCheck(2, 0, 2, 1, 2, 2); // last row
+
+  isWin = isWin || helpCheck(0, 0, 1, 0, 2, 0); // left column
+  isWin = isWin || helpCheck(0, 1, 1, 1, 2, 1); // middle column
+  isWin = isWin || helpCheck(0, 2, 1, 2, 2, 2); // right column
+
+  isWin = isWin || helpCheck(0, 0, 1, 1, 2, 2); // forward slash
+  isWin = isWin || helpCheck(2, 0, 1, 1, 0, 2); // back slash
+  return isWin;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -161,6 +217,19 @@ function detectTicTacToeWin(board) {
 let spreadsheetData = "1,1,1\n4,4,4\n9,9,9";
 
 function excel(str) {
+  let sums = [];
+
+  let rows = str.split("\n");
+  rows.forEach(row => {
+    let sum = 0;
+    let cols = row.split(",");
+    cols.forEach(col => {
+      let num = parseInt(col);
+      sum += num;
+    });
+    sums.push(sum);
+  });
+  return sums;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -190,6 +259,52 @@ let minefield = [
 ];
 
 function minesweeper(board) {
+  function getValue(row, col) {
+    if (row < 0 || row >= board.length) {
+      return null;
+    }
+    if (col < 0 || col >= board[row].length) {
+      return null;
+    }
+    return board[row][col];
+  }
+
+  function mineValue(row, col) {
+    if (getValue(row, col) === null) {
+      return 0;
+    }
+    return 1;
+  }
+
+  let newBoard = [];
+  board.forEach((row, rowi) => {
+    let newRow = [];
+    row.forEach((col, coli) => {
+      if (board[rowi][coli]) {
+        newRow.push(9);
+      } else {
+        let mines = 0;
+
+        // top row
+        mines += mineValue(rowi - 1, coli - 1);
+        mines += mineValue(rowi - 1, coli);
+        mines += mineValue(rowi - 1, coli + 1);
+
+        // left / right
+        mines += mineValue(rowi - 1, coli - 1);
+        mines += mineValue(rowi + 1, coli + 1);
+
+        // bottom row
+        mines += mineValue(rowi + 1, coli - 1);
+        mines += mineValue(rowi + 1, coli);
+        mines += mineValue(rowi + 1, coli + 1);
+
+        newRow.push(mines);
+      }
+    });
+    newBoard.push(newRow);
+  });
+  return newBoard;
 }
 
 
