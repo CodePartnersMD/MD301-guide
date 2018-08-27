@@ -22,7 +22,7 @@ Today you and your partner(s) will add pagination to your image gallery.
 
 You will also be refactoring your photo gallery in two ways: you will use Handlebars for templating and you will use Flexbox for styling.
 
-You will also be adding the ability for the user to sort the images.
+You will also be adding the ability for the user to sort the images, if you did not complete the stretch goal from lab 2.
 
 ### Feature 1: Pagination
 
@@ -34,28 +34,28 @@ You will also be adding the ability for the user to sort the images.
 
 Given that a user opens the application in the browser  
 When the user clicks on a button or link to another page  
-Then the other set of images should be displayed  
+Then the other set of images should be dynamically displayed  
 
 #### How are we implementing it?
 
-- Add navigation for user to switch between two pages. Each page should render a unique set of images.
-- Populate the filters using only keywords from the images currently being displayed.
+- Add navigation for the user to switch between two pages. Each page should render a unique set of images.
+- Reset the filters, then repopulate them using only keywords from the images currently being displayed.
 
 ### Feature 2: Templating
 
 #### Why are we implementing this feature?
 
-- As a user, I want all of the images to be displayed in a consistent manner.
+- As a user, I want all of the images to be displayed in a consistent manner, so that it is easy to scan the collection of images.
 
 #### What are we going to implement?
 
 Given that a user opens the application in the browser  
 When the images are displayed on the screen  
-Then each image should be rendered in a consistent manner  
+Then each image should be rendered according to a template   
 
 #### How are we implementing it?
 
-- Add the appropriate Handlebars template to your HTML.
+- Create the appropriate Handlebars template in your HTML.
 - Refactor the method that renders your images to use Handlebars instead of making a copy with jQuery.
 - Hide the description, as it will be displayed when Feature #5 is implemented.
 
@@ -69,7 +69,7 @@ Then each image should be rendered in a consistent manner
 
 Given that a user opens the application in the browser  
 When the user naviates to the home page  
-Then the images should be displayed across the screen  
+Then the images should be displayed in columns, as screen width allows  
 
 #### How are we implementing it?
 
@@ -83,7 +83,7 @@ Then the images should be displayed across the screen
 
 #### What are we going to implement?
 
-Given that a user selects a radio button  
+Given that a user is presented with sort options  
 When the user clicks on one option  
 Then the images should be sorted accordingly  
 
@@ -106,5 +106,12 @@ Then the image should render larger on the screen with the description displayed
 
 #### How are we implementing it?
 
-- Add a detail view which will display the image in a larger size in the center of the screen.
+- Add a detail view which will display the image in a larger size in the center of the screen with a grey background.
 - The description should be shown now, as well.
+- When the user clicks off of the image, return to the column view.
+
+## Stretch Goal
+
+*As a user, I want the detail view to include transitions so that I have a delightful experience.*
+
+- Use a transition or animation to show and hide the detail view of an image.
