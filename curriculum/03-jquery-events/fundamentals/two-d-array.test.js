@@ -94,13 +94,6 @@ let averageDailyTemperature = input => {
 // For example, lowestWeeklyAverage(weeklyTemperatures) returns 51.
 // ------------------------------------------------------------------------------------------------
 
-let lowestWeeklyTemperature = [
-  [66, 64, 58, 65, 71, 57, 60],
-  [40, 40, 40, 40, 40, 40, 40],
-  [55, 54, 60, 53, 59, 57, 61],
-  [65, 56, 55, 52, 55, 62, 57]
-];
-
 let lowestWeeklyAverage = input => {
   let lowest = weeklyTemperatures[0][0];
 
@@ -117,9 +110,17 @@ let lowestWeeklyAverage = input => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
 //
-// Write a function named something that, ....
+// Write a function named detectTicTacToeWin that accepts a 2D array of strings. Each string is
+// guaranteed to be either "X", "O" or an empty string. Your function should check to see if
+// any row, column, or either diagonal has three matching "X" or "O" symbols (non-empty strings)
+// three-in-a-line. Your function should return either true or false to indicate
+// someone won the game.
+//
+// Instead of trying to write crazy for loops to automate checking the rows, columns and diagonals
+// consider writing one helper function that accepts three coordinate pairs and checks the values
+// of the array at those locations. For instance helpCheck(row1, col1, row2, col2, row3, col3).
+// Writing that helpCheck function to check evey possible win line is way easier than writing for loops!
 // ------------------------------------------------------------------------------------------------
-
 
 let helpCheck = rowOrCol => {
   let winner;
@@ -136,28 +137,25 @@ let helpCheck = rowOrCol => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
 //
-// Write a function named something that, ....
-// ------------------------------------------------------------------------------------------------
-
-// ------------------------------------------------------------------------------------------------
-// CHALLENGE 8
+// Write a function called minesweeper that accepts a 2D array representing a game of minesweeper.
+// Each cell contains only either `null` or the string "*" to represent a bomb. Your function should
+// return a 2D array where each cell is a number that says how many bombs that cells is touching.
+// Cells that do not touch any bomb should contain a zero. Cells that contain a bomb themselves
+// should contain a 9.
 //
-// Write a function named something that, ....
+// Consider writing a helper function getCellValue(arr, row, col) that returns either the value at the
+// cell or `null` if the value is out of the bounds of the array (going off the top, bottom, left or right).
+// This helper function allows you easier iterate through the 2D array checking surrounding cells from
+// one cell location without worrying about accessing things outside of the array.
 // ------------------------------------------------------------------------------------------------
 
-// ------------------------------------------------------------------------------------------------
-// CHALLENGE 9
-//
-// Write a function named something that, ....
-// ------------------------------------------------------------------------------------------------
-
-
-// ------------------------------------------------------------------------------------------------
-// CHALLENGE 10
-//
-// Write a function named something that, ....
-// ------------------------------------------------------------------------------------------------
-
+let minefield = [
+  [ null, null, null, null, '*' ],
+  [ null, null, null, null, '*' ],
+  [ '*', null, null, null, null ],
+  [ null, null, null, '*', null ],
+  [ null, '*', null, null, null ]
+];
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
@@ -166,7 +164,7 @@ let helpCheck = rowOrCol => {
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest two-d-array.test
+// Run your tests from the console: jest two-d-array.solution.test
 //
 // ------------------------------------------------------------------------------------------------
 
