@@ -31,13 +31,13 @@ Then the photo gallery should display all of the images in the gallery
 
 - Use AJAX to read the provided JSON file.
 - Each object should become a new instance of a constructor function. Refer to the data to determine the necessary properties.
-- Use jQuery to make a copy of the HTML template. Fill in the properties from each object, then append the copy to the DOM.
+- Use jQuery to make a copy of the HTML template of the photo component. For each object, fill in the duplicated template with its properties, then append the copy to the DOM.
 
 ### Feature #2: Filter images
 
 #### Why are we implementing this feature?
 
-- As a user, I want to be able to filter the images so that I can view images that match certain keywords.
+- As a user, I want to be able to filter the images so that I can view only images that match a keyword.
 
 #### What are we going to implement?
 
@@ -47,20 +47,20 @@ Then only the images whose keyword matches the option should be displayed
 
 #### How are we implementing it?
 
-- Create a `<select>` element which contains unique `<option>` elements, one for each keyword.
-- Use an event handler to respond when the user selects an option from the select menu. Hide all of the images and only show those whose keyword matches the option chosen.
+- Create a `<select>` element which contains unique `<option>` elements extracted dynamically from the JSON file, one for each keyword.
+- Use an event handler to respond when the user chooses an option from the select menu. Hide all of the images, then show those whose keyword matches the option chosen.
 
 ### Feature #3: Style the application
 
 #### Why are we implementing this feature?
 
-- As a user, I want a simple, clean looking UI so that my photo gallery clearly displays the images.
+- As a user, I want a simple, clean looking UI so that my photo gallery clearly displays the images in a gridlike pattern.
 
 #### What are we going to implement?
 
 Given that a user opens the application in the browser  
-When the user naviates to the home page  
-Then the images should be displayed cleanly across the screen  
+When the user navigates to the home page  
+Then the images should be displayed in rows across the screen  
 
 #### How are we implementing it?
 
@@ -68,7 +68,8 @@ Then the images should be displayed cleanly across the screen
 
 ## Stretch Goal
 
-*As a user, I want to be able to sort my images by title.*
+*As a user, I want to be able to sort my images by title or number of horns, so that my images are organized.*
 
-- Add the ability for the user to sort the images by either title or by number of horns.
+- Write a user acceptance test for this stretch goal. Follow the pattern used in the other features, above.
+- Add the ability for the user to sort the images by either title or by number of horns with a radio button.
 - Sort the images by one of the properties on page load.
