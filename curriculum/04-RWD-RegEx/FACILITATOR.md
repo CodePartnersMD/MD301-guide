@@ -10,6 +10,7 @@ There are several tools students should bookmark for reference when practicing p
 
 - Prepare a demo on CSS grids, responsive web design, and icon fonts. These can be one demo or three separate demos.
 - Prepare a demo on regular expressions. This can be delivered using an online RegEx tool. If time allows, demonstration how to create a fuzzy search in the photo gallery solution code to search for images by matching keywords.
+- Review the starter code for the portfolio assignment. Students can fire this up in the browser using `live-server` or you can point them to the source at [HTML5 UP](https://html5up.net/prologue).
 
 ## What changed from the previous class?
 
