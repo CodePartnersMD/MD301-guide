@@ -19,7 +19,7 @@ const people = [
   {name: 'Jaden Smith'},
 ];
 
-let smithPattern = /\w+(?= Smith)/g
+let smithPattern = /^.*(?= Smith)/g;
 
 let theSmiths = people.filter(person => person.name.match(smithPattern));
 
@@ -117,14 +117,14 @@ describe('Testing challenge 4', () => {
 });
 
 describe('Testing challenge 5', () => {
-  test('something specific', () => {
+  test('It should return only Biology courses', () => {
     expect(biologyCourses).toStrictEqual([ 'Biology 101', 'Biology 220' ]);
     expect(biologyCourses.length).toStrictEqual(2);
   });
 });
 
 describe('Testing challenge 6', () => {
-  test('something specific', () => {
+  test('It should return everything except Biology courses', () => {
     expect(notBiology).toStrictEqual([ 'Math 101', 'Math 307', 'Math 202', 'Math 401', 'Art 101', 'Art 121', 'Theater 101', 'Psychology 101', 'Psychology 201', 'Geology 101', 'Geology 302' ]);
     expect(notBiology.length).toStrictEqual(11);
   });
