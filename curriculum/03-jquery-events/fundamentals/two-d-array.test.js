@@ -56,20 +56,82 @@ function calculateProduct(numbers) {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
 //
-// Write a function named something that, ....
+// Write a function named averageDailyTemperature that accepts a two-dimensional array representing average daily temperatures grouped week-by-week. Calculate the average daily temperature. 
+//
+// Use the weeklyTemperatures array, below, as your data set.
+//
+// Write your function so it can accept an array containing any number of weeks.
 // ------------------------------------------------------------------------------------------------
+
+// Real daily average temperatures for Seattle, October 1-28, 2017
+let weeklyTemperatures = [
+  [66, 64, 58, 65, 71, 57, 60],
+  [57, 65, 65, 70, 72, 65, 51],
+  [55, 54, 60, 53, 59, 57, 61],
+  [65, 56, 55, 52, 55, 62, 57]
+];
+
+let averageDailyTemperature = input => {
+  let sum = 0;
+
+  for(let i=0; i < input.length; i++) {
+    for(let j=0; j < input[i].length; j++) {
+      sum += input[i][j];
+    }
+  }
+  return sum;
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
 //
-// Write a function named something that, ....
+// Write a function named lowestWeeklyAverage that accepts a two-dimensional array of daily temperatures grouped week-by-week.
+//
+// Use the same weeklyTemperatures data set from challenge 4, above.
+//
+// Calculate the average temperature for each week and return the value of the lowest weekly average temperature.
+// 
+// For example, lowestWeeklyAverage(weeklyTemperatures) returns 51.
 // ------------------------------------------------------------------------------------------------
+
+let lowestWeeklyTemperature = [
+  [66, 64, 58, 65, 71, 57, 60],
+  [40, 40, 40, 40, 40, 40, 40],
+  [55, 54, 60, 53, 59, 57, 61],
+  [65, 56, 55, 52, 55, 62, 57]
+];
+
+let lowestWeeklyAverage = input => {
+  let lowest = weeklyTemperatures[0][0];
+
+  for(let i=0; i < input.length; i++) {
+    for(let j=0; j < input[i].length; j++) {
+      if(input[i][j] < lowest) {
+        lowest = input[i][j];
+      }
+    }
+  }
+  return lowest;
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
 //
 // Write a function named something that, ....
 // ------------------------------------------------------------------------------------------------
+
+
+let helpCheck = rowOrCol => {
+  let winner;
+  for(let i = 0; i < rowOrCol.length - 1; i++) {
+    if(rowOrCol[i] === rowOrCol[i + 1]) {
+      winner = true;
+    } else {
+      winner = false;
+    }
+  }
+  return winner;
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
@@ -130,19 +192,17 @@ describe('Testing challenge 3', () => {
   });
 });
 
+describe('Testing challenge 4', () => {
+  test('It should return the average temperature in the data set', () => {
+    expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(1687);
+  });
+});
 
-// describe('Testing challenge 4', () => {
-//   test('something specific', () => {
-//     expect(true).toStrictEqual();
-//   });
-// });
-
-
-// describe('Testing challenge 5', () => {
-//   test('something specific', () => {
-//     expect(true).toStrictEqual();
-//   });
-// });
+describe('Testing challenge 5', () => {
+  test('It should return the lowest temperature in the data set', () => {
+    expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(51);
+  });
+});
 
 // describe('Testing challenge 6', () => {
 //   test('something specific', () => {
