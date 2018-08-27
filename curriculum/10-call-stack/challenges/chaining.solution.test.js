@@ -38,16 +38,12 @@ const replaceVowels = input => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
 //
-// Write a function named totalSum that, given an array of integer arrays as input, uses either filter, map, or reduce to calculate the total sum of all the elements in the array.
+// Write a function named hyphenated that, given an array of strings, combines them into a single string with each word separated by a hyphen.
 //
-// Note: You might need to use the same method more than once.
+// For example, hypenated(['Babbage', 'Lovelace', 'Hopper', 'Turing']) returns 'Babbage-Lovelace-Hopper-Turing'.
 // ------------------------------------------------------------------------------------------------
 
-const totalSum = input => {
-  return input.reduce((accumulator, currentValue) => accumulator + currentValue.reduce(
-    (innerAccumulator, innerCurrentValue) => innerAccumulator + innerCurrentValue, 0),
-  0);
-};
+let hypenated = input => input.map(name => name.split('')).join('-').split(',').join('')
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
@@ -69,6 +65,12 @@ describe('Testing challenge 1', () => {
 describe('Testing challenge 2', () => {
   test('It should replace all vowels with a space', () => {
     expect(replaceVowels('Welcome to Code 301')).toStrictEqual('W lc m  t  C d  301');
+  });
+
+});
+describe('Testing challenge 3', () => {
+  test('It should combine the strings with a hyphen', () => {
+    expect(hypenated(['Babbage', 'Lovelace', 'Hopper', 'Turing'])).toStrictEqual('Babbage-Lovelace-Hopper-Turing');
   });
 });
 
