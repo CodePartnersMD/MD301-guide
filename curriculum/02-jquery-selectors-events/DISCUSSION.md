@@ -6,6 +6,8 @@ The following readings are from the Javascript and jQuery book by Jon Duckett.
 - Skim: pages 332-335
 - Reference: pages 302-305
 
+- Essential: [6 Reasons for Pair Programming](https://www.codefellows.org/blog/6-reasons-for-pair-programming/)
+
 ## Discuss
 
 Reply to this discussion with a quiz question to test your classmates’ knowledge of the readings. Alternatively, if you found yourself curious or found a topic unclear, ask a question to further your own knowledge. Then review your classmates' responses and answer one of their questions. If you are the first student to post a question, you do not need to go back and answer a question.
