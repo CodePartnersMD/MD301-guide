@@ -24,3 +24,4 @@ As a result of completing Lecture 2 of Code 301, students will:
 - Differentiate between certain methods
 - Understand the process of chaining methods
 - Understand proper `<script>` loading order in HTML
+- Understand how AJAX can be used to read a JSON file
