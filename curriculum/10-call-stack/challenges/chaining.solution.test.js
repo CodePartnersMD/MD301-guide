@@ -46,6 +46,19 @@ const replaceVowels = input => {
 let hypenated = input => input.map(name => name.split('')).join('-').split(',').join('')
 
 // ------------------------------------------------------------------------------------------------
+// CHALLENGE 4
+// Write a function that, given an array of integer arrays as input, either filter, map, or reduce
+// to calculate the total sum of all the elements in the array.
+//
+// NOTE : You might need to use the same method more than once.
+// ------------------------------------------------------------------------------------------------
+
+const totalSum = (input) => {
+  return input.reduce((accumulator, currentValue) => accumulator + currentValue.reduce(
+    (innerAccumulator, innerCurrentValue) => innerAccumulator + innerCurrentValue, 0), 0);
+};
+
+// ------------------------------------------------------------------------------------------------
 // TESTS
 //
 // All the code below will verify that your functions are working to solve the challenges.
@@ -68,9 +81,18 @@ describe('Testing challenge 2', () => {
   });
 
 });
+
 describe('Testing challenge 3', () => {
   test('It should combine the strings with a hyphen', () => {
     expect(hypenated(['Babbage', 'Lovelace', 'Hopper', 'Turing'])).toStrictEqual('Babbage-Lovelace-Hopper-Turing');
+  });
+});
+
+describe('Testing challenge 4', () => {
+  test('It should combine the strings with a hyphen', () => {
+    const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7],[9, 2, 3, 6, ]];
+
+    expect(totalSum(nums)).toStrictEqual(66);
   });
 });
 
