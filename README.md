@@ -21,8 +21,6 @@ When making branches, follow the convention of `name/feature`.
 <a id="courseoverview"></a>
 ## Course Overview
 
-![301 Curriulum](../301-curriculum.png)
-
 This course guides students through the collaborative process of creating dynamic web applications, focusing on the front end and back end independently, then creating full-stack applications.
 
 The lab assignments for the course are in five main parts:
