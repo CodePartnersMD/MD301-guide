@@ -11,17 +11,7 @@
 // ------------------------------------------------------------------------------------------------
 
 const count = (target, input) => {
-  //<solution>
-  return input.reduce((accumulator, currentValue) => {
-    const rowCount = currentValue.reduce((innerAccumulator, innerCurrentValue) => {
-      if (innerCurrentValue === target) {
-        return innerAccumulator + 1;
-      }
-      return innerAccumulator;
-    }, 0);
-    return accumulator + rowCount;
-  }, 0);
-  //</solution>
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -31,12 +21,7 @@ const count = (target, input) => {
 // ------------------------------------------------------------------------------------------------
 
 const replaceVowels = input => {
-  //<solution>
-  const vowelRegex = /[aeiou]/;
-  return input.split('').map((x) => {
-    return vowelRegex.test(x) ? ' ' : x;
-  }).join('');
-  //</solution>
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -47,11 +32,7 @@ const replaceVowels = input => {
 // For example, hypenated(['Babbage', 'Lovelace', 'Hopper', 'Turing']) returns 'Babbage-Lovelace-Hopper-Turing'.
 // ------------------------------------------------------------------------------------------------
 
-let hyphenated = input => {
-  //<solution>
-  return input.map(name => name.split('')).join('-').split(',').join('')
-  //</solution>
-}
+let hyphenated = input =>   // Solution code here...
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
@@ -63,10 +44,7 @@ let hyphenated = input => {
 // ------------------------------------------------------------------------------------------------
 
 const totalSum = input => {
-  //<solution>
-  return input.reduce((accumulator, currentValue) => accumulator + currentValue.reduce(
-    (innerAccumulator, innerCurrentValue) => innerAccumulator + innerCurrentValue, 0), 0);
-  //</solution>
+  // Solution code here...
 };
 
 
@@ -81,9 +59,7 @@ const totalSum = input => {
 // ------------------------------------------------------------------------------------------------
 
 const divisibleByFiveTwoToThePower = input => input.map((row) => {
-  //<solution>
-  return row.filter(cell => typeof cell === 'number' && cell % 5 === 0).map(cell => 2 ** cell);
-  //</solution>
+  // Solution code here...
 });
 
 // ------------------------------------------------------------------------------------------------
@@ -124,8 +100,8 @@ let starWarsData = [{
 	eye_color: "red",
 	birth_year: "33BBY",
 	gender: "n/a"
-},
-{
+  },
+  {
 	name: "Darth Vader",
 	height: "202",
 	mass: "136",
@@ -134,8 +110,8 @@ let starWarsData = [{
 	eye_color: "yellow",
 	birth_year: "41.9BBY",
 	gender: "male"
-},
-{
+  },
+  {
 	name: "Leia Organa",
 	height: "150",
 	mass: "49",
@@ -144,13 +120,11 @@ let starWarsData = [{
 	eye_color: "brown",
 	birth_year: "19BBY",
 	gender: "female"
-}]
+  }
+]
 
-let findMaleAndFemale = data => {
-  //<solution>
-  return data.filter(char => char.gender !== 'n/a').map(char => char.name).join(' and ');
-  //</solution>
-}
+let findMaleAndFemale = data =>   // Solution code here...
+
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
@@ -160,22 +134,7 @@ let findMaleAndFemale = data => {
 // Note: There is an array method called .sort() which may be useful.
 // ------------------------------------------------------------------------------------------------
 
-let findShortest = data => {
-  //<solution>
-  return data.filter(char => char.gender !== 'n/a').map(char => {
-    return {
-      name: char.name,
-      height: parseInt(char.height),
-      mass: parseInt(char.mass),
-      hair_color: char.hair_color,
-      skin_color: char.skin_color,
-      eye_color: char.eye_color,
-      birth_year: char.birth_year,
-      gender: char.gender
-    }
-  }).sort((a,b) => a.height - b.height)[0].name;
-  //</solution>
-}
+let findShortest = data =>   // Solution code here...
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
@@ -184,7 +143,7 @@ let findShortest = data => {
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest chaining.solution.test.js
+// Run your tests from the console: jest chaining.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
