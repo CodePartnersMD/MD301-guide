@@ -11,15 +11,7 @@
 // ------------------------------------------------------------------------------------------------
 
 const count = (target, input) => {
-  return input.reduce((accumulator, currentValue) => {
-    const rowCount = currentValue.reduce((innerAccumulator, innerCurrentValue) => {
-      if (innerCurrentValue === target) {
-        return innerAccumulator + 1;
-      }
-      return innerAccumulator;
-    }, 0);
-    return accumulator + rowCount;
-  }, 0);
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -29,10 +21,7 @@ const count = (target, input) => {
 // ------------------------------------------------------------------------------------------------
 
 const replaceVowels = input => {
-  const vowelRegex = /[aeiou]/;
-  return input.split('').map((x) => {
-    return vowelRegex.test(x) ? ' ' : x;
-  }).join('');
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -43,7 +32,7 @@ const replaceVowels = input => {
 // For example, hypenated(['Babbage', 'Lovelace', 'Hopper', 'Turing']) returns 'Babbage-Lovelace-Hopper-Turing'.
 // ------------------------------------------------------------------------------------------------
 
-let hyphenated = input => input.map(name => name.split('')).join('-').split(',').join('')
+let hyphenated = input =>   // Solution code here...
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
@@ -55,8 +44,7 @@ let hyphenated = input => input.map(name => name.split('')).join('-').split(',')
 // ------------------------------------------------------------------------------------------------
 
 const totalSum = input => {
-  return input.reduce((accumulator, currentValue) => accumulator + currentValue.reduce(
-    (innerAccumulator, innerCurrentValue) => innerAccumulator + innerCurrentValue, 0), 0);
+  // Solution code here...
 };
 
 
@@ -71,7 +59,7 @@ const totalSum = input => {
 // ------------------------------------------------------------------------------------------------
 
 const divisibleByFiveTwoToThePower = input => input.map((row) => {
-  return row.filter(cell => typeof cell === 'number' && cell % 5 === 0).map(cell => 2 ** cell);
+  // Solution code here...
 });
 
 // ------------------------------------------------------------------------------------------------
@@ -135,7 +123,8 @@ let starWarsData = [{
   }
 ]
 
-let findMaleAndFemale = data => data.filter(char => char.gender !== 'n/a').map(char => char.name).join(' and ');
+let findMaleAndFemale = data =>   // Solution code here...
+
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
@@ -145,18 +134,7 @@ let findMaleAndFemale = data => data.filter(char => char.gender !== 'n/a').map(c
 // Note: There is an array method called .sort() which may be useful.
 // ------------------------------------------------------------------------------------------------
 
-let findShortest = data => data.filter(char => char.gender !== 'n/a').map(char => {
-  return {
-    name: char.name,
-    height: parseInt(char.height),
-    mass: parseInt(char.mass),
-    hair_color: char.hair_color,
-    skin_color: char.skin_color,
-    eye_color: char.eye_color,
-    birth_year: char.birth_year,
-    gender: char.gender
-  }
-}).sort((a,b) => a.height - b.height)[0].name;
+let findShortest = data =>   // Solution code here...
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
@@ -165,7 +143,7 @@ let findShortest = data => data.filter(char => char.gender !== 'n/a').map(char =
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest chaining.solution.test.js
+// Run your tests from the console: jest chaining.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
