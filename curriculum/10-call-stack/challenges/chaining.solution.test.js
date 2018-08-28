@@ -11,6 +11,7 @@
 // ------------------------------------------------------------------------------------------------
 
 const count = (target, input) => {
+  //<solution>
   return input.reduce((accumulator, currentValue) => {
     const rowCount = currentValue.reduce((innerAccumulator, innerCurrentValue) => {
       if (innerCurrentValue === target) {
@@ -20,6 +21,7 @@ const count = (target, input) => {
     }, 0);
     return accumulator + rowCount;
   }, 0);
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -29,10 +31,12 @@ const count = (target, input) => {
 // ------------------------------------------------------------------------------------------------
 
 const replaceVowels = input => {
+  //<solution>
   const vowelRegex = /[aeiou]/;
   return input.split('').map((x) => {
     return vowelRegex.test(x) ? ' ' : x;
   }).join('');
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -43,7 +47,11 @@ const replaceVowels = input => {
 // For example, hypenated(['Babbage', 'Lovelace', 'Hopper', 'Turing']) returns 'Babbage-Lovelace-Hopper-Turing'.
 // ------------------------------------------------------------------------------------------------
 
-let hyphenated = input => input.map(name => name.split('')).join('-').split(',').join('')
+let hyphenated = input => {
+  //<solution>
+  return input.map(name => name.split('')).join('-').split(',').join('')
+  //</solution>
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
@@ -55,8 +63,10 @@ let hyphenated = input => input.map(name => name.split('')).join('-').split(',')
 // ------------------------------------------------------------------------------------------------
 
 const totalSum = input => {
+  //<solution>
   return input.reduce((accumulator, currentValue) => accumulator + currentValue.reduce(
     (innerAccumulator, innerCurrentValue) => innerAccumulator + innerCurrentValue, 0), 0);
+  //</solution>
 };
 
 
@@ -71,7 +81,9 @@ const totalSum = input => {
 // ------------------------------------------------------------------------------------------------
 
 const divisibleByFiveTwoToThePower = input => input.map((row) => {
+  //<solution>
   return row.filter(cell => typeof cell === 'number' && cell % 5 === 0).map(cell => 2 ** cell);
+  //</solution>
 });
 
 // ------------------------------------------------------------------------------------------------
@@ -112,8 +124,8 @@ let starWarsData = [{
 	eye_color: "red",
 	birth_year: "33BBY",
 	gender: "n/a"
-  },
-  {
+},
+{
 	name: "Darth Vader",
 	height: "202",
 	mass: "136",
@@ -122,8 +134,8 @@ let starWarsData = [{
 	eye_color: "yellow",
 	birth_year: "41.9BBY",
 	gender: "male"
-  },
-  {
+},
+{
 	name: "Leia Organa",
 	height: "150",
 	mass: "49",
@@ -132,10 +144,13 @@ let starWarsData = [{
 	eye_color: "brown",
 	birth_year: "19BBY",
 	gender: "female"
-  }
-]
+}]
 
-let findMaleAndFemale = data => data.filter(char => char.gender !== 'n/a').map(char => char.name).join(' and ');
+let findMaleAndFemale = data => {
+  //<solution>
+  return data.filter(char => char.gender !== 'n/a').map(char => char.name).join(' and ');
+  //</solution>
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
@@ -145,18 +160,22 @@ let findMaleAndFemale = data => data.filter(char => char.gender !== 'n/a').map(c
 // Note: There is an array method called .sort() which may be useful.
 // ------------------------------------------------------------------------------------------------
 
-let findShortest = data => data.filter(char => char.gender !== 'n/a').map(char => {
-  return {
-    name: char.name,
-    height: parseInt(char.height),
-    mass: parseInt(char.mass),
-    hair_color: char.hair_color,
-    skin_color: char.skin_color,
-    eye_color: char.eye_color,
-    birth_year: char.birth_year,
-    gender: char.gender
-  }
-}).sort((a,b) => a.height - b.height)[0].name;
+let findShortest = data => {
+  //<solution>
+  return data.filter(char => char.gender !== 'n/a').map(char => {
+    return {
+      name: char.name,
+      height: parseInt(char.height),
+      mass: parseInt(char.mass),
+      hair_color: char.hair_color,
+      skin_color: char.skin_color,
+      eye_color: char.eye_color,
+      birth_year: char.birth_year,
+      gender: char.gender
+    }
+  }).sort((a,b) => a.height - b.height)[0].name;
+  //</solution>
+}
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
