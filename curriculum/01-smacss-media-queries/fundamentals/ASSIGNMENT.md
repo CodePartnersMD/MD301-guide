@@ -10,8 +10,14 @@ Look through [these sample problems.](./demo.js){:target="_blank"}
 
 ## Challenges
 
-Copy [this set of challenges](forEach.test.js){:target="_blank"} into your `code-challenges` repository and check out a new branch. Work through each problem one at a time, verifying that your test passes before moving on to the next challenge.
+1. Check out a new branch in your `code-challenges` repository.
+1. Copy [this set of challenges](challenges.test.js){:target="_blank"} into a new file named `challenges-1.test.js` at the root of your repository directory. 
+1. Work through each problem one at a time, verifying that the appropriate tests pass before moving on to the next challenge.
 
 ## Submission
 
-When you have completed the entire set of code challenges and all tests pass, submit a link to a pull request from your current branch to your master branch. Submit a link to your pull request. Note that you can submit a link to a pull request, even if it is closed.
+When you have completed the entire set of code challenges and all tests pass, create a pull request from your current branch to teh master branch. Don't merge it yet. 
+
+Submit a link to your pull request. 
+
+After your assignment has been graded, go ahead and merge your PR. 
