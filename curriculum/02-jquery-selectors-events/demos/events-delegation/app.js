@@ -1,17 +1,17 @@
 'use strict';
 
-//nav handler
+// nav handler
 $('nav a').on('click', function() {
   let $whereToGo = $(this).data('tab');
   // what is $whereToGo
-  //gives us 'delegation' or 'attributes'
+  // gives us 'delegation' or 'attributes'
   console.log('$where to go', $whereToGo);
   $('.tab-content').hide();
-  //we want $('#delegation')
+  // we want $('#delegation')
   $('#' + $whereToGo).fadeIn(750)
 })
 
-//event logger
+// event logger
 function logTarget() {
   console.log('this', this);
   console.log('$(this)', $(this));
@@ -23,15 +23,15 @@ function logTarget() {
   $('#feedback').append($newFeedback);
 }
 
-//not delegated - event bound to all the 'li's
-//no selector specified in .on() method
+// not delegated - event bound to all the 'li's
+// no selector specified in .on() method
 $('#menu1 li').on('click', logTarget)
 
-//delegated - event is bound to parent
-//'li' is specified in .on()
+// delegated - event is bound to parent
+// 'li' is specified in .on()
 $('#menu2').on('click', 'li', logTarget)
 
-//button handlers
+// button handlers
 $('button[name=adder1]').on('click', function() {
   let $newLi1 = $('#menu1 li:first').clone();
   $newLi1.text('newLi1');
@@ -48,8 +48,8 @@ $('button[name=clear]').on('click', function() {
   $('.log-item:first').siblings().remove();
 });
 
-//checkbox handler - change event.
-//shows difference between attr & prop
+// checkbox handler - change event.
+// shows difference between attr & prop
 $('input[name=check]').on('change', function() {
   let $checkbox = $(this);
 
@@ -57,14 +57,14 @@ $('input[name=check]').on('change', function() {
 
 }).change();
 
-//select box filtering
+// select box filtering
 $('select[name="icecream"]').on('change', function() {
   let $selection = $(this).val();
   $('img').hide()
   $(`img[data-flavor="${$selection}"]`).show()
 })
 
-//DOM-ready function
+// DOM-ready function
 $(document).ready(function() {
   $('.tab-content').hide()
 })
