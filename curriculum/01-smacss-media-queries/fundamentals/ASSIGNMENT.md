@@ -16,8 +16,8 @@ Look through [these sample problems.](./demo.js){:target="_blank"}
 
 ## Submission
 
-When you have completed the entire set of code challenges and all tests pass, create a pull request from your current branch to teh master branch. Don't merge it yet. 
+When you have completed the entire set of code challenges and all tests pass, create a pull request from your current branch to the master branch. Don't merge it yet. 
 
 Submit a link to your pull request. 
 
-After your assignment has been graded, go ahead and merge your PR. 
+After your assignment has been graded, go ahead and merge your pull request, and delete your branch. 
