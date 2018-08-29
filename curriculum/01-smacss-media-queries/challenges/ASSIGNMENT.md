@@ -2,11 +2,11 @@
 
 ## Overview
 
-Read [this overview.](./README.md){:target="_blank"}
+Read [this overview.](README.md){:target="_blank"}
 
 ## Demonstration
 
-Look through [these sample problems.](./demo.js){:target="_blank"}
+Look through [these sample problems.](demo.js){:target="_blank"}
 
 ## Challenges
 
