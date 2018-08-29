@@ -11,7 +11,8 @@ Look through [these sample problems.](./demo.js){:target="_blank"}
 ## Challenges
 
 1. Check out a new branch in your `code-challenges` repository.
-1. Copy [this set of challenges](challenges.test.js){:target="_blank"} into a new file named `challenges-1.test.js` at the root of your repository directory. 
+1. Make a new directory in the root of your repo named with the challenge for the day.
+1. Copy [this set of challenges](challenges.test.js){:target="_blank"} into a new file named `challenges.test.js` in this new directory. 
 1. Work through each problem one at a time, verifying that the appropriate tests pass before moving on to the next challenge.
 
 ## Submission
