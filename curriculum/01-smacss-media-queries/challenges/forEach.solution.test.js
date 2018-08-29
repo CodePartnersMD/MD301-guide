@@ -9,13 +9,11 @@
 // Return the second array.
 // ------------------------------------------------------------------------------------------------
 
-const first = [1, 2, 3, 4, 5];
-
 const pushIntoSecond = arr => {
   const second = [];
   //<solution>
-  for(let i = 0; i < first.length; i++) {
-    second.push(first[i]);
+  for(let i = 0; i < arr.length; i++) {
+    second.push(arr[i]);
   }
 
   return second;
@@ -266,7 +264,7 @@ const fizzbuzz = arr => {
 
 describe('Testing challenge 1', () => {
   test('It should push all of the elements from the first array into the second array', () => {
-    expect(pushIntoSecond(first)).toStrictEqual([ 1, 2, 3, 4, 5 ]);
+    expect(pushIntoSecond([1, 2, 3, 4, 5])).toStrictEqual([ 1, 2, 3, 4, 5 ]);
   });
 });
 
