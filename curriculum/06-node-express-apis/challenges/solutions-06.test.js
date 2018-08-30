@@ -4,38 +4,20 @@
 // CHALLENGE 1
 //
 // Write a function named getKeys that takes in an object and returns the keys from the object.
-//
-// Then, use your function to return the keys from the courseInfo object.
-// ------------------------------------------------------------------------------------------------
+//// ------------------------------------------------------------------------------------------------
 
-let courseInfo = {
-  name: 'Code 301',
-  duration: {
-    dayTrack: '4 weeks',
-    eveningTrack: '8 weeks'
-  },
-  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
-  finalExam: true
-}
-
-function getKeys(obj) {
-
-
-
+const getKeys = (obj) => {
+  return Object.keys(obj);
 }
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
 // Write a function named getValues that takes in an object and returns the values from the object.
-//
-// Then, use your function to return the values from the courseInfo object.
-// ------------------------------------------------------------------------------------------------
+//// ------------------------------------------------------------------------------------------------
 
-function getValues(obj) {
-
-
-
+const getValues = (obj) => {
+  return Object.values(obj);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -46,10 +28,8 @@ function getValues(obj) {
 // Then, use your function to return the entries from the courseInfo object.
 // ------------------------------------------------------------------------------------------------
 
-function getEntries(obj) {
-
-
-
+const getEntries = (obj) => {
+  return Object.entries(obj);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -60,10 +40,8 @@ function getEntries(obj) {
 // This will make our code more dynamic and DRY.
 // ------------------------------------------------------------------------------------------------
 
-function getFrom(obj, property){
-
-
-
+const getFrom = (obj, property) => {
+  return Object[property](obj);
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -71,7 +49,8 @@ function getFrom(obj, property){
 //
 // Use the characters data below for the rest of the challenges.
 //
-// Write a function named totalCharacters that takes in an array and returns the number of characters in the array. Use the getFrom function you wrote in challenge 4. 
+// Write a function named totalCharacters that takes in an array and returns the number of 
+// characters in the array. Use the getFrom function you wrote in challenge 4. 
 // ------------------------------------------------------------------------------------------------
 
 let characters = [
@@ -119,59 +98,88 @@ let characters = [
   }
 ]
 
-function totalCharacters(arr) {
-
-
-
+const totalCharacters = (arr) => {
+  return getFrom(arr, 'keys').length;
 }
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
 //
-// Write a function named getHouses that returns an array of the houses in the data set. Use the getFrom function you wrote in challenge 4. 
+// Write a function named getHouses that returns an array of the houses in the data set.
+// Use the getFrom function you wrote in challenge 4. 
 // ------------------------------------------------------------------------------------------------
 
-function getHouses(arr) {
+const getHouses = (arr) => {
   let houses = [];
 
+  getFrom(arr, 'values').forEach(person => {
+    houses.push(person.house);
+  })
 
-
+  return houses;
 }
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
 //
-//  Write a function named hasChildrenValues that takes in the data and a name and returns a boolean based on whether that character has children. Use the getFrom function you wrote in challenge 4. 
+//  Write a function named hasChildrenValues that takes in the data and a name and returns a boolean
+// based on whether that character has children. Use the getFrom function you wrote in challenge 4. 
 // ------------------------------------------------------------------------------------------------
 
-function hasChildrenValues(arr, character){
+const hasChildrenValues = (arr, character) => {
+  let children = 0;
 
+  getFrom(characters, 'values').forEach(person => {
+    if(person.name === character) {
+      children = person.children.length > 0 ? true : false;
+    }
+  })
 
-
+  return children;
 }
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 8
 //
-// Write a function named hasChildrenEntries that is similar to your hasChildrenValues function from challenge 5, but uses the data's entries instead of its keys. Use the getFrom function you wrote in challenge 4. 
+// Write a function named hasChildrenEntries that is similar to your hasChildrenValues function
+// from challenge 5, but uses the data's entries instead of its keys.
+// Use the getFrom function you wrote in challenge 4. 
 // ------------------------------------------------------------------------------------------------
 
-function hasChildrenEntries(arr, character){
+const hasChildrenEntries = (arr, character) => {
+  let children = 0;
 
+  getFrom(characters, 'entries').forEach(item => {
+    item.forEach(person => {
+      if(person.name === character) {
+        children = person.children.length > 0 ? true : false;
+      }
+    })
+  })
 
-
+  return children;
 }
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 9
 //
-// Write a function named houseSize that takes in an array and returns an object for each house containing the name of the house and the number of members. For example: { house: 'Stark', members: 7 }. Use the getFrom function you wrote in challenge 4. 
+// Write a function named houseSize that takes in an array and returns an object for each house
+// containing the name of the house and the number of members. 
+// For example: { house: 'Stark', members: 7 }. Use the getFrom function you wrote in challenge 4. 
 // ------------------------------------------------------------------------------------------------
 
-function houseSize(arr) {
-
-
-  
+const houseSize = (arr) => {
+  const sizes = [];
+  getFrom(arr, 'values').forEach(person => {
+    let sum = 1;
+    if(person.spouse) sum++;
+    person.children.forEach(() => sum++);
+    sizes.push({
+      house: person.house,
+      members: sum,
+    })
+  })
+  return sizes;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -181,15 +189,25 @@ function houseSize(arr) {
 //
 // We will assume that Alerie Tyrell is deceased. She missed her daughter's wedding. Twice.
 //
-// Write a function named houseSurvivors. Modify your houseSize function from challenge 9 to use as the basis of this function. If the spouse is deceased, do not include him/her in the total number of family members.
+// Write a function named houseSurvivors. Modify your houseSize function from challenge 9 to use
+// as the basis of this function. 
+// If the spouse is deceased, do not include him/her in the total number of family members.
 // ------------------------------------------------------------------------------------------------
 
-let deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
+const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
-function houseSurvivors(arr) {
-  
-
-  
+const houseSurvivors = (arr) => {
+  const sizes = [];
+  getFrom(characters, 'values').forEach(person => {
+    let sum = 1;
+    if(person.spouse && !deceasedSpouses.includes(person.spouse)) sum++;
+    person.children.forEach(() => sum++);
+    sizes.push({
+      house: person.house,
+      members: sum,
+    })
+  })
+  return sizes;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -199,10 +217,15 @@ function houseSurvivors(arr) {
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest keys-values-entries.test.js
+// Run your tests from the console: jest challenges-06.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
+
+const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
+  finalExam: true
+}
 
 describe('Testing challenge 1', () => {
   test('It should return the keys from an object', () => {
