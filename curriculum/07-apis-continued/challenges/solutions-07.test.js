@@ -3,81 +3,106 @@
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 1
 //
-// Write a function named forLoopTwoToThe that, given an array of integers as input, uses a for loop to create an array where each element is 2 to the power of the original input element.
+// Write a function named forLoopTwoToThe that, given an array of integers as input, iterates over 
+// the array and returns a new array. The returned array should containing the result of raising 2
+// to the power of the original input element. 
 //
-// You may choose to complete this challenge using a for loop, for...in, or for...of.
+// You may choose to complete this challenge using a for loop, for...in syntax, or for...of syntax.
 //
-// Example:
-// twoToThe([1,2,3]) returns [2,4,8]
+// For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and 2 ^ 4 = 8.
 // ------------------------------------------------------------------------------------------------
 
 const forLoopTwoToThe = (input) => {
+  //<solution>
   const output = [];
-  for (const i in input) {
+  
+  for (let i in input) {
     output.push(2 ** input[i]);
   }
+  
   return output;
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1, but uses forEach instead of a for loop.
+// Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe
+// function from challenge 1, but uses forEach instead of a for loop.
 // ------------------------------------------------------------------------------------------------
 
 const forEachTwoToThe = (input) => {
+  //<solution>
   const output = [];
+  
   input.forEach((x) => {
     output.push(2 ** x);
   });
+  
   return output;
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
 //
-// Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1 and your forEachTwoToThe function from challenge 2, but uses map instead of a for loop or forEach.
+// Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function
+// from challenge 1 and your forEachTwoToThe function from challenge 2, but uses map
+// instead of a for loop or forEach.
 // ------------------------------------------------------------------------------------------------
 
-const mapTwoToThe = input => input.map(x => 2 ** x);
+const mapTwoToThe = (input) => {
+  //<solution>
+  return input.map(x => 2 ** x);
+  //</solution>
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
 //
-// Write a function named charCode that, given an array of letters as an input, uses map to create an array where each element is the result of the `charCodeAt` on the original array element.
+// Write a function named charCode that, given an array of letters as an input, uses map to return a  
+// new array where each element is the result of the `charCodeAt` method on the original array element.
 //
-// Write your function on a single line.
-//
-// Read the MDN documentation on .charCodeAt if necessary.
+// Read the MDN documentation on String.charCodeAt() if necessary.
 //
 // For example: charCode(['h','i']) returns [104, 105].
 // ------------------------------------------------------------------------------------------------
 
-const charCode = input => input.map(x => x.charCodeAt());
+const charCode = (input) => {
+  //<solution>
+  return input.map(x => x.charCodeAt());
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
 //
-// Write a function that, given an array as input, uses map to create an array where each element is either the string "even" or the string "odd" based on the input array.
+// Write a function that, given an array of numbers as input, uses map to return a new array where each
+// element is either the string "even" or the string "odd", based on each value.
 //
 // If any element in the array is not a number, the resulting array should have the string "N/A" in its place.
 //
-// For example: evenOdd([1,2,3]) returns ['odd','even','odd']
+// For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 // ------------------------------------------------------------------------------------------------
 
-const evenOdd = input => input.map((x) => {
-  if (typeof x !== 'number') {
-    return 'N/A';
-  }
-  return x % 2 === 0 ? 'even' : 'odd';
-});
+const evenOdd = (input) => {
+  //<solution>
+  return input.map((x) => {
+    if (typeof x !== 'number') {
+      return 'N/A';
+    }
+    return x % 2 === 0 ? 'even' : 'odd';
+  });
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
 //
-// Use the snorlaxAbilities data below for this challenge.
+// Use the snorlaxAbilities data, below, for this challenge.
 //
-// Write a function named extractAbilities that, given an array of abilities, uses map to create an array containing only the ability name.
+// Write a function named extractAbilities that, given an array of abilities,
+// uses map to create an array containing only the ability name.
 // ------------------------------------------------------------------------------------------------
 
 const snorlaxAbilities = {
@@ -111,12 +136,20 @@ const snorlaxAbilities = {
   weight: 4600,
 };
 
-const extractAbilities = abilities => abilities.map(x => x.ability.name);
+const extractAbilities = (abilities) => {
+  //<solution>
+  return abilities.map(x => x.ability.name);
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
 //
-// Write a function named extractStats that, given an array of abilities, uses map to create an array of objects containing the stat name and the total. The total should be the sum of the effort and the baseStat.
+// Use the snorlaxStats data, below, for this challenge.
+//
+// Write a function named extractStats that, given an array of stats, uses map to return an array
+// of objects containing the stat name and the total. 
+// The total should be the sum of the effort and the baseStat.
 //
 // Here is an example of a single array element: { name: 'speed', total: 35 }
 // ------------------------------------------------------------------------------------------------
@@ -152,10 +185,14 @@ const snorlaxStats = {
   weight: 4600,
 };
 
-const extractStats = abilities => abilities.map(x => ({
-  name: x.stat.name,
-  total: x.effort + x.baseStat,
-}));
+const extractStats = (abilities) => {
+  //<solution>
+  return abilities.map(x => ({
+    name: x.stat.name,
+    total: x.effort + x.baseStat,
+  }));
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
@@ -164,39 +201,39 @@ const extractStats = abilities => abilities.map(x => ({
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest map.solution.test.js
+// Run your tests from the console: jest challenges-07.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
 describe('Testing challenge 1', () => {
-  test('Positive integers should return in powers of 2', () => {
+  test('It should return two raised to the power of the integer', () => {
     expect(forLoopTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forLoopTwoToThe([0, 4, 5]).length).toStrictEqual(3);
   });
 
-  test('Negative values should produce decimals.', () => {
+  test('It should return decimals if the integer is negative', () => {
     expect(forLoopTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
   });
 });
 
 describe('Testing challenge 2', () => {
-  test('Positive integers should return in powers of 2', () => {
+  test('It should return two raised to the power of the integer', () => {
     expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
   });
 
-  test('Negative values should produce decimals.', () => {
+  test('It should return decimals if the integer is negative', () => {
     expect(forEachTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
   });
 });
 
 describe('Testing challenge 3', () => {
-  test('Positive integers should return in powers of 2', () => {
+  test('It should return two raised to the power of the integer', () => {
     expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
   });
 
-  test('Negative values should produce decimals.', () => {
+  test('It should return decimals if the integer is negative', () => {
     expect(mapTwoToThe([-1, -2, -3])).toStrictEqual([0.5, 0.25, 0.125]);
   });
 });
