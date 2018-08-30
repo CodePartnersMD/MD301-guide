@@ -4,20 +4,24 @@
 // CHALLENGE 1
 //
 // Write a function named getKeys that takes in an object and returns the keys from the object.
-//// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 
 const getKeys = (obj) => {
+  //<solution>
   return Object.keys(obj);
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
 // Write a function named getValues that takes in an object and returns the values from the object.
-//// ------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 
 const getValues = (obj) => {
+  //<solution>
   return Object.values(obj);
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -29,7 +33,9 @@ const getValues = (obj) => {
 // ------------------------------------------------------------------------------------------------
 
 const getEntries = (obj) => {
+  //<solution>
   return Object.entries(obj);
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -41,7 +47,9 @@ const getEntries = (obj) => {
 // ------------------------------------------------------------------------------------------------
 
 const getFrom = (obj, property) => {
+  //<solution>
   return Object[property](obj);
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -99,7 +107,9 @@ let characters = [
 ]
 
 const totalCharacters = (arr) => {
+  //<solution>
   return getFrom(arr, 'keys').length;
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -110,6 +120,7 @@ const totalCharacters = (arr) => {
 // ------------------------------------------------------------------------------------------------
 
 const getHouses = (arr) => {
+  //<solution>
   let houses = [];
 
   getFrom(arr, 'values').forEach(person => {
@@ -117,6 +128,7 @@ const getHouses = (arr) => {
   })
 
   return houses;
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -127,6 +139,7 @@ const getHouses = (arr) => {
 // ------------------------------------------------------------------------------------------------
 
 const hasChildrenValues = (arr, character) => {
+  //<solution>
   let children = 0;
 
   getFrom(characters, 'values').forEach(person => {
@@ -136,6 +149,7 @@ const hasChildrenValues = (arr, character) => {
   })
 
   return children;
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -147,6 +161,7 @@ const hasChildrenValues = (arr, character) => {
 // ------------------------------------------------------------------------------------------------
 
 const hasChildrenEntries = (arr, character) => {
+  //<solution>
   let children = 0;
 
   getFrom(characters, 'entries').forEach(item => {
@@ -158,6 +173,7 @@ const hasChildrenEntries = (arr, character) => {
   })
 
   return children;
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -169,6 +185,7 @@ const hasChildrenEntries = (arr, character) => {
 // ------------------------------------------------------------------------------------------------
 
 const houseSize = (arr) => {
+  //<solution>
   const sizes = [];
   getFrom(arr, 'values').forEach(person => {
     let sum = 1;
@@ -179,7 +196,9 @@ const houseSize = (arr) => {
       members: sum,
     })
   })
+
   return sizes;
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -197,8 +216,9 @@ const houseSize = (arr) => {
 const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 const houseSurvivors = (arr) => {
+  //<solution>
   const sizes = [];
-  getFrom(characters, 'values').forEach(person => {
+  getFrom(arr, 'values').forEach(person => {
     let sum = 1;
     if(person.spouse && !deceasedSpouses.includes(person.spouse)) sum++;
     person.children.forEach(() => sum++);
@@ -207,7 +227,9 @@ const houseSurvivors = (arr) => {
       members: sum,
     })
   })
+
   return sizes;
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -221,43 +243,43 @@ const houseSurvivors = (arr) => {
 //
 // ------------------------------------------------------------------------------------------------
 
+describe('Tests using the course info object', () => {
+  const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+    topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
+    finalExam: true }
 
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
-  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
-  finalExam: true
-}
-
-describe('Testing challenge 1', () => {
-  test('It should return the keys from an object', () => {
-    expect(getKeys(courseInfo)).toStrictEqual([ 'name', 'duration', 'topics', 'finalExam' ]);
-  });
-});
-
-describe('Testing challenge 2', () => {
-  test('It should return the values from an object', () => {
-    expect(getValues(courseInfo)).toStrictEqual([ 'Code 301', { dayTrack: '4 weeks', eveningTrack: '8 weeks' }, [ 'SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming' ], true ]);
-  });
-});
-
-describe('Testing challenge 3', () => {
-  test('It should return the entries from an object', () => {
-    expect(getEntries(courseInfo)).toStrictEqual([ [ 'name', 'Code 301' ], [ 'duration', { dayTrack: '4 weeks', eveningTrack: '8 weeks' } ], [ 'topics', [ 'SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming' ] ], [ 'finalExam', true ] ]);
-  });
-});
-
-describe('Testing challenge 4', () => {
-  test('It should return the keys from an object', () => {
-    expect(getFrom(courseInfo, 'keys')).toStrictEqual([ 'name', 'duration', 'topics', 'finalExam' ]);
+  describe('Testing challenge 1', () => {
+    test('It should return the keys from an object', () => {
+      expect(getKeys(courseInfo)).toStrictEqual([ 'name', 'duration', 'topics', 'finalExam' ]);
+    });
   });
 
-  test('It should return the values from an object', () => {
-    expect(getFrom(courseInfo, 'values')).toStrictEqual([ 'Code 301', { dayTrack: '4 weeks', eveningTrack: '8 weeks' }, [ 'SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming' ], true ]);
+  describe('Testing challenge 2', () => {
+    test('It should return the values from an object', () => {
+      expect(getValues(courseInfo)).toStrictEqual([ 'Code 301', { dayTrack: '4 weeks', eveningTrack: '8 weeks' }, [ 'SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming' ], true ]);
+    });
   });
 
-  test('It should return the entries from an object', () => {
-    expect(getFrom(courseInfo, 'entries')).toStrictEqual([ [ 'name', 'Code 301' ], [ 'duration', { dayTrack: '4 weeks', eveningTrack: '8 weeks' } ], ['topics', [ 'SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming' ] ], [ 'finalExam', true ] ]);
+  describe('Testing challenge 3', () => {
+    test('It should return the entries from an object', () => {
+      expect(getEntries(courseInfo)).toStrictEqual([ [ 'name', 'Code 301' ], [ 'duration', { dayTrack: '4 weeks', eveningTrack: '8 weeks' } ], [ 'topics', [ 'SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming' ] ], [ 'finalExam', true ] ]);
+    });
   });
-});
+
+  describe('Testing challenge 4', () => {
+    test('It should return the keys from an object', () => {
+      expect(getFrom(courseInfo, 'keys')).toStrictEqual([ 'name', 'duration', 'topics', 'finalExam' ]);
+    });
+
+    test('It should return the values from an object', () => {
+      expect(getFrom(courseInfo, 'values')).toStrictEqual([ 'Code 301', { dayTrack: '4 weeks', eveningTrack: '8 weeks' }, [ 'SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming' ], true ]);
+    });
+
+    test('It should return the entries from an object', () => {
+      expect(getFrom(courseInfo, 'entries')).toStrictEqual([ [ 'name', 'Code 301' ], [ 'duration', { dayTrack: '4 weeks', eveningTrack: '8 weeks' } ], ['topics', [ 'SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming' ] ], [ 'finalExam', true ] ]);
+    });
+  });
+})
 
 describe('Testing challenge 5', () => {
   test('something specific', () => {
