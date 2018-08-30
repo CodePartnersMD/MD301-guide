@@ -258,7 +258,7 @@ const fizzbuzz = arr => {
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest forEach.solution.test.js
+// Run your tests from the console: jest challenges-01.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
