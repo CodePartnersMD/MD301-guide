@@ -3,13 +3,6 @@
 ## Overview
 
 ### Javascript Methods and Practical Use
-**Boolean Checks** (Does my string match the regex?)
-```
-  let str = "The rain in Spain falls mainly in the plain";
-  // Are there any words ending with some letter before "in"
-  let regex = /([A-Za-z]in)\b/g;
-  regex.test(str);  // true
-```
 
 ## Reference and Resources
 * [MDN - String Slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice)

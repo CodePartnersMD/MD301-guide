@@ -3,7 +3,8 @@
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 1
 //
-// Write a positive lookahead regular expression pattern to return an array of the people objects whose last name is Smith. 
+// Write a function named findTheSmiths that finds any people whose last name is Smith.
+// Use a positive lookahead regular expression pattern. 
 // ------------------------------------------------------------------------------------------------
 
 const people = [
@@ -19,63 +20,97 @@ const people = [
   {name: 'Jaden Smith'},
 ];
 
-let smithPattern = /^.*(?= Smith)/g;
+const findTheSmiths = (arr) => {
+  //<solution>
+  const smithPattern = /^.*(?= Smith)/g;
 
-let theSmiths = people.filter(person => person.name.match(smithPattern));
+  return arr.filter(person => person.name.match(smithPattern));
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function named theSmithNames which returns an array of names, rather than an array of objects. 
-//
-// You may modify your solution from challenge 1 for this challenge.
+// Write a function named theSmithNames which returns an array of names of the people whose
+// last name is Smith, rather than an array of objects. 
 // ------------------------------------------------------------------------------------------------
 
-let theSmithNames = people.filter(person => person.name.match(smithPattern)).map(person => person.name);
+const theSmithNames = (arr) => {
+  //<solution>
+  const smithPattern = /^.*(?= Smith)/g;
+  
+  return arr.filter(person => person.name.match(smithPattern)).map(person => person.name);
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
 //
-// Write a positive lookahead regular expression pattern to return an array of the prices that are in dollars. 
+// Write a function named findDollars that takes in an array of values and uses a positive lookahead
+// regular expression pattern to return an array of the prices that are in dollars. 
 // ------------------------------------------------------------------------------------------------
 
 const prices = ['100 dollars', '5 francs', '9 dollars', '115 rupees', '42 dollars', '20 pesos', '40 lira', '15 shillings', '12 pounds', '90 krones'];
 
-let dollarPattern = /\w+(?= dollars)/g
+const findDollars = (arr) => {
+  //<solution>
+  const dollarPattern = /\w+(?= dollars)/g;
 
-let dollars = prices.filter(price => price.match(dollarPattern));
+  return arr.filter(price => price.match(dollarPattern));
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
 //
 // Write a function named lengthValues that returns the numbers of any lengths that are in inches units.
 //
-// You may use any lookahead or lookbehind for this challenge.
+// You may use any lookahead or lookbehind regular expression pattern for this challenge.
+//
+// For example, '62 inches' returns 62.
 // ------------------------------------------------------------------------------------------------
 
 const lengths = ['62 inches', '2.5 meters', '54 inches', '19 inches', '4 feet', '80 inches', '44 inches', '52 inches', '5.5 feet', '600 centimeters', '1 meter',  '8 inches']
 
-let lengthValues = lengths.filter(length => {
-  return length.match(/\w+(?= inches)/g);
-}).reduce((results, item) => results.concat(parseInt(item)), [])
+const lengthValues = (arr) => {
+  //<solution>
+  return lengths.filter(length => {
+    return length.match(/\w+(?= inches)/g);
+  }).reduce((results, item) => results.concat(parseInt(item)), []);
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
 //
-// Write a function named biologyCourses that uses a positive lookbehind regular expression pattern to return an array of all Biology courses.
+// Write a function named biologyCourses that uses a positive lookbehind regular expression pattern
+// to return an array of all Biology courses.
 // ------------------------------------------------------------------------------------------------
 
 const courses = ['Biology 101', 'Biology 220', 'Math 101', 'Math 307', 'Math 202', 'Math 401', 'Art 101', 'Art 121', 'Theater 101', 'Psychology 101', 'Psychology 201', 'Geology 101', 'Geology 302'];
 
-let biologyCourses = courses.filter(course => course.match(/\d{3}(?<=Biology\s\d{3})/g));
+const biologyCourses = (arr) => {
+  //<solution>
+  const biologyMatch = /\d{3}(?<=Biology\s\d{3})/g;
+  
+  return arr.filter(course => course.match(biologyMatch));
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
 //
-// Write a function named notBiology that uses a negative lookbehind regular expression pattern to return an array of all courses that are not Biology courses.
+// Write a function named notBiology that uses a negative lookbehind regular expression pattern
+// to return an array of all courses that are not Biology courses.
 // ------------------------------------------------------------------------------------------------
 
-let notBiology = courses.filter(course => course.match(/\d{3}(?<!Biology\s\d{3})/g));
+const notBiology = (arr) => {
+  //<solution>
+  const notBiologyMatch = /\d{3}(?<!Biology\s\d{3})/g;
+  
+  return courses.filter(course => course.match(notBiologyMatch));
+  //</solution>
+};
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
@@ -84,48 +119,48 @@ let notBiology = courses.filter(course => course.match(/\d{3}(?<!Biology\s\d{3})
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest regex-3.test.js
+// Run your tests from the console: jest challenges-14.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
 describe('Testing challenge 1', () => {
   test('It should return people with the last name of Smith', () => {
-    expect(theSmiths).toStrictEqual([ { name: 'John Smith' }, { name: 'Lisa Smith' }, { name: 'Tom Smith' }, { name: 'Will Smith' }, { name: 'Jaden Smith' } ]);
-    expect(theSmiths.length).toStrictEqual(5);
+    expect(findTheSmiths(people)).toStrictEqual([ { name: 'John Smith' }, { name: 'Lisa Smith' }, { name: 'Tom Smith' }, { name: 'Will Smith' }, { name: 'Jaden Smith' } ]);
+    expect(findTheSmiths(people).length).toStrictEqual(5);
   });
 });
 
 describe('Testing challenge 2', () => {
   test('It should return an array of names', () => {
-    expect(theSmithNames).toStrictEqual([ 'John Smith', 'Lisa Smith', 'Tom Smith', 'Will Smith', 'Jaden Smith' ]);
-    expect(theSmithNames.length).toStrictEqual(5);
+    expect(theSmithNames(people)).toStrictEqual([ 'John Smith', 'Lisa Smith', 'Tom Smith', 'Will Smith', 'Jaden Smith' ]);
+    expect(theSmithNames(people).length).toStrictEqual(5);
   });
 });
 
 describe('Testing challenge 3', () => {
   test('It should only return currencies with the dollars unit', () => {
-    expect(dollars).toStrictEqual([ '100 dollars', '9 dollars', '42 dollars' ]);
-    expect(dollars.length).toStrictEqual(3);
+    expect(findDollars(prices)).toStrictEqual([ '100 dollars', '9 dollars', '42 dollars' ]);
+    expect(findDollars(prices).length).toStrictEqual(3);
   });
 });
 
 describe('Testing challenge 4', () => {
   test('It should return the values for each length that is in inches units without the word "inches"', () => {
-    expect(lengthValues).toStrictEqual([ 62, 54, 19, 80, 44, 52, 8 ]);
-    expect(lengthValues.length).toStrictEqual(7);
+    expect(lengthValues(lengths)).toStrictEqual([ 62, 54, 19, 80, 44, 52, 8 ]);
+    expect(lengthValues(lengths).length).toStrictEqual(7);
   });
 });
 
 describe('Testing challenge 5', () => {
   test('It should return only Biology courses', () => {
-    expect(biologyCourses).toStrictEqual([ 'Biology 101', 'Biology 220' ]);
-    expect(biologyCourses.length).toStrictEqual(2);
+    expect(biologyCourses(courses)).toStrictEqual([ 'Biology 101', 'Biology 220' ]);
+    expect(biologyCourses(courses).length).toStrictEqual(2);
   });
 });
 
 describe('Testing challenge 6', () => {
   test('It should return everything except Biology courses', () => {
-    expect(notBiology).toStrictEqual([ 'Math 101', 'Math 307', 'Math 202', 'Math 401', 'Art 101', 'Art 121', 'Theater 101', 'Psychology 101', 'Psychology 201', 'Geology 101', 'Geology 302' ]);
-    expect(notBiology.length).toStrictEqual(11);
+    expect(notBiology(courses)).toStrictEqual([ 'Math 101', 'Math 307', 'Math 202', 'Math 401', 'Art 101', 'Art 121', 'Theater 101', 'Psychology 101', 'Psychology 201', 'Geology 101', 'Geology 302' ]);
+    expect(notBiology(courses).length).toStrictEqual(11);
   });
 });
