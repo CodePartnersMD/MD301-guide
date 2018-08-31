@@ -73,9 +73,11 @@ const findDollars = (arr) => {
 const lengths = ['62 inches', '2.5 meters', '54 inches', '19 inches', '4 feet', '80 inches', '44 inches', '52 inches', '5.5 feet', '600 centimeters', '1 meter',  '8 inches']
 
 const lengthValues = (arr) => {
+  //<solution>
   return lengths.filter(length => {
     return length.match(/\w+(?= inches)/g);
   }).reduce((results, item) => results.concat(parseInt(item)), []);
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -88,9 +90,11 @@ const lengthValues = (arr) => {
 const courses = ['Biology 101', 'Biology 220', 'Math 101', 'Math 307', 'Math 202', 'Math 401', 'Art 101', 'Art 121', 'Theater 101', 'Psychology 101', 'Psychology 201', 'Geology 101', 'Geology 302'];
 
 const biologyCourses = (arr) => {
+  //<solution>
   const biologyMatch = /\d{3}(?<=Biology\s\d{3})/g;
-
+  
   return arr.filter(course => course.match(biologyMatch));
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -101,9 +105,11 @@ const biologyCourses = (arr) => {
 // ------------------------------------------------------------------------------------------------
 
 const notBiology = (arr) => {
+  //<solution>
   const notBiologyMatch = /\d{3}(?<!Biology\s\d{3})/g;
-
+  
   return courses.filter(course => course.match(notBiologyMatch));
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -113,7 +119,7 @@ const notBiology = (arr) => {
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest regex-3.test.js
+// Run your tests from the console: jest challenges-14.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
