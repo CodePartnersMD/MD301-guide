@@ -25,23 +25,23 @@ function logTarget() {
 
 // not delegated - event bound to all the 'li's
 // no selector specified in .on() method
-$('#menu1 li').on('click', logTarget)
+$('#menu-main li').on('click', logTarget)
 
 // delegated - event is bound to parent
 // 'li' is specified in .on()
-$('#menu2').on('click', 'li', logTarget)
+$('#menu-secondary').on('click', 'li', logTarget)
 
 // button handlers
-$('button[name=adder1]').on('click', function() {
-  let $newLi1 = $('#menu1 li:first').clone();
-  $newLi1.text('newLi1');
-  $('#menu1').append($newLi1);
+$('button[name=add-main]').on('click', function() {
+  let $newLi1 = $('#menu-main li:first').clone();
+  $newLi1.text('New primary list item');
+  $('#menu-main').append($newLi1);
 });
 
-$('button[name=adder2]').on('click', function() {
-  let $newLi2 = $('#menu2 li:first').clone();
-  $newLi2.text('newLi2');
-  $('#menu2').append($newLi2);
+$('button[name=add-secondary]').on('click', function() {
+  let $newLi2 = $('#menu-secondary li:first').clone();
+  $newLi2.text('New secondary list item');
+  $('#menu-secondary').append($newLi2);
 });
 
 $('button[name=clear]').on('click', function() {
