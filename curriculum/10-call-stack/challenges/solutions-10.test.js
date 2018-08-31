@@ -1,9 +1,11 @@
+
 'use strict';
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 1
 //
-// Write a function named count that, given an integer and an array of arrays, uses either filter, map, or reduce to count the amount of times the integer is present in the array of arrays.
+// Write a function named count that, given an integer and an array of arrays, uses either
+// filter, map, or reduce to count the amount of times the integer is present in the array of arrays.
 //
 // Note: You might need to use the same method more than once.
 //
@@ -27,10 +29,13 @@ const count = (target, input) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function named replaceVowels that, given a string as input, uses either filter, map, and reduce to replace all vowels with empty spaces.
+// Write a function named replaceVowels that, given a string as input,
+// uses either filter, map, or reduce to replace all vowels with empty spaces.
+// 
+// You will likely need to use other methods as well.
 // ------------------------------------------------------------------------------------------------
 
-const replaceVowels = input => {
+const replaceVowels = (input) => {
   //<solution>
   const vowelRegex = /[aeiou]/;
   return input.split('').map((x) => {
@@ -42,12 +47,13 @@ const replaceVowels = input => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
 //
-// Write a function named hyphenated that, given an array of strings, combines them into a single string with each word separated by a hyphen.
+// Write a function named hyphenated that, given an array of strings,
+// combines them into a single string with each word separated by a hyphen.
 //
 // For example, hypenated(['Babbage', 'Lovelace', 'Hopper', 'Turing']) returns 'Babbage-Lovelace-Hopper-Turing'.
 // ------------------------------------------------------------------------------------------------
 
-let hyphenated = input => {
+let hyphenated = (input) => {
   //<solution>
   return input.map(name => name.split('')).join('-').split(',').join('')
   //</solution>
@@ -59,16 +65,15 @@ let hyphenated = input => {
 // Write a function that, given an array of integer arrays as input, either filter, map, or reduce
 // to calculate the total sum of all the elements in the array.
 //
-// NOTE : You might need to use the same method more than once.
+// Note: You might need to use the same method more than once.
 // ------------------------------------------------------------------------------------------------
 
-const totalSum = input => {
+const totalSum = (input) => {
   //<solution>
   return input.reduce((accumulator, currentValue) => accumulator + currentValue.reduce(
     (innerAccumulator, innerCurrentValue) => innerAccumulator + innerCurrentValue, 0), 0);
   //</solution>
 };
-
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
@@ -77,19 +82,22 @@ const totalSum = input => {
 // 
 // This function should first remove any elements that are not numbers and are not divisible by five.
 // 
-// This function should then raise two to the power of the resulting numbers, returning an array of arrays.
+// This function should then raise 2 to the power of the resulting numbers, returning an array of arrays.
 // ------------------------------------------------------------------------------------------------
 
-const divisibleByFiveTwoToThePower = input => input.map((row) => {
+const divisibleByFiveTwoToThePower = (input) => {
   //<solution>
-  return row.filter(cell => typeof cell === 'number' && cell % 5 === 0).map(cell => 2 ** cell);
+  return input.map((row) => {
+    return row.filter(cell => typeof cell === 'number' && cell % 5 === 0).map(cell => 2 ** cell);
+  });
   //</solution>
-});
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
-
-// Write a function named findMaleAndFemale that, given the Star Wars data, below, returns the names of the characters whose gender is either male or female. 
+//
+// Write a function named findMaleAndFemale that, given the Star Wars data, below,
+// returns the names of the characters whose gender is either male or female. 
 //
 // The names should be combined into a single string with each character name separated by "and".
 //
@@ -146,7 +154,7 @@ let starWarsData = [{
 	gender: "female"
 }]
 
-let findMaleAndFemale = data => {
+let findMaleAndFemale = (data) => {
   //<solution>
   return data.filter(char => char.gender !== 'n/a').map(char => char.name).join(' and ');
   //</solution>
@@ -155,12 +163,13 @@ let findMaleAndFemale = data => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
 
-// Write a function named findShortest that, given the Star Wars data from challenge 6, returns the name of the shortest character.
+// Write a function named findShortest that, given the Star Wars data from challenge 6,
+// returns the name of the shortest character.
 //
 // Note: There is an array method called .sort() which may be useful.
 // ------------------------------------------------------------------------------------------------
 
-let findShortest = data => {
+let findShortest = (data) => {
   //<solution>
   return data.filter(char => char.gender !== 'n/a').map(char => {
     return {
@@ -184,7 +193,7 @@ let findShortest = data => {
 //
 // DO NOT CHANGE any of the below code.
 //
-// Run your tests from the console: jest chaining.solution.test.js
+// Run your tests from the console: jest challenges-10.test.js
 //
 // ------------------------------------------------------------------------------------------------
 
