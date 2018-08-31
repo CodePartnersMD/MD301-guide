@@ -10,7 +10,9 @@
 // ------------------------------------------------------------------------------------------------
 
 const countNumberOfElements = (input) => {
+  //<solution>
   return input.reduce(accumulator => accumulator + 1, 0);
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -65,9 +67,11 @@ const characters = [
 ];
 
 const countNumberOfChildren = (input) => {
+  //<solution>
   return input.reduce((accumulator, currentValue) => {
     return currentValue.children ? accumulator + currentValue.children.length : accumulator;
   }, 0);
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -111,9 +115,11 @@ const snorlaxData = {
 };
 
 const extractStat = (statName, input) => {
+  //<solution>
   return input.reduce((accumulator, currentValue) => {
     return currentValue.stat.name === statName ? currentValue : accumulator;
   }, null);
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -124,14 +130,16 @@ const extractStat = (statName, input) => {
 // ------------------------------------------------------------------------------------------------
 
 const calculateAverage = (input) => {
+  //<solution>
   let countAndSum =  input.reduce((accumulator, currentValue) => {
     return {
       count: accumulator.count + 1,
       sum: accumulator.sum + currentValue,
     };
   }, { count: 0, sum: 0 });
-
+  
   return countAndSum.sum / countAndSum.count;
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -145,12 +153,14 @@ const calculateAverage = (input) => {
 // ------------------------------------------------------------------------------------------------
 
 const extractChildren = input => {
+  //<solution>
   return input.filter(x => x.name.indexOf('a') >= 0).reduce((accumulator, currentValue) => {
     if (currentValue.children) {
       return accumulator.concat(currentValue.children);
     }
     return accumulator;
   }, []);
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -163,8 +173,9 @@ const extractChildren = input => {
 // ------------------------------------------------------------------------------------------------
 
 const reversedString = (input) => {
-
+  //<solution>
   return input.split('').reduce((accumulator, current) => current + accumulator, '');
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -186,7 +197,9 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (input) => {
+  //<solution>
   return input.reduce((accumulator, currentValue) => isPrime(currentValue) ? accumulator + 1 : accumulator, 0);
+  //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -247,11 +260,12 @@ let starWarsData = [{
 }]
 
 const returnNames = (data) => {
-
+  //<solution>
   return data.reduce( (acc, curr) => {
     acc.push( curr.name );
     return acc;
   }, [] );
+  //</solution>
 };
 
 // ------------------------------------------------------------------------------------------------
