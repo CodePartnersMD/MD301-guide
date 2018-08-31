@@ -2,11 +2,11 @@
 
 ## Overview
 
-Read [this overview.](README.md){:target="_blank"}
+There is no overview for today's challenges. Review the overviews from previous challenges, if needed.
 
 ## Demonstration
 
-Look through [these sample problems.](demo.js){:target="_blank"}
+There is no demonstration for today's challenges. Review the demos from previous challenges, if needed.
 
 ## Challenges
 
