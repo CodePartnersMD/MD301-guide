@@ -13,26 +13,26 @@
 // ['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', ''].
 // ------------------------------------------------------------------------------------------------
 
-const howMuchPencil = name => {
-  //<solution>
+const howMuchPencil = (name) => {
   let result = [];    
+  //<solution>
   for (let i = 0; i < name.length + 1; i++) {
     result.push(name.slice(i));
   }
-  return result;
   //</solution>
+  return result;
 }
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function that, given a string as input, returns an array where every element is a
+// Write a function name wordsToCharList that, given a string as input, returns a new array where every element is a
 // character of the input string.
 //
-// For example, stringToArray('gregor') returns ['g','r','e','g','o','r',].
+// For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r',].
 // ------------------------------------------------------------------------------------------------
 
-const stringToArray = (input) => {
+const wordsToCharList = (input) => {
   //<solution>
   return input.split('');
   //</solution>
@@ -42,21 +42,21 @@ const stringToArray = (input) => {
 // CHALLENGE 3
 //
 // Write a function named totalSumCSV that, given a string of comma-separated values (CSV) as input 
-// (e.g. 1, 2, 3), returns the total sum of the numeric values.
+// (e.g. 1, 2, 3), returns the total sum of the numeric values: 6.
 // ------------------------------------------------------------------------------------------------
 
 const totalSumCSV = (input) => {
+  let total = 0;
   //<solution>
   const values = input.split(',');
-  let total = 0;
-  values.forEach(value => {
+  values.forEach( (value) => {
     const numericValue = Number.parseInt(value);
-    if (!Number.isNaN(numericValue)){
+    if (!Number.isNaN(numericValue)) {
       total += numericValue;
     }
   });
-  return total;
   //</solution>
+  return total;
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ const totalSumCSV = (input) => {
 // You are making a grocery list for ingredients needed in the gruffalo crumble recipe, below.
 // Rather than taking the entire recipe, you only want a list of the item names.
 //
-// Write a function named listFoods that takes in the recipe and returns an array of the food items
+// Write a function named listFoods that takes in the recipe and returns a new array of the food items
 // without any amount or units. Just the name. For example, '1 cup flour' will return 'flour'.
 // 
 // Use slice for this function, maybe more than once. The Array.indexOf() method may also be helpful. 
@@ -101,15 +101,15 @@ const gruffaloCrumble = {
 
 
 const listFoods = (recipe) => {
-  //<solution>
   let result = [];
-  recipe.ingredients.forEach(ingredient => {
+  //<solution>
+  recipe.ingredients.forEach( (ingredient) => {
     let withoutAmount = ingredient.slice(ingredient.indexOf(' ') + 1);
     let withoutUnits = withoutAmount.slice(withoutAmount.indexOf(' ') + 1);
     result.push(withoutUnits);
   })
-  return result;
   //</solution>
+  return result;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -118,19 +118,19 @@ const listFoods = (recipe) => {
 // Use the same recipe from challenge 4, above.
 //
 // Write a function named stepAction that takes in the recipe and extracts the action verbs from the steps.
-// Return an array containing just the verbs. For example, 'Mix until evenly distributed' returns 'Mix'.
+// Return a new array containing just the verbs. For example, 'Mix until evenly distributed' returns 'Mix'.
 //
 // Use the split method for this function.
 // ------------------------------------------------------------------------------------------------
 
 const stepActions = (recipe) => {
-  //<solution>
   let result = [];
-  recipe.steps.forEach(step => {
+  //<solution>
+  recipe.steps.forEach( (step) => {
     result.push(step.split(' ')[0]);
   })
-  return result;
   //</solution>
+  return result;
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -140,31 +140,35 @@ const stepActions = (recipe) => {
 // ------------------------------------------------------------------------------------------------
 
 const splitFoods = (recipe) => {
-  //<solution>
   let result = [];
-  recipe.ingredients.forEach(ingredient => {
+  //<solution>
+  recipe.ingredients.forEach( (ingredient) => {
     result.push(ingredient.split(' ').slice(2).join(' '));
   })
-  return result;
   //</solution>
+  return result;
 }
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
 //
 // Write a function named removeEvenValues that, given an array of integers as input,
-// uses splice, slice, split, or join to remove the array's even values.
+// deletes all even values from the array, leaving no 'gaps' behind. 
+// The array should be modified in-place.
+//
+// For example:
+//   let list = [1, 2, 3, 4, 5, 6];
+//   removeEvenValues(list);
+//   console.log(list); //--> [1, 3, 5]
 // ------------------------------------------------------------------------------------------------
 
 const removeEvenValues = (input) => {
   //<solution>
-  for (let i = 0; i < input.length; i++) {
+  for (let i = input.length - 1; i >= 0; i--) {
     if (input[i] % 2 === 0) {
       input.splice(i, 1);
-      i -= 1;
     }
   }
-  return input;
   //</solution>
 };
 
@@ -179,20 +183,20 @@ const removeEvenValues = (input) => {
 // return an empty string. If the number argument input is a negative number, 
 // the function should return the input string without any changes.
 //
-// For example: removeLastCharacters(2, 'Gregor') returns 'Greg'.
+// For example: removeLastCharacters('Gregor', 2) returns 'Greg'.
 // ------------------------------------------------------------------------------------------------
 
-const removeLastCharacters = (numberOfCharacters, input) => {
+const removeLastCharacters = (str, numberOfCharacters) => {
   //<solution>
-  if (numberOfCharacters > input.length) {
+  if (numberOfCharacters > str.length) {
     return '';
   }
 
   if (numberOfCharacters < 0) {
-    return input;
+    return str;
   }
 
-  return input.split('').slice(0, input.length - numberOfCharacters).join('');
+  return str.split('').slice(0, str.length - numberOfCharacters).join('');
   //</solution>
 };
 
@@ -207,16 +211,42 @@ const removeLastCharacters = (numberOfCharacters, input) => {
 
 const removeVowels = (input) => {
   //<solution>
-  const vowelRegex = /[aeiou]/;
+  const matchVowels = /[aeiou]/;
   const characters = input.split('');
-  for (let i = 0; i < characters.length; i++) {
-    if (vowelRegex.test(characters[i])) {
+  for (let i = characters.length - 1; i >= 0; i--) {
+    if (matchVowels.test(characters[i])) {
       characters.splice(i, 1);
       i -= 1;
     }
   }
 
   return characters.join('');
+  //</solution>
+};
+
+// ------------------------------------------------------------------------------------------------
+// CHALLENGE 10
+//
+// Write a function named extractVowels that takes in a string and returns an array
+// where the first element is the original string with all the vowels removed,
+// and the second element is a string of all the vowels that were removed, in alphabetical order. 
+//
+// For example, extractVowels('gregor') returns ['grgr', 'eo'].
+// Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioou']
+// ------------------------------------------------------------------------------------------------
+
+const extractVowels = (input) => {
+  //<solution>
+  const matchVowels = /[aeiou]/;
+  const characters = input.split('');
+  let vowels = [];
+  for (let i = characters.length - 1; i >= 0; i--) {
+    if (matchVowels.test(characters[i])) {
+      vowels.push(characters.splice(i, 1)[0]);
+    }
+  }
+
+  return [characters.join(''), vowels.sort().join('')];
   //</solution>
 };
 
@@ -240,8 +270,8 @@ describe('Testing challenge 1', () => {
 
 describe('Testing challenge 2', () => {
   test('It should return an array of individual letters', () => {
-    expect(stringToArray('Gregor')).toStrictEqual(['G','r','e','g','o','r']);
-    expect(stringToArray('Gregor').length).toStrictEqual(6);
+    expect(wordsToCharList('Gregor')).toStrictEqual(['G','r','e','g','o','r']);
+    expect(wordsToCharList('Gregor').length).toStrictEqual(6);
   });
 });
 
@@ -273,15 +303,21 @@ describe('Testing challenge 6', () => {
 
 describe('Testing challenge 7', () => {
   test('It should remove the even numbers from the array', () => {
-    expect(removeEvenValues([6, 3, 19, 43, 12, 66, 43])).toStrictEqual([ 3, 19, 43, 43 ]);
-    expect(removeEvenValues([6, 3, 19, 43, 12, 66, 43]).length).toStrictEqual(4);
+    let list = [1, 2, 3, 4, 5, 6];
+    removeEvenValues(list);
+    expect(list).toStrictEqual([1, 3, 5]);
+    
+    list = [6, 3, 19, 43, 12, 66, 43];
+    removeEvenValues(list);
+    expect(list).toStrictEqual([3, 19, 43, 43]);
+    expect(list.length).toStrictEqual(4);
   });
 });
 
 describe('Testing challenge 8', () => {
   test('It should shorten the string based on the first argument', () => {
-    expect(removeLastCharacters(2, 'Gregor')).toStrictEqual('Greg');
-    expect(removeLastCharacters(2, 'Gregor').length).toStrictEqual(4);
+    expect(removeLastCharacters('Gregor', 2)).toStrictEqual('Greg');
+    expect(removeLastCharacters('Gregor', 2).length).toStrictEqual(4);
   });
 });
 
@@ -289,5 +325,14 @@ describe('Testing challenge 9', () => {
   test('It should return the string without vowels', () => {
     expect(removeVowels('gregor')).toStrictEqual('grgr');
     expect(removeVowels('gregor').length).toStrictEqual(4);
+  });
+});
+
+describe('Testing challenge 10', () => {
+  test('It should return the string without vowels', () => {
+    expect(extractVowels('gregor')).toStrictEqual(['grgr', 'eo']);
+    expect(extractVowels('gregor').length).toStrictEqual(2);
+
+    expect(extractVowels('The quick brown fox')).toStrictEqual(['Th qck brwn fx', 'eioou']);
   });
 });
