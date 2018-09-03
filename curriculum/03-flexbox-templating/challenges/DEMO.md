@@ -1,3 +1,4 @@
+```sh
 // 2D Array ... Pretty Print and Show Neighbors
 let a = [
   [2,4,6,8],
@@ -38,3 +39,4 @@ let touches = (table) => {
 };
 
 touches(a);
+```
