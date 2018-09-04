@@ -187,11 +187,11 @@ Then the interface should deliver CSS to the browser
 ## MVP
 Ensure that your application is foundationally ready for the week. Your entire team should be able to start the server locally, see data, and have a stable place to work on server code, templates, and styling. Deployment at this stage to Heroku is a must as this will set you up for a successful week.
  - books_app database created and populated on the local machines of everyone on the team
- - express server application created that satisfies the use cases above
+ - Express server application created that satisfies the use cases above
    - Everyone on the team can start the server and get a list of books from their local books_app database
  - CSS delivered to the page (via the express static middleware).  This need not be "perfect", but it must be wired up so that CSS is there.
- - app deployed to heroku
- - database deployed to heroku using pg:push
+ - App deployed to Heroku
+ - Database deployed to Heroku using `pg:push`
  - A live heroku URL exists that can be used to satisfy all of the requirements.
  
 
