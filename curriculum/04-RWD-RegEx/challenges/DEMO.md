@@ -1,5 +1,4 @@
-'use strict';
-
+```
 let str = 'the rain in spain falls mainly in the plain';
 
 let regex = /[A-Z]/g;
@@ -24,3 +23,4 @@ let email = 'john@here.com';
 let validator = /(.*?)@(.*?)\.(com|net|org)/g;
 console.log(validator.test(email));
 console.log(email.match(validator))
+```

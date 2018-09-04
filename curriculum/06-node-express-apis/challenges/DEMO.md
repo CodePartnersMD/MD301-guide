@@ -1,3 +1,4 @@
+```sh
 let person =
   {
     'name':'John',
@@ -33,3 +34,4 @@ Object.values(person).forEach(value => {
 Object.entries(person).forEach(entry => {
   console.log(entry);
 });
+```

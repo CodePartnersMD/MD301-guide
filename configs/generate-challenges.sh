@@ -17,6 +17,7 @@ replace_solutions(){
   # Report on progress to user
   echo "Generated class $classNumber challenge in $newFile" 
 }
+
 # Exporting the function makes it available to invoke
 export -f replace_solutions 
 

@@ -1,3 +1,4 @@
+```sh
 // array.map demo
 
 const people = [
@@ -18,3 +19,4 @@ const squares = nums.map( (value) => {
 });
 
 const addOne = nums.map(x=>x + 1);
+```

@@ -10,9 +10,7 @@
 // ------------------------------------------------------------------------------------------------
 
 const oddValues = (input) => {
-  //<solution>
-  return input.filter(x => x % 2 === 1);
-  //</solution>
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -28,11 +26,7 @@ const oddValues = (input) => {
 
 
 const filterStringsWithVowels = (input) => {
-  //<solution>
-  const vowelRegex = /[aeiou]/;
-
-  return input.filter(x => vowelRegex.test(x));
-  //</solution>
+  // Solution code here...
 };
 
 
@@ -46,9 +40,7 @@ const filterStringsWithVowels = (input) => {
 // ------------------------------------------------------------------------------------------------
 
 const notInFirstArray = (forbiddenValues, input) => {
-  //<solution>
-  return input.filter(x => !forbiddenValues.includes(x));
-  //</solution>
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -94,9 +86,7 @@ const snorlaxData = {
 };
 
 const getBaseStatGreaterThan = (input, maxBaseStat) => {
-  //<solution>
-  return input.filter(x => x.baseStat > maxBaseStat);
-  //</solution>
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -110,9 +100,7 @@ const getBaseStatGreaterThan = (input, maxBaseStat) => {
 // ------------------------------------------------------------------------------------------------
 
 const getStatName = (input, maxBaseStat) => {
-  //<solution>
-  return input.filter(x => x.baseStat > maxBaseStat).map(x => x.stat.name);
-  //</solution>
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -166,9 +154,7 @@ const characters = [
 ];
 
 const getCharactersWithoutChildren = (input) => {
-  //<solution>
-  return input.filter(x => !x.children);
-  //</solution>
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
@@ -182,9 +168,7 @@ const getCharactersWithoutChildren = (input) => {
 // ------------------------------------------------------------------------------------------------
 
 const evenOddNumericValues = (input) => {
-  //<solution>
-  return input.filter(x => typeof x === 'number').map(x => x % 2 === 0 ? 'even' : 'odd');
-  //</solution>
+  // Solution code here...
 };
 
 // ------------------------------------------------------------------------------------------------
