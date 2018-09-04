@@ -1,3 +1,4 @@
+```sh
 const numbers = [1,2,3,4,5,6,7];
 
 const newthing = numbers.reduce( (accumulator, val, idx) => {
@@ -25,3 +26,4 @@ const names = pokemon.reduce( (acc, val, idx) => {
 }, [] );
 
 console.log(names);
+```

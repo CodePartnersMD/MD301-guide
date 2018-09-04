@@ -1,3 +1,4 @@
+```sh
 let people = ['John','Cathy','Allie','Zach'];
 
 // For loops let us "break" away given a condition
@@ -47,3 +48,4 @@ people.forEach( (item,idx) => {
 let processor = (item,idx) => { console.log(item); };
 
 people.forEach(processor);
+```

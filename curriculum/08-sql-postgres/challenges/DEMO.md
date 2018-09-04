@@ -1,3 +1,4 @@
+```sh
 // array.map demo
 
 const people = [
@@ -15,3 +16,4 @@ const evens = nums.filter( (num) => {
   return !(num % 2);
 });
 console.log(evens);
+```

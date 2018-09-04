@@ -1,3 +1,4 @@
+```sh
 // Everybody Greets Everybody ...
 let people = ['John', 'Cathy', 'Zach', 'Allie'];
 
@@ -26,3 +27,4 @@ let drawGrid = (height,width) => {
   }
 };
 drawGrid(7,7);
+```

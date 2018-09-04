@@ -1,3 +1,4 @@
+```sh
 let str = 'My instructors shred';
 
 // includes
@@ -15,3 +16,4 @@ console.log( 'A'.charCodeAt(0) );
 
 // fromCharCode
 console.log( String.fromCharCode(77) );
+```
