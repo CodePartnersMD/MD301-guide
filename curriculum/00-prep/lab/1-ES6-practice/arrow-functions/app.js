@@ -155,6 +155,7 @@ let Student = function(name, age, hometown) {
 let joe = new Student('Joe', 'Schmoe', 100);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
+// Note that the arrow function will cause this code to break!
 // console.log(joe);
 
 
@@ -163,6 +164,7 @@ Student.prototype.greeting = function() {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
+// Note that the arrow function will cause this method to break!
 // console.log(joe.greeting());
 
 
