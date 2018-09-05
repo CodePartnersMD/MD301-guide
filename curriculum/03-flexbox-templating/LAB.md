@@ -110,8 +110,13 @@ Then the image should render larger on the screen with the description displayed
 - The description should be shown now, as well.
 - When the user clicks off of the image, return to the column view.
 
-## Stretch Goal
+## Stretch Goals
 
 *As a user, I want the detail view to include transitions so that I have a delightful experience.*
 
 - Use a transition or animation to show and hide the detail view of an image.
+
+*As a user, I want the ability to search my images so that I can view only the images containing specific titles or keywords.*
+
+- Create an input element to allow users to search for an image. It is up to you and your partner to decide if the user should be able to search by title, keyword, or both.
+- Write a regular expression pattern to create a fuzzy search so that the results are narrowed down and displayed every time the user enters or removes a character from the input.
