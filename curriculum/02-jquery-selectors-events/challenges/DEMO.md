@@ -1,4 +1,4 @@
-```sh
+```javascript
 // Everybody Greets Everybody ...
 let people = ['John', 'Cathy', 'Zach', 'Allie'];
 

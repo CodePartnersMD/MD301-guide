@@ -1,4 +1,4 @@
-```sh
+```javascript
 let person =
   {
     'name':'John',

@@ -1,4 +1,4 @@
-```sh
+```javascript
 /*
 If compareFunction(a, b) is less than 0, sort a to an index lower than b, i.e. a comes first.
 If compareFunction(a, b) returns 0, leave a and b unchanged with respect to each other, but sorted with respect to all different elements.
