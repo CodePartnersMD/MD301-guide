@@ -47,7 +47,7 @@ const notInFirstArray = (forbiddenValues, input) => {
 // CHALLENGE 4
 //
 // Write a function named getBaseStatGreaterThan that, given the snorlaxData, below, and
-// an integer as input, uses filter to return an array containing all stats 
+// an integer as input, uses filter to return an array containing all stats
 // with a baseStat greater than the integer.
 //
 // For example, getBaseStatGreaterThan(snorlaxData.stats, 50) will return an array containing
@@ -93,7 +93,7 @@ const getBaseStatGreaterThan = (input, maxBaseStat) => {
 // CHALLENGE 5
 //
 // Write a function named getStatName that is an extension of your getBaseStatGreaterThan function
-// from challenge 4. For this function, extend your solution from challenge 4 to only return 
+// from challenge 4. For this function, extend your solution from challenge 4 to only return
 // the name of the stat, rather than the entire stat object.
 //
 // For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 'special-attack'].
@@ -160,7 +160,7 @@ const getCharactersWithoutChildren = (input) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
 //
-// Write a function named evenOddNumericValues that, given an array as input, uses filter to 
+// Write a function named evenOddNumericValues that, given an array as input, uses filter to
 // remove any non-numeric values, then uses map to generate a new array containing the string
 // 'even' or 'odd', depending on the original value.
 //

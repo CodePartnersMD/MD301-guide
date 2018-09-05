@@ -3,13 +3,14 @@
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 1
 //
-// You friend Pat has a chain of stores around the greater Seattle area. He specializes in selling salmon cookies. // Pat has data for the hourly sales of cookies per hour for each store. 
+// You friend Pat has a chain of stores around the greater Seattle area. He specializes in selling salmon cookies.
+// Pat has data for the hourly sales of cookies per hour for each store.
 // He wants to create an array of the total number of cookies sold per hour for all of his stores combined.
 //
 // Write a function named grandTotal that adds up the cookies sales for each hour of operation
 // for all of the stores combined. The first element in the hourlySales array should be
-// the sum of the cookies sold in the 9:00 hour at all five stores combined. 
-// 
+// the sum of the cookies sold in the 9:00 hour at all five stores combined.
+//
 // For this example, the total at 9:00 is 17 + 26 + 7 + 5 + 33, or 88 total cookies.
 //
 // Return the array of total number of cookies sold per hour for all of the stores combined.
@@ -74,7 +75,7 @@ const salesData = (data) => {
 // CHALLENGE 3
 //
 // Write a function named giveValentines that takes in an array of names.
-// The function should iterate over the array and ensure that each person 
+// The function should iterate over the array and ensure that each person
 // gives a Valentine to every other person in the array, except themself.
 //
 // Create a message for each valentine exchange following this format:
@@ -127,7 +128,7 @@ describe('Testing challenge 2', () => {
       { sales: '276 cookies', time: '5 a.m.' },
       { sales: '207 cookies', time: '6 a.m.' },
       { sales: '161 cookies', time: '7 a.m.' },
-      { sales: '169 cookies', time: '8 a.m.' } 
+      { sales: '169 cookies', time: '8 a.m.' }
     ]);
 
     expect(salesData(grandTotal(hoursOpen, cookieStores)).length).toStrictEqual(hoursOpen.length);

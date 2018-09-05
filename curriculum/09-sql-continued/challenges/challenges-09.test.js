@@ -141,7 +141,7 @@ const extractChildren = input => {
 // CHALLENGE 6
 //
 // Write a function named reversedString that takes in a string and returns
-// a string with the letters in reverse order. 
+// a string with the letters in reverse order.
 //
 // Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 // ------------------------------------------------------------------------------------------------

@@ -44,7 +44,7 @@ const howManyTreats = (arr) => {
 // CHALLENGE 3
 //
 // Write a function named battleship that accepts a 2D array, a row coordinate and a column coordinate.
-// Return "hit" or "miss" depending on if there's part of a boat at that position in the array. 
+// Return "hit" or "miss" depending on if there's part of a boat at that position in the array.
 // Assume the array has only one of two values at each index. '# for part of a boat, or ' ' for open water.
 //
 // Here is a sample board:
@@ -73,7 +73,7 @@ const battleship = (board, row, col) => {
 // Write a function named calculateProduct that takes in a two-dimensional array of numbers,
 // multiplies all of the numbers in each array, and returns the final product.
 // This function should work for any number of inner arrays.
-// 
+//
 // For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 // ------------------------------------------------------------------------------------------------
 
@@ -94,8 +94,8 @@ const calculateProduct = (numbers) => {
 // CHALLENGE 5
 //
 // Write a function named averageDailyTemperature that accepts a two-dimensional array representing
-// average daily temperatures grouped week-by-week. 
-// Calculate the average daily temperature. 
+// average daily temperatures grouped week-by-week.
+// Calculate the average daily temperature.
 // Write your function so it could accept an array with any number of weeks given to it.
 // ------------------------------------------------------------------------------------------------
 
@@ -124,11 +124,11 @@ const averageDailyTemperature = (weather) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
 //
-// Write a function named lowestWeeklyAverage that accepts a two-dimensional array 
-// of daily temperatures grouped week-by-week. 
-// Calculate the average temperature for each week and return the value of 
+// Write a function named lowestWeeklyAverage that accepts a two-dimensional array
+// of daily temperatures grouped week-by-week.
+// Calculate the average temperature for each week and return the value of
 // the lowest weekly average temperature.
-// 
+//
 // For example, in the data set below, the lowest weekly average temperature should be return 46.
 // ------------------------------------------------------------------------------------------------
 
@@ -166,7 +166,7 @@ const lowestWeeklyAverage = (weather) => {
 //
 // Write a function called excel that accepts a string representing rows and columns.
 // Rows are seperated by newline "\n" characters. Columns are seperated by spaces.
-// You should parse the string as rows and columns and compute the sum of the values for each row. 
+// You should parse the string as rows and columns and compute the sum of the values for each row.
 // Return an array with the sum of the values in each row.
 //
 // Here's an algorithm you can use:
@@ -217,7 +217,7 @@ const excel = (str) => {
 // consider writing one helper function that accepts three coordinate pairs and checks the values
 // of the array at those locations. For instance helpCheck(row1, col1, row2, col2, row3, col3).
 // Writing that helpCheck function to check evey possible win line is way easier than writing for loops!
-// 
+//
 // Here is a sample board:
 // [
 //   ['X', '', 'O'],
@@ -255,9 +255,9 @@ const detectTicTacToeWin = (board) => {
 // The function should create a new array the same size as the initial array. Do not modify the original array.
 //
 // Each cell contains only either `null` or the string "*" to represent a bomb.
-// Your function should return a 2D array where each cell is a number that represents 
-// how many bombs that cells is touching. 
-// Cells that do not touch any bomb should contain a zero. 
+// Your function should return a 2D array where each cell is a number that represents
+// how many bombs that cells is touching.
+// Cells that do not touch any bomb should contain a zero.
 // Cells that contain a bomb themselves should contain a 9.
 //
 // Consider writing a helper function getCellValue(arr, row, col) that returns either the value at the

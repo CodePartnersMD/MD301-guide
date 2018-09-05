@@ -20,7 +20,7 @@ const validatePin = (pin) => {
 // CHALLENGE 2
 //
 // Write a function named findTagNames that iterates over an array of HTML strings
-// and uses a regular expression pattern to return the closing tags. 
+// and uses a regular expression pattern to return the closing tags.
 //
 // For example, findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])
 // returns ['/h1', '/p'].
@@ -66,7 +66,7 @@ const validateEmail = (email) => {
 //  - 5555555555
 //
 // Your function should include a single regular expression pattern that matches any of these formats.
-// 
+//
 // Return either true or false.
 // ------------------------------------------------------------------------------------------------
 

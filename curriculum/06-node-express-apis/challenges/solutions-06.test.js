@@ -41,7 +41,7 @@ const getEntries = (obj) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
 //
-// Write a function named getFrom that takes in an object and a property name and returns the information from the object. For example, if invoked with "courseInfo" and "keys" as arguments, it should return the keys for the courseInfo object. 
+// Write a function named getFrom that takes in an object and a property name and returns the information from the object. For example, if invoked with "courseInfo" and "keys" as arguments, it should return the keys for the courseInfo object.
 //
 // This will make our code more dynamic and DRY.
 // ------------------------------------------------------------------------------------------------
@@ -57,8 +57,8 @@ const getFrom = (obj, property) => {
 //
 // Use the characters data below for the rest of the challenges.
 //
-// Write a function named totalCharacters that takes in an array and returns the number of 
-// characters in the array. Use the getFrom function you wrote in challenge 4. 
+// Write a function named totalCharacters that takes in an array and returns the number of
+// characters in the array. Use the getFrom function you wrote in challenge 4.
 // ------------------------------------------------------------------------------------------------
 
 let characters = [
@@ -116,7 +116,7 @@ const totalCharacters = (arr) => {
 // CHALLENGE 6
 //
 // Write a function named getHouses that returns an array of the houses in the data set.
-// Use the getFrom function you wrote in challenge 4. 
+// Use the getFrom function you wrote in challenge 4.
 // ------------------------------------------------------------------------------------------------
 
 const getHouses = (arr) => {
@@ -135,7 +135,7 @@ const getHouses = (arr) => {
 // CHALLENGE 7
 //
 //  Write a function named hasChildrenValues that takes in the data and a name and returns a boolean
-// based on whether that character has children. Use the getFrom function you wrote in challenge 4. 
+// based on whether that character has children. Use the getFrom function you wrote in challenge 4.
 // ------------------------------------------------------------------------------------------------
 
 const hasChildrenValues = (arr, character) => {
@@ -157,7 +157,7 @@ const hasChildrenValues = (arr, character) => {
 //
 // Write a function named hasChildrenEntries that is similar to your hasChildrenValues function
 // from challenge 5, but uses the data's entries instead of its keys.
-// Use the getFrom function you wrote in challenge 4. 
+// Use the getFrom function you wrote in challenge 4.
 // ------------------------------------------------------------------------------------------------
 
 const hasChildrenEntries = (arr, character) => {
@@ -180,8 +180,8 @@ const hasChildrenEntries = (arr, character) => {
 // CHALLENGE 9
 //
 // Write a function named houseSize that takes in an array and returns an object for each house
-// containing the name of the house and the number of members. 
-// For example: { house: 'Stark', members: 7 }. Use the getFrom function you wrote in challenge 4. 
+// containing the name of the house and the number of members.
+// For example: { house: 'Stark', members: 7 }. Use the getFrom function you wrote in challenge 4.
 // ------------------------------------------------------------------------------------------------
 
 const houseSize = (arr) => {
@@ -204,12 +204,12 @@ const houseSize = (arr) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 10
 //
-// As fans are well aware, "When you play the game of thrones, you win or you die. There is no middle ground." 
+// As fans are well aware, "When you play the game of thrones, you win or you die. There is no middle ground."
 //
 // We will assume that Alerie Tyrell is deceased. She missed her daughter's wedding. Twice.
 //
 // Write a function named houseSurvivors. Modify your houseSize function from challenge 9 to use
-// as the basis of this function. 
+// as the basis of this function.
 // If the spouse is deceased, do not include him/her in the total number of family members.
 // ------------------------------------------------------------------------------------------------
 

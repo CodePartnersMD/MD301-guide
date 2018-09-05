@@ -137,7 +137,7 @@ const calculateAverage = (input) => {
       sum: accumulator.sum + currentValue,
     };
   }, { count: 0, sum: 0 });
-  
+
   return countAndSum.sum / countAndSum.count;
   //</solution>
 };
@@ -167,7 +167,7 @@ const extractChildren = input => {
 // CHALLENGE 6
 //
 // Write a function named reversedString that takes in a string and returns
-// a string with the letters in reverse order. 
+// a string with the letters in reverse order.
 //
 // Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 // ------------------------------------------------------------------------------------------------

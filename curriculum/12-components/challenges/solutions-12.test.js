@@ -18,8 +18,8 @@ const sortBackwards = (nums) => {
 // CHALLENGE 2
 //
 // Write a function named alphabetize that takes in an array of strings and returns the same array,
-// with the strings sorted alphabetically. 
-// 
+// with the strings sorted alphabetically.
+//
 // In this alphabetization, capital letters come before lower case letters.
 // For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 // ------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ const sortByLength = (strings) => {
 // CHALLENGE 4
 //
 // Write a function named alphabetizeBetter that takes in an array of strings and returns the same
-// array, with the strings sorted alphabetically. Capitalization should not change the sort order 
+// array, with the strings sorted alphabetically. Capitalization should not change the sort order
 // of two strings.
 // ------------------------------------------------------------------------------------------------
 
@@ -123,7 +123,7 @@ const sortPeople = (people) => {
 // Write a function named sortPeopleBetter that takes in an array of Person objects, each of which has
 // firstName, lastName, and age properties, and sorts those people by their last names.
 //
-// If two people share the same last name, alphabetize on their first name. 
+// If two people share the same last name, alphabetize on their first name.
 // If two people have the same full name, the younger one should come first.
 // ------------------------------------------------------------------------------------------------
 

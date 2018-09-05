@@ -2,10 +2,10 @@
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 1
-// 
+//
 // Write a function named howMuchPencil that takes in a string, as written on the side of a pencil.
 // As you sharpen the pencil, the string will become shorter and shorter.
-// 
+//
 // Your function should use slice within a loop and return an array of each successive string
 // result from losing letters to the sharpener, until nothing is left.
 //
@@ -14,7 +14,7 @@
 // ------------------------------------------------------------------------------------------------
 
 const howMuchPencil = (name) => {
-  let result = [];    
+  let result = [];
   //<solution>
   for (let i = 0; i < name.length + 1; i++) {
     result.push(name.slice(i));
@@ -41,7 +41,7 @@ const wordsToCharList = (input) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
 //
-// Write a function named totalSumCSV that, given a string of comma-separated values (CSV) as input 
+// Write a function named totalSumCSV that, given a string of comma-separated values (CSV) as input
 // (e.g. 1, 2, 3), returns the total sum of the numeric values: 6.
 // ------------------------------------------------------------------------------------------------
 
@@ -61,14 +61,14 @@ const totalSumCSV = (input) => {
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
-// 
+//
 // You are making a grocery list for ingredients needed in the gruffalo crumble recipe, below.
 // Rather than taking the entire recipe, you only want a list of the item names.
 //
 // Write a function named listFoods that takes in the recipe and returns a new array of the food items
 // without any amount or units. Just the name. For example, '1 cup flour' will return 'flour'.
-// 
-// Use slice for this function, maybe more than once. The Array.indexOf() method may also be helpful. 
+//
+// Use slice for this function, maybe more than once. The Array.indexOf() method may also be helpful.
 // ------------------------------------------------------------------------------------------------
 
 const gruffaloCrumble = {
@@ -114,7 +114,7 @@ const listFoods = (recipe) => {
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
-// 
+//
 // Use the same recipe from challenge 4, above.
 //
 // Write a function named stepAction that takes in the recipe and extracts the action verbs from the steps.
@@ -135,7 +135,7 @@ const stepActions = (recipe) => {
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
-// 
+//
 // Write a function named splitFoods that uses split to produce the same output as challenge 4.
 // ------------------------------------------------------------------------------------------------
 
@@ -153,7 +153,7 @@ const splitFoods = (recipe) => {
 // CHALLENGE 7
 //
 // Write a function named removeEvenValues that, given an array of integers as input,
-// deletes all even values from the array, leaving no 'gaps' behind. 
+// deletes all even values from the array, leaving no 'gaps' behind.
 // The array should be modified in-place.
 //
 // For example:
@@ -179,8 +179,8 @@ const removeEvenValues = (input) => {
 // This function should remove a certain number of characters from the end of the string.
 // The number argument determines how many characters to remove. Return the resulting string.
 //
-// If the number argument is greater than the length of the input string the function should 
-// return an empty string. If the number argument input is a negative number, 
+// If the number argument is greater than the length of the input string the function should
+// return an empty string. If the number argument input is a negative number,
 // the function should return the input string without any changes.
 //
 // For example: removeLastCharacters('Gregor', 2) returns 'Greg'.
@@ -229,7 +229,7 @@ const removeVowels = (input) => {
 //
 // Write a function named extractVowels that takes in a string and returns an array
 // where the first element is the original string with all the vowels removed,
-// and the second element is a string of all the vowels that were removed, in alphabetical order. 
+// and the second element is a string of all the vowels that were removed, in alphabetical order.
 //
 // For example, extractVowels('gregor') returns ['grgr', 'eo'].
 // Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioou']
@@ -306,7 +306,7 @@ describe('Testing challenge 7', () => {
     let list = [1, 2, 3, 4, 5, 6];
     removeEvenValues(list);
     expect(list).toStrictEqual([1, 3, 5]);
-    
+
     list = [6, 3, 19, 43, 12, 66, 43];
     removeEvenValues(list);
     expect(list).toStrictEqual([3, 19, 43, 43]);
