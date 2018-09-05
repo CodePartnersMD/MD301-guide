@@ -77,9 +77,9 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
 
 ### Database configuration
 
-- Within your PostgreSQL shell, create a new database named `books_app`.
-- Create a new table in your database called `books`.
-  - Create a schema for your `books` table. This schema should contain the following properties:
+- Create a new file in your repo called `books.sql` which will hold your schema and initial data.
+- In this file, add the `CREATE TABLE` statement for a new table in your database called `books`.
+  - This schema should contain the following properties:
     - `id` as the primary key
     - `author`
     - `title`
@@ -87,8 +87,8 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
     - `image_url`
     - `description`
 - Use Postman to request book data from the Google Books API. For example, you can enter a search query at the end of this route: `https://www.googleapis.com/books/v1/volumes?q=`
-- Manually enter each record into your `books` table. Your collection should have at least five unique books.
-- For reference, here is a sample:
+- In your `books.sql` file write an `INSERT` statement for at least 5 of the books you found in the JSON returned from that google books API search.
+- For reference, here is a sample from that API:
 ```
   {
     "title": "Dune",
@@ -98,7 +98,13 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
     "description": "Follows the adventures of Paul Atreides, the son of a betrayed duke given up for dead on a treacherous desert planet and adopted by its fierce, nomadic people, who help him unravel his most unexpected destiny."
   }
 ```
-- Migrate your local database to Heroku, using the following format for your command: `heroku pg:push books_app DATABASE_URL --app <partner 1 initials>-<partner 2 initials>-booklist`
+- Within your PostgreSQL shell, create a new database named `books_app`.
+- Once your `books.sql` file has the proper `CREATE TABLE` and `INSERT` statements, load it into your postgres database from the terminal command line:
+  - `cd /directory/where/you/put/books.sql`
+  - `psql books_app -f books.sql`
+- Check this books.sql file in with your source code at github.
+- **Share your database schema with your parther/team** Have them pull down your branch from git, and issue the same commands from the previous step and have the same database created and loaded on their local system.
+- **Migrate your local database to Heroku**, using the following format for your command: `heroku pg:push books_app DATABASE_URL --app <partner 1 initials>-<partner 2 initials>-booklist`
   - _Note: Unless the local database is pushed to Heroku again, any changes to the local database will not be reflected in the production database._
 
 ### Feature 1: Server-side rendering
@@ -169,14 +175,25 @@ Then the user should receive feedback that something has gone wrong
 
 Given that users access the application on multiple platforms  
 When the user views the application  
-Then the interface should be intuitive and visually pleasing  
+Then the interface should deliver CSS to the browser
 
 #### How are we implementing it?
 
-- Style your site using a mobile-first approach. Make sure your site is responsive. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
-- Ensure the proper use of SMACCS principles. You and your partner(s) may choose to use float-based layout, grid-based layout, Flexbox, or a combination of these.
-- You will need to include icon fonts from a source such as Icomoon or FontAwesome for the social media icons you choose to include in the application.
-- Redeploy your application.
+- Employ CSS in a SMACCS file structure in a folder called `public` in your server heirarchy
+- Using the `express` static mechanism, point the static root at the public folder.
+- Include your .css file(s) into the templates so that they properly load into the browser
+- For a simple "proof of life", simply apply a background color to the page.
+
+## MVP
+Ensure that your application is foundationally ready for the week. Your entire team should be able to start the server locally, see data, and have a stable place to work on server code, templates, and styling. Deployment at this stage to Heroku is a must as this will set you up for a successful week.
+ - books_app database created and populated on the local machines of everyone on the team
+ - Express server application created that satisfies the use cases above
+   - Everyone on the team can start the server and get a list of books from their local books_app database
+ - CSS delivered to the page (via the express static middleware).  This need not be "perfect", but it must be wired up so that CSS is there.
+ - App deployed to Heroku
+ - Database deployed to Heroku using `pg:push`
+ - A live heroku URL exists that can be used to satisfy all of the requirements.
+ 
 
 ## Stretch Goal
 
@@ -184,6 +201,13 @@ Then the interface should be intuitive and visually pleasing
 
 - Implement a NodeJS script that will read a JSON file and populate your PostgreSQL database with that content.
   - You will need to utilize the `fs` (file system) [module from Node](https://nodejs.org/api/fs.html).
+
+*As a developer, I want to completely style my website*
+- Style your site using a mobile-first approach. Make sure your site is responsive. Use the provided wireframes as a general guideline for the minimum styling requirements, while adding your own personal taste and color palette.
+- Ensure the proper use of SMACCS principles. You and your partner(s) may choose to use float-based layout, grid-based layout, Flexbox, or a combination of these.
+- You will need to include icon fonts from a source such as Icomoon or FontAwesome for the social media icons you choose to include in the application.
+- Redeploy your application.
+
 
 ## Documentation
 
