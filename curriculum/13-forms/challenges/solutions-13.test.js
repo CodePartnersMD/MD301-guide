@@ -102,7 +102,7 @@ const allAnything = (strs, target) => {
 // in the meantime, Brook enrolled himself in a bunch of different classes to test if it was working.
 //
 // Write a function named unenrollBrook that takes in a 2d array where each array represents
-// one course's roster, and is an array of strings of the names of the people in that course. 
+// one course's roster, and is an array of strings of the names of the people in that course.
 // Return a 2d array with the same roster, but where anyone whose name includes Brook
 // is removed from every course.
 // ------------------------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ const unenrollBrook = (roster) => {
 // CHALLENGE 9
 //
 // Write a function named sortByDay that takes in an array of strings, each of which represents an
-// event's day and time. 
+// event's day and time.
 //
 // Return a 2d array that organizes those strings based on the day they happen.
 // For example, all Monday's events are in the first array, all Tuesday's are in the second, etc.
@@ -237,7 +237,7 @@ describe('Testing challenge 9', () => {
     const events = ['Dancing on Mondays and Tuesdays', 'Meet the inventors! Monday, August 7', 'in the club on a Tuesday', 'Thursday Night Code'];
 
     const sortedEvents = sortByDay(events);
-    
+
     expect(sortedEvents[0]).toEqual(expect.arrayContaining(['Dancing on Mondays and Tuesdays', 'Meet the inventors! Monday, August 7']));
     expect(sortedEvents[1]).toEqual(expect.arrayContaining(['Dancing on Mondays and Tuesdays', 'in the club on a Tuesday']));
     expect(sortedEvents[2]).toStrictEqual([]);
@@ -251,7 +251,7 @@ describe('Testing challenge 9', () => {
 describe('Testing challenge 10', () => {
   test('It should return the ith character of the ith string', () => {
     const words = ['apple', 'banana', 'cantaloupe'];
-    
+
     expect(characterByIndex(words)).toStrictEqual(['a', 'a', 'n']);
   });
 });

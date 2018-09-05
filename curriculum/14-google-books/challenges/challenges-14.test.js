@@ -4,7 +4,7 @@
 // CHALLENGE 1
 //
 // Write a function named findTheSmiths that finds any people whose last name is Smith.
-// Use a positive lookahead regular expression pattern. 
+// Use a positive lookahead regular expression pattern.
 // ------------------------------------------------------------------------------------------------
 
 const people = [
@@ -28,7 +28,7 @@ const findTheSmiths = (arr) => {
 // CHALLENGE 2
 //
 // Write a function named theSmithNames which returns an array of names of the people whose
-// last name is Smith, rather than an array of objects. 
+// last name is Smith, rather than an array of objects.
 // ------------------------------------------------------------------------------------------------
 
 const theSmithNames = (arr) => {
@@ -39,7 +39,7 @@ const theSmithNames = (arr) => {
 // CHALLENGE 3
 //
 // Write a function named findDollars that takes in an array of values and uses a positive lookahead
-// regular expression pattern to return an array of the prices that are in dollars. 
+// regular expression pattern to return an array of the prices that are in dollars.
 // ------------------------------------------------------------------------------------------------
 
 const prices = ['100 dollars', '5 francs', '9 dollars', '115 rupees', '42 dollars', '20 pesos', '40 lira', '15 shillings', '12 pounds', '90 krones'];
@@ -58,7 +58,7 @@ const findDollars = (arr) => {
 // For example, '62 inches' returns 62.
 // ------------------------------------------------------------------------------------------------
 
-const lengths = ['62 inches', '2.5 meters', '54 inches', '19 inches', '4 feet', '80 inches', '44 inches', '52 inches', '5.5 feet', '600 centimeters', '1 meter',  '8 inches']
+const lengths = ['62 inches', '2.5 meters', '54 inches', '19 inches', '4 feet', '80 inches', '44 inches', '52 inches', '5.5 feet', '600 centimeters', '1 meter', '8 inches']
 
 const lengthValues = (arr) => {
   // Solution code here...

@@ -14,9 +14,9 @@ const isNum = (num) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function named isCapitalized that takes in a string. This function should contain a 
+// Write a function named isCapitalized that takes in a string. This function should contain a
 // regular expression pattern to match all words that begin with a capital letter.
-// 
+//
 // Return an array containing all the matches.
 // ------------------------------------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ const isCapitalized = (string) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
 //
-// Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression 
+// Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression
 // pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 // ------------------------------------------------------------------------------------------------
 
@@ -39,7 +39,7 @@ const citiesAtoJ = (cities) => {
 // CHALLENGE 4
 //
 // You have created a game application and begin by asking users an easy question: In which month is Halloween?
-// 
+//
 // Write a function named matchMonth which uses a regular expression pattern to match any of these inputs:
 // October, Oct, october, oct
 //
@@ -54,10 +54,10 @@ const matchMonth = (input) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
 //
-// Write a function named noPunctuation that contains a regular expression pattern to find 
-// all of the words that contain a space immediately at the end of the sentence. 
-// 
-// For example, if given the string "Hello, and have a wonderful day!", 
+// Write a function named noPunctuation that contains a regular expression pattern to find
+// all of the words that contain a space immediately at the end of the sentence.
+//
+// For example, if given the string "Hello, and have a wonderful day!",
 // the word "Hello" would not be returned because it is immediately followed by a comma.
 // ------------------------------------------------------------------------------------------------
 
@@ -70,9 +70,9 @@ const noPunctuation = input => {
 //
 // You want to teach a friend how to play hangman and want to show them using a partially complete puzzle.
 //
-// Write a function named hangman which uses the replace method to remove all of the 
+// Write a function named hangman which uses the replace method to remove all of the
 // vowels (a, e, i, o, u) from the hangman string and replace them with an underscore.
-// This will result in a printout where the string contains all consonants, and 
+// This will result in a printout where the string contains all consonants, and
 // underscores where the vowels were previously located.
 //
 // For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
