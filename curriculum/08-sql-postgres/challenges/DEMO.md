@@ -1,4 +1,4 @@
-```sh
+```javascript
 // array.map demo
 
 const people = [
