@@ -44,7 +44,7 @@ lab-06-repository
    └── server.js
 ```
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 
