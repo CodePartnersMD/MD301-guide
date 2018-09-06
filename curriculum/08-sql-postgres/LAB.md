@@ -37,7 +37,7 @@ lab-08-repository
    └── server.js
 ```
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 
@@ -82,7 +82,7 @@ Then the location information will not be displayed
 
 Database set-up:
 - Install and require the NPM PostgreSQL package `pg` in your server.js file.
-- Add you connection string to your `.env` file as your `DATABASE_URL`.
+- Add your connection string to your `.env` file as your `DATABASE_URL`.
   - Windows and Linux users: You should have retained the user/password from the pre-work for this course. Your OS may require that your connection string is composed of additional information including user and password. For example: `postgres://USER:PASSWORD@HOST:PORT/DBNAME`;
   - Mac users: `postgres://localhost:5432/DBNAME`;
 - Pass the appropriate argument when instantiating a new Client.
