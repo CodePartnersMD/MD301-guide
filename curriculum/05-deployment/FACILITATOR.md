@@ -4,13 +4,17 @@ Class 5: Deployment Workshop
 
 Today's lecture includes a Heroku deployment workshop. Students should follow along, deploying the portfolio they built during lab 4. It does not matter how complete the portfolio is, as they will be adding features and redeploying the application in lab 5. 
 
-For students enrolled in the daytime track, this lab will take place on Monday morning of class 6, with the assignments due before lecture.
+For students enrolled in the daytime track, lab 5 will take place on Monday morning of class 6, with the assignments due before lecture.
 
 Students will be provided a basic `server.js` file for deployment purposes, so discuss this file on a very high level. 
 
 The `server.js` file is in the `workshop` folder for today. Students will need to install Express with the command `npm i express`. Ensure that their server is up and running locally and that they can view their portfolio with `nodemon`.
 
 The main topic for lecture 6 is a discussion of servers and how to write a `server.js` file. Assure students that more detail is coming in the next lecture.
+
+Work through the deployment process slowly and methodically, waiting at specific time points for students to complete a few steps and catch up. This way, students will not feel left behind and they will have an understanding of why each step is important.
+
+Students will be deploying their applications in labs 6 through 9 and lab 11, plus their final projects. Encourage students to take notes because they will be expected to be able to run through these steps mostly on their own going forward.
 
 ## How do I prep for today?
 
