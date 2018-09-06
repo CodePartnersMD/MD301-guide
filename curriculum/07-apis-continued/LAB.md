@@ -34,7 +34,7 @@ lab-07-repository
    └── server.js
 ```
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 
