@@ -1,7 +1,6 @@
 # Readings
 
 - Essential: [CSS Grid Garden](https://cssgridgarden.com/){:target="_blank"} - Complete all steps of this tutorial
-- Essential: [Shay Howe’s intro to RWD](http://learn.shayhowe.com/advanced-html-css/responsive-web-design/){:target="_blank"}
 - Reference: [RegExr](https://regexr.com/){:target="_blank"} - Pay particular attention to the cheatsheet
 - Reference: [Regex Tutorial](https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285){:target="_blank"}
 - Reference: [Regex 101](https://regex101.com/){:target="_blank"}

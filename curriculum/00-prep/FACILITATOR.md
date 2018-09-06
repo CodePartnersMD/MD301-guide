@@ -2,11 +2,15 @@ Lab 00: Preparation
 
 ## Overview
 
-The Code 301 course is designed to run on a staggered schedule with lecture occurring in the afternoon and the corresponding lab assignment being completed the following morning. For example, lecture will occur on a Monday afternoon, then the lab assignment will be completed on Tuesday morning. New material will then be delivered in lecture on Tuesday afternoon.
+The Code 301 course is designed to run on a staggered schedule with lecture occurring in the afternoon and the corresponding lab assignment completed the following morning. For example, lecture will occur on a Monday afternoon, then the lab assignment will be completed on Tuesday morning. New material will then be delivered in lecture on Tuesday afternoon.
 
-Prior to the first lecture, students will arrive on campus at 9 a.m. and will have several independent assignments to complete and submit the corresponding assignments in Canvas. 
+Prior to the first lecture, students will arrive on campus at 9 a.m. and will complete several independent assignments and submit the corresponding assignments in Canvas. 
 
-Kick off this time with a brief introduction of yourself and the TA team so students know who to ask when they need assistance. During this introductory time, provide a link to the course repository on GitHub and point out the three lab 00 assignments.
+Kick off this time by briefly introducing yourself and the TA team so students know who to seek out when they need assistance. During this introductory time, provide a link to the course repository on GitHub and point out the lab 00 assignments.
+
+All students should follow along with forking and then cloning the course repository.  Students should set the course repository as the upstream remote with the command `git remote add upstream <course-repo-url>`. From this point on, students can pull changes from the course repository with the command `git pull upstream master`. Encourage them to write down this command.
+
+All students should follow this process so they can pull demos as the course progresses.  On some days, they will be working with starter code and will need to pull that code to their machine.
 
 Remind students that they will need to meet back in the assigned classroom at a specific time for kickoff with the campus director and should check the clock periodically so they allow enough time for lunch.
 

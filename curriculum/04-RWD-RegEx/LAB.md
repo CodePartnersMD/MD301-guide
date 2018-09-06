@@ -4,7 +4,7 @@ Lab 4: Personal Portfolio
 
 - Complete your Feature Tasks for the day (below)
 - Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR. **Make sure to include the following:**
+- On Canvas, submit a link to your PR. Add a comment in your Canvas assignment which includes the following:
   - A question within the context of today's lab assignment
   - An observation about the lab assignment, or related 'Ah-hah!' moment
   - How long you spent working on this assignment
@@ -13,7 +13,7 @@ Lab 4: Personal Portfolio
 
 - [HTML5 UP templates](https://html5up.net/)
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 
@@ -41,8 +41,10 @@ Then the portfolio contents should be displayed
 
 #### How are we implementing it?
 
-- Refactor the `main.css` file using SMACSS principles.
-- Apply your styling on top of the provided styling. Do not remove any of the CSS files. Style your portfolio page using floats, Flexbox, or CSS grids.
+- Refactor the `main.css` file using SMACSS principles or another approach of your own design.
+  - If you choose to use SMACSS principles, you may decide how many files to include, but at the minimum should include  `base.css`, `layout.css`, and `modules.css`. However, think through the way you separate your CSS rules. For example, you may want several CSS files in a `modules` folder, if you feel that the code needs to be organized in that manner.
+  - If you choose to use your own approach, you must use at least four files. In addition, you must include a markdown file explaining your approach and how you decided which rules belonged in each file.
+- Apply your styling on top of the provided styling. Do not remove any of the CSS rules. Style your portfolio page using floats, Flexbox, or CSS grids.
 
 ### Feature #2: Modify the contents
 
@@ -63,6 +65,6 @@ Then the content should be unique and reflect the skills and personality of the 
   - Next to the header image, add your name and a description of yourself in less than five words.
   - In the Intro section, add a personal headline. This should be the same as or similar to your headline on your LinkedIn profile.
   - In the Portfolio section, state what you are excited about in tech. Add links to projects and include placeholders for future 301 and 401 projects. If you would like, you can add links to sites such as LinkedIn and GitHub here, or social sites.
-  - In the About Me section, add your personal pitch. 
+  - In the About Me section, add your personal pitch and banner photo. 
 - Add you own color scheme and Google fonts.
 - Change the content and images to reflect your personal preferences. If you are using online images, make sure they are licensed for free, commercial use. For example, [Unsplash](https://unsplash.com/) has a nice variety of free images. 

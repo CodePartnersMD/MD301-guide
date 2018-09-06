@@ -2,9 +2,9 @@ Class 04: Responsive Web Design and Regular Expressions
 
 ## Overview
 
-Today's class is a combination of more CSS topics and an introduction to regular expressions. This is the first of three days where regular expressions will be covered, so keep the demo to the basics and show multiple examples. The additional pattern matching lectures occur in classes 11 and 14, with corresponding code challenges.
+Today's class is a combination of more CSS topics and an introduction to regular expressions. This is the first of two days where regular expressions will be covered, so keep the demo to the basics and show multiple examples. The additional pattern matching lecture occurs in class 14, with corresponding code challenges.
 
-There are several tools students should bookmark for reference when practicing pattern matching with regular expressions; they are listed in the readings for today's class. 
+There are several tools students should bookmark for reference when practicing pattern matching with regular expressions; they are listed in the readings for today's class. Use these tools when introducing regular expressions.
 
 ## How do I prep for today?
 

@@ -6,7 +6,7 @@ Note that there are two portions to today's lab: extending the features on your 
 
 - Complete your Feature Tasks for the day (below)
 - Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR. **Make sure to include the following:**
+- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
   - A question within the context of today's lab assignment
   - An observation about the lab assignment, or related 'Ah-hah!' moment
   - How long you spent working on this assignment
@@ -19,7 +19,7 @@ You will be adding new features to the portfolio project from lab 4. Work in the
 
 When you have completed all of your features, make sure that your deployed application reflects the changes. On Canvas, submit a link to the last pull request from your branch to your master branch.
 
-### User Stories and Feature Tasks
+### User Acceptance Tests
 
 ### Feature #1: Add functionality
 
@@ -35,12 +35,13 @@ Then the portfolio contents should be displayed
 
 #### How are we implementing it?
 
-- Use CDNs for content from libraries and remove the files, as applicable
-- Select new icons from IcoMoon or Font Awesome
-- In tablet view, show a fixed navigation menu instead of a hamburger menu
-- Add a video background
-- Add an image carousel
-- Add any other UI features that you feel will make your portfolio unique and personalized
+- Complete at least four of the following six features:
+  - Use CDNs for content from libraries and remove the source code files from the project, as applicable
+  - Select new icons from IcoMoon or Font Awesome
+  - In tablet view, show a fixed navigation menu instead of a hamburger menu
+  - Add a video background
+  - Add an image carousel
+  - Add any other UI features that you feel will make your portfolio unique and personalized
 
 ## Assignment 2: Responsive web design
 
@@ -66,4 +67,4 @@ Then the boxes should scale proportionally and change colors
 
 - Use Flexbox or CSS grids for styling this application.
 - Use relative units so the elements scale proportionally when the viewport dimensions change.
-- Use at least two breakpoints and change the background colors of each box. There should be three possible views: desktop, tablet, and mobile device.
+- Use at least two breakpoints and change the background colors of each box. There should be three possible views: desktop, tablet, and mobile device. You may choose the exact pixel values for each breakpoint.
