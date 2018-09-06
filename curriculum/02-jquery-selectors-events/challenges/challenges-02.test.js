@@ -16,7 +16,7 @@
 // Return the array of total number of cookies sold per hour for all of the stores combined.
 // ------------------------------------------------------------------------------------------------
 
-const hoursOpen = ['9 a.m.', '10 a.m.', '11 a.m.', '12 a.m.', '1 a.m.', '2 a.m.', '3 a.m.', '4 a.m.', '5 a.m.', '6 a.m.', '7 a.m.', '8 a.m.'];
+const hoursOpen = ['9 a.m.', '10 a.m.', '11 a.m.', '12 p.m.', '1 p.m.', '2 p.m.', '3 p.m.', '4 p.m.', '5 p.m.', '6 p.m.', '7 p.m.', '8 p.m.'];
 
 const firstPike = [ 17, 18, 23, 24, 24, 12, 13, 27, 30, 20, 24, 18 ];
 const seaTac = [ 26, 5, 5, 59, 23, 39, 38, 20, 30, 7, 59, 43 ];
@@ -26,7 +26,7 @@ const alkiBeach = [ 33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17 ];
 
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
-const grandTotal = (hours, stores) => {
+const grandTotal = (stores) => {
   // Solution code here...
 
 };
@@ -44,7 +44,7 @@ const grandTotal = (hours, stores) => {
 // and create an object for each hour. Return an array of the formatted data.
 // ------------------------------------------------------------------------------------------------
 
-const salesData = (data) => {
+const salesData = (hours, data) => {
   // Solution code here...
 };
 
@@ -77,28 +77,28 @@ const giveValentines = (list) => {
 
 describe('Testing challenge 1', () => {
   test('It should add the hourly totals array', () => {
-    expect(grandTotal(hoursOpen, cookieStores)).toStrictEqual([ 88, 153, 252, 286, 139, 161, 145, 232, 276, 207, 161, 169 ]);
+    expect(grandTotal(cookieStores)).toStrictEqual([ 88, 153, 252, 286, 139, 161, 145, 232, 276, 207, 161, 169 ]);
   });
 });
 
 describe('Testing challenge 2', () => {
   test('It should create an object of data for each store', () => {
-    expect(salesData(grandTotal(hoursOpen, cookieStores))).toStrictEqual([
+    expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
       { sales: '88 cookies', time: '9 a.m.' },
       { sales: '153 cookies', time: '10 a.m.' },
       { sales: '252 cookies', time: '11 a.m.' },
-      { sales: '286 cookies', time: '12 a.m.' },
-      { sales: '139 cookies', time: '1 a.m.' },
-      { sales: '161 cookies', time: '2 a.m.' },
-      { sales: '145 cookies', time: '3 a.m.' },
-      { sales: '232 cookies', time: '4 a.m.' },
-      { sales: '276 cookies', time: '5 a.m.' },
-      { sales: '207 cookies', time: '6 a.m.' },
-      { sales: '161 cookies', time: '7 a.m.' },
-      { sales: '169 cookies', time: '8 a.m.' }
+      { sales: '286 cookies', time: '12 p.m.' },
+      { sales: '139 cookies', time: '1 p.m.' },
+      { sales: '161 cookies', time: '2 p.m.' },
+      { sales: '145 cookies', time: '3 p.m.' },
+      { sales: '232 cookies', time: '4 p.m.' },
+      { sales: '276 cookies', time: '5 p.m.' },
+      { sales: '207 cookies', time: '6 p.m.' },
+      { sales: '161 cookies', time: '7 p.m.' },
+      { sales: '169 cookies', time: '8 p.m.' }
     ]);
 
-    expect(salesData(grandTotal(hoursOpen, cookieStores)).length).toStrictEqual(hoursOpen.length);
+    expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
   });
 });
 
