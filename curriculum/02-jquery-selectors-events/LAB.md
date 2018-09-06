@@ -9,7 +9,7 @@ Lab 02: jQuery Selectors and Events
   - An observation about the lab assignment, or related 'Ah-hah!' moment
   - How long you spent working on this assignment
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 

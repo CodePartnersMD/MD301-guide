@@ -2,7 +2,7 @@ Class 03: Flexbox and templating
 
 ## Overview
 
-Today will introduce several concepts which will lead to several refactors of the lab assignment. For example, they will style their application using Flexbox and will render their images using Handlebars.
+Today will introduce several concepts which will lead to several refactors of the lab assignment. For example, students will style their applications using Flexbox and will render their images using Handlebars.
 
 ## How do I prep for today?
 

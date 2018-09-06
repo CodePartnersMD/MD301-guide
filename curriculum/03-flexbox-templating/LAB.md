@@ -4,7 +4,7 @@ Lab 03: Flexbox and templating
 
 - Complete your Feature Tasks for the day (below)
 - Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
+- On Canvas, submit a link to your PR and a link to your deployed application on GitHub pages. Add a comment in your Canvas assignment which includes the following:
   - A question within the context of today's lab assignment
   - An observation about the lab assignment, or related 'Ah-hah!' moment
   - How long you spent working on this assignment
@@ -14,7 +14,7 @@ Lab 03: Flexbox and templating
 - [Handlebars Docs](http://handlebarsjs.com/)
 - [Flexbox Basics from MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 
@@ -38,7 +38,7 @@ Then the other set of images should be dynamically displayed
 
 #### How are we implementing it?
 
-- Add navigation for the user to switch between two pages. Each page should render a unique set of images.
+- Add navigation for the user to switch between two pages. Each page should render a unique set of images from one of the two provided JSON files.
 - Reset the filters, then repopulate them using only keywords from the images currently being displayed.
 
 ### Feature 2: Templating
@@ -73,7 +73,7 @@ Then the images should be displayed in columns, as screen width allows
 
 #### How are we implementing it?
 
-- Refactor your CSS to use Flexbox instead of floats.
+- Refactor your CSS to use Flexbox instead of floats. You are welcome to use a combination of floats and Flexbox, as you see fit.
 
 ### Feature 4: Sort the images
 
@@ -106,9 +106,9 @@ Then the image should render larger on the screen with the description displayed
 
 #### How are we implementing it?
 
-- Add a detail view which will display the image in a larger size in the center of the screen with a grey background.
+- Add a detail view which will display the image in a larger size in the center of the screen with a colored background.
 - The description should be shown now, as well.
-- When the user clicks off of the image, return to the column view.
+- When the user clicks off of the image, return to the grid view.
 
 ## Stretch Goals
 
