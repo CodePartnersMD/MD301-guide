@@ -19,7 +19,7 @@ const findFourteen = (array) => {
 // CHALLENGE 2
 //
 // Write a function named howManyTreats that will return the quantity of treats
-// you need to pick up from the pet store today.
+// you need to pick up from the pet store today from this array.
 // ------------------------------------------------------------------------------------------------
 
 const errands = [
@@ -43,7 +43,7 @@ const howManyTreats = (arr) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
 //
-// Write a function named battleship that accepts a 2D array, a row coordinate and a column coordinate.
+// Write a function named battleship that accepts a 2D array and two numbers, a row coordinate and a column coordinate.
 // Return "hit" or "miss" depending on if there's part of a boat at that position in the array.
 // Assume the array has only one of two values at each index. '# for part of a boat, or ' ' for open water.
 //
@@ -95,7 +95,7 @@ const calculateProduct = (numbers) => {
 //
 // Write a function named averageDailyTemperature that accepts a two-dimensional array representing
 // average daily temperatures grouped week-by-week.
-// Calculate the average daily temperature.
+// Calculate the average daily temperature during that entire period. (Your output should be a single number.)
 // Write your function so it could accept an array with any number of weeks given to it.
 // ------------------------------------------------------------------------------------------------
 
@@ -129,7 +129,7 @@ const averageDailyTemperature = (weather) => {
 // Calculate the average temperature for each week and return the value of
 // the lowest weekly average temperature.
 //
-// For example, in the data set below, the lowest weekly average temperature should be return 46.
+// For example, in the data set below, the lowest weekly average temperature should be 46.
 // ------------------------------------------------------------------------------------------------
 
 let lowestWeeklyTemperatureData = [
@@ -309,8 +309,8 @@ const minesweeper = (board) => {
         mines += mineValue(rowi - 1, coli + 1);
 
         // left / right
-        mines += mineValue(rowi - 1, coli - 1);
-        mines += mineValue(rowi + 1, coli + 1);
+        mines += mineValue(rowi, coli - 1);
+        mines += mineValue(rowi, coli + 1);
 
         // bottom row
         mines += mineValue(rowi + 1, coli - 1);
@@ -342,12 +342,18 @@ describe('Testing challenge 1', () => {
   test('It should return the number 14', () => {
     expect(findFourteen(nestedArray)).toStrictEqual(14);
   });
+  test('It should also work for other input arrays', () => {
+    expect(findFourteen([[], [], [[0,1,2]]])).toStrictEqual(1);
+  })
 });
 
 describe('Testing challenge 2', () => {
   test('It should return the number 24', () => {
     expect(howManyTreats(errands)).toStrictEqual(24);
   });
+  test('It should also work for other arrays of objects', () => {
+    expect(howManyTreats([0,0,{items: [0, {quantity: 7}]}])).toStrictEqual(7);
+  })
 });
 
 describe('Testing challenge 3', () => {
@@ -365,6 +371,7 @@ describe('Testing challenge 3', () => {
 
   test('It should return "miss" when it doesn\'t hit a boat', () => {
     expect(battleship(battleshipData, 0, 1)).toStrictEqual('miss');
+    expect(battleship(battleshipData, 3, 0)).toStrictEqual('miss');
   });
 });
 
@@ -376,6 +383,9 @@ describe('Testing challenge 4', () => {
   test('It should return zero if there are any zeroes in the data', () => {
     expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
   });
+  test('It should work even if some of the arrays contain no numbers', () => {
+    expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
+  });
 });
 
 describe('Testing challenge 5', () => {
@@ -385,8 +395,9 @@ describe('Testing challenge 5', () => {
 });
 
 describe('Testing challenge 6', () => {
-  test('It should return the lowest temperature within the data set', () => {
+  test('It should return the lowest weekly average temperature within the data set', () => {
     expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(57);
+    expect(lowestWeeklyAverage(lowestWeeklyTemperatureData)).toStrictEqual(46);
   });
 });
 
@@ -403,6 +414,7 @@ describe('Testing challenge 7', () => {
 describe('Testing challenge 8', () => {
   test('It should return true if there are three in a row', () => {
     expect(detectTicTacToeWin([ ['X', '', 'O'], ['X', 'O', ''], ['X', 'O', 'X'] ])).toStrictEqual(true);
+    expect(detectTicTacToeWin([ ['O', '', 'X'], ['X', 'O', 'X'], ['X', '', 'O']])).toStrictEqual(true);
   });
 
   test('It should return false if there are not three in a row', () => {
@@ -412,9 +424,18 @@ describe('Testing challenge 8', () => {
 
 describe('Testing challenge 9', () => {
   test('It should return the number of adjacent bombs', () => {
-    const minefield = [ [ null, null, null, null, '*' ], [ null, null, null, null, '*' ], [ '*', null, null, null, null ], [ null, null, null, '*', null ], [ null, '*', null, null, null ] ];
-    const expected = [[0, 0, 0, 2, 9], [1, 1, 0, 1, 9], [9, 0, 2, 2, 2], [3, 3, 1, 9, 0], [0, 9, 1, 1, 2]];
-
+    const minefield =
+    [ [ null, null, null, null, '*' ],
+      [ null, null, null, null, '*' ],
+      [ '*', null, null, null, null ],
+      [ null, null, null, '*', null ],
+      [ null, '*', null, null, null ] ];
+    const expected =
+      [ [0, 0, 0, 2, 9],
+        [1, 1, 0, 2, 9],
+        [9, 1, 1, 2, 2],
+        [2, 2, 2, 9, 1],
+        [1, 9, 2, 1, 1] ];
     expect(minesweeper(minefield)).toStrictEqual(expected);
   });
 });
