@@ -37,7 +37,7 @@ Then the portfolio contents should be displayed
 
 - Complete at least four of the following six features:
   - Use CDNs for content from libraries and remove the source code files from the project, as applicable
-  - Select new icons from IcoMoon or Font Awesome
+  - Update the list of social media icons with your links using icons for your favorite social media sites from IcoMoon or Font Awesome
   - In tablet view, show a fixed navigation menu instead of a hamburger menu
   - Add a video background
   - Add an image carousel
