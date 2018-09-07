@@ -65,3 +65,5 @@ Then the content should be unique and reflect the skills and personality of the 
   - In the About Me section, add your personal pitch and banner photo. 
 - Add you own color scheme and Google fonts.
 - Change the content and images to reflect your personal preferences. If you are using online images, make sure they are licensed for free, commercial use. For example, [Unsplash](https://unsplash.com/) has a nice variety of free images. 
+- Update the list of social media icons with your links using icons for your favorite social media sites from IcoMoon or Font Awesome
+
