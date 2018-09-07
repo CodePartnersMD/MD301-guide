@@ -1,8 +1,8 @@
-Class 08: Persistence with a SQL database
+# Class 08: Persistence with a SQL database
 
 ## Overview
 
-Today we are going to be adding a persistence layer in the form of a SQL database. 
+Today we are going to be adding a persistence layer in the form of a SQL database. Relevant data from each API response will be stored in a database, with one table per API.
 
 ## Daily Plan
 

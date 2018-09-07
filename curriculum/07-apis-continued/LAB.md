@@ -1,13 +1,4 @@
-Lab 07: APIs (continued)
-
-## Submission Instructions
-
-- Complete your Feature Tasks for the day (below)
-- Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
-  - A question within the context of today's lab assignment
-  - An observation about the lab assignment, or related 'Ah-hah!' moment
-  - How long you spent working on this assignment
+# Lab 07: APIs (continued)
 
 ## Resources
 
@@ -34,7 +25,7 @@ lab-07-repository
    └── server.js
 ```
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 
@@ -48,7 +39,7 @@ For this lab assignment, you will use the latitude and longitude to request info
 ### Code Review
 
 - From this point on, work on semantically-named non-master branches. 
-- The student(s) whose lab 6 solution code was not selected should now be the driver. With your partner(s), identify three improvements. This should either be pieces of code that can be refactored or three sections of the code base to add verbose comments to. Note: you do not need to select one or the other. For example, you may select one section to comment on and two pieces of code that can be refactored, for a total of three improvements.
+- The student whose lab 6 solution code was not selected should now be the driver. With your partner, identify three improvements. This should either be pieces of code that can be refactored or three sections of the code base to add verbose comments to. Note: you do not need to select one or the other. For example, you may select one section to comment on and two pieces of code that can be refactored, for a total of three improvements.
 - Work on one improvement at a time, making sure to add, commit, and push the changes as each improvement is complete. These will serve as the first three commits which your TA will review during grading, so pay attention to your Git/GitHub workflow. Once all three improvements are complete, create and merge a pull request to your master branch.
 
 ### Heroku Deployment
@@ -98,7 +89,7 @@ Endpoint:
 `/yelp`
 
 Example Response:
-```sh
+```json
 [
   {
     "name": "Pike Place Chowder",
@@ -116,7 +107,6 @@ Example Response:
   },
   ...
 ]
-
 ```
 
 ### Feature #3: Retrieve movie information
@@ -143,7 +133,7 @@ Endpoint:
 `/movies`
 
 Example Response:
-```sh
+```json
 [
   {
     "title": "Sleepless in Seattle",
@@ -195,3 +185,12 @@ _Your `README.md` must include:_
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 -->
 ```
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day (below)
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment

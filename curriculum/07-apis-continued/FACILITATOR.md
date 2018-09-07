@@ -1,4 +1,4 @@
-Class 07: APIs (continued)
+# Class 07: APIs (continued)
 
 ## Overview
 
@@ -8,9 +8,7 @@ Students will also refactor `.forEach` to `.map`, so discuss this process but do
 
 ## How do I prep for today?
 
-During code review of lab 6, plan to conduct a "follow the code execution" exercise where students will trace the order of function calls. This exercise works well with a visualization of the call stack, one function at a time. Use a drawing tool like an iPad or the whiteboard for this illustration.
-
-Divide students into groups of 2. As you trace the call stack, students should write the name of the function on a Post-It note and add and remove it from their own version of the call stack in front of them on the table. When a function is removed from the call stack, students should write its return value inside the function that called it, as appropriate.
+During code review of lab 6, plan to conduct a "follow the code execution" exercise where students will trace the order of function calls. This exercise works well with a visualization of the call stack, one function at a time. Use a drawing tool like an iPad or the whiteboard for this illustration. Write down functions as they are added to the stack, from the bottom of the screen/whiteboard to the top, and erase each one as its execution completes.
 
 Begin with solution code for class 6 as the starter code for class 7 demo code, to save lines of typing the same code they have just seen during code review. Or, use code from a team that would like their code base to be reviewed and refactored.
 

@@ -1,4 +1,4 @@
-Lab 10: The Call Stack
+# Lab 10: The Call Stack
 
 ## Submission Instructions
 

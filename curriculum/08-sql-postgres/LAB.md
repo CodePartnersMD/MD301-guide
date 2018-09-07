@@ -1,13 +1,4 @@
-Lab 08: Persistence with a SQL database
-
-## Submission Instructions
-
-- Complete your Feature Tasks for the day (below)
-- Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
-  - A question within the context of today's lab assignment
-  - An observation about the lab assignment, or related 'Ah-hah!' moment
-  - How long you spent working on this assignment
+# Lab 08: Persistence with a SQL database
 
 ## Resources
 
@@ -37,7 +28,7 @@ lab-08-repository
    └── server.js
 ```
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 
@@ -82,7 +73,7 @@ Then the location information will not be displayed
 
 Database set-up:
 - Install and require the NPM PostgreSQL package `pg` in your server.js file.
-- Add you connection string to your `.env` file as your `DATABASE_URL`.
+- Add your connection string to your `.env` file as your `DATABASE_URL`.
   - Windows and Linux users: You should have retained the user/password from the pre-work for this course. Your OS may require that your connection string is composed of additional information including user and password. For example: `postgres://USER:PASSWORD@HOST:PORT/DBNAME`;
   - Mac users: `postgres://localhost:5432/DBNAME`;
 - Pass the appropriate argument when instantiating a new Client.
@@ -130,3 +121,12 @@ _Your `README.md` must include:_
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 -->
 ```
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day (below)
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment
