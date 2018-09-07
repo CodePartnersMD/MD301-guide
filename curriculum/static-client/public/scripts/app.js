@@ -15,7 +15,11 @@ function fetchCityData(event) {
   event.preventDefault();
   let searchQuery = $('#input-search').val();
 
-  $.get(`${__API_URL__}/location`, {data: searchQuery})
+  $.ajax({
+    url: `${__API_URL__}/location`,
+    method: 'GET',
+    data: {data: searchQuery}
+  })
     .then(location => {
       displayMap(location);
       getResource('weather', location);
