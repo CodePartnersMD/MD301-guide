@@ -26,4 +26,4 @@ export -f replace_solutions
 ls -d ./curriculum/**/challenges/ | xargs -I % bash -c 'replace_solutions %'
 
 # Report to the user that we completed this script
-Echo "Done!"
+echo "Done!"

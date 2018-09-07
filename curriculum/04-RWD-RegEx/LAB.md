@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 # Lab 4: Personal Portfolio
+=======
+Lab 4: Personal Portfolio
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day (below)
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR. Add a comment in your Canvas assignment which includes the following:
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment
+>>>>>>> 930c60c4fd1451b5c86031365c0fb424ea75799b
 
 ## Resources
 

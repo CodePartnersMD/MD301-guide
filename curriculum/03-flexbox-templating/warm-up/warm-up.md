@@ -26,7 +26,7 @@ get_names()
 
 
 def get_number(doctors):
-       return len(doctors)
+    return len(doctors)
     
 get_number(DOCTORS)
 ```

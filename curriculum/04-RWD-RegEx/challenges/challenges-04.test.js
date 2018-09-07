@@ -3,18 +3,25 @@
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 1
 //
-// Write a function named isNum that takes in a number of any length.
-// This function should include a regular expression pattern to match the input and return true.
+// Write a function named isNum that takes in a string or number of any length.
+// This function should use a regular expression pattern to return true if the input
+// contains a number, and false if the input does not contain a number.
+//
+// Example input/output:
+// 12345 => true
+// '12345' => true
+// 'h3llo world' => true
+// 'hello world' => false
 // ------------------------------------------------------------------------------------------------
 
 const isNum = (num) => {
   // Solution code here...
-}
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function named isCapitalized that takes in a string. This function should contain a
+// Write a function named isCapitalized that takes in a string. This function should use a
 // regular expression pattern to match all words that begin with a capital letter.
 //
 // Return an array containing all the matches.
@@ -22,7 +29,7 @@ const isNum = (num) => {
 
 const isCapitalized = (string) => {
   // Solution code here...
-}
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
@@ -33,7 +40,7 @@ const isCapitalized = (string) => {
 
 const citiesAtoJ = (cities) => {
   // Solution code here...
-}
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
@@ -43,27 +50,30 @@ const citiesAtoJ = (cities) => {
 // Write a function named matchMonth which uses a regular expression pattern to match any of these inputs:
 // October, Oct, october, oct
 //
-// If the user enters any of these inputs, return true. For any other input, return false.
+// If the user enters any of these four inputs, return true. For ANY other input, return false.
 // Do not use the vertical bar (pipe) in your pattern.
 // ------------------------------------------------------------------------------------------------
 
 const matchMonth = (input) => {
   // Solution code here...
-}
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
 //
 // Write a function named noPunctuation that contains a regular expression pattern to find
-// all of the words that contain a space immediately at the end of the sentence.
+// all of the words that contain a space immediately at the end of the word. Return an array of all
+// such words, still containing the space at the end.
 //
 // For example, if given the string "Hello, and have a wonderful day!",
-// the word "Hello" would not be returned because it is immediately followed by a comma.
+// the word "Hello, " would not be returned because it is immediately followed by a comma,
+// and the word "day!" would not be returned because it is immediately followed by an exclamation point.
+// The expected output is ["and ", "have ", "a ", "wonderful "].
 // ------------------------------------------------------------------------------------------------
 
 const noPunctuation = input => {
   // Solution code here...
-}
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
@@ -78,9 +88,9 @@ const noPunctuation = input => {
 // For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 // ------------------------------------------------------------------------------------------------
 
-let hangman = (string) => {
+let hangman = (str) => {
   // Solution code here...
-}
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
@@ -96,7 +106,7 @@ const seashells = 'She sells seashells by the seashore. The shells she sells are
 
 const findShells = (phrase) => {
   // Solution code here...
-}
+};
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
@@ -112,6 +122,14 @@ const findShells = (phrase) => {
 describe('Testing challenge 1', () => {
   test('It should return true if the input is a number', () => {
     expect(isNum(1234567890)).toBeTruthy();
+    expect(isNum('12345')).toBeTruthy();
+  });
+  test('It should return true if the input contains a number', () => {
+    expect(isNum('h3llo w0rld')).toBeTruthy();
+  });
+  test('It should return false if the input does not contain a number', () => {
+    expect(isNum('hello world')).toBeFalsy();
+    expect(isNum('')).toBeFalsy();
   });
 });
 
@@ -128,12 +146,12 @@ describe('Testing challenge 3', () => {
   let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
 
   test('It should return the cities whose names begin with the letters A through J', () => {
-    expect(citiesAtoJ(cities)).toStrictEqual([ 'Cleveland', 'Birmingham', 'Austin', 'Boston', 'Hoboken' ]);
+    expect(citiesAtoJ(cities)).toContain('Cleveland', 'Birmingham', 'Austin', 'Boston', 'Hoboken');
     expect(citiesAtoJ(cities).length).toStrictEqual(5);
   });
 
   test('It should not return the cities whose names begin with the letters K through Z', () => {
-    expect(citiesAtoJ(cities)).not.toContain([ 'San Diego', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Newport Beach' ]);
+    expect(citiesAtoJ(cities)).not.toContain('San Diego', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Newport Beach');
   });
 });
 
@@ -149,6 +167,9 @@ describe('Testing challenge 4', () => {
     expect(matchMonth('November')).toBeFalsy();
     expect(matchMonth('nov')).toBeFalsy();
     expect(matchMonth(123)).toBeFalsy();
+    expect(matchMonth('octob')).toBeFalsy();
+    expect(matchMonth('OCTOBER')).toBeFalsy();
+    expect(matchMonth('notOctober')).toBeFalsy();
   });
 });
 
@@ -173,13 +194,13 @@ describe('Testing challenge 6', () => {
   });
 
   test('It should not contain the letters "a", "e", "i", "o", or "u"', () => {
-    expect(hangman(startString)).not.toContain('aeiou');
-  })
+    expect(hangman(startString)).not.toContain('a', 'e', 'i', 'o', 'u');
+  });
 });
 
 describe('Testing challenge 7', () => {
   test('It should return an array of instances of "sells", shells", and "seashells"', () => {
-    expect(findShells(seashells)).toStrictEqual([ 'sells', 'hells', 'hells', 'sells', 'hells', 'sells', 'hells', 'sells', 'hells' ]);
+    expect(findShells(seashells)).toStrictEqual(['sells', 'seashells', 'shells', 'sells', 'seashells', 'sells', 'shells', 'sells', 'shells']);
     expect(findShells(seashells).length).toStrictEqual(9);
   });
 });
