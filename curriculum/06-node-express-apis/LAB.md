@@ -1,13 +1,4 @@
-Lab 06: Node, npm, Express, and APIs
-
-## Submission Instructions
-
-- Complete your Feature Tasks for the day (below)
-- Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
-  - A question within the context of today's lab assignment
-  - An observation about the lab assignment, or related 'Ah-hah!' moment
-  - How long you spent working on this assignment
+# Lab 06: Node, npm, Express, and APIs
 
 ## Resources
 
@@ -44,17 +35,17 @@ lab-06-repository
    └── server.js
 ```
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 
-In labs 6 through 9, you will be building a stand-alone back end which will interact with a static front end. Working with a new partner each day, you will request data from a total of six third-party APIs, modify the data as needed, and send the data to the client to be displayed in the browser. You will also be persisting data in a SQL database.
+In labs 6 through 9, you will be building a stand-alone back end which will interact with a static front end. Working with a new partner each day, you will request data from a total of six third-party APIs, modify the data as needed, and send the data to the client to be displayed in the browser. In labs 8 and 9, you will be persisting data in a SQL database.
 
-Every day, you and your partner(s) will deploy your back end as a new instance on Heroku.
+Every day, you and your new partner(s) will deploy your back end as a new instance on Heroku.
 
 You will have access to view the code base for the client, but will not be able to modify it in any way.
 
-For this lab assignment, you will convert a string to a latitude and longitude, then use those values to request weather information for that location. As your City Explorer back end progresses in labs 6 through 9, you will use the latitude and longitude to request information from other APIs for the same search query.
+For this lab assignment, you will convert a location entered by the user into a latitude and longitude, then use those values to request weather information for that location. As your City Explorer back end progresses in labs 6 through 9, you will use the latitude and longitude to request information from other APIs from the same search query.
 
 ### Repository set-up
 
@@ -63,7 +54,7 @@ For this lab assignment, you will convert a string to a latitude and longitude, 
 
 ### Heroku deployoment
 
-- One person from your group should create an instance on Heroku. Refer to lecture 5 for a reminder on the steps, if needed.
+- One person from your group should create an instance on Heroku. Refer to lecture 5 for a reminder of the steps, if needed.
 - From the Heroku dashboard, select your instance. In the Settings tab, click on the "Reveal Config Vars" button. Enter your API keys.
 - In the Deploy tab, connect your instance to your repository and enable automatic deploys from your master branch. Deploy your application and make sure there are no errors. 
 
@@ -90,7 +81,7 @@ Endpoint:
 `/location`
 
 Example Response:
-```sh
+```json
 {
   "search_query": "seattle",
   "formatted_query": "Seattle, WA, USA",
@@ -120,7 +111,7 @@ Endpoint:
 `/weather`
 
 Example Response:
-```sh
+```json
 [
   {
     "forecast": "Partly cloudy until afternoon.",
@@ -155,7 +146,7 @@ Endpoint:
 `/location`, `/weather`
 
 Example Response: 
-```sh
+```json
 {
   status: 500,
   responseText: "Sorry, something went wrong",
@@ -191,3 +182,12 @@ _Your `README.md` must include:_
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 -->
 ```
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day (below)
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment

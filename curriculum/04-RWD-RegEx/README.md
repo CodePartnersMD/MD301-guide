@@ -1,4 +1,4 @@
-Class 04: Responsive Web Design and Regular Expressions 
+# Class 04: Responsive Web Design and Regular Expressions 
 
 ## Overview
 

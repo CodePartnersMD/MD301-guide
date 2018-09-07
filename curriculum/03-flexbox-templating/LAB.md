@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+# Lab 03: Flexbox and templating
+=======
 Lab 03: Flexbox and templating
 
 ## Submission Instructions
@@ -8,6 +11,7 @@ Lab 03: Flexbox and templating
   - A question within the context of today's lab assignment
   - An observation about the lab assignment, or related 'Ah-hah!' moment
   - How long you spent working on this assignment
+>>>>>>> 930c60c4fd1451b5c86031365c0fb424ea75799b
 
 ## Resources
 
@@ -120,3 +124,12 @@ Then the image should render larger on the screen with the description displayed
 
 - Create an input element to allow users to search for an image. It is up to you and your partner to decide if the user should be able to search by title, keyword, or both.
 - Write a regular expression pattern to create a fuzzy search so that the results are narrowed down and displayed every time the user enters or removes a character from the input.
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR and a link to your deployed application on GitHub pages. Add a comment in your Canvas assignment which includes the following:
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment

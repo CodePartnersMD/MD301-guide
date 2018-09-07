@@ -1,4 +1,4 @@
-Class 03: Flexbox & Templating
+# Class 03: Flexbox & Templating
 
 ## Overview
 

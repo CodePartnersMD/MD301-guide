@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+# Class 01: SMACSS and Responsive Web Design
+=======
 Class 01: SMACSS and Responsive Web Design
+>>>>>>> 930c60c4fd1451b5c86031365c0fb424ea75799b
 
 ## Overview
 

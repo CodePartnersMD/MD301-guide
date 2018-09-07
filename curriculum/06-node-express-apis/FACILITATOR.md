@@ -1,4 +1,4 @@
-Class 06: Node, npm, Express, and APIs
+# Class 06: Node, npm, Express, and APIs
 
 ## Overview
 
@@ -8,9 +8,9 @@ Students will be able to view the code base for the static client, but will not 
 
 The overarching takeaway for labs 6 through 9 is the concept of front ends and back ends existing as two separate entities. The only relationships that exist between them are the relationships we create. In the context of these labs, the client is built to render specific data. The job of the server is the obtain that data, initially from individual APIs and eventually from a SQL database.
 
-Students will work with a new partner for each of these four labs, deploying each back end to Heroku. The `LAB.md` for lab 7 has detailed instructions about the process or working with a new partner for each of the four labs.
+Students will work with a new partner for each of these four labs, deploying each back end to Heroku. The `LAB.md` for lab 7 has detailed instructions about the process of working with a new partner for each of the four labs.
 
-Refer students to the demonstration of the Heroku deployment process from the workshop in lecture 5. Allow students to work through the deployment during lab time for the practice. By lab 9, they should feel much more confident in the speed and ease of deploying a back end. 
+Refer students to the demonstration of the Heroku deployment process from the workshop in lecture 5. Allow students to work through the deployment during lab time for the practice. By lab 9, they should feel much more confident in the speed and ease of deploying an application to Heroku. 
 
 ## How do I prep for today?
 
@@ -18,7 +18,7 @@ Review the code base for the static client. Be prepared to review this code with
 
 Review the demo code for today. There are several comments throughout the file, so feel free to use those as guidance as you like. Note: provide function signature for `getWeather`, but not the route.
 
-Orient yourself with Postman as a tool. Make sure to request API keys for all of the necessary APIs for the week. Most are issued quickly, but it is better to request them all up front.
+Orient yourself with Postman as a tool. Make sure to request API keys for all of the necessary APIs for the week. Most are issued within a few minutes to hours, but it is better to request them all up front.
 
 For reference, here are the docs for all of the APIs being used in labs 6-9.
 
@@ -45,9 +45,11 @@ Today is the first time students will be writing code in a `server.js` file, as 
 
 ## Lecture
 
-Use Postman to demonstrate the request to a third-party API specifically the Google Geocoding API. Collapse the response object and systematically drill down into the individual properties. Remind students that these are strings, numbers, Booleans, arrays, and objects, all of which they have been working with since 201.
+Use Postman to demonstrate the request to a third-party API, specifically the Google Geocoding API. Collapse the response object and systematically drill down into the individual properties. Remind students that these are strings, numbers, Booleans, arrays, and objects, all of which they have been working with since 201.
 
 Demonstrate how to request information from the API and only respond with the data the client is expecting. They can view the client code base to determine what the response should include. Emphasize the fact that they are sending JSON to the client, which will then be rendered with Handlebars.
+
+Demonstrate how to add environment variable to a terminal session. For example, `export PORT=3000` will add the port as a local environment variable for the duration of the terminal session. Then, demonstrate how to store environment variables in a `.env` file, utilizing the dotenv package from npm. Make a point to tell students that this file needs to be included in their `.gitignore` file.
 
 ## Code skeleton
 

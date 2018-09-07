@@ -1,13 +1,4 @@
-Lab 4: Personal Portfolio
-
-## Submission Instructions
-
-- Complete your Feature Tasks for the day (below)
-- Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR. Add a comment in your Canvas assignment which includes the following:
-  - A question within the context of today's lab assignment
-  - An observation about the lab assignment, or related 'Ah-hah!' moment
-  - How long you spent working on this assignment
+# Lab 4: Personal Portfolio
 
 ## Resources
 
@@ -21,10 +12,9 @@ For today's lab assignment, you will work independently to create a personal por
 
 ### Repository Set-up
 
-- Create a new repository on GitHub.
-- Add the lecture repository as an upstream with the command `git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git`. Verify that it was added with the command `git remote -v`.
-- Sync your fork with the class repo with the command `git fetch upstream` followed by the command `git merge upstream/master`. You should now have access to the starter code in the course repo for today.
-- From the command line, copy or move the starter code into your repository and rename the folder. 
+- Create a new repository on GitHub named `portfolio`.
+- From the command line, copy or move the contents of the starter code folder from the course repository into the root of your portfolio repository.
+- Add and commit this initial state of the code base to your master branch.
 - From this point on, work on semantically-named non-master branches. Remember to add, commit, and push regularly.
 
 ### Feature #1: Refactor the CSS 
@@ -42,9 +32,7 @@ Then the portfolio contents should be displayed
 #### How are we implementing it?
 
 - Refactor the `main.css` file using SMACSS principles or another approach of your own design.
-  - If you choose to use SMACSS principles, you may decide how many files to include, but at the minimum should include  `base.css`, `layout.css`, and `modules.css`. However, think through the way you separate your CSS rules. For example, you may want several CSS files in a `modules` folder, if you feel that the code needs to be organized in that manner.
-  - If you choose to use your own approach, you must use at least four files. In addition, you must include a markdown file explaining your approach and how you decided which rules belonged in each file.
-- Apply your styling on top of the provided styling. Do not remove any of the CSS rules. Style your portfolio page using floats, Flexbox, or CSS grids.
+  - You may decide how many files to include, but at the minimum should include  `base.css`, `layout.css`, and `modules.css`. However, think through the way you separate your CSS rules. For example, you may want several CSS files in a `modules` folder, if you feel that the code needs to be organized in that manner.
 
 ### Feature #2: Modify the contents
 
@@ -68,3 +56,13 @@ Then the content should be unique and reflect the skills and personality of the 
   - In the About Me section, add your personal pitch and banner photo. 
 - Add you own color scheme and Google fonts.
 - Change the content and images to reflect your personal preferences. If you are using online images, make sure they are licensed for free, commercial use. For example, [Unsplash](https://unsplash.com/) has a nice variety of free images. 
+- Update the list of social media icons with your links using icons for your favorite social media sites from IcoMoon or Font Awesome
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day (below)
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR. Add a comment in your Canvas assignment which includes the following:
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment

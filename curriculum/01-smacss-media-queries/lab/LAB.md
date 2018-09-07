@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) Lab 1: SMACSS and Responsive Web Design
+# Lab 1: SMACSS and Responsive Web Design
 
 ## Overview
 
@@ -7,12 +7,6 @@ In lab today, you will be building a single responsive webpage based off of the 
 Your document must be designed in a ***mobile-first*** approach and must be responsive when the screen size changes and the page is refreshed. The details of the media query specifications are up to you, but your breakpoint must be at 768 pixels.
 
 This is an independent project, but your are free to collaborate with your classmates.
-
-## Submission Instructions
-
-- Complete your Feature Tasks for the day (below)
-- Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR
 
 ## Resources
 
@@ -34,3 +28,9 @@ This is an independent project, but your are free to collaborate with your class
 ## Stretch Goal
 
 - Create an additional breakpoint for a new set of colors when the page is viewed on a tablet.
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR

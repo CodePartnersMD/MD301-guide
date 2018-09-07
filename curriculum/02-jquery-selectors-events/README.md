@@ -1,4 +1,4 @@
-Class 02: jQuery Selectors and Events
+# Class 02: jQuery Selectors and Events
 
 ## Overview
 
