@@ -1,4 +1,4 @@
-Class 06: Node, npm, Express, and APIs
+# Class 06: Node, npm, Express, and APIs
 
 ## Overview
 

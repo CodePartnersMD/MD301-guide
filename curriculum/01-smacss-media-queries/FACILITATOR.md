@@ -1,4 +1,4 @@
-Class 01: SMACSS and Responsive Web Design
+# Class 01: SMACSS and Responsive Web Design
 
 ## Overview
 
