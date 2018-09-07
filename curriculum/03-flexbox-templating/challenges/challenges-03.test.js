@@ -11,7 +11,7 @@ const nestedArray = [ [ [1, 2, 3], [4, 5, 6] ], [ [7, 8, 9], [10, 11, 12] ], [ [
 
 const findFourteen = (array) => {
   // Solution code here...
-};
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
@@ -30,11 +30,11 @@ const errands = [
   { store: 'Pet store',
     items: [ { name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 } ]
   }
-];
+]
 
 const howManyTreats = (arr) => {
   // Solution code here...
-};
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
@@ -55,8 +55,8 @@ const howManyTreats = (arr) => {
 // ------------------------------------------------------------------------------------------------
 
 const battleship = (board, row, col) => {
-  // Solution code here...
-};
+  //  Solution code here...
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
@@ -70,7 +70,7 @@ const battleship = (board, row, col) => {
 
 const calculateProduct = (numbers) => {
   // Solution code here...
-};
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
@@ -91,7 +91,7 @@ const weeklyTemperatures = [
 
 const averageDailyTemperature = (weather) => {
   // Solution code here...
-};
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 6
@@ -113,7 +113,7 @@ let lowestWeeklyTemperatureData = [
 
 const lowestWeeklyAverage = (weather) => {
   // Solution code here...
-};
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
@@ -142,7 +142,7 @@ const lowestWeeklyAverage = (weather) => {
 
 const excel = (str) => {
   // Solution code here...
-};
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 8
@@ -168,7 +168,7 @@ const excel = (str) => {
 
 const detectTicTacToeWin = (board) => {
   // Solution code here...
-};
+}
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 9
@@ -199,7 +199,7 @@ const detectTicTacToeWin = (board) => {
 
 const minesweeper = (board) => {
   // Solution code here...
-};
+}
 
 // ------------------------------------------------------------------------------------------------
 // TESTS
