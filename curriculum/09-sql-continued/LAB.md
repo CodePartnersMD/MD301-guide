@@ -83,7 +83,7 @@ Endpoint:
 `/meetups`
 
 Example Response:
-```sh
+```json
 [
   {
     "link": "https://www.meetup.com/seattlejshackers/events/253823797/",
@@ -126,7 +126,7 @@ Endpoint:
 `/trails`
 
 Example Response:
-```sh
+```json
 [
   {
     "name": "Rattlesnake Ledge",

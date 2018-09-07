@@ -2,7 +2,7 @@ Class 09: SQL joins
 
 ## Overview
 
-Today we will continue our discussion about SQL databases and the relationships betweeen our tables.
+Today we will continue our discussion about SQL databases and the relationships betweeen our tables. We will also discuss the various types of joins.
 
 ## Daily Plan
 
