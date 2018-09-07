@@ -4,7 +4,8 @@
 // CHALLENGE 1
 //
 // Write a function named howMuchPencil that takes in a string, as written on the side of a pencil.
-// As you sharpen the pencil, the string will become shorter and shorter.
+// As you sharpen the pencil, the string will become shorter and shorter, starting by removing the
+// first letter.
 //
 // Your function should use slice within a loop and return an array of each successive string
 // result from losing letters to the sharpener, until nothing is left.
@@ -17,7 +18,7 @@ const howMuchPencil = (name) => {
   let result = [];
   // Solution code here...
   return result;
-}
+};
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
@@ -25,7 +26,7 @@ const howMuchPencil = (name) => {
 // Write a function name wordsToCharList that, given a string as input, returns a new array where every element is a
 // character of the input string.
 //
-// For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r',].
+// For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 // ------------------------------------------------------------------------------------------------
 
 const wordsToCharList = (input) => {
@@ -36,7 +37,7 @@ const wordsToCharList = (input) => {
 // CHALLENGE 3
 //
 // Write a function named totalSumCSV that, given a string of comma-separated values (CSV) as input
-// (e.g. 1, 2, 3), returns the total sum of the numeric values: 6.
+// (e.g. "1,2,3"), returns the total sum of the numeric values (e.g. 6).
 // ------------------------------------------------------------------------------------------------
 
 const totalSumCSV = (input) => {
@@ -55,6 +56,7 @@ const totalSumCSV = (input) => {
 // without any amount or units. Just the name. For example, '1 cup flour' will return 'flour'.
 //
 // Use slice for this function, maybe more than once. The Array.indexOf() method may also be helpful.
+// Do NOT use split for this function.
 // ------------------------------------------------------------------------------------------------
 
 const gruffaloCrumble = {
@@ -98,7 +100,7 @@ const listFoods = (recipe) => {
 // Use the same recipe from challenge 4, above.
 //
 // Write a function named stepAction that takes in the recipe and extracts the action verbs from the steps.
-// Return a new array containing just the verbs. For example, 'Mix until evenly distributed' returns 'Mix'.
+// Return a new array containing just the verbs. For example, ['Mix until evenly distributed'] returns ['Mix'].
 //
 // Use the split method for this function.
 // ------------------------------------------------------------------------------------------------
@@ -113,6 +115,7 @@ const stepActions = (recipe) => {
 // CHALLENGE 6
 //
 // Write a function named splitFoods that uses split to produce the same output as challenge 4.
+// You may also use other array/string functions.
 // ------------------------------------------------------------------------------------------------
 
 const splitFoods = (recipe) => {
@@ -199,6 +202,8 @@ describe('Testing challenge 1', () => {
   test('It should return a list of shortening words', () => {
     expect(howMuchPencil('Welcome')).toStrictEqual(['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', '']);
     expect(howMuchPencil('Welcome').length).toStrictEqual(8);
+    expect(howMuchPencil('')).toStrictEqual(['']);
+    expect(howMuchPencil('abc')).toStrictEqual(['abc', 'bc', 'c', '']);
   });
 });
 
@@ -206,12 +211,15 @@ describe('Testing challenge 2', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual(['G','r','e','g','o','r']);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
+    expect(wordsToCharList('hooray')).toStrictEqual(['h','o','o','r','a','y']);
+    expect(wordsToCharList('')).toStrictEqual([]);
   });
 });
 
 describe('Testing challenge 3', () => {
   test('It should add up the numbers contained within the string', () => {
-    expect(totalSumCSV('1, 4, 5, 7, 2')).toStrictEqual(19);
+    expect(totalSumCSV('1,4,5,7,2')).toStrictEqual(19);
+    expect(totalSumCSV('147')).toStrictEqual(147);
   });
 });
 
@@ -253,12 +261,23 @@ describe('Testing challenge 8', () => {
     expect(removeLastCharacters('Gregor', 2)).toStrictEqual('Greg');
     expect(removeLastCharacters('Gregor', 2).length).toStrictEqual(4);
   });
+  test('It should return the complete string when passed a negative number', () => {
+    expect(removeLastCharacters('hello', -1)).toStrictEqual('hello');
+    expect(removeLastCharacters('wowow', -700)).toStrictEqual('wowow');
+  });
+  test('It should return an empty string when called with a number larger than the string length', () => {
+    expect(removeLastCharacters('hello', 12)).toStrictEqual('');
+    expect(removeLastCharacters('', 1)).toStrictEqual('');
+    expect(removeLastCharacters('a', 1)).toStrictEqual('');
+  });
 });
 
 describe('Testing challenge 9', () => {
   test('It should return the string without vowels', () => {
     expect(removeVowels('gregor')).toStrictEqual('grgr');
     expect(removeVowels('gregor').length).toStrictEqual(4);
+    expect(removeVowels('asdf')).toStrictEqual('sdf');
+    expect(removeVowels('why')).toStrictEqual('why');
   });
 });
 
