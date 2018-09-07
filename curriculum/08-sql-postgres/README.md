@@ -1,4 +1,4 @@
-Class 08: Persistence with a SQL database
+# Class 08: Persistence with a SQL database
 
 ## Overview
 

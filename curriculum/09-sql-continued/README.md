@@ -1,4 +1,4 @@
-Class 09: SQL joins
+# Class 09: SQL joins
 
 ## Overview
 

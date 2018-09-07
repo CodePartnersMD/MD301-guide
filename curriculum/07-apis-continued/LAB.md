@@ -1,13 +1,4 @@
-Lab 07: APIs (continued)
-
-## Submission Instructions
-
-- Complete your Feature Tasks for the day (below)
-- Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
-  - A question within the context of today's lab assignment
-  - An observation about the lab assignment, or related 'Ah-hah!' moment
-  - How long you spent working on this assignment
+# Lab 07: APIs (continued)
 
 ## Resources
 
@@ -194,3 +185,12 @@ _Your `README.md` must include:_
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 -->
 ```
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day (below)
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment

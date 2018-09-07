@@ -1,4 +1,4 @@
-Class 09: Persistence with a SQL database, continued
+# Class 09: Persistence with a SQL database, continued
 
 ## Overview
 
