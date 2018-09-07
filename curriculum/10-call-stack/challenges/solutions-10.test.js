@@ -31,7 +31,7 @@ const count = (target, input) => {
 //
 // Write a function named replaceVowels that, given a string as input,
 // uses either filter, map, or reduce to replace all vowels with empty spaces.
-// 
+//
 // You will likely need to use other methods as well.
 // ------------------------------------------------------------------------------------------------
 
@@ -78,17 +78,17 @@ const totalSum = (input) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
 
-// Write a function named divisibleByFiveTwoToThePower that accpets an array of arrays as input. 
-// 
+// Write a function named divisibleByFiveTwoToThePower that accpets an array of arrays as input.
+//
 // This function should first remove any elements that are not numbers and are not divisible by five.
-// 
+//
 // This function should then raise 2 to the power of the resulting numbers, returning an array of arrays.
 // ------------------------------------------------------------------------------------------------
 
 const divisibleByFiveTwoToThePower = (input) => {
   //<solution>
   return input.map((row) => {
-    return row.filter(cell => typeof cell === 'number' && cell % 5 === 0).map(cell => 2 ** cell);
+    return row.filter(cell => typeof cell === 'number' && cell % 5 === 0).map(cell => Math.pow(2, cell));
   });
   //</solution>
 };
@@ -97,7 +97,7 @@ const divisibleByFiveTwoToThePower = (input) => {
 // CHALLENGE 6
 //
 // Write a function named findMaleAndFemale that, given the Star Wars data, below,
-// returns the names of the characters whose gender is either male or female. 
+// returns the names of the characters whose gender is either male or female.
 //
 // The names should be combined into a single string with each character name separated by "and".
 //
@@ -105,53 +105,53 @@ const divisibleByFiveTwoToThePower = (input) => {
 // ------------------------------------------------------------------------------------------------
 
 let starWarsData = [{
-	name: "Luke Skywalker",
-	height: "172",
-	mass: "77",
-	hair_color: "blond",
-	skin_color: "fair",
-	eye_color: "blue",
-	birth_year: "19BBY",
-	gender: "male",
+  name: 'Luke Skywalker',
+  height: '172',
+  mass: '77',
+  hair_color: 'blond',
+  skin_color: 'fair',
+  eye_color: 'blue',
+  birth_year: '19BBY',
+  gender: 'male',
 },
 {
-	name: "C-3PO",
-	height: "167",
-	mass: "75",
-	hair_color: "n/a",
-	skin_color: "gold",
-	eye_color: "yellow",
-	birth_year: "112BBY",
-	gender: "n/a"},
-  {
-	name: "R2-D2",
-	height: "96",
-	mass: "32",
-	hair_color: "n/a",
-	skin_color: "white, blue",
-	eye_color: "red",
-	birth_year: "33BBY",
-	gender: "n/a"
+  name: 'C-3PO',
+  height: '167',
+  mass: '75',
+  hair_color: 'n/a',
+  skin_color: 'gold',
+  eye_color: 'yellow',
+  birth_year: '112BBY',
+  gender: 'n/a'},
+{
+  name: 'R2-D2',
+  height: '96',
+  mass: '32',
+  hair_color: 'n/a',
+  skin_color: 'white, blue',
+  eye_color: 'red',
+  birth_year: '33BBY',
+  gender: 'n/a'
 },
 {
-	name: "Darth Vader",
-	height: "202",
-	mass: "136",
-	hair_color: "none",
-	skin_color: "white",
-	eye_color: "yellow",
-	birth_year: "41.9BBY",
-	gender: "male"
+  name: 'Darth Vader',
+  height: '202',
+  mass: '136',
+  hair_color: 'none',
+  skin_color: 'white',
+  eye_color: 'yellow',
+  birth_year: '41.9BBY',
+  gender: 'male'
 },
 {
-	name: "Leia Organa",
-	height: "150",
-	mass: "49",
-	hair_color: "brown",
-	skin_color: "light",
-	eye_color: "brown",
-	birth_year: "19BBY",
-	gender: "female"
+  name: 'Leia Organa',
+  height: '150',
+  mass: '49',
+  hair_color: 'brown',
+  skin_color: 'light',
+  eye_color: 'brown',
+  birth_year: '19BBY',
+  gender: 'female'
 }]
 
 let findMaleAndFemale = (data) => {
