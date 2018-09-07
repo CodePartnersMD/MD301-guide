@@ -38,8 +38,7 @@ Then the portfolio contents should be displayed
 - Complete the following features:
   - Use CDNs for content from libraries and remove the source code files from the project, as applicable
   - In tablet view, show a fixed navigation menu instead of a hamburger menu
-  - Add a video background
-  - Add an image carousel
+  - Convert the large image at the top of your portfolio to a video background or an image carousel containing at least three images
   - Add any other UI features that you feel will make your portfolio unique and personalized
 
 ## Assignment 2: Responsive web design
