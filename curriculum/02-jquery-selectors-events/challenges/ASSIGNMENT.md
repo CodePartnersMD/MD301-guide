@@ -10,7 +10,7 @@ Watch today's video from the [demo playlist.](https://www.youtube.com/playlist?l
 
 ## Demonstration
 
-Look through [these sample problems.](DEMO.md){:target="_blank"}
+Look through [these sample problems.](README.md){:target="_blank"}
 
 ## Challenges
 
