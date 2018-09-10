@@ -2,6 +2,7 @@
 
 - Reference: [Handlebars.js Official Documentation](http://handlebarsjs.com/){:target="_blank"}
 - Essential: [Learn Handlebars.js in 10 Minutes tutorial](http://tutorialzine.com/2015/01/learn-handlebars-in-10-minutes/){:target="_blank"}
+- Essential: [A Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/){:target="_blank"}
 - Essential: [Flexbox Froggy](https://flexboxfroggy.com/){:target="_blank"} - Complete all steps of this tutorial
 
 ## Discuss
