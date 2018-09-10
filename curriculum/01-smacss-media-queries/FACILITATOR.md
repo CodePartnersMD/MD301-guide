@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # Class 01: SMACSS and Responsive Web Design
-=======
-Class 01: SMACSS and Responsive Web Design
->>>>>>> 930c60c4fd1451b5c86031365c0fb424ea75799b
 
 ## Overview
 
@@ -29,7 +25,8 @@ Students will complete this lab for a second time as part of the lab 5 assignmen
 
 ## How do I prep for today?
 
-Review float-based layout and read through the requirements for the lab assignment.
+- Review float-based layout and read through the requirements for the lab assignment.
+- Prepare a demo on media queries and icon fonts from IcoMoon or Font Awesome.
 
 ## What changed from the previous class?
 
