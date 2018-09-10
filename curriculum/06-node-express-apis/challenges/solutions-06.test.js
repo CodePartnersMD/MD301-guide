@@ -3,7 +3,8 @@
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 1
 //
-// Write a function named getKeys that takes in an object and returns the keys from the object.
+// Write a function named getKeys that takes in an object and returns an array containing the keys
+// from the object.
 // ------------------------------------------------------------------------------------------------
 
 const getKeys = (obj) => {
@@ -15,7 +16,8 @@ const getKeys = (obj) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function named getValues that takes in an object and returns the values from the object.
+// Write a function named getValues that takes in an object and returns an array containing the
+// values from the object.
 // ------------------------------------------------------------------------------------------------
 
 const getValues = (obj) => {
@@ -27,9 +29,8 @@ const getValues = (obj) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 3
 //
-// Write a function named getEntries that takes in an object and returns the entries from the object.
-//
-// Then, use your function to return the entries from the courseInfo object.
+// Write a function named getEntries that takes in an object and returns an array of the entries
+// (key/value pairs) from the object.
 // ------------------------------------------------------------------------------------------------
 
 const getEntries = (obj) => {
@@ -41,10 +42,16 @@ const getEntries = (obj) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
 //
-// Write a function named getFrom that takes in an object and a property name and returns the information from the object. For example, if invoked with "courseInfo" and "keys" as arguments, it should return the keys for the courseInfo object.
+// Write a function named getFrom that takes in an object and a property name and returns the
+// information from the object. For example, if invoked with "courseInfo" and "keys" as arguments,
+// it should return an array containing the keys for the courseInfo object
+// (['name', 'duration', 'topics', 'finalExam']).
 //
 // This will make our code more dynamic and DRY.
 // ------------------------------------------------------------------------------------------------
+const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
+  finalExam: true };
 
 const getFrom = (obj, property) => {
   //<solution>
@@ -156,7 +163,7 @@ const hasChildrenValues = (arr, character) => {
 // CHALLENGE 8
 //
 // Write a function named hasChildrenEntries that is similar to your hasChildrenValues function
-// from challenge 5, but uses the data's entries instead of its keys.
+// from challenge 7, but uses the data's entries instead of its keys.
 // Use the getFrom function you wrote in challenge 4.
 // ------------------------------------------------------------------------------------------------
 
@@ -179,7 +186,7 @@ const hasChildrenEntries = (arr, character) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 9
 //
-// Write a function named houseSize that takes in an array and returns an object for each house
+// Write a function named houseSize that takes in the array and returns an object for each house
 // containing the name of the house and the number of members.
 // For example: { house: 'Stark', members: 7 }. Use the getFrom function you wrote in challenge 4.
 // ------------------------------------------------------------------------------------------------
@@ -246,7 +253,7 @@ const houseSurvivors = (arr) => {
 describe('Tests using the course info object', () => {
   const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
     topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
-    finalExam: true }
+    finalExam: true };
 
   describe('Testing challenge 1', () => {
     test('It should return the keys from an object', () => {
