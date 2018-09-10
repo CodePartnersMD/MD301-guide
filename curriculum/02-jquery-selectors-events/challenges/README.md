@@ -56,7 +56,7 @@ Have you guessed?
 
 Primitive types are always passed by value, and Object types are always passed by reference. 
 
-Let's look at a some examples. 
+Let's look at some examples. 
 
 ```javascript
 let line1 = "Where now?" // The string literal is immutable. The variable `line1` points to it. 
