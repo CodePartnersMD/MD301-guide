@@ -3,9 +3,9 @@
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 1
 //
-// Write a function named forLoopTwoToThe that, given an array of integers as input, iterates over 
+// Write a function named forLoopTwoToThe that, given an array of integers as input, iterates over
 // the array and returns a new array. The returned array should containing the result of raising 2
-// to the power of the original input element. 
+// to the power of the original input element.
 //
 // You may choose to complete this challenge using a for loop, for...in syntax, or for...of syntax.
 //
@@ -15,11 +15,11 @@
 const forLoopTwoToThe = (input) => {
   //<solution>
   const output = [];
-  
+
   for (let i in input) {
-    output.push(2 ** input[i]);
+    output.push(Math.pow(2, input[i]));
   }
-  
+
   return output;
   //</solution>
 };
@@ -34,11 +34,11 @@ const forLoopTwoToThe = (input) => {
 const forEachTwoToThe = (input) => {
   //<solution>
   const output = [];
-  
+
   input.forEach((x) => {
-    output.push(2 ** x);
+    output.push(Math.pow(2, x));
   });
-  
+
   return output;
   //</solution>
 };
@@ -53,14 +53,14 @@ const forEachTwoToThe = (input) => {
 
 const mapTwoToThe = (input) => {
   //<solution>
-  return input.map(x => 2 ** x);
+  return input.map(x => Math.pow(2, x));
   //</solution>
 }
 
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 4
 //
-// Write a function named charCode that, given an array of letters as an input, uses map to return a  
+// Write a function named charCode that, given an array of letters as an input, uses map to return a
 // new array where each element is the result of the `charCodeAt` method on the original array element.
 //
 // Read the MDN documentation on String.charCodeAt() if necessary.
@@ -148,7 +148,7 @@ const extractAbilities = (abilities) => {
 // Use the snorlaxStats data, below, for this challenge.
 //
 // Write a function named extractStats that, given an array of stats, uses map to return an array
-// of objects containing the stat name and the total. 
+// of objects containing the stat name and the total.
 // The total should be the sum of the effort and the baseStat.
 //
 // Here is an example of a single array element: { name: 'speed', total: 35 }
@@ -260,7 +260,7 @@ describe('Testing challenge 5', () => {
     expect(evenOdd([2, 4, 6, 8, 10])).toStrictEqual([ 'even', 'even', 'even', 'even', 'even' ]);
     expect(evenOdd([2, 4, 6, 8, 10]).length).toStrictEqual(5);
   });
-  
+
   test('It should return the string "N/A" if a non-integer is included in the array', () => {
     expect(evenOdd([5, 8, 2, 'hi'])).toStrictEqual([ 'odd', 'even', 'even', 'N/A' ]);
     expect(evenOdd([5, 8, 2, 'hi']).length).toStrictEqual(4);
@@ -277,8 +277,8 @@ describe('Testing challenge 6', () => {
 describe('Testing challenge 7', () => {
   test('It should return an array containing objects with name and total values', () => {
     expect(extractStats(snorlaxStats.stats)).toStrictEqual([
-      { name: 'speed', total: 35, }, 
-      { name: 'special-defense', total: 112, }, 
+      { name: 'speed', total: 35, },
+      { name: 'special-defense', total: 112, },
       { name: 'special-attack', total: 74, },
     ]);
     expect(extractStats(snorlaxStats.stats).length).toStrictEqual(3);
