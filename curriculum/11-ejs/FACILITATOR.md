@@ -1,4 +1,4 @@
-Class 11: Server-side templating with EJS
+# Class 11: Server-side templating with EJS
 
 ## Overview
 
@@ -6,13 +6,11 @@ Today is the first day of the book application, a project that spans over labs 1
 
 Students will work with the same partner for all four labs, so be mindful of which students are partnered together. During final projects, each team typically contains a balance of strong students and weaker students, so the book app is an opportunity to pair two strong students together and see how much they are able to accomplish.
 
-At this point, students should feel comfortable working in the front end from module 1. They should also feel comfortable working in the back end with a static front end from module 2. However, lab 10 was the first time they wrote all of the code and made the front end and back end communicate with each other. The book app will be their second time writing a full-stack application, so look for patterns from module 1 and module 2 which students can be reminded of when they struggle during this module.
+At this point, students should feel comfortable working in the front end from module 1. They should also feel comfortable working in the back end with a static front end from module 2. However, the book app will be their first time writing a full-stack application, so look for patterns from module 1 and module 2 which students can be reminded of when they struggle during this module.
 
 Server-side rendering is a new topic for students during this module. It will likely take a bit of time for students to adjust to this paradigm. Today's lecture will focus on creating a singular `index.ejs` file and an error view, with modularization into components addressed in the lectures and lab assignments for the remainder of the book app.
 
 In lab 11, students will manually populate a database and write a route to retrieve all of the book objects and render them all in a single view. For your convenience, there is a file called `schema.sql` to easily load a table with ten books. To run this from the command line, type `psql -d <database-name> -f schema.sql`. This is for internal use only; do not share this file with students. 
-
-_Note: the `demos` folder contains the to-do application before templating and after templating. The purpose of these two demos is for instructor reference. The revised version of the book app is being introduced in September 2018, so it will serve as a starting point for instructors who have delivered the original book app to acclimate to the revised version of the book app. Students should only be introduced to the pattern that includes EJS, which can be found in the `todo-after-templating` folder._ 
 
 ## How do I prep for today?
 

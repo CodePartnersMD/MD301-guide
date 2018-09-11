@@ -1,4 +1,4 @@
-Class 15: Final Project Kick-off
+# Class 15: Final Project Kick-off
 
 ## Overview
 

@@ -1,4 +1,4 @@
-Class 13: Adding a new resource
+# Class 13: Adding a new resource
 
 ## Overview
 

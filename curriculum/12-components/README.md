@@ -1,4 +1,4 @@
-Class 12: Componentization
+# Class 12: Componentization
 
 ## Overview
 
