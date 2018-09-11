@@ -3,13 +3,16 @@
 // Application Dependencies
 const express = require('express');
 const superagent = require('superagent');
+const cors = require('cors');
 
 // Load environment variables from .env file
 require('dotenv').config();
 
 // Application Setup
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 // API routes
 app.get('/location', (request, response) => {

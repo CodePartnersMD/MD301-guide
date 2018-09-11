@@ -4,7 +4,10 @@
 
 Class 6 is the first day where students will be working with a static client. Throughout labs 6-9 they will write the `server.js` file, as well as database schemas for labs 8 and 9. 
 
-Students will be able to view the code base for the static client, but will not be able to modify it in any way.
+Students will be able to view the code base for the static client, but will not be able to modify it in any way. 
+
+The source code for the front end is available in the `curriculum/static-client` folder.
+The deployed front end is available here: https://codefellows.github.io/city_explorer/
 
 The overarching takeaway for labs 6 through 9 is the concept of front ends and back ends existing as two separate entities. The only relationships that exist between them are the relationships we create. In the context of these labs, the client is built to render specific data. The job of the server is the obtain that data, initially from individual APIs and eventually from a SQL database.
 
