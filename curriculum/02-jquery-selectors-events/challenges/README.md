@@ -1,4 +1,4 @@
-# Variables Reference vs Value 
+# Variables: Value vs. Reference 
 
 ## Overview
 
@@ -7,10 +7,11 @@ Let's consider the humble variable. While you've surely used variables extensive
 Behold a simple line of code:
 
 ```javascript
-let age = 37; // I'm 37, i'm not old! 
+let age = 37; // I'm 37, I'm not old! 
 ```
 
-What is happening here? How would you describe it in plain english to someone not familiar with programming? 
+What is happening here? How would you describe it in plain English to someone not familiar with programming?
+
 You might say (or you might even have been told) that "age" is like a bucket, and we put the number `37` in to that bucket. Later, we might change what's in the bucket. 
 
 But that analogy breaks down pretty quickly if we think about what's really happening. 
@@ -39,13 +40,13 @@ But the second option gives us more flexibility. If we pass by value, every time
 SO! How does JavaScript decide which method to use? 
 
 ```javascript
-let newVar = existingVar; // WHAT WILL JAVASCRIPT DO?? Assign a reference? Or a copy? 
+let newVar = existingVar; // WHAT WILL JAVASCRIPT DO?? Assign a reference? Or a new copy? 
 ```
 
 Well, it decides based on what kind of value is being assigned. 
 
-1. If the value is large, complicated, or could change it's memory footprint, it's assigned by reference, so no copy has to be made. The new variable points to the same place in memory as the source variable. 
-1. If the value is unchangeable (immutable), fixed size, and easy to store, it's assigned by copy. The new variable points to a new spot in memory, that contains a fresh copy of the source value.
+1. If the value is large, complicated, or could change its memory footprint, it's assigned by reference, so no copy has to be made. The new variable points to the same place in memory as the source variable. 
+1. If the value is unchangeable (immutable), fixed size, and easy to store, it's assigned by copy. The new variable points to a new spot in memory, that contains a fresh copy of the source value. We call this "assigned by value".
 
 Thankfully, JavaScript only has a small handful of common data types, so we can make a short list to keep track. They exist in just two categories:
 
@@ -59,13 +60,14 @@ Primitive types are always passed by value, and Object types are always passed b
 Let's look at some examples. 
 
 ```javascript
-let line1 = "Where now?" // The string literal is immutable. The variable `line1` points to it. 
-let line2 = line1 // The string is copied to a new location in memory. The variable `line2` points to thenew string. 
+let line1 = "Where now?" // The string literal is immutable. The variable `line1` points to it.
 
-line1 = line1 + " Who now? When now?" // A new string is created. `line1` is adjusted to point at the newstring.
+let line2 = line1 // The string is copied to a new location in memory. The variable `line2` points to the new string. 
+
+line1 = line1 + " Who now? When now?" // A new string is created. `line1` is adjusted to point at the new string.
 
 console.log(line1) // "Where now? Who now? When now?"
-console.log(line2); // Has not changed, is still it's own copy of "Where now?"
+console.log(line2); // Has not changed, is still its own copy of "Where now?"
 ```
 
 But if we work with Object types, it's a different story... 
@@ -83,12 +85,12 @@ console.log(obj2); // {bradbury: "It was a pleasure to burn", vonnegut: "All thi
 Special attention should be paid to function calls. When an argument is passed in to a function, it is assigned as a parameter in that function's code. Think of it as lining up each argument with each parameter, connected with an assignment operator. 
 
 ```javascript
-function append0(list) {
-  list.push(0); // We can modify the array passed in directly! No return value needed! 
+function append0(arr) {
+  arr.push(0); // We can modify the array passed in directly! No return value needed! 
 }
 
 let a = [1, 2, 3, 4];
-append0(a) // Passing this variable, is like saying `list = a`, so it's passed to the function by REFERENCE
+append0(a) // Passing this variable, is like saying `arr = a`, so it's passed to the function by REFERENCE
 
 console.log(a) // [1, 2, 3, 4, 0] It now has the modification, changed from within the function. 
 ```
