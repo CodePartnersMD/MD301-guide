@@ -8,33 +8,29 @@ function Image( item ) {
   this.horns = item.horns;
 }
 
-Image.all = [];
-
 Image.prototype.render = function() {
-  $('main').append('<div class="clone"></div>');
-  let templateClone = $('div[class="clone"]')
-  templateClone.html($('#photo-template').html())
-  templateClone.find('h2').text(this.title);
-  templateClone.find('img').attr('src', this.image_url);
-  templateClone.find('p').text(this.description);
-  templateClone.attr('class', this.keyword);
-  templateClone.removeClass('clone');
+  let template = Handlebars.compile( $( '#photo-template' ).html() );
+  return template(this);
 }
 
-Image.readJson = () => {
-  $.get('page-1.json').then( data => {
+Image.readJson = ( page ) => {
+  Image.all = [];
 
-    data.forEach(item => {
-      Image.all.push( new Image( item ));
+  $( 'main' ).empty();
+
+  $.get( `../data/page-${page}.json` ).then( data => {
+
+    data.forEach( item => {
+      Image.all.push( new Image( item ) );
     })
 
     Image.sortBy( Image.all, 'title' );
 
     Image.all.forEach( image => {
-      $( 'main' ).append( image.render() );
+      $( '#image-container' ).append( image.render() );
     })
 
-  }, 'json')
+  }, 'json' )
     .then( Image.populateFilter )
     .then( Image.handleFilter )
     .then( Image.handleSort );
@@ -46,17 +42,6 @@ Image.sortBy = ( array, property ) => {
     let secondComparison = b[property];
     return ( firstComparison > secondComparison ) ? 1 : ( firstComparison < secondComparison ) ? -1 : 0;
   });
-}
-
-Image.handleSort = () => {
-  $('input').on('change', function() {
-    $('select').val('default');
-    $('div').remove()
-    Image.sortBy(Image.all, $(this).attr('id'))
-    Image.all.forEach(image => {
-      $( 'main' ).append( image.render() );
-    })
-  })
 }
 
 Image.populateFilter = () => {
@@ -84,7 +69,7 @@ Image.handleFilter = () => {
 
       Image.all.forEach(image => {
         if ( selected === image.keyword ) {
-          $( `div[class="${selected}"` ).fadeIn();
+          $( `div[class="${selected}"` ).addClass('filtered').fadeIn();
         }
       })
 
@@ -93,4 +78,43 @@ Image.handleFilter = () => {
   })
 }
 
-$(() => Image.readJson());
+Image.handleSort = () => {
+  $( 'input' ).on('change', function() {
+    $('select').val('default');
+    $('div').remove()
+    Image.sortBy( Image.all, $(this).attr('id') )
+    Image.all.forEach( image => {
+      $( '#image-container' ).append( image.render() );
+    })
+  })
+}
+
+Image.handleImageEvents = () => {
+  $( 'main' ).on( 'click', 'div', function(event) {
+    event.stopPropagation();
+    let $clone = $(this).clone();
+    let elements = $clone[0].children;
+
+    $( 'section' ).addClass( 'active' ).html( elements );
+
+    $( window ).scrollTop( 0 );
+  });
+
+  $('body').on('click', function() {
+    $( 'section' ).empty();
+    $( 'section' ).removeClass( 'active' );
+  })
+}
+
+Image.handleNavEvents = () => {
+  $( 'footer ul, header ul' ).on( 'click', 'li', function() {
+    $( '#image-container' ).empty();
+    Image.readJson( $(this).attr('id') );
+  })
+}
+
+$(() => {
+  Image.readJson( 1 );
+  Image.handleImageEvents();
+  Image.handleNavEvents();
+})
