@@ -11,6 +11,26 @@
 
 const appendTheEnd = (str) => {
   // Solution code here...
+  return str;
+}
+
+// ------------------------------------------------------------------------------------------------
+// CHALLENGE 2
+//
+// Write a function that accepts an array, and copies the first element to the end of the array.
+// The change should be reflected in the source array, that was passed in to the function.
+// That is, the function should modify the array 'in place'.
+//
+// Do not use a return statement.
+//
+// For example:
+// const a = [1, 2, 3];
+// appendFirstToLast(a);
+// console.log(a) // [1, 2, 3, 1]
+// ------------------------------------------------------------------------------------------------
+
+const appendFirstToLast = (list) => {
+  // Solution code here...
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -118,7 +138,7 @@ describe('Testing challenge 3', () => {
 
 describe('Testing challenge 4', () => {
   test('It should add a property to every object in an array', () => {
-    const a = [ { fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' } ];
+    const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }];
     setStatusAsAuthor(a);
 
     expect(a[0].isAuthor).toStrictEqual(true);
@@ -133,6 +153,6 @@ describe('Testing challenge 5', () => {
     const b = [5, 6, 7, 8];
     append(a, b);
 
-    expect(a).toStrictEqual([1,2,3,4,5,6,7,8]);
+    expect(a).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });
 });

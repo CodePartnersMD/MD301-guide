@@ -12,7 +12,7 @@
 const appendTheEnd = (str) => {
   //<solution>
   str = str + ' The end.'
-  //</solution
+    //</solution>
   return str;
 }
 
@@ -78,7 +78,7 @@ const addBirthYearProperty = (obj, year) => {
 
 const setStatusAsAuthor = (people) => {
   //<solution>
-  people.forEach( (person) => {
+  people.forEach((person) => {
     person.isAuthor = true;
   });
   //</solution>
@@ -104,8 +104,8 @@ const setStatusAsAuthor = (people) => {
 
 const append = (list1, list2) => {
   //<solution>
-  while ( list2.length ) { 
-    list1.push( list2.shift() ); 
+  while (list2.length) {
+    list1.push(list2.shift());
   }
   //</solution>
 
@@ -152,7 +152,7 @@ describe('Testing challenge 3', () => {
 
 describe('Testing challenge 4', () => {
   test('It should add a property to every object in an array', () => {
-    const a = [ { fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' } ];
+    const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }];
     setStatusAsAuthor(a);
 
     expect(a[0].isAuthor).toStrictEqual(true);
@@ -167,6 +167,6 @@ describe('Testing challenge 5', () => {
     const b = [5, 6, 7, 8];
     append(a, b);
 
-    expect(a).toStrictEqual([1,2,3,4,5,6,7,8]);
+    expect(a).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });
 });
