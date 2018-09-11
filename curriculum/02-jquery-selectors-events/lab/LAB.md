@@ -1,7 +1,5 @@
 # Lab 02: jQuery Selectors and Events
 
-<<<<<<< HEAD
-=======
 ## Submission Instructions
 
 - Complete your Feature Tasks for the day (below)
@@ -11,12 +9,13 @@
   - An observation about the lab assignment, or related 'Ah-hah!' moment
   - How long you spent working on this assignment
 
->>>>>>> 930c60c4fd1451b5c86031365c0fb424ea75799b
 ## User Acceptance Tests
 
 ### Overview
 
 In labs 2 and 3, you and your partner(s) will be using the provided JSON files to create a photo gallery. You will style it using floats.
+
+You have the option of using the provided `index.html` file, but it is not a requirement. 
 
 ### Feature #1: Display images
 
@@ -67,7 +66,9 @@ Then the images should be displayed in rows across the screen
 
 #### How are we implementing it?
 
-- Style your application using floats
+- Style your application using floats.
+- Utilize at least one Google font.
+- Utilize at least one icon font.
 
 ## Stretch Goal
 
