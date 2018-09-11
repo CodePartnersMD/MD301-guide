@@ -156,7 +156,7 @@ const snorlaxStats = {
   weight: 4600,
 };
 
-const extractStats = (abilities) => {
+const extractStats = (stats) => {
   // Solution code here...
 };
 
@@ -227,7 +227,7 @@ describe('Testing challenge 5', () => {
     expect(evenOdd([2, 4, 6, 8, 10]).length).toStrictEqual(5);
   });
 
-  test('It should return the string "N/A" if a non-integer is included in the array', () => {
+  test('It should return the string "N/A" if a non-number is included in the array', () => {
     expect(evenOdd([5, 8, 2, 'hi'])).toStrictEqual([ 'odd', 'even', 'even', 'N/A' ]);
     expect(evenOdd([5, 8, 2, 'hi']).length).toStrictEqual(4);
   });
