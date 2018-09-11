@@ -1,14 +1,5 @@
 # Lab 10: The Call Stack
 
-## Submission Instructions
-
-- Complete your Feature Tasks for the day (below)
-- Submit your annotated code, call stack drawing, and web request-response cycle (WRRC) diagram to your instructor or designated TA
-- On Canvas, submit a comment which includes the following:
-  - A question within the context of today's lab assignment
-  - An observation about the lab assignment, or related 'Ah-hah!' moment
-  - How long you spent working on this assignment
-
 ## Feature Tasks
 
 - Print your `server.js` file from your fork of your lab 9 repository. Make sure the lines of code are large enough to read and are only printed on one side of the paper. Tape the paper together to make one large "scroll" of your code.
@@ -22,3 +13,12 @@
   - You are in charge of tracing the order in which the code is executed. Write notes, numbering the steps, on the printed-out `server.js` file.
   - Animate the call stack using Post-It notes, adding and removing functions as you trace the code execution. As appropriate, include the numbered step on the Post-It note.
 - After two hours have passed, switch roles and repeat these steps using your partner's code. Make sure to trace different portions of the code base.
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day
+- Submit your annotated code, call stack drawing, and web request-response cycle (WRRC) diagram to your instructor or designated TA
+- On Canvas, submit a comment which includes the following:
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment
