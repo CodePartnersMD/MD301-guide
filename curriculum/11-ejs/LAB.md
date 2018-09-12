@@ -1,13 +1,4 @@
-Lab 11: Server-side templating with EJS
-
-## Submission Instructions
-
-- Complete your Feature Tasks for the day (below)
-- Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. **Make sure to include the following:**
-  - A question within the context of today's lab assignment
-  - An observation about the lab assignment, or related 'Ah-hah!' moment
-  - How long you spent working on this assignment
+# Lab 11: Server-side templating with EJS
 
 ## Resources
 
@@ -55,7 +46,7 @@ book_app (repository)
 └── server.js
 ```
 
-## User Stories and Feature Tasks
+## User Acceptance Tests
 
 ### Overview
 
@@ -89,7 +80,7 @@ Your entire application will be deployed on Heroku with a PostgreSQL database pr
 - Use Postman to request book data from the Google Books API. For example, you can enter a search query at the end of this route: `https://www.googleapis.com/books/v1/volumes?q=`
 - In your `books.sql` file write an `INSERT` statement for at least 5 of the books you found in the JSON returned from that google books API search.
 - For reference, here is a sample from that API:
-```
+```json
   {
     "title": "Dune",
     "author": "Frank Herbert",
@@ -237,3 +228,12 @@ _Your `README.md` must include:_
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 -->
 ```
+
+## Submission Instructions
+
+- Complete your Feature Tasks for the day (below)
+- Create a Pull Request (PR) back to the `master` branch of your repository
+- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. **Make sure to include the following:**
+  - A question within the context of today's lab assignment
+  - An observation about the lab assignment, or related 'Ah-hah!' moment
+  - How long you spent working on this assignment
