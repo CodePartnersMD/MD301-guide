@@ -1,5 +1,29 @@
 # Lab 02: jQuery Selectors and Events
 
+## Configuration
+
+_Your repository must include the following config files:_
+- `README.md` - with an overview of the project for a new visitor to your repo
+- `.gitignore` - with standard NodeJS configurations (see the provided `.gitignore` file)
+- `.eslintrc.json` - with Code 301 course standards for the linter (see the provided `.eslintrc.json` file)
+
+- Organize your files into folders as you see fit. Here is an example file tree:
+
+```sh
+lab-02-repository
+├── .eslintrc.json
+├── .gitignore
+├── css
+│   ├── reset.css
+│   └── styles.css
+├── data
+│   └── page-1.json
+├── index.html
+├── js
+│    └── app.js
+└── README.md
+```
+
 ## User Acceptance Tests
 
 ### Overview
@@ -22,7 +46,7 @@ Then the photo gallery should display all of the images in the gallery
 
 #### How are we implementing it?
 
-- Use AJAX to read the provided JSON file.
+- Use AJAX, specifically `$.get()`, to read the provided JSON file.
 - Each object should become a new instance of a constructor function. Refer to the data to determine the necessary properties.
 - Use jQuery to make a copy of the HTML template of the photo component. For each object, fill in the duplicated template with its properties, then append the copy to the DOM.
 
@@ -59,7 +83,6 @@ Then the images should be displayed in rows across the screen
 
 - Style your application using floats.
 - Utilize at least one Google font.
-- Utilize at least one icon font.
 
 ## Stretch Goal
 
@@ -68,6 +91,7 @@ Then the images should be displayed in rows across the screen
 - Write a user acceptance test for this stretch goal. Follow the pattern used in the other features, above.
 - Add the ability for the user to sort the images by either title or by number of horns with a radio button.
 - Sort the images by one of the properties on page load.
+- Utilize at least one icon font.
 
 ## Submission Instructions
 
