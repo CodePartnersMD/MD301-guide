@@ -24,12 +24,12 @@ Dog.prototype.render = function() {
 }
 
 Dog.readJson = () => {
-  $.get('data.json')
+  $.get('data.json', 'json')
     .then(data => {
       data.forEach(item => {
         Dog.allDogs.push(new Dog(item));
       })
-    }, 'json')
+    })
     .then(Dog.loadDogs)
 }
 

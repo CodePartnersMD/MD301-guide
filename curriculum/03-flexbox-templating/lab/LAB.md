@@ -1,5 +1,30 @@
 # Lab 03: Flexbox and templating
 
+## Configuration
+
+_Your repository must include the following config files:_
+- `README.md` - with an overview of the project for a new visitor to your repo
+- `.gitignore` - with standard NodeJS configurations (see the provided `.gitignore` file)
+- `.eslintrc.json` - with Code 301 course standards for the linter (see the provided `.eslintrc.json` file)
+
+- Organize your files into folders as you see fit. Here is an example file tree:
+
+```sh
+lab-03-repository
+├── .eslintrc.json
+├── .gitignore
+├── css
+│   ├── reset.css
+│   └── styles.css
+├── data
+│   ├── page-1.json
+│   └── page-2.json
+├── index.html
+├── js
+│    └── app.js
+└── README.md
+```
+
 ## Resources
 
 - [Handlebars Docs](http://handlebarsjs.com/)
