@@ -30,6 +30,12 @@ lab-03-repository
 - [Handlebars Docs](http://handlebarsjs.com/)
 - [Flexbox Basics from MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
 
+## Deployment
+
+Deploy your photo gallery on GitHub pages, as you have done in Code 201. As a reminder, in your repository, click on Settings and scroll down to the GitHub Pages section. Select your master branch and verify that your photo gallery appears the way you expect it to look on the deployed site.
+
+Complete this step before moving on to today's features.
+
 ## User Acceptance Tests
 
 ### Overview
