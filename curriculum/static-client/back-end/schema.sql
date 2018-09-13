@@ -5,13 +5,15 @@ CREATE TABLE IF NOT EXISTS locations (
     search_query VARCHAR(255), 
     formatted_query VARCHAR(255), 
     latitude NUMERIC(8, 6), 
-    longitude NUMERIC(9, 6) 
+    longitude NUMERIC(9, 6),
+    created_at BIGINT
   );
 
 CREATE TABLE IF NOT EXISTS weathers ( 
     id SERIAL PRIMARY KEY, 
     forecast VARCHAR(255), 
-    time VARCHAR(255), 
+    time VARCHAR(255),
+    created_at BIGINT,
     location_id INTEGER NOT NULL REFERENCES locations(id) 
   );
   
@@ -21,7 +23,8 @@ CREATE TABLE IF NOT EXISTS yelps (
   image_url VARCHAR(255), 
   price CHAR(5), 
   rating NUMERIC(2,1), 
-  url VARCHAR(255), 
+  url VARCHAR(255),
+  created_at BIGINT,
   location_id INTEGER NOT NULL REFERENCES locations(id) 
 );
 
@@ -33,7 +36,8 @@ CREATE TABLE IF NOT EXISTS movies (
   total_votes INTEGER, 
   image_url VARCHAR(255), 
   popularity NUMERIC(6,4), 
-  released_on CHAR(10), 
+  released_on CHAR(10),
+  created_at BIGINT,
   location_id INTEGER NOT NULL REFERENCES locations(id) 
 );
 
@@ -42,7 +46,8 @@ CREATE TABLE IF NOT EXISTS meetups (
   link VARCHAR(255), 
   name VARCHAR(255), 
   creation_date CHAR(15), 
-  host VARCHAR(255), 
+  host VARCHAR(255),
+  created_at BIGINT,
   location_id INTEGER NOT NULL REFERENCES locations(id) 
 );
 
@@ -57,6 +62,7 @@ CREATE TABLE IF NOT EXISTS trails (
   trail_url VARCHAR(255), 
   conditions TEXT, 
   condition_date CHAR(10), 
-  condition_time CHAR(8), 
+  condition_time CHAR(8),
+  created_at BIGINT,
   location_id INTEGER NOT NULL REFERENCES locations(id) 
 );
