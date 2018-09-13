@@ -40,7 +40,9 @@ function handleError(err, res) {
 // Look for the results in the database
 function lookup(options) {
   const SQL = `SELECT * FROM ${options.tableName} WHERE location_id=$1;`;
-  client.query(SQL, [options.location])
+  const values = [options.location];
+
+  client.query(SQL, values)
     .then(result => {
       if(result.rowCount > 0) {
         options.cacheHit(result);
@@ -51,6 +53,12 @@ function lookup(options) {
     .catch(error => handleError(error));
 }
 
+// Clear the results for a location if they are stale
+function deleteByLocationId(table, city) {
+  const SQL = `DELETE from ${table} WHERE location_id=${city};`;
+  return client.query(SQL);
+}
+
 // Models
 function Location(query, res) {
   this.tableName = 'locations';
@@ -58,21 +66,52 @@ function Location(query, res) {
   this.formatted_query = res.body.results[0].formatted_address;
   this.latitude = res.body.results[0].geometry.location.lat;
   this.longitude = res.body.results[0].geometry.location.lng;
+  this.created_at = Date.now();
 }
+
+Location.lookupLocation = (location) => {
+  const SQL = `SELECT * FROM locations WHERE search_query=$1;`;
+  const values = [location.query];
+
+  return client.query(SQL, values)
+    .then(result => {
+      if(result.rowCount > 0) {
+        location.cacheHit(result);
+      } else {
+        location.cacheMiss();
+      }
+    })
+    .catch(console.error);
+}
+
+Location.prototype = {
+  save: function() {
+    const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id;`;
+    const values = [this.search_query, this.formatted_query, this.latitude, this.longitude];
+
+    return client.query(SQL, values)
+      .then(result => {
+        this.id = result.rows[0].id;
+        return this;
+      });
+  }
+};
 
 function Weather(day) {
   this.tableName = 'weathers';
   this.forecast = day.summary;
   this.time = new Date(day.time * 1000).toString().slice(0, 15);
+  this.created_at = Date.now();
 }
 
 Weather.tableName = 'weathers';
 Weather.lookup = lookup;
+Weather.deleteByLocationId = deleteByLocationId;
 
 Weather.prototype = {
   save: function(location_id) {
-    const SQL = `INSERT INTO ${this.tableName} (forecast, time, location_id) VALUES ($1, $2, $3);`;
-    const values = [this.forecast, this.time, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (forecast, time, created_at, location_id) VALUES ($1, $2, $3, $4);`;
+    const values = [this.forecast, this.time, this.created_at, location_id];
 
     client.query(SQL, values);
   }
@@ -85,15 +124,17 @@ function Yelp(business) {
   this.price = business.price;
   this.rating = business.rating;
   this.url = business.url;
+  this.created_at = Date.now();
 }
 
 Yelp.tableName = 'yelps';
 Yelp.lookup = lookup;
+Yelp.deleteByLocationId = deleteByLocationId;
 
 Yelp.prototype = {
   save: function(location_id) {
-    const SQL = `INSERT INTO ${this.tableName} (name, image_url, price, rating, url, location_id) VALUES ($1, $2, $3, $4, $5, $6);`;
-    const values = [this.name, this.image_url, this.price, this.rating, this.url, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (name, image_url, price, rating, url, created_at, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+    const values = [this.name, this.image_url, this.price, this.rating, this.url, this.created_at, location_id];
 
     client.query(SQL, values);
   }
@@ -108,15 +149,17 @@ function Movie(movie) {
   this.image_url = 'https://image.tmdb.org/t/p/w200_and_h300_bestv2' + movie.poster_path;
   this.popularity = movie.popularity;
   this.released_on = movie.release_date;
+  this.created_at = Date.now();
 }
 
 Movie.tableName = 'movies';
 Movie.lookup = lookup;
+Movie.deleteByLocationId = deleteByLocationId;
 
 Movie.prototype = {
   save: function(location_id) {
-    const SQL = `INSERT INTO ${this.tableName} (title, overview, average_votes, total_votes, image_url, popularity, released_on, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
-    const values = [this.title, this.overview, this.average_votes, this.total_votes, this.image_url, this.popularity, this.released_on, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (title, overview, average_votes, total_votes, image_url, popularity, released_on, created_at, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
+    const values = [this.title, this.overview, this.average_votes, this.total_votes, this.image_url, this.popularity, this.released_on, this.created_at, location_id];
 
     client.query(SQL, values);
   }
@@ -128,15 +171,17 @@ function Meetup(meetup) {
   this.name = meetup.group.name;
   this.creation_date = new Date(meetup.group.created).toString().slice(0, 15);
   this.host = meetup.group.who;
+  this.created_at = Date.now();
 }
 
 Meetup.tableName = 'meetups';
 Meetup.lookup = lookup;
+Meetup.deleteByLocationId = deleteByLocationId;
 
 Meetup.prototype = {
   save: function(location_id) {
-    const SQL = `INSERT INTO ${this.tableName} (link, name, creation_date, host, location_id) VALUES ($1, $2, $3, $4, $5);`;
-    const values = [this.link, this.name, this.creation_date, this.host, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (link, name, creation_date, host, created_at, location_id) VALUES ($1, $2, $3, $4, $5, $6);`;
+    const values = [this.link, this.name, this.creation_date, this.host, this.created_at, location_id];
 
     client.query(SQL, values);
   }
@@ -154,55 +199,44 @@ function Trail(trail) {
   this.conditions = trail.conditionDetails;
   this.condition_date = trail.conditionDate.slice(0, 10);
   this.condition_time = trail.conditionDate.slice(12);
+  this.created_at = Date.now();
 }
 
 Trail.tableName = 'trails';
 Trail.lookup = lookup;
+Trail.deleteByLocationId = deleteByLocationId;
 
 Trail.prototype = {
   save: function(location_id) {
-    const SQL = `INSERT INTO ${this.tableName} (name, location, length, stars, star_votes, summary, trail_url, conditions, condition_date, condition_time, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);`;
-    const values = [this.name, this.location, this.length, this.stars, this.star_votes, this.summary, this.trail_url, this.conditions, this.condition_date, this.condition_time, location_id];
+    const SQL = `INSERT INTO ${this.tableName} (name, location, length, stars, star_votes, summary, trail_url, conditions, condition_date, condition_time, created_at, location_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
+    const values = [this.name, this.location, this.length, this.stars, this.star_votes, this.summary, this.trail_url, this.conditions, this.condition_date, this.condition_time, this.created_at, location_id];
 
-    client.query(SQL, values);
+    client.query(SQL, values)
   }
 }
 
 function getLocation(request, response) {
-  const SQL = `SELECT * FROM locations WHERE search_query=$1;`;
-  const values = [request.query.data];
+  Location.lookupLocation({
+    tableName: Location.tableName,
 
-  return client.query(SQL, values)
-    .then(result => {
-      if(result.rowCount === 1) {
-        response.send(result.rows[0]);
-      } else {
-        searchToLatLong(request.query.data)
-          .then(location => {
-            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id;`;
-            const values = [location.search_query, location.formatted_query, location.latitude, location.longitude];
+    query: request.query.data,
 
-            client.query(SQL, values)
-              .then(result => {
-                location.id = result.rows[0].id;
-                response.send(location);
-              })
-              .catch(console.error);
-          })
-          .catch(error => handleError(error, response));
-      }
-    })
-    .catch(error => handleError(error, response));
-}
+    cacheHit: function(result) {
+      response.send(result.rows[0]);
+    },
 
-function searchToLatLong(query) {
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
+    cacheMiss: function() {
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.query}&key=${process.env.GEOCODE_API_KEY}`;
 
-  return superagent.get(url)
-    .then(res => {
-      return new Location(query, res);
-    })
-    .catch(error => handleError(error));
+      return superagent.get(url)
+        .then(result => {
+          const location = new Location(this.query, result);
+          location.save()
+            .then(location => response.send(location));
+        })
+        .catch(error => handleError(error));
+    }
+  })
 }
 
 function getWeather(request, response) {
@@ -212,7 +246,13 @@ function getWeather(request, response) {
     location: request.query.data.id,
 
     cacheHit: function(result) {
-      response.send(result.rows);
+      let ageOfResultsInMinutes = (Date.now() - result.rows[0].created_at) / (1000 * 60);
+      if(ageOfResultsInMinutes > 30) {
+        Weather.deleteByLocationId(Weather.tableName, request.query.data.id);
+        this.cacheMiss();
+      } else {
+        response.send(result.rows);
+      }
     },
 
     cacheMiss: function() {
@@ -239,7 +279,13 @@ function getYelp(request, response) {
     location: request.query.data.id,
 
     cacheHit: function(result) {
-      response.send(result.rows);
+      let ageOfResultsInHours = (Date.now() - result.rows[0].created_at) / (1000 * 60 * 60);
+      if(ageOfResultsInHours > 24) {
+        Yelp.deleteByLocationId(Yelp.tableName, request.query.data.id);
+        this.cacheMiss();
+      } else {
+        response.send(result.rows);
+      }
     },
 
     cacheMiss: function() {
@@ -268,7 +314,13 @@ function getMovies(request, response) {
     location: request.query.data.id,
 
     cacheHit: function(result) {
-      response.send(result.rows);
+      let ageOfResultsInDays = (Date.now() - result.rows[0].created_at) / (1000 * 60 * 60 * 24);
+      if(ageOfResultsInDays > 30) {
+        Movie.deleteByLocationId(Movie.tableName, request.query.data.id);
+        this.cacheMiss();
+      } else {
+        response.send(result.rows);
+      }
     },
 
     cacheMiss: function() {
@@ -296,7 +348,13 @@ function getMeetups(request, response) {
     location: request.query.data.id,
 
     cacheHit: function(result) {
-      response.send(result.rows);
+      let ageOfResultsInHours = (Date.now() - result.rows[0].created_at) / (1000 * 60 * 60);
+      if(ageOfResultsInHours > 6) {
+        Meetup.deleteByLocationId(Meetup.tableName, request.query.data.id);
+        this.cacheMiss();
+      } else {
+        response.send(result.rows);
+      }
     },
 
     cacheMiss: function() {
@@ -324,7 +382,13 @@ function getTrails(request, response) {
     location: request.query.data.id,
 
     cacheHit: function(result) {
-      response.send(result.rows);
+      let ageOfResultsInDays = (Date.now() - result.rows[0].created_at) / (1000 * 60 * 60 * 24);
+      if(ageOfResultsInDays > 7) {
+        Trail.deleteByLocationId(Trail.tableName, request.query.data.id);
+        this.cacheMiss();
+      } else {
+        response.send(result.rows);
+      }
     },
 
     cacheMiss: function() {
