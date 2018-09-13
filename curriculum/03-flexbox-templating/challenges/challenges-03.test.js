@@ -279,18 +279,12 @@ describe('Testing challenge 4', () => {
   test('It should return the number 14', () => {
     expect(findFourteen(nestedArray)).toStrictEqual(14);
   });
-  test('It should also work for other input arrays', () => {
-    expect(findFourteen([[], [], [[0,1,2]]])).toStrictEqual(1);
-  })
 });
 
 describe('Testing challenge 5', () => {
   test('It should return the number 24', () => {
     expect(howManyTreats(errands)).toStrictEqual(24);
   });
-  test('It should also work for other arrays of objects', () => {
-    expect(howManyTreats([0,0,{items: [0, {quantity: 7}]}])).toStrictEqual(7);
-  })
 });
 
 describe('Testing challenge 6', () => {

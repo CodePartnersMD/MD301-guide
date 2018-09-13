@@ -18,10 +18,10 @@ Neighborhood.prototype.toHtml = function() {
   return templateRender(this);
 };
 
-neighborhoodDataSet.forEach(function(neighborhoodObject) {
+neighborhoodDataSet.forEach(neighborhoodObject => {
   neighborhoods.push(new Neighborhood(neighborhoodObject));
 });
 
-neighborhoods.forEach(function(ourNewNeighborhoodObject){
+neighborhoods.forEach(ourNewNeighborhoodObject => {
   $('#neighborhoods').append(ourNewNeighborhoodObject.toHtml());
 });
