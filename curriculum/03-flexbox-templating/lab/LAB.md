@@ -1,22 +1,40 @@
-<<<<<<< HEAD
 # Lab 03: Flexbox and templating
-=======
-Lab 03: Flexbox and templating
 
-## Submission Instructions
+## Configuration
 
-- Complete your Feature Tasks for the day (below)
-- Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR and a link to your deployed application on GitHub pages. Add a comment in your Canvas assignment which includes the following:
-  - A question within the context of today's lab assignment
-  - An observation about the lab assignment, or related 'Ah-hah!' moment
-  - How long you spent working on this assignment
->>>>>>> 930c60c4fd1451b5c86031365c0fb424ea75799b
+_Your repository must include the following config files:_
+- `README.md` - with an overview of the project for a new visitor to your repo
+- `.gitignore` - with standard NodeJS configurations (see the provided `.gitignore` file)
+- `.eslintrc.json` - with Code 301 course standards for the linter (see the provided `.eslintrc.json` file)
+
+- Organize your files into folders as you see fit. Here is an example file tree:
+
+```sh
+lab-03-repository
+├── .eslintrc.json
+├── .gitignore
+├── css
+│   ├── reset.css
+│   └── styles.css
+├── data
+│   ├── page-1.json
+│   └── page-2.json
+├── index.html
+├── js
+│    └── app.js
+└── README.md
+```
 
 ## Resources
 
 - [Handlebars Docs](http://handlebarsjs.com/)
 - [Flexbox Basics from MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+
+## Deployment
+
+Deploy your photo gallery on GitHub pages, as you have done in Code 201. As a reminder, in your repository, click on Settings and scroll down to the GitHub Pages section. Select your master branch and verify that your photo gallery appears the way you expect it to look on the deployed site.
+
+Complete this step before moving on to today's features.
 
 ## User Acceptance Tests
 

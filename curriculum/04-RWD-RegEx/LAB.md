@@ -60,7 +60,7 @@ Then the content should be unique and reflect the skills and personality of the 
 
 ## Submission Instructions
 
-- Complete your Feature Tasks for the day (below)
+- Complete your Feature Tasks for the day
 - Create a Pull Request (PR) back to the `master` branch of your repository
 - On Canvas, submit a link to your PR. Add a comment in your Canvas assignment which includes the following:
   - A question within the context of today's lab assignment

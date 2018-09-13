@@ -1,19 +1,4 @@
-<<<<<<< HEAD
 # Lab 5: Extend your portfolio, Responsive web design 
-=======
-Lab 5: Extend your portfolio, Responsive web design 
-
-## Submission Instructions
-
-Note that there are two portions to today's lab: extending the features on your personal portfolio and completing the resposive web design assignment. Follow the submission instructions for each assignment and submit links to your pull requests in the corresponding Canvas assignments.
-
-- Complete your Feature Tasks for the day (below)
-- Create a Pull Request (PR) back to the `master` branch of your repository
-- On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
-  - A question within the context of today's lab assignment
-  - An observation about the lab assignment, or related 'Ah-hah!' moment
-  - How long you spent working on this assignment
->>>>>>> 930c60c4fd1451b5c86031365c0fb424ea75799b
 
 ## Assignment 1: Extend your portfolio
 
@@ -70,17 +55,14 @@ Then the boxes should scale proportionally and change colors
 - Use Flexbox or CSS grids for styling this application.
 - Use relative units so the elements scale proportionally when the viewport dimensions change.
 - Use at least two breakpoints and change the background colors of each box. There should be three possible views: desktop, tablet, and mobile device. You may choose the exact pixel values for each breakpoint.
-<<<<<<< HEAD
 
 ## Submission Instructions
 
 Note that there are two portions to today's lab: extending the features on your personal portfolio and completing the resposive web design assignment. Follow the submission instructions for each assignment and submit links to your pull requests in the corresponding Canvas assignments.
 
-- Complete your Feature Tasks for the day (below)
+- Complete your Feature Tasks for the day
 - Create a Pull Request (PR) back to the `master` branch of your repository
 - On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
   - A question within the context of today's lab assignment
   - An observation about the lab assignment, or related 'Ah-hah!' moment
   - How long you spent working on this assignment
-=======
->>>>>>> 930c60c4fd1451b5c86031365c0fb424ea75799b

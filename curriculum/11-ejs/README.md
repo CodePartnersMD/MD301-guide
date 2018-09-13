@@ -1,4 +1,4 @@
-Class 11: Server-side templating with EJS
+# Class 11: Server-side templating with EJS
 
 ## Overview
 

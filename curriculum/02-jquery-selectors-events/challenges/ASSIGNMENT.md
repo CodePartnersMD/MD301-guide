@@ -1,4 +1,4 @@
-# Code Challenge 02: Nested for loops
+# Code Challenge 02: Value vs. Reference
 
 ## Overview
 
@@ -8,14 +8,10 @@ Read [this overview.](README.md){:target="_blank"}
 
 Watch today's video from the [demo playlist.](https://www.youtube.com/playlist?list=PLVngfM2hsbi-L6G8qlWd8RyRbuTamHt3k){:target="_blank"}
 
-## Demonstration
-
-Look through [these sample problems.](DEMO.md){:target="_blank"}
-
 ## Challenges
 
 1. Check out a new branch in your `code-challenges` repository.
-1. Make a new directory in the root of your repo named with the challenge for the day.
+1. Make a new directory in the root of your repo named "value-vs-reference".
 1. Create a file in this new directory named `challenges-02.test.js`.
 1. Copy and paste the **entire content** of today's [code challenge](challenges-02.test.js){:target="_blank"} into the new file.
 1. Run `jest challenges-02.test.js` to execute the tests in the file.

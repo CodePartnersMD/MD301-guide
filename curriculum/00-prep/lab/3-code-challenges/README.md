@@ -16,11 +16,11 @@ After lecture, get together with your partner and read through the daily set of 
 
 Create a new repository on GitHub named `code-challenges` to track your solutions throughout 301. This repository should have a root README.md file with an overview of the purpose of the repository.
 
-Work on a new branch for each daily set of challenges. For example, for today's set of challenges you can make a new branch with the command `git checkout -b forEach`. 
+Work on a new branch for each daily set of challenges. For example, for today's set of challenges you can make a new branch with the command `git checkout -b for-each`. 
 
-Within your repository, you will create a separate folder for each set of challenges. Go ahead and make a folder named `forEach` for today's set of challenges.
+Within your repository, you will create a separate folder for each set of challenges. Go ahead and make a folder named `for-each` for today's set of challenges.
 
-At the end of lecture each day, your instructor will publish the challenges. Copy the contents of the file into your repository and work on the individual problems for the day. Remember to add, commit, and push regularly. 
+At the end of lecture each day, your instructor will publish the challenges. Copy the contents of the file into your repository and work on the individual problems for the day. Remember to add, commit, and push regularly.
 
 When you finish the assignment each day, make a new pull request from your daily challenge branch to your master branch and submit the URL in Canvas. You can submit a link to a pull request even if the pull request is closed.
 

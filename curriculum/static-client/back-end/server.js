@@ -150,6 +150,7 @@ function Movie(movie) {
   this.popularity = movie.popularity;
   this.released_on = movie.release_date;
   this.created_at = Date.now();
+
 }
 
 Movie.tableName = 'movies';

@@ -15,10 +15,10 @@ Look through [these sample problems.](DEMO.md){:target="_blank"}
 ## Challenges
 
 1. Check out a new branch in your `code-challenges` repository.
-1. Make a new directory in the root of your repo named with the challenge for the day.
+1. Navigate into the "for-each" directory that you created in the setup assignment.
 1. Create a file in this new directory named `challenges-01.test.js`.
 1. Copy and paste the **entire content** of today's [code challenge](challenges-01.test.js){:target="_blank"} into the new file.
-1. Run `jest challenges-01.test.js` to execute the tests in the file.
+1. Run `jest challenges-01.test.js` to execute the tests in the file. At this point you will see the failed tests scroll through your terminal window with a brief report of the number of failed tests at the bottom. If you do not see this, verify your installation of Jest by typing `jest --version` in your terminal, and also verify that the filename in the "Jest" command above matches the actual filename. Filename typos can make things break!
 1. Write code to make the tests pass, one at a time. Let the error messages guide you.
 1. Once the test is passing, refactor as needed, then move on to the next challenge.
 

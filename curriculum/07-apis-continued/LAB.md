@@ -188,7 +188,7 @@ _Your `README.md` must include:_
 
 ## Submission Instructions
 
-- Complete your Feature Tasks for the day (below)
+- Complete your Feature Tasks for the day
 - Create a Pull Request (PR) back to the `master` branch of your repository
 - On Canvas, submit a link to your PR and a link to your deployed application on Heroku. Add a comment in your Canvas assignment which includes the following:
   - A question within the context of today's lab assignment
