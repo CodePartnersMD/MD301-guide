@@ -30,9 +30,17 @@ Students will be deploying their applications in labs 6 through 9 and lab 11, pl
 ## General comments
 
 - Plan to move slowly through the deployment process, discussing the steps and giving students time to follow along with each step. 
-- Students will need to add the `server.js` file to their project and move the rest of their files into a `public` folder prior to deployment.
+- Students will need to add the `server.js`, `.gitignore`, and `.eslintrc.json` files to their project and move the rest of their files into a `public` folder prior to deployment. Add these to the course repository prior to lecture so students can follow along.
 
 ## Lecture
+
+Preparation for Deployment:
+- From the command line, students should move the `server.js`, `.gitignore`, and `.eslintrc.json` files from the class repository into their portfolio repository.
+- All of the other files for the portfolio should be in a `public` folder. Make sure there is not another folder within the `public` folder, but that the `public` folder contains the `index.html` file in its root.
+- Guide students through the process of running `npm init -y` to create a `package.json` file but do not go into a discussion of what this is doing, as this is a topic of lectures 6 and 7.
+- Students should then run `npm i express` to install ExpressJS as a dependency. Again, keep this at a high level for now.
+- Verify that these steps were successfully completed by testing locally with `nodemon`.
+- Students should add, commit, and push these changes to their portfolio repository.
 
 Command Line:
 - heroku create [name]
