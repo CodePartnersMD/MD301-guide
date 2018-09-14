@@ -66,7 +66,7 @@ Then the first twenty Meetups hosted in the area will be displayed in the browse
 - Create a route with a method of `get` and a path of `/meetups`. The callback should make a Superagent-proxied request to the Meetup API using the necessary location information.
 - Create a corresponding constructor function for the result.
 - For each meetup of the result, return an object which contains the necessary information for correct client rendering. See the sample response, below.
-- Add the appropriate logic to store this response in a table and the ability to check the database upon subsequent requests. Update your schemas.
+- This model should use the same lookup function as your other models.
 - Use your existing error handler function.
 - Redeploy your application.
 
@@ -109,7 +109,7 @@ Then the first ten hikes and campgrounds in the area will be displayed in the br
 - Create a route with a method of `get` and a path of `/trails`. The callback should make a Superagent-proxied request to the Hiking Project API using the necessary location information.
 - Create a corresponding constructor function for the result.
 - For each trail of the result, return an object which contains the necessary information for correct client rendering. See the sample response, below.
-- Add the appropriate logic to store this response in a table and the ability to check the database upon subsequent requests. Update your schemas.
+- This model should use the same lookup function as your other models.
 - Use your existing error handler function.
 - Redeploy your application.
 
@@ -146,6 +146,28 @@ Example Response:
   ...
 ]
 ```
+
+### Feature #3: Cache invalidation
+
+#### Why are we implementing this feature?
+
+- As a user, I want to view up-to-date information so that I receive accurate details.
+
+#### What are we going to implement?
+
+Given that a user enters a valid location in the input  
+When the user clicks the "Explore!" button  
+Then the most recent data will be displayed in the browser   
+
+#### How are we implementing it?
+
+- Update each model to include a new property to keep track of when the record was added to the database. Drop your tables and re-create them to include this new property. Update the save function for each model.
+- Create a dynamic function to delete records from a specific table. This function should be shared by all of your models.
+- For each model, refactor the function that is invoked if the records exist in the database in the following manner:
+  - This function should now include the necessary logic to determine how long ago the records were created and stored.
+  - For each model, decide how long each table's records should be stored. These durations should be based on the data each API provides. Some data should be stored for a shorter period of time, while others will not change as frequently.
+  - If the records exceed this amount of time, remove only the records that correspond to the user's search query, while leaving the records from other search queries as-is. Request a new set of data from the API.
+  - If the records do not exceed this amount of time, send the records in your response to the client.
 
 ## Documentation
 

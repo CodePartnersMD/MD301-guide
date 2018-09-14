@@ -25,7 +25,6 @@ app.get('/location', getLocation);
 app.get('/weather', getWeather);
 app.get('/movies', getMovies);
 app.get('/yelp', getYelp);
-app.get('/meetups', getMeetups);
 
 // Make sure the server is listening for requests
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
@@ -37,24 +36,12 @@ function handleError(err, res) {
   if (res) res.status(500).send('Sorry, something went wrong');
 }
 
-// Models
-function Location(query, res) {
-  this.tableName = 'locations';
-  this.search_query = query;
-  this.formatted_query = res.body.results[0].formatted_address;
-  this.latitude = res.body.results[0].geometry.location.lat;
-  this.longitude = res.body.results[0].geometry.location.lng;
-}
+// Look for the results in the database
+function lookup(options) {
+  const SQL = `SELECT * FROM ${options.tableName} WHERE location_id=$1;`;
+  const values = [options.location];
 
-function Weather(day) {
-  this.tableName = 'weathers';
-  this.forecast = day.summary;
-  this.time = new Date(day.time * 1000).toString().slice(0, 15);
-}
-
-Weather.lookup = function(options) {
-  const SQL = `SELECT * FROM weathers WHERE location_id=$1;`;
-  client.query(SQL, [options.location])
+  client.query(SQL, values)
     .then(result => {
       if(result.rowCount > 0) {
         options.cacheHit(result);
@@ -64,6 +51,52 @@ Weather.lookup = function(options) {
     })
     .catch(error => handleError(error));
 }
+
+// Models
+function Location(query, res) {
+  this.tableName = 'locations';
+  this.search_query = query;
+  this.formatted_query = res.body.results[0].formatted_address;
+  this.latitude = res.body.results[0].geometry.location.lat;
+  this.longitude = res.body.results[0].geometry.location.lng;
+}
+
+Location.lookupLocation = (location) => {
+  const SQL = `SELECT * FROM locations WHERE search_query=$1;`;
+  const values = [location.query];
+
+  return client.query(SQL, values)
+    .then(result => {
+      if(result.rowCount > 0) {
+        location.cacheHit(result);
+      } else {
+        location.cacheMiss();
+      }
+    })
+    .catch(console.error);
+}
+
+Location.prototype = {
+  save: function() {
+    const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id;`;
+    const values = [this.search_query, this.formatted_query, this.latitude, this.longitude];
+
+    return client.query(SQL, values)
+      .then(result => {
+        this.id = result.rows[0].id;
+        return this;
+      });
+  }
+};
+
+function Weather(day) {
+  this.tableName = 'weathers';
+  this.forecast = day.summary;
+  this.time = new Date(day.time * 1000).toString().slice(0, 15);
+}
+
+Weather.tableName = 'weathers';
+Weather.lookup = lookup;
 
 Weather.prototype = {
   save: function(location_id) {
@@ -83,18 +116,8 @@ function Yelp(business) {
   this.url = business.url;
 }
 
-Yelp.lookup = function(options) {
-  const SQL = `SELECT * FROM yelps WHERE location_id=$1;`;
-  client.query(SQL, [options.location])
-    .then(result => {
-      if(result.rowCount > 0) {
-        options.cacheHit(result);
-      } else {
-        options.cacheMiss();
-      }
-    })
-    .catch(error => handleError(error));
-}
+Yelp.tableName = 'yelps';
+Yelp.lookup = lookup;
 
 Yelp.prototype = {
   save: function(location_id) {
@@ -116,18 +139,8 @@ function Movie(movie) {
   this.released_on = movie.release_date;
 }
 
-Movie.lookup = function(options) {
-  const SQL = `SELECT * FROM movies WHERE location_id=$1;`;
-  client.query(SQL, [options.location])
-    .then(result => {
-      if(result.rowCount > 0) {
-        options.cacheHit(result);
-      } else {
-        options.cacheMiss();
-      }
-    })
-    .catch(error => handleError(error));
-}
+Movie.tableName = 'movies';
+Movie.lookup = lookup;
 
 Movie.prototype = {
   save: function(location_id) {
@@ -138,71 +151,28 @@ Movie.prototype = {
   }
 }
 
-function Meetup(meetup) {
-  this.tableName = 'meetups';
-  this.link = meetup.link;
-  this.name = meetup.group.name;
-  this.creation_date = new Date(meetup.group.created).toString().slice(0, 15);
-  this.host = meetup.group.who;
-}
-
-Meetup.lookup = function(options) {
-  const SQL = `SELECT * FROM meetups WHERE location_id=$1;`;
-  client.query(SQL, [options.location])
-    .then(result => {
-      if(result.rowCount > 0) {
-        options.cacheHit(result);
-      } else {
-        options.cacheMiss();
-      }
-    })
-    .catch(error => handleError(error));
-}
-
-Meetup.prototype = {
-  save: function(location_id) {
-    const SQL = `INSERT INTO ${this.tableName} (link, name, creation_date, host, location_id) VALUES ($1, $2, $3, $4, $5);`;
-    const values = [this.link, this.name, this.creation_date, this.host, location_id];
-
-    client.query(SQL, values);
-  }
-}
-
 function getLocation(request, response) {
-  const SQL = `SELECT * FROM locations WHERE search_query=$1;`;
-  const values = [request.query.data];
+  Location.lookupLocation({
+    tableName: Location.tableName,
 
-  return client.query(SQL, values)
-    .then(result => {
-      if(result.rowCount === 1) {
-        response.send(result.rows[0]);
-      } else {
-        searchToLatLong(request.query.data)
-          .then(location => {
-            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id;`;
-            const values = [location.search_query, location.formatted_query, location.latitude, location.longitude];
+    query: request.query.data,
 
-            client.query(SQL, values)
-              .then(result => {
-                location.id = result.rows[0].id;
-                response.send(location);
-              })
-              .catch(console.error);
-          })
-          .catch(error => handleError(error, response));
-      }
-    })
-    .catch(error => handleError(error, response));
-}
+    cacheHit: function(result) {
+      response.send(result.rows[0]);
+    },
 
-function searchToLatLong(query) {
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
+    cacheMiss: function() {
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.query}&key=${process.env.GEOCODE_API_KEY}`;
 
-  return superagent.get(url)
-    .then(res => {
-      return new Location(query, res);
-    })
-    .catch(error => handleError(error));
+      return superagent.get(url)
+        .then(result => {
+          const location = new Location(this.query, result);
+          location.save()
+            .then(location => response.send(location));
+        })
+        .catch(error => handleError(error));
+    }
+  })
 }
 
 function getWeather(request, response) {
@@ -283,34 +253,6 @@ function getMovies(request, response) {
           });
 
           response.send(movieSummaries);
-        })
-        .catch(error => handleError(error, response));
-    }
-  })
-}
-
-function getMeetups(request, response) {
-  Meetup.lookup({
-    tableName: Meetup.tableName,
-
-    location: request.query.data.id,
-
-    cacheHit: function(result) {
-      response.send(result.rows);
-    },
-
-    cacheMiss: function() {
-      const url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${request.query.data.longitude}&page=20&lat=${request.query.data.latitude}&key=${process.env.MEETUP_API_KEY}`
-
-      superagent.get(url)
-        .then(result => {
-          const meetups = result.body.events.map(meetup => {
-            const event = new Meetup(meetup);
-            event.save(request.query.data.id);
-            return event;
-          });
-
-          response.send(meetups);
         })
         .catch(error => handleError(error, response));
     }

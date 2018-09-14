@@ -84,14 +84,17 @@ Table creation:
   - For example, `psql -d city_explorer -f schema.sql`
 
 Server logic:
-- Within your route callback, invoke your lookup function, passing the appropriate options. For example, you will need to include the search query, a function to execute if the records exist in the table, and a function to execute if the records do not exist in the table.
+- Create a function to check the database for the location information.
+  - If the location record already exists in the database, send the location object in the response to the client.
+  - It it does not exist in the database, request the data from the API, save it in the database, and then send the location object in the response to the client.
+- For all of your other models, write a single lookup function that is dynamic and can be shared by all of the models. This lookup function should accept several options:
+  - The search query
+  - A function to execute if the records exist in the table
+  - A function to execute if the records do not exist in the table.
+- Within your route callback, invoke your lookup function, passing the appropriate options.
   - If the records exist, send them as the response to the client.
   - If the records do not exist, request the data from the appropriate APIs, as you have in labs 6 and 7. Store the results in the appropriate table in your database and send the API results as the response to the client.
 - Redeploy your application.
-
-## Stretch Goal
-
-- Create a single "lookup" function for all models to share.
 
 ## Documentation
 

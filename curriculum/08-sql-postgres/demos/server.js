@@ -26,6 +26,7 @@ client.on('error', err => console.error(err));
 // Begin by refactoring this function here, then discuss how to move the logic into a function to make the file easier to read
 // See below for the demo code for getLocation
 app.get('/location', (request, response) => {
+  // The searchToLatLong function is going to be removed in order to use a lookup method, below.
   searchToLatLong(request.query.data)
     .then(location => response.send(location))
     .catch(error => handleError(error, response));
@@ -53,49 +54,57 @@ function Location(query, res) {
   this.longitude = res.body.results[0].geometry.location.lng;
 }
 
+// Add this.created_at property to use for cache invalidation
 function Weather(day) {
   this.tableName = 'weathers';
   this.forecast = day.summary;
   this.time = new Date(day.time * 1000).toString().slice(0, 15);
+  this.created_at = Date.now();
 }
 
 // Refactored getLocation function, now that it is so long, pull it out into a function
 // Begin with this in the route, then discuss how difficult it is to read such a long function in the route and refactor to a function, as below.
+// This function invokes the Location.lookupLocation method, which replaces the searchToLatLong method from the previous class.
 function getLocation(request, response) {
+  Location.lookupLocation({
+    tableName: Location.tableName,
+
+    query: request.query.data,
+
+    cacheHit: function(result) {
+      response.send(result.rows[0]);
+    },
+
+    cacheMiss: function() {
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.query}&key=${process.env.GEOCODE_API_KEY}`;
+
+      return superagent.get(url)
+        .then(result => {
+          const location = new Location(this.query, result);
+          location.save()
+            .then(location => response.send(location));
+        })
+        .catch(error => handleError(error));
+    }
+  })
+}
+
+// This is the method that replaces the searchToLatLong function from previous classes.
+// This change allows the user to check the database for the result and, if it does not exist, request the information from the API.
+// Separating the API request in to the cacheMiss method, above, makes this function much easier to read and see what is going on in the if/else statement.
+Location.lookupLocation = (location) => {
   const SQL = `SELECT * FROM locations WHERE search_query=$1;`;
-  const values = [request.query.data];
+  const values = [location.query];
 
   return client.query(SQL, values)
     .then(result => {
-      if(result.rowCount === 1) {
-        response.send(result.rows[0]);
+      if(result.rowCount > 0) {
+        location.cacheHit(result);
       } else {
-        searchToLatLong(request.query.data)
-          .then(location => {
-            const SQL = `INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING id;`;
-            const values = [location.search_query, location.formatted_query, location.latitude, location.longitude];
-
-            client.query(SQL, values)
-              .then(result => {
-                location.id = result.rows[0].id;
-                response.send(location);
-              })
-              .catch(console.error);
-          })
-          .catch(error => handleError(error, response));
+        location.cacheMiss();
       }
     })
-    .catch(error => handleError(error, response));
-}
-
-function searchToLatLong(query) {
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.emitWarning.GEOCODE_API_KEY}`;
-
-  return superagent.get(url)
-    .then(res => {
-      return new Location(query, res);
-    })
-    .catch(error => handleError(error));
+    .catch(console.error);
 }
 
 // From class 7 solution code
@@ -126,7 +135,9 @@ Weather.prototype = {
 }
 
 // Refactor, part 2 of 3
-// Note: is it a stretch goal for class 8 to make a single "lookup" function; see solution code for class 9 which includes this format
+// Note: is it a requirement for lab 8 to make a single "lookup" function that all models will share. 
+// Demonstrate how to write this method for one model, such as the Weather example below and discuss the redundancy of writing an almost identical method for each model.
+// Discuss how to make this code more DRY but do not write the code, allow students to attempt it on their own.
 Weather.lookup = function(options) {
   const SQL = `SELECT * FROM weathers WHERE location_id=$1;`;
   client.query(SQL, [options.location])
