@@ -19,32 +19,6 @@ const count = (target, input) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function named replaceVowels that, given a string as input,
-// uses either filter, map, or reduce to replace all vowels with empty spaces.
-//
-// You will likely need to use other methods as well.
-// ------------------------------------------------------------------------------------------------
-
-const replaceVowels = (input) => {
-  // Solution code here...
-};
-
-// ------------------------------------------------------------------------------------------------
-// CHALLENGE 3
-//
-// Write a function named hyphenated that, given an array of strings,
-// combines them into a single string with each word separated by a hyphen.
-//
-// For example, hypenated(['Babbage', 'Lovelace', 'Hopper', 'Turing']) returns 'Babbage-Lovelace-Hopper-Turing'.
-// ------------------------------------------------------------------------------------------------
-
-let hyphenated = (input) => {
-  // Solution code here...
-}
-
-// ------------------------------------------------------------------------------------------------
-// CHALLENGE 4
-
 // Write a function that, given an array of integer arrays as input, either filter, map, or reduce
 // to calculate the total sum of all the elements in the array.
 //
@@ -56,13 +30,15 @@ const totalSum = (input) => {
 };
 
 // ------------------------------------------------------------------------------------------------
-// CHALLENGE 5
+// CHALLENGE 3
 
 // Write a function named divisibleByFiveTwoToThePower that accpets an array of arrays as input.
 //
-// This function should first remove any elements that are not numbers and are not divisible by five.
+// This function should first remove any elements that are not numbers or are not divisible by five.
 //
 // This function should then raise 2 to the power of the resulting numbers, returning an array of arrays.
+//
+// For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 // ------------------------------------------------------------------------------------------------
 
 const divisibleByFiveTwoToThePower = (input) => {
@@ -70,7 +46,7 @@ const divisibleByFiveTwoToThePower = (input) => {
 };
 
 // ------------------------------------------------------------------------------------------------
-// CHALLENGE 6
+// CHALLENGE 4
 //
 // Write a function named findMaleAndFemale that, given the Star Wars data, below,
 // returns the names of the characters whose gender is either male or female.
@@ -135,12 +111,11 @@ let findMaleAndFemale = (data) => {
 }
 
 // ------------------------------------------------------------------------------------------------
-// CHALLENGE 7
+// CHALLENGE 5
 
 // Write a function named findShortest that, given the Star Wars data from challenge 6,
-// returns the name of the shortest character.
+// uses any combination of filter, map and reduce to return the name of the shortest character.
 //
-// Note: There is an array method called .sort() which may be useful.
 // ------------------------------------------------------------------------------------------------
 
 let findShortest = (data) => {
@@ -161,31 +136,24 @@ let findShortest = (data) => {
 describe('Testing challenge 1', () => {
   test('It should return the number of times the input is in the nested arrays', () => {
     expect(count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(4);
+    expect(count(3, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(2);
+    expect(count(12, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(0);
   });
+  test('It should work on empty arrays', () => {
+    expect(count(5, [[1, 3, 5, 7, 9], [], [5, 5, 5], [1, 2, 3], []])).toStrictEqual(4);
+    expect(count(5, [])).toStrictEqual(0);
+  })
 });
 
 describe('Testing challenge 2', () => {
-  test('It should replace all vowels with a space', () => {
-    expect(replaceVowels('Welcome to Code 301')).toStrictEqual('W lc m  t  C d  301');
-  });
-
-});
-
-describe('Testing challenge 3', () => {
-  test('It should combine the strings with a hyphen', () => {
-    expect(hyphenated(['Babbage', 'Lovelace', 'Hopper', 'Turing'])).toStrictEqual('Babbage-Lovelace-Hopper-Turing');
-  });
-});
-
-describe('Testing challenge 4', () => {
-  test('It should combine the strings with a hyphen', () => {
+  test('It should add all the numbers in the arrays', () => {
     const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7],[9, 2, 3, 6, ]];
 
     expect(totalSum(nums)).toStrictEqual(66);
   });
 });
 
-describe('Testing challenge 5', () => {
+describe('Testing challenge 3', () => {
   test('It should return numbers divisible by five, then raise two to the power of the resulting numbers', () => {
     expect(divisibleByFiveTwoToThePower([[10, 20, 5, 4], [5, 6, 7, 9], [1, 10, 3]])).toStrictEqual([ [ 1024, 1048576, 32 ], [ 32 ], [ 1024 ] ]);
   });
@@ -195,17 +163,18 @@ describe('Testing challenge 5', () => {
   });
 
   test('It should return an empty array if the values are not numbers', () => {
-    expect(divisibleByFiveTwoToThePower([['one', 'two', 'five'], ['5', '10' , '15']])).toStrictEqual([ [], [] ]);
+    expect(divisibleByFiveTwoToThePower([['one', 'two', 'five'], ['5', '10' , '15'], [5]])).toStrictEqual([ [], [], [ 32 ] ]);
   });
 });
 
-describe('Testing challenge 6', () => {
+describe('Testing challenge 4', () => {
   test('It should return only characters that are male or female', () => {
     expect(findMaleAndFemale(starWarsData)).toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
+    expect(findMaleAndFemale({name: 'person', gender: 'female'}, {gender: 'lol'}, {name: 'persontwo', gender: 'male'})).toStrictEqual()
   });
 });
 
-describe('Testing challenge 7', () => {
+describe('Testing challenge 5', () => {
   test('It should return the shortest character', () => {
     expect(findShortest(starWarsData)).toStrictEqual('Leia Organa');
   });
