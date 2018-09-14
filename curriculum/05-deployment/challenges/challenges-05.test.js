@@ -14,7 +14,7 @@
 // ['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', ''].
 // ------------------------------------------------------------------------------------------------
 
-const howMuchPencil = (name) => {
+const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
   return result;
@@ -23,13 +23,13 @@ const howMuchPencil = (name) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function name wordsToCharList that, given a string as input, returns a new array where every element is a
-// character of the input string.
+// Write a function name wordsToCharList that, given a string as input, returns a new array
+// where every element is a character of the input string.
 //
 // For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 // ------------------------------------------------------------------------------------------------
 
-const wordsToCharList = (input) => {
+const wordsToCharList = (arr) => {
   // Solution code here...
 };
 
@@ -40,7 +40,7 @@ const wordsToCharList = (input) => {
 // (e.g. "1,2,3"), returns the total sum of the numeric values (e.g. 6).
 // ------------------------------------------------------------------------------------------------
 
-const totalSumCSV = (input) => {
+const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
   return total;
@@ -97,6 +97,19 @@ const listFoods = (recipe) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
 //
+// Write a function named splitFoods that uses split to produce the same output as challenge 4.
+// You may also use other array/string functions.
+// ------------------------------------------------------------------------------------------------
+
+const splitFoods = (recipe) => {
+  let result = [];
+  // Solution code here...
+  return result;
+}
+
+// ------------------------------------------------------------------------------------------------
+// CHALLENGE 6
+//
 // Use the same recipe from challenge 4, above.
 //
 // Write a function named stepAction that takes in the recipe and extracts the action verbs from the steps.
@@ -106,19 +119,6 @@ const listFoods = (recipe) => {
 // ------------------------------------------------------------------------------------------------
 
 const stepActions = (recipe) => {
-  let result = [];
-  // Solution code here...
-  return result;
-}
-
-// ------------------------------------------------------------------------------------------------
-// CHALLENGE 6
-//
-// Write a function named splitFoods that uses split to produce the same output as challenge 4.
-// You may also use other array/string functions.
-// ------------------------------------------------------------------------------------------------
-
-const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
   return result;
@@ -137,7 +137,7 @@ const splitFoods = (recipe) => {
 //   console.log(list); //--> [1, 3, 5]
 // ------------------------------------------------------------------------------------------------
 
-const removeEvenValues = (input) => {
+const removeEvenValues = (arr) => {
   // Solution code here...
 };
 
@@ -168,7 +168,7 @@ const removeLastCharacters = (str, numberOfCharacters) => {
 // For example, removeVowels('gregor') returns 'grgr'.
 // ------------------------------------------------------------------------------------------------
 
-const removeVowels = (input) => {
+const removeVowels = (str) => {
   // Solution code here...
 };
 
@@ -183,7 +183,7 @@ const removeVowels = (input) => {
 // Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioou']
 // ------------------------------------------------------------------------------------------------
 
-const extractVowels = (input) => {
+const extractVowels = (str) => {
   // Solution code here...
 };
 
@@ -231,15 +231,15 @@ describe('Testing challenge 4', () => {
 });
 
 describe('Testing challenge 5', () => {
-  test('It should return a list of recipe steps', () => {
-    expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
-    expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
+  test('It should return a list of foods', () => {
+    expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
   });
 });
 
 describe('Testing challenge 6', () => {
-  test('It should return a list of foods', () => {
-    expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
+  test('It should return a list of recipe steps', () => {
+    expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
+    expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
   });
 });
 

@@ -14,11 +14,11 @@
 // ['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', ''].
 // ------------------------------------------------------------------------------------------------
 
-const howMuchPencil = (name) => {
+const howMuchPencil = (str) => {
   let result = [];
   //<solution>
-  for (let i = 0; i < name.length + 1; i++) {
-    result.push(name.slice(i));
+  for (let i = 0; i < str.length + 1; i++) {
+    result.push(str.slice(i));
   }
   //</solution>
   return result;
@@ -27,15 +27,15 @@ const howMuchPencil = (name) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 2
 //
-// Write a function name wordsToCharList that, given a string as input, returns a new array where every element is a
-// character of the input string.
+// Write a function name wordsToCharList that, given a string as input, returns a new array
+// where every element is a character of the input string.
 //
 // For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 // ------------------------------------------------------------------------------------------------
 
-const wordsToCharList = (input) => {
+const wordsToCharList = (arr) => {
   //<solution>
-  return input.split('');
+  return arr.split('');
   //</solution>
 };
 
@@ -46,10 +46,10 @@ const wordsToCharList = (input) => {
 // (e.g. "1,2,3"), returns the total sum of the numeric values (e.g. 6).
 // ------------------------------------------------------------------------------------------------
 
-const totalSumCSV = (input) => {
+const totalSumCSV = (str) => {
   let total = 0;
   //<solution>
-  const values = input.split(',');
+  const values = str.split(',');
   values.forEach( (value) => {
     const numericValue = Number(value);
     if (!Number.isNaN(numericValue)) {
@@ -117,6 +117,23 @@ const listFoods = (recipe) => {
 // ------------------------------------------------------------------------------------------------
 // CHALLENGE 5
 //
+// Write a function named splitFoods that uses split to produce the same output as challenge 4.
+// You may also use other array/string functions.
+// ------------------------------------------------------------------------------------------------
+
+const splitFoods = (recipe) => {
+  let result = [];
+  //<solution>
+  recipe.ingredients.forEach( (ingredient) => {
+    result.push(ingredient.split(' ').slice(2).join(' '));
+  })
+  //</solution>
+  return result;
+}
+
+// ------------------------------------------------------------------------------------------------
+// CHALLENGE 6
+//
 // Use the same recipe from challenge 4, above.
 //
 // Write a function named stepAction that takes in the recipe and extracts the action verbs from the steps.
@@ -136,23 +153,6 @@ const stepActions = (recipe) => {
 }
 
 // ------------------------------------------------------------------------------------------------
-// CHALLENGE 6
-//
-// Write a function named splitFoods that uses split to produce the same output as challenge 4.
-// You may also use other array/string functions.
-// ------------------------------------------------------------------------------------------------
-
-const splitFoods = (recipe) => {
-  let result = [];
-  //<solution>
-  recipe.ingredients.forEach( (ingredient) => {
-    result.push(ingredient.split(' ').slice(2).join(' '));
-  })
-  //</solution>
-  return result;
-}
-
-// ------------------------------------------------------------------------------------------------
 // CHALLENGE 7
 //
 // Write a function named removeEvenValues that, given an array of integers as input,
@@ -165,11 +165,11 @@ const splitFoods = (recipe) => {
 //   console.log(list); //--> [1, 3, 5]
 // ------------------------------------------------------------------------------------------------
 
-const removeEvenValues = (input) => {
+const removeEvenValues = (arr) => {
   //<solution>
-  for (let i = input.length - 1; i >= 0; i--) {
-    if (input[i] % 2 === 0) {
-      input.splice(i, 1);
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i] % 2 === 0) {
+      arr.splice(i, 1);
     }
   }
   //</solution>
@@ -212,10 +212,10 @@ const removeLastCharacters = (str, numberOfCharacters) => {
 // For example, removeVowels('gregor') returns 'grgr'.
 // ------------------------------------------------------------------------------------------------
 
-const removeVowels = (input) => {
+const removeVowels = (str) => {
   //<solution>
   const matchVowels = /[aeiou]/;
-  const characters = input.split('');
+  const characters = str.split('');
   for (let i = characters.length - 1; i >= 0; i--) {
     if (matchVowels.test(characters[i])) {
       characters.splice(i, 1);
@@ -238,10 +238,10 @@ const removeVowels = (input) => {
 // Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioou']
 // ------------------------------------------------------------------------------------------------
 
-const extractVowels = (input) => {
+const extractVowels = (str) => {
   //<solution>
   const matchVowels = /[aeiou]/;
-  const characters = input.split('');
+  const characters = str.split('');
   let vowels = [];
   for (let i = characters.length - 1; i >= 0; i--) {
     if (matchVowels.test(characters[i])) {
@@ -297,15 +297,15 @@ describe('Testing challenge 4', () => {
 });
 
 describe('Testing challenge 5', () => {
-  test('It should return a list of recipe steps', () => {
-    expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
-    expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
+  test('It should return a list of foods', () => {
+    expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
   });
 });
 
 describe('Testing challenge 6', () => {
-  test('It should return a list of foods', () => {
-    expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
+  test('It should return a list of recipe steps', () => {
+    expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
+    expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
   });
 });
 
