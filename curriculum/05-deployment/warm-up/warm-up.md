@@ -2,7 +2,7 @@
 This code sample is written in C#. Read through the code and determine the output for the function.
 
 ```
-public string Value(string value, int position)
+public static string Value(string value, int position)
 {
     string[] myArray = new string[5];
 
@@ -21,6 +21,6 @@ public string Value(string value, int position)
     return $"Your value of {value} was accepted";
 }
 
-Value('sample string', 5);
-Value('another string', 2);
+Value("sample string", 5);
+Value("another string", 2);
 ```
