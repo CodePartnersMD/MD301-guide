@@ -9,9 +9,9 @@ public class Count {
             int randomNumber = (int) Math.floor(50 * Math.random());
             numbers.add(randomNumber);
         }
-
         System.out.println(numbers);
 
+        HashMap<String, Integer> tally = new HashMap<>();
         tally.put("even", 0);
         tally.put("odd", 0);
 
