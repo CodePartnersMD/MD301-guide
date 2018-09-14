@@ -10,7 +10,7 @@ Today we will continue our discussion about SQL databases and the relationships 
 - Review code challenges
 - Code review of lab assignment
 - Data modeling and schemas (continued)
-- Primary keys, foreign keys, and joins (continued)
+- Primary keys, foreign keys, and joins
 - Code Demo
 - Lab Preview
 - Introduction of Code Challenge topic

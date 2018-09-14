@@ -11,7 +11,7 @@ Today we are going to be adding a persistence layer in the form of a SQL databas
 - Code review of lab assignment
 - Relational vs. non-relational databases
 - Data modeling and schemas
-- Primary keys, foreign keys, and joins
+- Primary keys and foreign keys
 - Code Demo
 - Lab Preview
 - Introduction of Code Challenge topic
