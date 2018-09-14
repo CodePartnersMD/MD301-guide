@@ -2,6 +2,8 @@
 This code sample is written in Java. Read through the code and determine the output for this function.
 
 ```
+import java.util.*;
+
 public class Count {
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
@@ -9,9 +11,9 @@ public class Count {
             int randomNumber = (int) Math.floor(50 * Math.random());
             numbers.add(randomNumber);
         }
-
         System.out.println(numbers);
 
+        HashMap<String, Integer> tally = new HashMap<>();
         tally.put("even", 0);
         tally.put("odd", 0);
 
