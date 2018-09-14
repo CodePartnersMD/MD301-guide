@@ -26,7 +26,7 @@ const howMuchPencil = (str) => {
 /*------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function name wordsToCharList that, given a string as input, returns a new arraywhere every element is a character of the input string.
+Write a function name wordsToCharList that, given a string as input, returns a new array where every element is a character of the input string.
 
 For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------*/
@@ -40,9 +40,7 @@ const wordsToCharList = (arr) => {
 /*------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function named totalSumCSV that, given a string of comma-separated values (CSV) as input.
-
-(e.g. "1,2,3"), returns the total sum of the numeric values (e.g. 6).
+Write a function named totalSumCSV that, given a string of comma-separated values (CSV) as input. (e.g. "1,2,3"), returns the total sum of the numeric values (e.g. 6).
 ------------------------------------------------------------------------*/
 
 const totalSumCSV = (str) => {
@@ -115,7 +113,7 @@ const listFoods = (recipe) => {
 /*------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named splitFoods that uses split to produce the same output as challenge 4.
+Write a function named splitFoods that uses split to produce the same output as Challenge 4.
 
 You may also use other array/string functions.
 ------------------------------------------------------------------------*/
@@ -133,9 +131,9 @@ const splitFoods = (recipe) => {
 /*------------------------------------------------------------------------
 CHALLENGE 6
 
-Use the same recipe from challenge 4, above.
+Use the same recipe from Challenge 4, above.
 
-Write a function named stepAction that takes in the recipe and extracts the action verbs from the steps.
+Write a function named stepAction that takes in the recipe and extracts the action verbs from the steps. Fortunate for you, the action verbs are the first word of each action.
 
 Return a new array containing just the verbs. For example, ['Mix until evenly distributed'] returns ['Mix'].
 
@@ -180,11 +178,11 @@ CHALLENGE 8
 
 Write a function named removeLastCharacters that takes in a string and a number. This function should remove a certain number of characters from the end of the string.
 
-The number argument determines how many characters to remove. Return the resulting string.
+The numberOfCharacters argument determines how many characters to remove. Return the resulting string.
 
-If the number argument is greater than the length of the input string the function should return an empty string.
+If the numberOfCharacters argument is greater than the length of the input string the function should return an empty string.
 
-If the number argument input is a negative number, the function should return the input string without any changes.
+If the numberOfCharacters argument input is a negative number, the function should return the input string without any changes.
 
 For example: removeLastCharacters('Gregor', 2) returns 'Greg'.
 ------------------------------------------------------------------------*/
