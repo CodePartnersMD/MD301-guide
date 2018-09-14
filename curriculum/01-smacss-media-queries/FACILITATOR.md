@@ -27,6 +27,7 @@ Students will complete this lab for a second time as part of the lab 5 assignmen
 
 - Review float-based layout and read through the requirements for the lab assignment.
 - Prepare a demo on media queries and icon fonts from IcoMoon or Font Awesome.
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 
 ## What changed from the previous class?
 

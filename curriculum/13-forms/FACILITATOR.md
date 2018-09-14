@@ -16,7 +16,8 @@ Throughout the week, and especially today with the additional feedback to the us
 
 ## How do I prep for today?
 
-Review the solution code for lab 13.
+- Review the solution code for lab 13.
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 
 ## What changed from the previous class?
 

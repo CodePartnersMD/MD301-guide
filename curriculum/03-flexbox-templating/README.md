@@ -13,6 +13,7 @@ Today we will discuss the benefits of using a templating library called Handleba
 - Flexbox
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

@@ -18,7 +18,8 @@ Use this morning time prior to the first lecture to assist with any set-up issue
 
 ## How do I prep for today?
 
-Publish the lab 00 assignments in a folder in the course repository on GitHub.
+- Publish the lab 00 assignments in a folder in the course repository on GitHub.
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 
 ## What changed from the previous class?
 N/A

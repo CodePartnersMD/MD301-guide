@@ -12,6 +12,7 @@ Today is the first day of our new project, a mobile-only book collection. You wi
 - Server-side templating
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

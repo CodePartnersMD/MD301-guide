@@ -16,6 +16,7 @@ This is the first time students will see User Acceptance Tests in the `LAB.md` f
 - Review the solution code for lab today and demonstrate how to read a JSON file with AJAX. 
 - Note that the solution code intentionally uses `$.get()` instead of `$.getJSON()`, so be sure to discuss the differences between the two.
 - Note that the solution code includes the stretch goal to sort the images. Do not demonstrate this functionality in lecture 2 or in code review during lecture 3 as it is a requirement for lab 3.
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 - Assign students into pairs. They will work with the same partner for labs 2 and 3.
 
 ## What changed from the previous class?

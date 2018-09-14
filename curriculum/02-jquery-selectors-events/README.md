@@ -15,6 +15,7 @@ We will begin a lab assignment today which will carry over to the assignment for
 - jQuery events
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

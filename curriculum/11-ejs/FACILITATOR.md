@@ -14,6 +14,8 @@ In lab 11, students will manually populate a database and write a route to retri
 
 ## How do I prep for today?
 
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
+
 There are several demos in the `demos` folder for today. The `templating` demo includes a basic grocery list. This demo is intended to introduce students to EJS usage and syntax. The demo includes rendering an array of strings as well as rendering and array of objects. These are displayed in two separate views, so use this as an opportunity to discuss conditional rendering with EJS syntax. Then, refactor `list.ejs` using conditional logic. Begin with this demo before moving on to the to-do app, which demonstrates how to render data that was retrieved from a database. This demo will provide students with a frame of reference when beginning the book app in lab 11. 
 
 Review the demo code and solution code for lab 11, as well as the technical requirements in the `LAB.md`. Give students just enough of the pattern. By this point, they should feel comfortable with the process of deploying an application on Heroku, setting up a PostgreSQL database, and working with third-party APIs.

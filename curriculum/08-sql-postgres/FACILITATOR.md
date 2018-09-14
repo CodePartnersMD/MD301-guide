@@ -9,7 +9,8 @@ Students will be writing a file called `schema.sql` so demonstrate how to write 
 
 ## How do I prep for today?
 
-Review the `schema.sql` file and be prepared to discuss data types, primary keys, and foreign keys. Students will be referencing the primary key in the locations table as the foreign key in all five of the other tables.
+- Review the `schema.sql` file and be prepared to discuss data types, primary keys, and foreign keys. Students will be referencing the primary key in the locations table as the foreign key in all five of the other tables.
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 
 ## What changed from the previous class?
 

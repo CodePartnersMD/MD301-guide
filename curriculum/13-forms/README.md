@@ -13,6 +13,7 @@ Today we will be discussing how to create a new resource from an HTML5 form. Thi
 - Creating a new resource
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

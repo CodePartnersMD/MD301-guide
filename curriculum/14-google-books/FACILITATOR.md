@@ -12,7 +12,7 @@ The solution code for today also includes routes to update or delete a book. The
 
 ## How do I prep for today?
 
-Review the solution code for lab 14, especially the hidden form functionality.
+- Review the solution code for lab 14, especially the hidden form functionality.
 
 ## What changed from the previous class?
 

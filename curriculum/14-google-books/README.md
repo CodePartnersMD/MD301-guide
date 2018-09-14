@@ -13,6 +13,7 @@ Today is the final buildout of the book collection app. Our final step is to inc
 - Google Books API
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

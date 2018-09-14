@@ -10,6 +10,7 @@ Today's lecture will take place in a workshop style. Each student will follow al
 - Review code challenges
 - Deployment Workshop
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

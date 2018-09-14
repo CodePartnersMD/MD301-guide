@@ -12,6 +12,7 @@ Today we will continue to work with third-party APIs to request data. Part of be
 - How to refactor code
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

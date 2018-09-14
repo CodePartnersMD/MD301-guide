@@ -14,6 +14,7 @@ Today we are going to be adding a persistence layer in the form of a SQL databas
 - Primary keys, foreign keys, and joins
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

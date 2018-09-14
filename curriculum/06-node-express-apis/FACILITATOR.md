@@ -17,6 +17,8 @@ Refer students to the demonstration of the Heroku deployment process from the wo
 
 ## How do I prep for today?
 
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
+
 Review the code base for the static client. Be prepared to review this code with students for approximately 15 minutes during lecture. Certain topics, like Handlebars, will not be new. However, `$.get` is brand new, so be prepared to discuss the web request-response cycle and the difference between the front end and the back end.
 
 Review the demo code for today. There are several comments throughout the file, so feel free to use those as guidance as you like. Note: provide function signature for `getWeather`, but not the route.

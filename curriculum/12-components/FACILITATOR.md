@@ -10,11 +10,13 @@ This is also a good opportunity to discuss DRY code and readability in their `se
 
 ## How do I prep for today?
 
-Review the solution code for lab 12. 
+- Review the solution code for lab 12. 
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 
 The demos folder contains an extended version of the to-do app. This demo shows how to abstract the head, header, and footer elements into partials, as well as how to separate the list view and error view.
 
 The demos folder also contains an example of using the `fs` module to read a JSON file and populate the database. This demo does not necessarily need to be built in front of the class; it can be shown during lecture or added to the lecture repository if there is interest.
+
 
 ## What changed from the previous class?
 

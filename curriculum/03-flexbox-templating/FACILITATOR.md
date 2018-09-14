@@ -9,6 +9,7 @@ Today will introduce several concepts which will lead to several refactors of th
 - Remind students that they will work with the same partner for labs 2 and 3.
 - Prepare a demo to show how to refactor their lab code using Handlebars.
 - Prepare a demo on Flexbox.
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 
 ## What changed from the previous class?
 

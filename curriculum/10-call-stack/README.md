@@ -11,6 +11,7 @@ Today we will discuss the call stack and how JavaScript executes code synchronou
 - Code review of lab assignment
 - The call stack and tracing the order of code excution
 - Lab Overview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

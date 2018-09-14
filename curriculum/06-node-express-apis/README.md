@@ -16,6 +16,7 @@ Another component of this portion of the course involves working with a static c
 - Environment variables
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

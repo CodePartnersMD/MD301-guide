@@ -16,6 +16,7 @@ We will also discuss the basics of pattern matching with regular expressions, in
 - Regular expressions
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

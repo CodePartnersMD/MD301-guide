@@ -13,6 +13,7 @@ Today we will continue our discussion about SQL databases and the relationships 
 - Primary keys, foreign keys, and joins (continued)
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objective
 

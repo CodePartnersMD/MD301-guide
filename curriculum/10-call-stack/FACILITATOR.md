@@ -14,6 +14,7 @@ Towards the end of lecture, remind students that there is a corresponding lab as
 
 - Review the final solution code for the City Explorer back end. 
 - Review the Feature Tasks for the lab assignment and remind students to print out their code prior to lab time.
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 
 ## What changed from the previous class?
 

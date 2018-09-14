@@ -18,6 +18,7 @@ Students will be deploying their applications in labs 6 through 9 and lab 11, pl
 
 ## How do I prep for today?
 
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 - Create a sample application or your own portfolio that you can deploy along with students. 
 
 ## What changed from the previous class?

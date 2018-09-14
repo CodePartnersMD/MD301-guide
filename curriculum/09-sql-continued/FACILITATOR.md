@@ -10,7 +10,7 @@ Today's lecture will likely involve continued discussion of data modeling, joins
 
 ## How do I prep for today?
 
-Students will follow the same pattern from lab 8 to retrieve data from the Meetup API and the Hiking Project API.
+- Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
 
 ## What changed from the previous class?
 
@@ -19,6 +19,8 @@ Students will follow the same pattern from lab 8 to retrieve data from the Meetu
 ## What bugs, issues, or surprises have come up in the past for this class?
 
 ## General comments
+
+Students will follow the same pattern from lab 8 to retrieve data from the Meetup API and the Hiking Project API.
 
 ## Lecture
 

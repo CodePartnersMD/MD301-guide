@@ -14,6 +14,7 @@ We will spend some time reviewing the concepts from the lab 00 assignments. We w
 - Review of CSS floats
 - Introduction to code challenges
 - Lab Prep
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 

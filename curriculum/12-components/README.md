@@ -12,6 +12,7 @@ Today we will discuss componentization of our code. Although we will have more f
 - Componentization of code into modules
 - Code Demo
 - Lab Preview
+- Introduction of Code Challenge topic
 
 ## Learning Objectives
 
