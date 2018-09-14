@@ -4,7 +4,7 @@
 
 Today's lab involves quite a bit of refactoring from lab 6. The `searchToLatLong` function will now create a new instance from a constructor, as shown in two parts in the demo code. Also, show students how to refactor the weather callback in the same manner. You do not necessarily need to write the Weather constructor during the demo; you can write the Location constructor and discuss the Weather constructor instead.
 
-Students will also refactor `.forEach` to `.map`, so discuss this process but do not code the solution for them. `.map` is also the code challenge for today.
+Introduce functional programming concepts, such as mutability/immutability, higher order functions, and side effects. Then demonstrate how to use `.map`. Students will refactor `.forEach` to `.map`, so discuss this process but do not code the solution for them. `.map` is also the code challenge for today.
 
 ## How do I prep for today?
 

@@ -9,6 +9,7 @@ Today we will continue to work with third-party APIs to request data. Part of be
 - Warm-up exercise
 - Review code challenges
 - Code review of lab assignment
+- Functional programming concepts
 - How to refactor code
 - Code Demo
 - Lab Preview
