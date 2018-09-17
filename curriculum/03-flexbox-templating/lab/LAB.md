@@ -114,7 +114,8 @@ Then the images should be sorted accordingly
 - Add the ability for the user to sort the images by either title or by number of horns.
 - Sort the images by one of the properties on page load. This should also apply to the second page of images. 
 
-### Feature 5: Detail view
+
+## Stretch Goal: Detail view
 
 #### Why are we implementing this feature?
 
@@ -131,14 +132,21 @@ Then the image should render larger on the screen with the description displayed
 - Add a detail view which will display the image in a larger size in the center of the screen with a colored background.
 - The description should be shown now, as well.
 - When the user clicks off of the image, return to the grid view.
-
-## Stretch Goals
-
-*As a user, I want the detail view to include transitions so that I have a delightful experience.*
-
 - Use a transition or animation to show and hide the detail view of an image.
 
-*As a user, I want the ability to search my images so that I can view only the images containing specific titles or keywords.*
+## Stretch Goal: Fuzzy search
+
+#### Why are we implementing this feature?
+
+- As a user, I want the ability to search my images so that I can view only the images containing specific titles or keywords.
+
+#### What are we going to implement?
+
+Given that a user enters wants to view specific images  
+When the user enters a character into the search field  
+Then only the images matching the current set of characters should be displayed on the screen  
+
+#### How are we implementing it?
 
 - Create an input element to allow users to search for an image. It is up to you and your partner to decide if the user should be able to search by title, keyword, or both.
 - Write a regular expression pattern to create a fuzzy search so that the results are narrowed down and displayed every time the user enters or removes a character from the input.

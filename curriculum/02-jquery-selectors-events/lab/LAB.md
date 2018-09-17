@@ -84,15 +84,6 @@ Then the images should be displayed in rows across the screen
 - Style your application using floats.
 - Utilize at least one Google font.
 
-## Stretch Goal
-
-*As a user, I want to be able to sort my images by title or number of horns, so that my images are organized.*
-
-- Write a user acceptance test for this stretch goal. Follow the pattern used in the other features, above.
-- Add the ability for the user to sort the images by either title or by number of horns with a radio button.
-- Sort the images by one of the properties on page load.
-- Utilize at least one icon font.
-
 ## Submission Instructions
 
 - Complete your Feature Tasks for the day

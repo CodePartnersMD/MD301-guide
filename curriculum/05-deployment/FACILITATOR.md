@@ -19,7 +19,8 @@ Students will be deploying their applications in labs 6 through 9 and lab 11, pl
 ## How do I prep for today?
 
 - Prepare a 10-15 demonstration to introduce the topic of today's code challenges.
-- Create a sample application or your own portfolio that you can deploy along with students. 
+- Create a sample application or your own portfolio that you can deploy along with students. You can create your own version of the portfolio, or use the starter code.
+- Add the workshop materials (`server.js`, `.eslintrc.json`, and `.gitignore` files) to the daily folder in the lecture repository. Students will pull their upstream remote, then move the files into their portfolio repository.
 
 ## What changed from the previous class?
 
@@ -29,27 +30,50 @@ Students will be deploying their applications in labs 6 through 9 and lab 11, pl
 
 ## General comments
 
-- Plan to move slowly through the deployment process, discussing the steps and giving students time to follow along with each step. 
+- Plan to move slowly through the deployment process, discussing the steps and giving students time to follow along with each step. This workshop should take approximately 60-75 minutes and should be completed in the final hour of lecture.
 - Students will need to add the `server.js`, `.gitignore`, and `.eslintrc.json` files to their project and move the rest of their files into a `public` folder prior to deployment. Add these to the course repository prior to lecture so students can follow along.
+- During each break, denoted below with `BREAK`, pause the screen recording and circulate to assist students. Make sure everyone is caught up before moving on. Utilize the TAs during this time to help with the debugging process.
 
 ## Lecture
+
+Prior to the workshop beginning:
+- Ask students to merge their portfolio code to their master branch, no matter the state of their code. Although they can push a branch to Heroku with the command `git push heroku branch:master`, once their deployment is connected to the master branch of their repository, the changes will not be reflected on the deployed site until they merge their code to master.
+- Ask students to log in to their Heroku dashboard.
 
 Preparation for Deployment:
 - From the command line, students should move the `server.js`, `.gitignore`, and `.eslintrc.json` files from the class repository into their portfolio repository.
 - All of the other files for the portfolio should be in a `public` folder. Make sure there is not another folder within the `public` folder, but that the `public` folder contains the `index.html` file in its root.
+
+BREAK
+
 - Guide students through the process of running `npm init -y` to create a `package.json` file but do not go into a discussion of what this is doing, as this is a topic of lectures 6 and 7.
 - Students should then run `npm i express` to install ExpressJS as a dependency. Again, keep this at a high level for now.
 - Verify that these steps were successfully completed by testing locally with `nodemon`.
+
+BREAK
+
 - Students should add, commit, and push these changes to their portfolio repository.
 
 Command Line:
-- heroku create [name]
-  - *Creates an app on heroku.com and a git remote*
-- heroku git:remote -a [appname]
-  - (for an existing app)
-- git remote -v
-- git push heroku master
-- git push heroku [branch]:master (for a branch)
+- `git remote -v`
+  - Reminds students that each repository has a remote named origin
+- `heroku create [name]`
+  - Creates an app on Heroku and a git remote
+- Or, `heroku git:remote -a [appname]`
+  - For an existing app created on Heroku
+- `git remote -v`
+  - Confirms that the Heroku remote was added
+
+BREAK
+
+- Copy URL to address bar in the browser
+  - Confirms deployment
+- `git push heroku master`
+  - Pushes the instance to Heroku
+- Or, `git push heroku [branch]:master`
+  - Pushes the instance from a non-master branch to Heroku
+
+BREAK
 
 Heroku Dashboard:
 - In the "Deploy" tab, connect to GitHub

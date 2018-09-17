@@ -4,6 +4,8 @@ Class 03: Flexbox and templating
 
 Today will introduce several concepts which will lead to several refactors of the lab assignment. For example, students will style their applications using Flexbox and will render their images using Handlebars.
 
+Evaulate students' understanding of Flexbox by showing them the demo, either in the browser or in a tool like [Code Pen](https://codepen.io/) and ask them to predict the output on the screen by evaulating only the HTML and CSS. This is an exercise that students can spend a few minutes making predictions and drawing the outcome on paper, similar to the warm-up exercises, prior to seeing the solution.
+
 ## How do I prep for today?
 
 - Remind students that they will work with the same partner for labs 2 and 3.
