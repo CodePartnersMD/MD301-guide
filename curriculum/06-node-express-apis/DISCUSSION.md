@@ -6,7 +6,7 @@
 
 Request a personal API key from the following APIs. You should receive these in your email within a few hours, often within minutes. Please request these keys prior to lecture to allow adequate time because you will need them in order to complete your lab assignment. Note: do not post your API keys in the Canvas discussion or on GitHub. Save them in a secure place.
 
-- [Google Geocoding API Docs](https://developers.google.com/maps/documentation/geocoding/start){:target="_blank"}
+- [Google Geocoding API Docs](https://developers.google.com/maps/documentation/geocoding/start){:target="_blank"} - Select the 'Maps' option and create a placeholder app with a name like "Lab 6".
 
 - [Dark Sky API Docs](https://darksky.net/dev/docs){:target="_blank"}
 
